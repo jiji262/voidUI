@@ -157,7 +157,7 @@ export default function Home() {
               <div className="space-y-2 text-sm">
                 <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
                 <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
-                <div><Link href="https://github.com/Logging-Stuff/retroui" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
+                <div><Link href="https://github.com/jiji262/retroui-next" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
               </div>
             </div>
             
@@ -170,7 +170,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://github.com/Logging-Stuff/retroui"
+                  href="https://github.com/jiji262/retroui-next"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

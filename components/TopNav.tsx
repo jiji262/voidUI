@@ -38,21 +38,6 @@ export default function TopNav() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 w-full border-b-2 bg-background">
-        <div className="w-full bg-black text-white">
-          <div className="container max-w-6xl mx-auto px-4 py-2 flex justify-center space-x-4 items-center">
-            <Text className="text-sm text-center">
-              Ship faster with premium blocks and templates!
-            </Text>
-            <a href="https://dub.sh/retroui-pro" target="_blank">
-              <Button
-                size="sm"
-                className="shadow-none font-sans font-bold px-2 py-1 w-24"
-              >
-                Learn More
-              </Button>
-            </a>
-          </div>
-        </div>
         <div className="container max-w-6xl px-4 lg:px-0 mx-auto">
           <div className="flex justify-between items-center h-16">
             {/* Logo Section */}
@@ -87,7 +72,7 @@ export default function TopNav() {
 
             <div className="flex items-center space-x-4 lg:hidden">
               <Link
-                href="https://github.com/Logging-Stuff/retroui"
+                href="https://github.com/jiji262/retroui-next"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -98,7 +83,7 @@ export default function TopNav() {
 
             <div className="hidden lg:flex items-center space-x-3">
               <Link
-                href="https://github.com/Logging-Stuff/retroui"
+                href="https://github.com/jiji262/retroui-next"
                 target="_blank"
                 rel="noopener noreferrer"
               >

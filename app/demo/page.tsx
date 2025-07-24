@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { GithubIcon } from "lucide-react";
 import { Text, Card, Button, Tabs, TabsContent, TabsPanels, TabsTrigger, TabsTriggerList } from "@/components/retroui";
 import {
   groupPreviewsByCategory,
@@ -427,9 +429,15 @@ const demoSections = groupPreviewsByCategory(allPreviews);
 
 // Component demonstration wrapper
 const PreviewDemo: React.FC<{ preview: PreviewComponentInfo }> = ({ preview }) => {
+  // Check if this is a Table component to apply full width
+  const isTableComponent = preview.baseComponent === "Table";
+  const cardClassName = isTableComponent 
+    ? "w-full bg-background shadow-none col-span-1 md:col-span-2 xl:col-span-3" 
+    : "w-full bg-background shadow-none";
+  
   return (
     <ErrorBoundary>
-      <Card className="w-full bg-background shadow-none">
+      <Card className={cardClassName}>
         <Card.Header>
           <Card.Title>{preview.baseComponent} - {preview.name}</Card.Title>
           <Card.Description>{preview.description}</Card.Description>
@@ -493,6 +501,53 @@ export default function DemoPage() {
         </Tabs>
       </div>
       <BackToTop />
+      {/* Footer */}
+      <footer className="border-t border-border py-16">
+        <div className="container max-w-6xl mx-auto px-4 lg:px-0">
+          <div className="grid gap-8 md:grid-cols-3 text-center md:text-left">
+            <div>
+              <Text as="h4" className="text-lg mb-4">RetroUI</Text>
+              <p className="text-muted-foreground text-sm">
+                Retro-styled React components for modern web applications.
+              </p>
+            </div>
+            
+            <div>
+              <Text as="h4" className="text-lg mb-4">Explore</Text>
+              <div className="space-y-2 text-sm">
+                <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
+                <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
+                <div><Link href="https://github.com/jiji262/retroui-next" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
+              </div>
+            </div>
+            
+            <div>
+              <Text as="h4" className="text-lg mb-4">Get Started</Text>
+              <div className="flex flex-col sm:flex-row md:flex-col gap-2">
+                <Link href="/components">
+                  <Button variant="outline" size="sm" className="w-full">
+                    Browse Components
+                  </Button>
+                </Link>
+                <Link
+                  href="https://github.com/jiji262/retroui-next"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="sm" className="w-full">
+                    <GithubIcon size="14" className="mr-2" />
+                    Star on GitHub
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
+            <p>Built with React and TailwindCSS. Open source and ready to use.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
