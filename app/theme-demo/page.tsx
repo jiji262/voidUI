@@ -62,8 +62,9 @@ export default function ThemeDemo() {
               <Input placeholder="错误状态示例" aria-invalid />
               <div className="flex gap-2">
                 <Badge>默认徽章</Badge>
-                <Badge variant="secondary">次要徽章</Badge>
+                <Badge variant="solid">实心徽章</Badge>
                 <Badge variant="outline">轮廓徽章</Badge>
+                <Badge variant="surface">表面徽章</Badge>
               </div>
             </div>
           </Card.Content>

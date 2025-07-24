@@ -70,22 +70,19 @@
   --destructive: #e63946;
   --destructive-foreground: #fff;
   --border: #3a3a3a;
-  --background-image: url("/images/bg_void_3.svg"); /* Optional: A different image for dark mode */
+  --background-image: url("/images/bg_void_3.svg");
 }
 
 body {
   font-family: var(--font-sans);
 }
 
-/* 紫色主题的特殊优化 */
 [data-theme="purple"] {
-  /* 紫色主题专用变量 */
   --purple-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   --purple-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.2);
   --purple-glow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
-/* 紫色主题下的按钮优化 */
 [data-theme="purple"] .bg-primary {
   background: var(--primary);
   color: var(--primary-foreground);
@@ -98,7 +95,6 @@ body {
   transform: translateY(1px);
 }
 
-/* 紫色主题下的次要按钮优化 */
 [data-theme="purple"] .bg-secondary {
   background: var(--secondary);
   color: var(--secondary-foreground);
@@ -110,7 +106,6 @@ body {
   box-shadow: var(--purple-shadow);
 }
 
-/* 紫色主题下的卡片阴影优化 */
 [data-theme="purple"] .shadow-md {
   box-shadow: 3px 3px 0 0 var(--border);
 }
@@ -119,7 +114,6 @@ body {
   box-shadow: 1px 1px 0 0 var(--border), var(--purple-shadow);
 }
 
-/* 紫色主题下的输入框优化 */
 [data-theme="purple"] input {
   border-color: var(--border);
   background: var(--background);
@@ -132,7 +126,7 @@ body {
   box-shadow: 2px 2px 0 0 var(--primary);
 }
 
-/* 紫色主题下的文字颜色确保 */
+
 [data-theme="purple"] .text-primary-foreground {
   color: var(--primary-foreground) !important;
 }
@@ -141,7 +135,6 @@ body {
   color: var(--secondary-foreground) !important;
 }
 
-/* 深色模式下的紫色主题特殊处理 */
 .dark[data-theme="purple"] .bg-primary {
   background: var(--primary);
   color: #ffffff;
@@ -157,7 +150,6 @@ body {
   color: var(--secondary-foreground);
 }
 
-/* 紫色主题下的边框和阴影统一 */
 [data-theme="purple"] .border-2 {
   border-color: var(--border);
 }

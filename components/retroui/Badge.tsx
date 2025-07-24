@@ -2,13 +2,13 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { HTMLAttributes } from "react";
 
-const badgeVariants = cva("font-semibold border-2 border-border", {
+const badgeVariants = cva("font-semibold", {
   variants: {
     variant: {
-      default: "bg-muted text-muted-foreground",
-      secondary: "bg-secondary text-secondary-foreground",
-      outline: "bg-transparent text-foreground border-foreground",
-      accent: "bg-accent text-accent-foreground",
+      default: "bg-gray-200 text-gray-700",
+      outline: "outline-2 outline-foreground text-foreground",
+      solid: "bg-foreground text-background",
+      surface: "outline-2 bg-primary text-black",
     },
     size: {
       sm: "px-2 py-1 text-xs",
@@ -22,7 +22,7 @@ const badgeVariants = cva("font-semibold border-2 border-border", {
   },
 });
 
-interface ButtonProps
+interface BadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {}
 
@@ -32,7 +32,7 @@ export function Badge({
   variant = "default",
   className = "",
   ...props
-}: ButtonProps) {
+}: BadgeProps) {
   return (
     <span
       className={cn(badgeVariants({ variant, size }), className)}

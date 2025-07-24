@@ -31,10 +31,8 @@ export type ThemeConfig = {
   dark: ThemeColors;
 };
 
-// Convert RetroUITheme to ThemeConfig
 function convertToThemeConfig(theme: RetroUITheme): ThemeConfig {
-  // 检测是否为紫色主题，为其提供特殊的深色模式优化
-  const isPurpleTheme = theme.primary === '#8b5cf6';
+  const isPurpleTheme = theme.primary === '#9046ff';
   
   return {
     light: {
@@ -57,18 +55,18 @@ function convertToThemeConfig(theme: RetroUITheme): ThemeConfig {
       backgroundImage: theme.backgroundImageLight
     },
     dark: {
-      background: isPurpleTheme ? '#0f0b1f' : '#1a1a1a',  // 深紫黑色背景
-      foreground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',  // 淡色文字
-      card: isPurpleTheme ? '#1e1b4b' : '#242424',  // 深紫色卡片
+      background: isPurpleTheme ? '#0f0b1f' : '#1a1a1a',
+      foreground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',
+      card: isPurpleTheme ? '#1e1b4b' : '#242424',
       cardForeground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',
-      primary: isPurpleTheme ? '#a78bfa' : theme.primary,  // 深色模式下更亮的紫色
-      primaryHover: isPurpleTheme ? '#8b5cf6' : theme.primaryHover,  // 悬停时稍深
-      primaryForeground: '#ffffff',  // 确保按钮文字始终为白色
+      primary: isPurpleTheme ? '#a78bfa' : theme.primary,
+      primaryHover: isPurpleTheme ? '#8250df' : theme.primaryHover,
+      primaryForeground: '#ffffff',
       secondary: theme.secondary === '#000' ? '#3a3a3a' : (isPurpleTheme ? '#312e81' : theme.secondary),
       secondaryForeground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',
-      muted: isPurpleTheme ? '#4c1d95' : '#3f3f46',  // 深紫色静音背景
-      mutedForeground: isPurpleTheme ? '#c7d2fe' : '#a0a0a0',  // 淡紫色静音文字
-      accent: isPurpleTheme ? '#c4b5fd' : theme.accent,  // 淡紫色强调色
+      muted: isPurpleTheme ? '#4c1d95' : '#3f3f46',
+      mutedForeground: isPurpleTheme ? '#c7d2fe' : '#a0a0a0',
+      accent: isPurpleTheme ? '#c4b5fd' : theme.accent,
       accentForeground: isPurpleTheme ? '#1e1b4b' : theme.accentForeground,
       destructive: theme.destructive,
       destructiveForeground: theme.destructiveForeground,
@@ -84,7 +82,7 @@ export const themes: Record<Theme, ThemeConfig> = {
   purple: convertToThemeConfig(purpleTheme)
 };
 
-// Create context
+
 type ThemeContextType = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
