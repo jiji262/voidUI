@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
+import { CodeBlock } from "@/components/ui/code-block";
 import {
   Text,
   Card,
@@ -355,9 +356,7 @@ const ComponentDemo: React.FC<{ component: ComponentInfo }> = ({ component }) =>
             {renderComponent()}
           </div>
           {component.usage && (
-            <div className="bg-muted p-3 rounded text-sm font-mono overflow-x-auto">
-              <code>{component.usage}</code>
-            </div>
+            <CodeBlock code={component.usage} language="jsx" />
           )}
         </Card.Content>
       </Card>

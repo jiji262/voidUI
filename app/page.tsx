@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon, ArrowRightIcon } from "lucide-react";
 import { Button, Text } from "@/components/retroui";
+import { CodeBlock } from "@/components/ui/code-block";
 
 export default function Home() {
   return (
@@ -108,16 +109,12 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2 text-left">
             <div className="bg-background p-6 rounded-lg border">
               <Text as="h3" className="text-lg mb-3">1. Installation</Text>
-              <div className="bg-muted p-3 rounded font-mono text-sm">
-                npm install @retroui/components
-              </div>
+              <CodeBlock code="npm install @retroui/components" language="bash" />
             </div>
             
             <div className="bg-background p-6 rounded-lg border">
               <Text as="h3" className="text-lg mb-3">2. Import Components</Text>
-              <div className="bg-muted p-3 rounded font-mono text-sm">
-                import {`{ Button }`} from &#39;@retroui/components&#39;
-              </div>
+              <CodeBlock code="import { Button } from '@retroui/components'" language="jsx" />
             </div>
           </div>
           

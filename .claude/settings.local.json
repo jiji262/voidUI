@@ -8,7 +8,9 @@
       "Bash(echo:*)",
       "Bash(pnpm build:*)",
       "Bash(sed:*)",
-      "Bash(pgrep:*)"
+      "Bash(pgrep:*)",
+      "Bash(pnpm list:*)",
+      "Bash(node:*)"
     ],
     "deny": []
   }
