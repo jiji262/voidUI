@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { Toaster, TooltipProvider } from "@/components/retroui";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/lib/theme-context";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
@@ -72,13 +73,15 @@ export default function RootLayout({
       <body
         className={`${head.variable} ${sans.variable} ${mono.variable} bg-background text-foreground`}
       >
-        <TooltipProvider>
-          <div className="relative z-40 pb-16">
-            <TopNav />
-          </div>
-          {children}
-          <Toaster />
-        </TooltipProvider>
+        <ThemeProvider>
+          <TooltipProvider>
+            <div className="relative z-40 pb-16">
+              <TopNav />
+            </div>
+            {children}
+            <Toaster />
+          </TooltipProvider>
+        </ThemeProvider>
         <SpeedInsights />
         <Analytics />
       </body>

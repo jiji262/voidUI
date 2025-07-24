@@ -8,11 +8,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "shadow-md hover:shadow-none bg-primary text-black border-2 border-black transition hover:translate-y-1 hover:bg-primary-hover",
+          "shadow-md hover:shadow-none bg-primary text-primary-foreground border-2 border-border transition hover:translate-y-1 hover:bg-primary-hover",
         secondary:
-          "shadow-md hover:shadow-none bg-secondary shadow-primary text-secondary-foreground border-2 border-black transition hover:translate-y-1",
+          "shadow-md hover:shadow-none bg-secondary shadow-primary text-secondary-foreground border-2 border-border transition hover:translate-y-1",
         outline:
-          "shadow-md hover:shadow-none bg-transparent border-2 transition hover:translate-y-1",
+          "shadow-md hover:shadow-none bg-transparent text-foreground border-2 border-border transition hover:translate-y-1",
         link: "bg-transparent hover:underline",
       },
       size: {

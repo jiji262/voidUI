@@ -6,6 +6,7 @@ import { GithubIcon, MoonIcon, SunIcon } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
 import { Button, Text } from "@/components/retroui";
 import { navConfig } from "@/config/navigation";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
 export default function TopNav() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -92,6 +93,7 @@ export default function TopNav() {
                   Star on GitHub
                 </Button>
               </Link>
+              <ThemeSwitcher />
               <Button variant="secondary" size="icon" onClick={toggleDarkMode}>
                 {isDarkMode ? <SunIcon size="14" /> : <MoonIcon size="14" />}
               </Button>

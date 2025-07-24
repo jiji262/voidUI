@@ -10,7 +10,8 @@
       "Bash(sed:*)",
       "Bash(pgrep:*)",
       "Bash(pnpm list:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
