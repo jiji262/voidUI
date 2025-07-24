@@ -55,4 +55,4 @@ const TooltipObject = Object.assign(Tooltip, {
   Provider: TooltipProvider,
 });
 
-export { TooltipObject as Tooltip };
+export { TooltipObject as Tooltip, TooltipProvider };

@@ -4,47 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon, ArrowRightIcon } from "lucide-react";
-import {
-  Button,
-  Text,
-  Input,
-  Textarea,
-  Card,
-  Avatar,
-  Badge,
-  Alert,
-  Accordion,
-  Checkbox,
-  Select,
-  Switch,
-  Menu,
-  Tabs,
-  TabsContent,
-  TabsPanels,
-  TabsTrigger,
-  TabsTriggerList,
-} from "@/components/retroui";
-
-// Import preview components
-import AccordionStyleDefault from "@/preview/components/accordion-style-default";
-import AlertStyleWithIcon from "@/preview/components/alert-style-with-icon";
-import AvatarStyleCircleSizes from "@/preview/components/avatar-style-circle-sizes";
-import BadgeStyleVariants from "@/preview/components/badge-style-variants";
-import ButtonStyleDefault from "@/preview/components/button-style-default";
-import CheckboxStyleVariants from "@/preview/components/checkbox-style-variants";
-import TableStyleDefault from "@/preview/components/table-style-default";
-import TableWithCheckbox from "@/preview/components/table-with-checkbox";
-import ProgressStyleDefault from "@/preview/components/progress-style-default";
-import RadioStyleDefault from "@/preview/components/radio-style-default";
-import SliderStyleDefault from "@/preview/components/slider-style-default";
-import ToggleStyleDefault from "@/preview/components/toggle-style-default";
-import ToggleGroupStyleDefault from "@/preview/components/toggle-group-style-default";
-import TooltipStyleDefault from "@/preview/components/tooltip-style-default";
-import DialogStyleDefault from "@/preview/components/dialog-style-default";
-import BreadcrumbStyleDefault from "@/preview/components/breadcrumb-style-default";
-import PopoverStyleDefault from "@/preview/components/popover-style-default";
-import SwitchStyleDefault from "@/preview/components/switch-style-default";
-import TextHeadings from "@/preview/components/text-headings";
+import { Button, Text } from "@/components/retroui";
 
 export default function Home() {
   return (
@@ -59,15 +19,21 @@ export default function Home() {
           </Text>
 
           <p className="text-lg text-muted-foreground mb-8">
-            A comprehensive showcase of RetroUI components. Explore all the retro-styled 
-            React components built with TailwindCSS for modern web applications.
+            A collection of retro-styled React components built with TailwindCSS. 
+            Bring nostalgic aesthetics to modern web applications with our comprehensive 
+            component library featuring buttons, forms, navigation, and more.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <Link href="/components" passHref>
-              <Button className="w-full" aria-label="View All Components">
-                View All Components
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Link href="/components">
+              <Button size="lg" className="w-full sm:w-auto">
+                Explore Components
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/demo">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                Live Demo
               </Button>
             </Link>
             <Link
@@ -75,9 +41,9 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 <GithubIcon size="16" className="mr-2" />
-                Star on GitHub
+                GitHub
               </Button>
             </Link>
           </div>
@@ -93,302 +59,132 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Component Showcase Grid */}
+      {/* Features Section */}
       <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
         <Text as="h2" className="text-3xl text-center mb-16">
-          Component <span className="text-outlined">Gallery</span>
+          Why Choose <span className="text-outlined">RetroUI</span>?
         </Text>
         
-        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-          {/* Buttons */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Buttons</Card.Title>
-              <Card.Description>Interactive button components with various styles</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <ButtonStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Badges */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Badges</Card.Title>
-              <Card.Description>Status indicators and labels</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <BadgeStyleVariants />
-            </Card.Content>
-          </Card>
-
-          {/* Avatars */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Avatars</Card.Title>
-              <Card.Description>User profile images in different sizes</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <AvatarStyleCircleSizes />
-            </Card.Content>
-          </Card>
-
-          {/* Form Controls */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Form Controls</Card.Title>
-              <Card.Description>Input fields and form elements</Card.Description>
-            </Card.Header>
-            <Card.Content className="space-y-4">
-              <Input placeholder="Enter text here..." />
-              <Textarea placeholder="Enter your message..." className="border-foreground" />
-            </Card.Content>
-          </Card>
-
-          {/* Checkboxes */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Checkboxes</Card.Title>
-              <Card.Description>Selection controls with different variants</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <CheckboxStyleVariants />
-            </Card.Content>
-          </Card>
-
-          {/* Alerts */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Alerts</Card.Title>
-              <Card.Description>Notification and status messages</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <AlertStyleWithIcon />
-            </Card.Content>
-          </Card>
-
-          {/* Accordion */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Accordion</Card.Title>
-              <Card.Description>Collapsible content sections</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <AccordionStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Switches */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Switches</Card.Title>
-              <Card.Description>Toggle switches for binary choices</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <SwitchStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Select & Menu */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Select & Menu</Card.Title>
-              <Card.Description>Dropdown selections and menus</Card.Description>
-            </Card.Header>
-            <Card.Content className="space-y-4">
-              <Select>
-                <Select.Trigger>
-                  <Select.Value placeholder="Select an option" />
-                </Select.Trigger>
-                <Select.Content>
-                  <Select.Group>
-                    <Select.Item value="1">Option 1</Select.Item>
-                    <Select.Item value="2">Option 2</Select.Item>
-                    <Select.Item value="3">Option 3</Select.Item>
-                  </Select.Group>
-                </Select.Content>
-              </Select>
-              <Menu>
-                <Menu.Trigger asChild>
-                  <Button variant="outline" size="sm">Open Menu</Button>
-                </Menu.Trigger>
-                <Menu.Content className="min-w-36">
-                  <Menu.Item>Menu Item 1</Menu.Item>
-                  <Menu.Item>Menu Item 2</Menu.Item>
-                  <Menu.Item>Menu Item 3</Menu.Item>
-                </Menu.Content>
-              </Menu>
-            </Card.Content>
-          </Card>
-
-          {/* Radio Buttons */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Radio Buttons</Card.Title>
-              <Card.Description>Single selection from multiple options</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <RadioStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Progress Bar */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Progress Bar</Card.Title>
-              <Card.Description>Progress indicators for loading states</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <ProgressStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Slider */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Slider</Card.Title>
-              <Card.Description>Range input controls</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <SliderStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Toggle & Toggle Group */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Toggle Controls</Card.Title>
-              <Card.Description>Toggle buttons and grouped toggles</Card.Description>
-            </Card.Header>
-            <Card.Content className="space-y-4">
-              <ToggleStyleDefault />
-              <ToggleGroupStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Tooltip */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Tooltip</Card.Title>
-              <Card.Description>Contextual information on hover</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <TooltipStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Dialog */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Dialog</Card.Title>
-              <Card.Description>Modal dialogs and overlays</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <DialogStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Breadcrumb */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Breadcrumb</Card.Title>
-              <Card.Description>Navigation breadcrumb trails</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <BreadcrumbStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Popover */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Popover</Card.Title>
-              <Card.Description>Floating content containers</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <PopoverStyleDefault />
-            </Card.Content>
-          </Card>
-
-          {/* Typography */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Typography</Card.Title>
-              <Card.Description>Text headings and typography styles</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <TextHeadings />
-            </Card.Content>
-          </Card>
-
-          {/* Tabs */}
-          <Card className="w-full bg-background shadow-none">
-            <Card.Header>
-              <Card.Title>Tabs</Card.Title>
-              <Card.Description>Tabbed navigation interface</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <Tabs>
-                <TabsTriggerList>
-                  <TabsTrigger>Tab 1</TabsTrigger>
-                  <TabsTrigger>Tab 2</TabsTrigger>
-                  <TabsTrigger>Tab 3</TabsTrigger>
-                </TabsTriggerList>
-                <TabsPanels>
-                  <TabsContent>Content for Tab 1</TabsContent>
-                  <TabsContent>Content for Tab 2</TabsContent>
-                  <TabsContent>Content for Tab 3</TabsContent>
-                </TabsPanels>
-              </Tabs>
-            </Card.Content>
-          </Card>
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">🎨</span>
+            </div>
+            <Text as="h3" className="text-xl mb-2">Retro Design</Text>
+            <p className="text-muted-foreground">
+              Nostalgic aesthetics with modern functionality. Perfect for creating unique, memorable user interfaces.
+            </p>
+          </div>
+          
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">⚡</span>
+            </div>
+            <Text as="h3" className="text-xl mb-2">Built with React</Text>
+            <p className="text-muted-foreground">
+              Modern React components with TypeScript support. Easy to integrate into your existing projects.
+            </p>
+          </div>
+          
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">🎯</span>
+            </div>
+            <Text as="h3" className="text-xl mb-2">TailwindCSS</Text>
+            <p className="text-muted-foreground">
+              Styled with TailwindCSS for easy customization and consistent design system integration.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Data Tables Section */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
-        <Text as="h2" className="text-3xl text-center mb-16">
-          Data <span className="text-outlined">Tables</span>
-        </Text>
-        
-        <div className="space-y-12">
-          <div>
-            <Text as="h3" className="text-xl mb-4">Default Table</Text>
-            <TableStyleDefault />
+      {/* Getting Started Section */}
+      <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16 bg-muted/30">
+        <div className="text-center max-w-3xl mx-auto">
+          <Text as="h2" className="text-3xl mb-8">
+            Get Started with <span className="text-outlined">RetroUI</span>
+          </Text>
+          
+          <div className="grid gap-6 md:grid-cols-2 text-left">
+            <div className="bg-background p-6 rounded-lg border">
+              <Text as="h3" className="text-lg mb-3">1. Installation</Text>
+              <div className="bg-muted p-3 rounded font-mono text-sm">
+                npm install @retroui/components
+              </div>
+            </div>
+            
+            <div className="bg-background p-6 rounded-lg border">
+              <Text as="h3" className="text-lg mb-3">2. Import Components</Text>
+              <div className="bg-muted p-3 rounded font-mono text-sm">
+                import {`{ Button }`} from &#39;@retroui/components&#39;
+              </div>
+            </div>
           </div>
           
-          <div>
-            <Text as="h3" className="text-xl mb-4">Table with Checkboxes</Text>
-            <TableWithCheckbox />
+          <p className="text-muted-foreground mt-8 mb-8">
+            Start building retro-styled interfaces in minutes. Copy components directly from our showcase or install the package.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/components">
+              <Button size="lg">
+                Browse Components
+                <ArrowRightIcon className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/demo">
+              <Button variant="outline" size="lg">
+                View Live Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-border py-16">
-        <div className="container max-w-6xl mx-auto px-4 lg:px-0 text-center">
-          <Text as="h3" className="text-2xl mb-4">
-            Ready to use <span className="text-outlined">RetroUI</span>?
-          </Text>
-          <p className="text-muted-foreground mb-8">
-            Copy and paste these components into your React application.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link
-              href="https://github.com/Logging-Stuff/retroui"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button>
-                <GithubIcon size="16" className="mr-2" />
-                View on GitHub
-              </Button>
-            </Link>
-            <Link href="/components">
-              <Button variant="outline">
-                Browse Components
-              </Button>
-            </Link>
+        <div className="container max-w-6xl mx-auto px-4 lg:px-0">
+          <div className="grid gap-8 md:grid-cols-3 text-center md:text-left">
+            <div>
+              <Text as="h4" className="text-lg mb-4">RetroUI</Text>
+              <p className="text-muted-foreground text-sm">
+                Retro-styled React components for modern web applications.
+              </p>
+            </div>
+            
+            <div>
+              <Text as="h4" className="text-lg mb-4">Explore</Text>
+              <div className="space-y-2 text-sm">
+                <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
+                <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
+                <div><Link href="https://github.com/Logging-Stuff/retroui" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
+              </div>
+            </div>
+            
+            <div>
+              <Text as="h4" className="text-lg mb-4">Get Started</Text>
+              <div className="flex flex-col sm:flex-row md:flex-col gap-2">
+                <Link href="/components">
+                  <Button variant="outline" size="sm" className="w-full">
+                    Browse Components
+                  </Button>
+                </Link>
+                <Link
+                  href="https://github.com/Logging-Stuff/retroui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="sm" className="w-full">
+                    <GithubIcon size="14" className="mr-2" />
+                    Star on GitHub
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
+            <p>Built with React and TailwindCSS. Open source and ready to use.</p>
           </div>
         </div>
       </footer>

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(pnpm build:*)",
+      "Bash(sed:*)",
+      "Bash(pgrep:*)"
+    ],
+    "deny": []
+  }
+}

@@ -2,7 +2,7 @@ import TopNav from "@/components/TopNav";
 import "./global.css";
 import { Archivo_Black, Space_Grotesk, Space_Mono } from "next/font/google";
 import { Metadata } from "next";
-import { Toaster } from "@/components/retroui";
+import { Toaster, TooltipProvider } from "@/components/retroui";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -72,11 +72,13 @@ export default function RootLayout({
       <body
         className={`${head.variable} ${sans.variable} ${mono.variable} bg-background text-foreground`}
       >
-        <div className="relative z-40 pb-16">
-          <TopNav />
-        </div>
-        {children}
-        <Toaster />
+        <TooltipProvider>
+          <div className="relative z-40 pb-16">
+            <TopNav />
+          </div>
+          {children}
+          <Toaster />
+        </TooltipProvider>
         <SpeedInsights />
         <Analytics />
       </body>
