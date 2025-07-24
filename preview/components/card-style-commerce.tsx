@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/retroui/Button";
 import { Card } from "@/components/retroui/Card";
 
@@ -5,8 +6,10 @@ export default function CommerceCard() {
   return (
     <Card className="w-[350px] shadow-none hover:shadow-none">
       <Card.Content className="pb-0">
-        <img
+        <Image
           src="/images/gameboy.jpg"
+          width={350}
+          height={350}
           className="w-full h-full"
           alt="Gameboy"
         />

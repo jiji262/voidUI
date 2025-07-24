@@ -38,7 +38,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link
-              href="https://github.com/Logging-Stuff/retroui"
+              href="https://github.com/jiji262/retroui-next"
               target="_blank"
               rel="noopener noreferrer"
             >
