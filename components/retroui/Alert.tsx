@@ -7,8 +7,9 @@ import { Text } from "@/components/retroui/Text";
 const alertVariants = cva("relative w-full border-2 p-4", {
   variants: {
     variant: {
-      default: "bg-background text-foreground",
-      solid: "bg-black text-white",
+      default: "bg-background text-foreground border-border",
+      solid: "bg-secondary text-secondary-foreground border-secondary",
+      destructive: "bg-destructive/10 text-destructive border-destructive",
     },
     status: {
       error: "bg-red-300 text-red-800 border-red-800",

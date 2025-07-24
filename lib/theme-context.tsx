@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { defaultTheme, purpleTheme, RetroUITheme } from '@/lib/theme-config';
 
 // Define theme types
@@ -33,6 +33,9 @@ export type ThemeConfig = {
 
 // Convert RetroUITheme to ThemeConfig
 function convertToThemeConfig(theme: RetroUITheme): ThemeConfig {
+  // 检测是否为紫色主题，为其提供特殊的深色模式优化
+  const isPurpleTheme = theme.primary === '#8b5cf6';
+  
   return {
     light: {
       background: theme.background,
@@ -54,22 +57,22 @@ function convertToThemeConfig(theme: RetroUITheme): ThemeConfig {
       backgroundImage: theme.backgroundImageLight
     },
     dark: {
-      background: '#1a1a1a',
-      foreground: '#f5f5f5',
-      card: '#242424',
-      cardForeground: '#f5f5f5',
-      primary: theme.primary,
-      primaryHover: theme.primaryHover,
-      primaryForeground: theme.primaryForeground,
-      secondary: theme.secondary === '#000' ? '#3a3a3a' : theme.secondary,
-      secondaryForeground: theme.secondaryForeground === '#fff' ? '#f5f5f5' : theme.secondaryForeground,
-      muted: '#3f3f46',
-      mutedForeground: '#a0a0a0',
-      accent: theme.accent,
-      accentForeground: theme.accentForeground,
+      background: isPurpleTheme ? '#0f0b1f' : '#1a1a1a',  // 深紫黑色背景
+      foreground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',  // 淡色文字
+      card: isPurpleTheme ? '#1e1b4b' : '#242424',  // 深紫色卡片
+      cardForeground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',
+      primary: isPurpleTheme ? '#a78bfa' : theme.primary,  // 深色模式下更亮的紫色
+      primaryHover: isPurpleTheme ? '#8b5cf6' : theme.primaryHover,  // 悬停时稍深
+      primaryForeground: '#ffffff',  // 确保按钮文字始终为白色
+      secondary: theme.secondary === '#000' ? '#3a3a3a' : (isPurpleTheme ? '#312e81' : theme.secondary),
+      secondaryForeground: isPurpleTheme ? '#f1f5f9' : '#f5f5f5',
+      muted: isPurpleTheme ? '#4c1d95' : '#3f3f46',  // 深紫色静音背景
+      mutedForeground: isPurpleTheme ? '#c7d2fe' : '#a0a0a0',  // 淡紫色静音文字
+      accent: isPurpleTheme ? '#c4b5fd' : theme.accent,  // 淡紫色强调色
+      accentForeground: isPurpleTheme ? '#1e1b4b' : theme.accentForeground,
       destructive: theme.destructive,
       destructiveForeground: theme.destructiveForeground,
-      border: theme.border === '#000' ? '#3a3a3a' : theme.border,
+      border: theme.border === '#000' ? '#3a3a3a' : (isPurpleTheme ? '#6366f1' : theme.border),
       backgroundImage: theme.backgroundImageDark
     }
   };
@@ -93,43 +96,50 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 // Theme provider component
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('default');
+  const [isInitialized, setIsInitialized] = useState(false);
   
-  // Load theme from localStorage on mount
+  // 初始化主题（只在客户端执行一次）
   useEffect(() => {
-    const savedTheme = localStorage.getItem('retro-ui-theme') as Theme | null;
-    if (savedTheme && savedTheme in themes) {
-      setTheme(savedTheme);
+    if (typeof window !== 'undefined' && !isInitialized) {
+      const savedTheme = localStorage.getItem('retro-ui-theme') as Theme | null;
+      if (savedTheme && savedTheme in themes) {
+        setTheme(savedTheme);
+      }
+      setIsInitialized(true);
     }
-  }, []);
+  }, [isInitialized]);
   
-  // Apply theme colors when theme or dark mode changes
-  useEffect(() => {
-    // Save theme to localStorage
-    localStorage.setItem('retro-ui-theme', theme);
-    
-    // Apply CSS variables to root
+  // 应用主题颜色的函数
+  const applyThemeColors = useCallback((currentTheme: Theme) => {
     const root = document.documentElement;
     const isDark = root.classList.contains('dark');
-    const themeColors = isDark ? themes[theme].dark : themes[theme].light;
+    const themeColors = isDark ? themes[currentTheme].dark : themes[currentTheme].light;
     
+    // Set theme data attribute for CSS targeting
+    root.setAttribute('data-theme', currentTheme);
+    
+    // Apply CSS variables
     Object.entries(themeColors).forEach(([key, value]) => {
       root.style.setProperty(`--${key}`, value);
     });
-  }, [theme]);
+  }, []);
   
-  // Re-apply colors when dark mode changes
+  // 当主题改变时应用颜色并保存到localStorage
   useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem('retro-ui-theme', theme);
+      applyThemeColors(theme);
+    }
+  }, [theme, isInitialized, applyThemeColors]);
+  
+  // 监听深色模式变化并重新应用颜色
+  useEffect(() => {
+    if (!isInitialized) return;
+    
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          // Apply CSS variables to root
-          const root = document.documentElement;
-          const isDark = root.classList.contains('dark');
-          const themeColors = isDark ? themes[theme].dark : themes[theme].light;
-          
-          Object.entries(themeColors).forEach(([key, value]) => {
-            root.style.setProperty(`--${key}`, value);
-          });
+          applyThemeColors(theme);
         }
       });
     });
@@ -140,7 +150,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     });
     
     return () => observer.disconnect();
-  }, [theme]);
+  }, [theme, isInitialized, applyThemeColors]);
   
   const themeConfig = themes[theme];
   

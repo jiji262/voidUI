@@ -77,6 +77,95 @@ body {
   font-family: var(--font-sans);
 }
 
+/* 紫色主题的特殊优化 */
+[data-theme="purple"] {
+  /* 紫色主题专用变量 */
+  --purple-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  --purple-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.2);
+  --purple-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* 紫色主题下的按钮优化 */
+[data-theme="purple"] .bg-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transition: all 0.2s ease;
+}
+
+[data-theme="purple"] .bg-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--purple-shadow);
+  transform: translateY(1px);
+}
+
+/* 紫色主题下的次要按钮优化 */
+[data-theme="purple"] .bg-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+[data-theme="purple"] .bg-secondary:hover {
+  background: var(--secondary);
+  opacity: 0.9;
+  box-shadow: var(--purple-shadow);
+}
+
+/* 紫色主题下的卡片阴影优化 */
+[data-theme="purple"] .shadow-md {
+  box-shadow: 3px 3px 0 0 var(--border);
+}
+
+[data-theme="purple"] .shadow-md:hover {
+  box-shadow: 1px 1px 0 0 var(--border), var(--purple-shadow);
+}
+
+/* 紫色主题下的输入框优化 */
+[data-theme="purple"] input {
+  border-color: var(--border);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+[data-theme="purple"] input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 2px 2px 0 0 var(--primary);
+}
+
+/* 紫色主题下的文字颜色确保 */
+[data-theme="purple"] .text-primary-foreground {
+  color: var(--primary-foreground) !important;
+}
+
+[data-theme="purple"] .text-secondary-foreground {
+  color: var(--secondary-foreground) !important;
+}
+
+/* 深色模式下的紫色主题特殊处理 */
+.dark[data-theme="purple"] .bg-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.dark[data-theme="purple"] .bg-primary:hover {
+  background: var(--primary-hover);
+  color: #ffffff;
+}
+
+.dark[data-theme="purple"] .bg-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+/* 紫色主题下的边框和阴影统一 */
+[data-theme="purple"] .border-2 {
+  border-color: var(--border);
+}
+
+[data-theme="purple"] .border-border {
+  border-color: var(--border);
+}
+
 .bg-image {
   background-image: var(--background-image);
   background-size: cover;
