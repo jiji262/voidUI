@@ -2,7 +2,7 @@
 
 import { Badge } from "@/components/retroui/Badge";
 import { Card } from "@/components/retroui/Card";
-import { useTheme } from "@/lib/theme-context-simple";
+import { useTheme } from "@/lib/theme-context";
 
 export default function BadgeTest() {
   const { theme, setTheme } = useTheme();
