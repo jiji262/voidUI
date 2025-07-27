@@ -154,6 +154,13 @@ const blockCategories = {
  variants:"3 variants",
  variantColor:"bg-yellow-300",
  },
+ {
+ title:"Affiliate",
+ href:"/blocks/affiliate",
+ icon:"💸",
+ variants:"1 variants",
+ variantColor:"bg-yellow-300",
+ },
  ],
 };
 
@@ -264,7 +271,7 @@ export default function BlocksPage() {
  <p className="text-lg text-gray-600 mb-8">
  Get access to all blocks and components with a lifetime purchase.
  </p>
- <Link href="/blocks">
+ <Link href="https://pro.retroui.dev">
  <Button className="text-lg px-8 py-4 bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-1 hover:translate-y-1">
  Get lifetime access
  <ArrowRightIcon className="ml-2 h-4 w-4" />

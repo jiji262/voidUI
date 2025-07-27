@@ -11,7 +11,10 @@
       "Bash(pgrep:*)",
       "Bash(pnpm list:*)",
       "Bash(node:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:pro.retroui.dev)",
+      "Bash(curl -s \"https://pro.retroui.dev/hero-sections\")",
+      "Bash(curl -s \"https://pro.retroui.dev/pricing-tables\")"
     ],
     "deny": []
   }

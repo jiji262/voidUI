@@ -243,7 +243,7 @@ const ContactForm01 = () => (
  Message
  </label>
  <textarea
- placeholder="john@example.com"
+ placeholder="Your message here..."
  rows={4}
  className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
  />
@@ -366,7 +366,7 @@ const NewsletterForm02 = () => (
  </label>
  <input
  type="email"
- placeholder="Email Email Address"
+ placeholder="your@email.com"
  className="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
  />
  </div>
@@ -386,6 +386,17 @@ const NewsletterForm02 = () => (
 export default function FormsPage() {
  return (
  <main className="min-h-screen bg-background">
+ {/* Page Header */}
+ <section className="container max-w-6xl mx-auto px-6 py-16">
+ <div className="text-center max-w-3xl mx-auto">
+ <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+ Form <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Components</span>
+ </h1>
+ <p className="text-lg text-gray-600 mb-8">
+ Beautiful and functional form components for collecting user information and feedback.
+ </p>
+ </div>
+ </section>
 
  {/* Form Blocks */}
  <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">

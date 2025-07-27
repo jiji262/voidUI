@@ -240,11 +240,11 @@ const ProductCard01 = () => (
  <span className="text-sm text-gray-500 line-through">$83.99</span>
  </div>
  <div className="flex items-center gap-2">
- <Button size="sm" variant="outline" className="w-8 h-8 p-0">
+ <Button size="sm" variant="outline" className="w-8 h-8 p-0 border-black">
  <MinusIcon className="h-4 w-4" />
  </Button>
  <span className="text-lg font-semibold">2</span>
- <Button size="sm" variant="outline" className="w-8 h-8 p-0">
+ <Button size="sm" variant="outline" className="w-8 h-8 p-0 border-black">
  <PlusIcon className="h-4 w-4" />
  </Button>
  </div>
@@ -264,8 +264,8 @@ const ProfileCard01 = () => (
  <Image
  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
  alt="profile"
- width={80}
- height={80}
+ width={64}
+ height={64}
  className="w-16 h-16 object-cover border-2 border-black"
  />
  <div className="flex-1">
@@ -358,7 +358,7 @@ const TeamCard = () => (
  {[1, 2, 3, 4].map((i) => (
  <div key={i} className="relative w-8 h-8 border-2 border-white overflow-hidden">
  <Image
- src={`https://images.unsplash.com/photo-150700321116${i}-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face`}
+ src={`https://picsum.photos/32/32?random=${20 + i}`}
  alt={`Member ${i}`}
  width={32}
  height={32}
@@ -417,6 +417,18 @@ const PricingCard = () => (
 export default function CardsPage() {
  return (
  <main className="min-h-screen bg-background">
+ {/* Page Header */}
+ <section className="container max-w-6xl mx-auto px-6 py-16">
+ <div className="text-center max-w-3xl mx-auto">
+ <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+ Card <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Components</span>
+ </h1>
+ <p className="text-lg text-gray-600 mb-8">
+ Beautiful card components for showcasing products, profiles, teams, and pricing information.
+ </p>
+ </div>
+ </section>
+
  {/* Cards Blocks */}
  <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
 
@@ -460,6 +472,17 @@ export default function CardsPage() {
  <CodeDisplay title="Pricing Card" code={pricingCardCode} />
  </div>
 
+ </section>
+
+ {/* Back to Blocks */}
+ <section className="container max-w-6xl mx-auto px-6 pb-16">
+ <div className="text-center">
+ <Link href="/blocks">
+ <Button variant="outline" className="font-head">
+ ← Back to All Blocks
+ </Button>
+ </Link>
+ </div>
  </section>
  </main>
  );
