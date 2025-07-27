@@ -3,217 +3,355 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Text, Button, Card } from "@/components/retroui";
-import { ArrowRightIcon, PlayIcon, StarIcon, CheckIcon } from "lucide-react";
-import { BlockPreview } from "@/components/ui/block-preview";
+import { Button } from "@/components/retroui";
+import { ArrowRightIcon, PlayIcon, StarIcon, CheckIcon, CodeIcon } from "lucide-react";
+import { CodeDisplay } from "@/components/CodeDisplay";
+
+// Code snippets for hero sections
+const heroSection01Code = `import React from "react";
+import { Button } from "@/components/retroui";
+import { PlayIcon } from "lucide-react";
+
+const HeroSection01 = () => (
+  <div className="bg-white min-h-screen flex flex-col">
+    {/* Badge */}
+    <div className="text-center pt-16 pb-8">
+      <div className="inline-flex items-center px-4 py-2 bg-blue-100 border border-blue-300 rounded-full text-sm text-blue-800">
+        🚀 Launching on Product Hunt
+      </div>
+    </div>
+
+    {/* Main Content */}
+    <div className="flex-1 flex items-center justify-center px-6">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            Build Better{" "}
+            <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
+              Software
+            </span>{" "}
+            Faster
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-lg">
+            The only platform you need to build, deploy, and scale your SaaS application.
+            Join 10,000+ developers who ship better code.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg">
+              Start Building →
+            </Button>
+            <Button variant="outline" className="px-8 py-3 text-lg border-2 border-black">
+              Watch Demo
+            </Button>
+          </div>
+        </div>
+
+        {/* Right Content - Video Preview */}
+        <div className="relative">
+          <div className="bg-gray-900 rounded-lg p-4 shadow-2xl">
+            <div className="bg-gray-800 rounded-lg p-8 text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <PlayIcon className="h-8 w-8 text-white" />
+              </div>
+              <div className="text-white text-lg font-semibold">Product Demo</div>
+              <div className="text-gray-400">Watch Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);`;
+
+const heroSection02Code = `import React from "react";
+import { Button } from "@/components/retroui";
+import { ArrowRightIcon, PlayIcon } from "lucide-react";
+
+const HeroSection02 = () => (
+  <div className="bg-white min-h-screen">
+    {/* Navigation */}
+    <nav className="flex items-center justify-between p-6 max-w-6xl mx-auto">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 bg-black rounded flex items-center justify-center text-white font-bold">
+          "NO"
+        </div>
+        <span className="font-bold text-xl">VA</span>
+      </div>
+      <div className="hidden md:flex items-center gap-8">
+        <a href="#" className="text-gray-600 hover:text-black">Documentation</a>
+        <a href="#" className="text-gray-600 hover:text-black">Products</a>
+        <a href="#" className="text-gray-600 hover:text-black">Pricing</a>
+        <a href="#" className="text-gray-600 hover:text-black">Blog</a>
+      </div>
+      <Button className="bg-black text-white hover:bg-gray-800">
+        Start Building
+      </Button>
+    </nav>
+
+    {/* Hero Content */}
+    <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm mb-6">
+            New API v2 Released
+          </div>
+          <h1 className="text-6xl font-bold mb-6">
+            <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Code</span>
+            <br />The Future
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Transform your ideas into reality with our next-gen development platform.
+            Faster deployment, smarter scaling, zero limitations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">
+              Get Started
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" className="border-black px-8 py-3">
+              <PlayIcon className="mr-2 h-4 w-4" />
+              Watch Demo
+            </Button>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-2">
+              <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/32/32?random=50" alt="User" />
+              <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/32/32?random=51" alt="User" />
+              <img className="w-8 h-8 rounded-full border-2 border-white" src="https://picsum.photos/32/32?random=52" alt="User" />
+            </div>
+            <div>
+              <div className="font-bold">250K</div>
+              <div className="text-sm text-gray-600">Trusted by over developers worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Terminal Demo */}
+        <div className="space-y-4">
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-gray-500">></span>
+              <span className="text-blue-400">nova</span>
+              <span className="text-white">init my-project</span>
+            </div>
+            <div className="text-green-400">✓ Creating new project...</div>
+            <div className="text-green-400">✓ Installing dependencies...</div>
+            <div className="text-green-400">✓ Configuring environment...</div>
+          </div>
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-gray-500">></span>
+              <span className="text-blue-400">nova</span>
+              <span className="text-white">deploy --prod</span>
+            </div>
+            <div className="text-green-400">✓ Building project...</div>
+            <div className="text-green-400">✓ Running tests...</div>
+            <div className="text-green-400">✓ Deploying to cloud...</div>
+          </div>
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="text-green-400">🚀 Deployed successfully!</div>
+            <div className="text-blue-400">https://my-project.nexus.app</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);`;
+
+// Hero Section 01 Component
+const HeroSection01 = () => (
+  <div className="bg-white min-h-screen flex flex-col">
+    {/* Badge */}
+    <div className="text-center pt-16 pb-8">
+      <div className="inline-flex items-center px-4 py-2 bg-blue-100 border border-blue-300 rounded-full text-sm text-blue-800">
+        🚀 Launching on Product Hunt
+      </div>
+    </div>
+
+    {/* Main Content */}
+    <div className="flex-1 flex items-center justify-center px-6">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            Build Better{" "}
+            <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
+              Software
+            </span>{" "}
+            Faster
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-lg">
+            The only platform you need to build, deploy, and scale your SaaS application.
+            Join 10,000+ developers who ship better code.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg">
+              Start Building →
+            </Button>
+            <Button variant="outline" className="px-8 py-3 text-lg border-2 border-black">
+              Watch Demo
+            </Button>
+          </div>
+        </div>
+
+        {/* Right Content - Video Preview */}
+        <div className="relative">
+          <div className="bg-gray-900 rounded-lg p-4 shadow-2xl">
+            <div className="bg-gray-800 rounded-lg p-8 text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <PlayIcon className="h-8 w-8 text-white" />
+              </div>
+              <div className="text-white text-lg font-semibold">Product Demo</div>
+              <div className="text-gray-400 text-sm">Watch Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Hero Section 02 Component
+const HeroSection02 = () => (
+  <div className="bg-white min-h-screen">
+    {/* Navigation */}
+    <nav className="flex items-center justify-between p-6 border-b border-gray-200">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 bg-black rounded flex items-center justify-center">
+          <span className="text-white font-bold text-sm">"NO"</span>
+        </div>
+        <span className="font-bold text-xl">VA</span>
+      </div>
+      <div className="hidden md:flex items-center gap-8">
+        <a href="#" className="text-gray-600 hover:text-black">Documentation</a>
+        <a href="#" className="text-gray-600 hover:text-black">Products</a>
+        <a href="#" className="text-gray-600 hover:text-black">Pricing</a>
+        <a href="#" className="text-gray-600 hover:text-black">Blog</a>
+      </div>
+      <Button className="bg-black text-white hover:bg-gray-800">
+        Start Building
+      </Button>
+    </nav>
+
+    {/* Main Content */}
+    <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
+        <div>
+          <div className="inline-flex items-center px-3 py-1 bg-green-100 border border-green-300 rounded-full text-sm text-green-800 mb-6">
+            New API v2 Released
+          </div>
+          <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="bg-yellow-300 px-2 py-1 transform rotate-1 inline-block">
+              Code
+            </span>{" "}
+            The Future
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Transform your ideas into reality with our next-gen development platform.
+            Faster deployment, smarter scaling, zero limitations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg">
+              Get Started
+              <ArrowRightIcon className="ml-2 h-5 w-5" />
+            </Button>
+            <Button variant="outline" className="px-8 py-3 text-lg border-2 border-black">
+              <PlayIcon className="mr-2 h-5 w-5" />
+              Watch Demo
+            </Button>
+          </div>
+
+          {/* Social Proof */}
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-2">
+              <Image
+                src="https://picsum.photos/40/40?random=53"
+                alt="User"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full border-2 border-white"
+              />
+              <Image
+                src="https://picsum.photos/40/40?random=54"
+                alt="User"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full border-2 border-white"
+              />
+              <Image
+                src="https://picsum.photos/40/40?random=55"
+                alt="User"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full border-2 border-white"
+              />
+            </div>
+            <div>
+              <div className="font-bold text-lg">250K</div>
+              <div className="text-sm text-gray-600">Trusted by over developers worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Content - Terminal */}
+        <div className="space-y-4">
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-gray-500">></span>
+              <span className="text-blue-400">nova</span>
+              <span className="text-white">init my-project</span>
+            </div>
+            <div className="text-green-400">✓ Creating new project...</div>
+            <div className="text-green-400">✓ Installing dependencies...</div>
+            <div className="text-green-400">✓ Configuring environment...</div>
+          </div>
+
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-gray-500">></span>
+              <span className="text-blue-400">nova</span>
+              <span className="text-white">deploy --prod</span>
+            </div>
+            <div className="text-green-400">✓ Building project...</div>
+            <div className="text-green-400">✓ Running tests...</div>
+            <div className="text-green-400">✓ Deploying to cloud...</div>
+          </div>
+
+          <div className="bg-gray-900 rounded-lg p-4 text-green-400 font-mono text-sm">
+            <div className="text-green-400">🚀 Deployed successfully!</div>
+            <div className="text-blue-400">https://my-project.nexus.app</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default function HeroSectionsPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Header */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <Text as="h1" className="text-4xl lg:text-5xl mb-6">
-            Hero <span className="text-outlined">Sections</span>
-          </Text>
-          <p className="text-lg text-muted-foreground mb-8">
-            Eye-catching hero sections to make a great first impression. Perfect for landing pages, 
-            product launches, and marketing websites.
-          </p>
-        </div>
-      </section>
 
       {/* Hero Blocks */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 pb-16 space-y-16">
-        
-        {/* Hero Block 1: Simple Center */}
-        <BlockPreview
-          title="Simple Centered Hero"
-          description="A clean, centered hero section perfect for landing pages"
-          code={`<section className="text-center max-w-3xl mx-auto py-16">
-  <Text as="h1" className="text-4xl lg:text-6xl mb-6">
-    Build Amazing
-    <br />
-    <span className="text-outlined">Products</span>
-  </Text>
-  <p className="text-lg text-muted-foreground mb-8">
-    Create stunning web applications with our modern component library. 
-    Fast, accessible, and beautifully designed.
-  </p>
-  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-    <Button size="lg">
-      Get Started
-      <ArrowRightIcon className="ml-2 h-4 w-4" />
-    </Button>
-    <Button variant="outline" size="lg">
-      <PlayIcon className="mr-2 h-4 w-4" />
-      Watch Demo
-    </Button>
-  </div>
-</section>`}
-        >
-          <div className="text-center max-w-3xl mx-auto">
-            <Text as="h1" className="text-4xl lg:text-6xl mb-6">
-              Build Amazing
-              <br />
-              <span className="text-outlined">Products</span>
-            </Text>
-            <p className="text-lg text-muted-foreground mb-8">
-              Create stunning web applications with our modern component library. 
-              Fast, accessible, and beautifully designed.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Get Started
-                <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="lg">
-                <PlayIcon className="mr-2 h-4 w-4" />
-                Watch Demo
-              </Button>
-            </div>
+      <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
+
+        {/* Hero Section 01 */}
+        <div className="space-y-6">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <HeroSection01 />
           </div>
-        </BlockPreview>
-
-        {/* Hero Block 2: Split Layout */}
-        <Card className="p-8">
-          <Text as="h3" className="text-xl mb-4">Split Layout Hero</Text>
-          <div className="border-2 border-dashed border-muted p-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <Text as="h1" className="text-4xl lg:text-5xl mb-6">
-                  The Future of
-                  <br />
-                  <span className="text-outlined">Web Design</span>
-                </Text>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Revolutionary tools and components that help you build faster, 
-                  better, and more accessible web applications.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg">
-                    Start Building
-                    <ArrowRightIcon className="ml-2 h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" size="lg">
-                    Learn More
-                  </Button>
-                </div>
-                <div className="flex items-center gap-6 mt-8">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground">
-                    Trusted by 10,000+ developers
-                  </span>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=500&fit=crop"
-                    alt="Hero illustration"
-                    width={400}
-                    height={400}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
-
-        {/* Hero Block 3: With Features */}
-        <Card className="p-8">
-          <Text as="h3" className="text-xl mb-4">Hero with Features</Text>
-          <div className="border-2 border-dashed border-muted p-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <Text as="h1" className="text-4xl lg:text-6xl mb-6">
-                Everything You Need to
-                <br />
-                <span className="text-outlined">Succeed</span>
-              </Text>
-              <p className="text-lg text-muted-foreground mb-8">
-                Comprehensive toolkit with all the features you need to build, 
-                deploy, and scale your applications.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button size="lg">
-                  Start Free Trial
-                  <ArrowRightIcon className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="lg">
-                  View Pricing
-                </Button>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <CheckIcon className="h-6 w-6 text-primary" />
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">Easy Setup</Text>
-                  <p className="text-sm text-muted-foreground">
-                    Get started in minutes with our simple setup process
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <CheckIcon className="h-6 w-6 text-primary" />
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">Fast Performance</Text>
-                  <p className="text-sm text-muted-foreground">
-                    Optimized for speed and performance out of the box
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <CheckIcon className="h-6 w-6 text-primary" />
-                  </div>
-                  <Text as="h4" className="font-semibold mb-2">24/7 Support</Text>
-                  <p className="text-sm text-muted-foreground">
-                    Round-the-clock support from our expert team
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
-
-        {/* Hero Block 4: Minimal */}
-        <Card className="p-8">
-          <Text as="h3" className="text-xl mb-4">Minimal Hero</Text>
-          <div className="border-2 border-dashed border-muted p-8">
-            <div className="text-center max-w-2xl mx-auto py-16">
-              <Text as="h1" className="text-5xl lg:text-7xl mb-8">
-                <span className="text-outlined">Simple.</span>
-                <br />
-                Powerful.
-              </Text>
-              <p className="text-xl text-muted-foreground mb-12">
-                The minimalist approach to building great products.
-              </p>
-              <Button size="lg" className="px-12">
-                Get Started
-              </Button>
-            </div>
-          </div>
-        </Card>
-
-      </section>
-
-      {/* Back to Blocks */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 pb-16">
-        <div className="text-center">
-          <Link href="/blocks">
-            <Button variant="outline">
-              ← Back to All Blocks
-            </Button>
-          </Link>
+          <CodeDisplay title="Hero Section 01" code={heroSection01Code} />
         </div>
+
+        {/* Hero Section 02 */}
+        <div className="space-y-6">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <HeroSection02 />
+          </div>
+          <CodeDisplay title="Hero Section 02" code={heroSection02Code} />
+        </div>
+
       </section>
     </main>
   );

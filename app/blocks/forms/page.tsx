@@ -2,320 +2,425 @@
 
 import React from "react";
 import Link from "next/link";
-import { Text, Button, Card, Input, Textarea, Checkbox, Select } from "@/components/retroui";
-import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react";
+import Image from "next/image";
+import { Text, Button, Input, Checkbox } from "@/components/retroui";
+import { ArrowRightIcon } from "lucide-react";
+import { CodeIcon } from "lucide-react";
+import { CodeDisplay } from "@/components/CodeDisplay";
+
+// Code snippets for each form component
+const contactForm01Code = `import React from "react";
+import { Button } from "@/components/retroui";
+import { ArrowRightIcon } from "lucide-react";
+
+const ContactForm01 = () => (
+  <div className="bg-white min-h-screen p-8">
+    <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+      {/* Left Side - Form */}
+      <div>
+        <div className="mb-8">
+          <div className="text-sm text-gray-600 mb-2">Get in Touch</div>
+          <h1 className="text-4xl font-bold mb-4">
+            Let's{" "}
+            <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
+              Connect
+            </span>
+          </h1>
+          <p className="text-gray-600">
+            Have a question or want to work together? Drop us a message below.
+          </p>
+        </div>
+
+        <form className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              placeholder="John Doe"
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="john@example.com"
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Message
+            </label>
+            <textarea
+              rows={4}
+              placeholder="Your message here..."
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            />
+          </div>
+
+          <Button className="w-full bg-black text-white hover:bg-gray-800 py-3">
+            Send Message <ArrowRightIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </form>
+      </div>
+
+      {/* Right Side - Contact Info */}
+      <div className="space-y-8">
+        <div className="text-center">
+          <div className="text-4xl mb-4">📍</div>
+          <h3 className="text-xl font-bold mb-2">Address</h3>
+          <p className="text-gray-600">123 Street, City, Country</p>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl mb-4">📞</div>
+          <h3 className="text-xl font-bold mb-2">Phone</h3>
+          <p className="text-gray-600">+1 234 567 890</p>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl mb-4">📧</div>
+          <h3 className="text-xl font-bold mb-2">Email</h3>
+          <p className="text-gray-600">hello@example.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);`;
+
+const newsletterForm01Code = `import React from "react";
+import Image from "next/image";
+import { Button, Checkbox } from "@/components/retroui";
+
+const NewsletterForm01 = () => (
+  <div className="bg-white p-8">
+    <div className="max-w-md mx-auto text-center">
+      <h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
+      <p className="text-gray-600 mb-6">
+        Get the latest updates and resources delivered to your inbox weekly.
+        No spam, unsubscribe anytime.
+      </p>
+
+      <form className="space-y-4">
+        <div className="flex gap-2">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            className="flex-1 px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <Button className="bg-black text-white hover:bg-gray-800 px-6">
+            Subscribe →
+          </Button>
+        </div>
+
+        <div className="flex items-start gap-2 text-left">
+          <Checkbox id="privacy" className="mt-1" />
+          <label htmlFor="privacy" className="text-sm text-gray-600">
+            I agree to receive email updates. Read our{" "}
+            <a href="#" className="text-blue-600 hover:underline">
+              Privacy Policy
+            </a>
+          </label>
+        </div>
+      </form>
+
+      <div className="mt-6 flex items-center justify-center gap-2">
+        <div className="flex -space-x-2">
+          <Image
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face"
+            alt="User"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face"
+            alt="User"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face"
+            alt="User"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face"
+            alt="User"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-full border-2 border-white"
+          />
+        </div>
+        <p className="text-sm text-gray-600">
+          Join <span className="font-semibold">2,000+</span> subscribers
+        </p>
+      </div>
+    </div>
+  </div>
+);`;
+
+const newsletterForm02Code = `import React from "react";
+import { Button } from "@/components/retroui";
+
+const NewsletterForm02 = () => (
+  <div className="bg-gray-900 text-white p-8 rounded-lg">
+    <div className="max-w-sm mx-auto">
+      <form className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-2">
+            Email Address
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-3 bg-white text-black border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <Button className="w-full bg-yellow-300 text-black hover:bg-yellow-400 font-bold py-3">
+          Subscribe Now
+        </Button>
+      </form>
+      <p className="text-sm text-gray-400 mt-4 text-center">
+        We respect your privacy. Unsubscribe at any time.
+      </p>
+    </div>
+  </div>
+);`;
+
+// Contact Form 01 Component
+const ContactForm01 = () => (
+  <div className="bg-white min-h-screen p-8">
+    <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+      {/* Left Side - Form */}
+      <div>
+        <div className="mb-8">
+          <div className="text-sm text-gray-600 mb-2">Get in Touch</div>
+          <h1 className="text-4xl font-bold mb-4">
+            Let's{" "}
+            <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
+              Connect
+            </span>
+          </h1>
+          <p className="text-gray-600">
+            Have a question or want to work together? Drop us a message below.
+          </p>
+        </div>
+
+        <form className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              placeholder="John Doe"
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="john@example.com"
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Message
+            </label>
+            <textarea
+              placeholder="john@example.com"
+              rows={4}
+              className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            />
+          </div>
+
+          <Button className="w-full bg-black text-white hover:bg-gray-800 py-3">
+            Send Message →
+          </Button>
+        </form>
+      </div>
+
+      {/* Right Side - Contact Info */}
+      <div className="space-y-8">
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="text-2xl mb-2">📍</div>
+          <h3 className="font-semibold mb-1">Address</h3>
+          <p className="text-gray-600">123 Street, City, Country</p>
+        </div>
+
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="text-2xl mb-2">📞</div>
+          <h3 className="font-semibold mb-1">Phone</h3>
+          <p className="text-gray-600">+1 234 567 890</p>
+        </div>
+
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="text-2xl mb-2">📧</div>
+          <h3 className="font-semibold mb-1">Email</h3>
+          <p className="text-gray-600">hello@example.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Newsletter Form 01 Component
+const NewsletterForm01 = () => (
+  <div className="bg-white p-8">
+    <div className="max-w-md mx-auto text-center">
+      <h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
+      <p className="text-gray-600 mb-6">
+        Get the latest updates and resources delivered to your inbox weekly.
+        No spam, unsubscribe anytime.
+      </p>
+
+      <form className="space-y-4">
+        <div className="flex gap-2">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            className="flex-1 px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <Button className="bg-black text-white hover:bg-gray-800 px-6">
+            Subscribe →
+          </Button>
+        </div>
+
+        <div className="flex items-start gap-2 text-left">
+          <input
+            type="checkbox"
+            id="privacy"
+            className="mt-1"
+          />
+          <label htmlFor="privacy" className="text-sm text-gray-600">
+            I agree to receive email updates. Read our{" "}
+            <a href="#" className="text-blue-600 hover:underline">
+              Privacy Policy
+            </a>
+          </label>
+        </div>
+      </form>
+
+      <div className="mt-8">
+        <div className="flex justify-center -space-x-2 mb-2">
+          <Image
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+            alt="User"
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
+            alt="User"
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+            alt="User"
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full border-2 border-white"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face"
+            alt="User"
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full border-2 border-white"
+          />
+        </div>
+        <p className="text-sm text-gray-600">
+          Join <span className="font-semibold">2,000+</span> subscribers
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+// Newsletter Form 02 Component
+const NewsletterForm02 = () => (
+  <div className="bg-white p-8">
+    <div className="max-w-sm mx-auto">
+      <form className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Email Address
+          </label>
+          <input
+            type="email"
+            placeholder="Email Email Address"
+            className="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <Button className="w-full bg-black text-white hover:bg-gray-800 py-3">
+          Subscribe Now
+        </Button>
+
+        <p className="text-xs text-gray-500 text-center">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </form>
+    </div>
+  </div>
+);
 
 export default function FormsPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Header */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <Text as="h1" className="text-4xl lg:text-5xl mb-6">
-            Form <span className="text-outlined">Layouts</span>
-          </Text>
-          <p className="text-lg text-muted-foreground mb-8">
-            Beautiful and functional form layouts for contact, registration, 
-            newsletter signup, and more. Built with accessibility in mind.
-          </p>
-        </div>
-      </section>
 
       {/* Form Blocks */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 pb-16 space-y-16">
-        
-        {/* Contact Form */}
-        <div>
-          <Text as="h3" className="text-2xl mb-8 text-center">Contact Form</Text>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <Card className="p-8">
-              <Text as="h4" className="text-xl font-semibold mb-6">Get in Touch</Text>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">First Name</label>
-                    <Input placeholder="John" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Last Name</label>
-                    <Input placeholder="Doe" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input type="email" placeholder="john@example.com" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Subject</label>
-                  <Select>
-                    <option>General Inquiry</option>
-                    <option>Support Request</option>
-                    <option>Partnership</option>
-                    <option>Other</option>
-                  </Select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <Textarea 
-                    placeholder="Tell us how we can help you..."
-                    rows={4}
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Checkbox id="newsletter" />
-                  <label htmlFor="newsletter" className="text-sm">
-                    Subscribe to our newsletter for updates
-                  </label>
-                </div>
-                <Button className="w-full">
-                  <SendIcon className="mr-2 h-4 w-4" />
-                  Send Message
-                </Button>
-              </form>
-            </Card>
-            
-            <div className="space-y-6">
-              <div>
-                <Text as="h4" className="text-xl font-semibold mb-4">Contact Information</Text>
-                <p className="text-muted-foreground mb-6">
-                  Have questions? We'd love to hear from you. Send us a message 
-                  and we'll respond as soon as possible.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <MailIcon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <Text as="p" className="font-medium">Email</Text>
-                    <p className="text-sm text-muted-foreground">hello@company.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <PhoneIcon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <Text as="p" className="font-medium">Phone</Text>
-                    <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <MapPinIcon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <Text as="p" className="font-medium">Office</Text>
-                    <p className="text-sm text-muted-foreground">
-                      123 Business Ave<br />
-                      Suite 100<br />
-                      City, State 12345
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
+
+        {/* Contact Form 01 */}
+        <div className="space-y-6">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <ContactForm01 />
           </div>
+          <CodeDisplay title="Contact Form 01" code={contactForm01Code} />
         </div>
 
-        {/* Newsletter Signup */}
-        <div>
-          <Text as="h3" className="text-2xl mb-8 text-center">Newsletter Signup</Text>
-          <Card className="p-8 max-w-2xl mx-auto text-center">
-            <Text as="h4" className="text-2xl font-semibold mb-4">Stay Updated</Text>
-            <p className="text-muted-foreground mb-8">
-              Get the latest news, updates, and exclusive content delivered 
-              straight to your inbox.
-            </p>
-            <form className="space-y-4">
-              <div className="flex gap-4">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email address"
-                  className="flex-1"
-                />
-                <Button>Subscribe</Button>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                By subscribing, you agree to our Privacy Policy and Terms of Service.
-              </p>
-            </form>
-          </Card>
+        {/* Newsletter Form 01 */}
+        <div className="space-y-6">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <NewsletterForm01 />
+          </div>
+          <CodeDisplay title="Newsletter Form 01" code={newsletterForm01Code} />
         </div>
 
-        {/* Registration Form */}
-        <div>
-          <Text as="h3" className="text-2xl mb-8 text-center">Registration Form</Text>
-          <Card className="p-8 max-w-md mx-auto">
-            <Text as="h4" className="text-xl font-semibold mb-6 text-center">Create Account</Text>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Full Name</label>
-                <Input placeholder="John Doe" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <Input type="email" placeholder="john@example.com" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Password</label>
-                <Input type="password" placeholder="••••••••" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Confirm Password</label>
-                <Input type="password" placeholder="••••••••" />
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox id="terms" />
-                <label htmlFor="terms" className="text-sm">
-                  I &apos;agree to the Terms of Service and Privacy Policy
-                </label>
-              </div>
-              <Button className="w-full">Create Account</Button>
-              <p className="text-center text-sm text-muted-foreground">
-                Already have an account?{" "}
-                <a href="#" className="text-primary hover:underline">
-                  Sign in
-                </a>
-              </p>
-            </form>
-          </Card>
-        </div>
-
-        {/* Multi-step Form */}
-        <div>
-          <Text as="h3" className="text-2xl mb-8 text-center">Multi-step Form</Text>
-          <Card className="p-8 max-w-2xl mx-auto">
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <Text as="h4" className="text-xl font-semibold">Project Details</Text>
-                <span className="text-sm text-muted-foreground">Step 1 of 3</span>
-              </div>
-              <div className="w-full bg-muted rounded-full h-2">
-                <div className="bg-primary h-2 rounded-full w-1/3"></div>
-              </div>
-            </div>
-            
-            <form className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Project Name</label>
-                <Input placeholder="My Awesome Project" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Project Type</label>
-                <Select>
-                  <option>Web Application</option>
-                  <option>Mobile App</option>
-                  <option>Desktop Software</option>
-                  <option>Other</option>
-                </Select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Budget Range</label>
-                <Select>
-                  <option>$5,000 - $10,000</option>
-                  <option>$10,000 - $25,000</option>
-                  <option>$25,000 - $50,000</option>
-                  <option>$50,000+</option>
-                </Select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Project Description</label>
-                <Textarea 
-                  placeholder="Describe your project requirements..."
-                  rows={4}
-                />
-              </div>
-              <div className="flex justify-between">
-                <Button variant="outline" disabled>Previous</Button>
-                <Button>Next Step</Button>
-              </div>
-            </form>
-          </Card>
-        </div>
-
-        {/* Feedback Form */}
-        <div>
-          <Text as="h3" className="text-2xl mb-8 text-center">Feedback Form</Text>
-          <Card className="p-8 max-w-2xl mx-auto">
-            <Text as="h4" className="text-xl font-semibold mb-6">We Value Your Feedback</Text>
-            <form className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  How would you rate your overall experience?
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      className="w-10 h-10 rounded-full border-2 border-muted hover:border-primary flex items-center justify-center text-sm font-medium"
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  What did you like most about our service?
-                </label>
-                <div className="space-y-2">
-                  {[
-                    "Easy to use",
-                    "Great customer support",
-                    "Good value for money",
-                    "Fast and reliable",
-                    "Other"
-                  ].map((option) => (
-                    <div key={option} className="flex items-center gap-2">
-                      <Checkbox id={option} />
-                      <label htmlFor={option} className="text-sm">{option}</label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Any suggestions for improvement?
-                </label>
-                <Textarea 
-                  placeholder="Tell us how we can improve..."
-                  rows={4}
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Would you recommend us to others?
-                </label>
-                <Select>
-                  <option>Definitely</option>
-                  <option>Probably</option>
-                  <option>Not sure</option>
-                  <option>Probably not</option>
-                  <option>Definitely not</option>
-                </Select>
-              </div>
-              
-              <Button className="w-full">Submit Feedback</Button>
-            </form>
-          </Card>
+        {/* Newsletter Form 02 */}
+        <div className="space-y-6">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <NewsletterForm02 />
+          </div>
+          <CodeDisplay title="Newsletter Form 02" code={newsletterForm02Code} />
         </div>
 
       </section>
 
       {/* Back to Blocks */}
-      <section className="container max-w-6xl mx-auto px-4 lg:px-0 pb-16">
+      <section className="container max-w-6xl mx-auto px-6 pb-16">
         <div className="text-center">
           <Link href="/blocks">
-            <Button variant="outline">
+            <Button variant="outline" className="font-head">
               ← Back to All Blocks
             </Button>
           </Link>
