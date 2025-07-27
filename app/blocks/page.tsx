@@ -190,7 +190,7 @@ export default function BlocksPage() {
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
  {blockCategories.application.map((category) => (
  <Link key={category.href} href={category.href}>
- <div className="group bg-white border-2 border-black overflow-hidden hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+ <div className="group bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200">
  <div className="relative h-40 border-b-2 border-black bg-gray-50 flex items-center justify-center">
  {/* Decorative stars */}
  <div className="absolute top-4 left-4 text-yellow-400">✦</div>
@@ -231,7 +231,7 @@ export default function BlocksPage() {
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
  {blockCategories.marketing.map((category) => (
  <Link key={category.href} href={category.href}>
- <div className="group bg-white border-2 border-black overflow-hidden hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+ <div className="group bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200">
  <div className="relative h-40 border-b-2 border-black bg-gray-50 flex items-center justify-center">
  {/* Decorative stars */}
  <div className="absolute top-4 left-4 text-yellow-400">✦</div>

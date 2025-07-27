@@ -45,7 +45,7 @@ const TestimonialsGrid = () => {
 
  <div className="grid md:grid-cols-3 gap-8">
  {testimonials.map((testimonial, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6">
+ <div key={index} className="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex items-center gap-1 mb-4">
  {[...Array(testimonial.rating)].map((_, i) => (
  <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -107,7 +107,7 @@ const TestimonialsGrid = () => {
 
  <div className="grid md:grid-cols-3 gap-8">
  {testimonials.map((testimonial, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6">
+ <div key={index} className="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex items-center gap-1 mb-4">
  {[...Array(testimonial.rating)].map((_, i) => (
  <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />

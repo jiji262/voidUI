@@ -64,7 +64,7 @@ const LoginForm = () => {
  </a>
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Sign In
  </Button>
 
@@ -135,7 +135,7 @@ const SignupForm = () => {
  </label>
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Create Account
  </Button>
 
@@ -212,7 +212,7 @@ const LoginForm = () => {
  </a>
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Sign In
  </Button>
 
@@ -280,7 +280,7 @@ const SignupForm = () => {
  </label>
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Create Account
  </Button>
 

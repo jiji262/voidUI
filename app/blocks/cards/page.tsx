@@ -39,7 +39,7 @@ const ProductCard01 = () => (
  </p>
  <div className="flex items-center justify-between">
  <span className="text-2xl font-bold">$150</span>
- <Button className="bg-black text-white hover:bg-gray-800">
+ <Button className="bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Add to Cart
  </Button>
  </div>
@@ -68,7 +68,7 @@ const ProfileCard01 = () => (
  <h3 className="text-lg font-bold">John Doe</h3>
  <p className="text-gray-600 text-sm">Senior Developer</p>
  </div>
- <Button size="sm" className="bg-black text-white hover:bg-gray-800">
+ <Button size="sm" className="bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Follow
  </Button>
  </div>
@@ -171,7 +171,7 @@ const TeamCard = () => (
  +1
  </div>
  </div>
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  View Team
  </Button>
  </div>
@@ -210,7 +210,7 @@ const PricingCard = () => (
  Team collaboration
  </li>
  </ul>
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Get Started
  </Button>
  </div>
@@ -249,7 +249,7 @@ const ProductCard01 = () => (
  </Button>
  </div>
  </div>
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  ADD TO CART
  </Button>
  </div>
@@ -274,7 +274,7 @@ const ProfileCard01 = () => (
  <h3 className="text-lg font-bold">John Doe</h3>
  <p className="text-gray-600 text-sm">Senior Developer</p>
  </div>
- <Button size="sm" className="bg-black text-white hover:bg-gray-800">
+ <Button size="sm" className="bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Follow
  </Button>
  </div>
@@ -370,7 +370,7 @@ const TeamCard = () => (
  +1
  </div>
  </div>
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  View Team
  </Button>
  </div>
@@ -407,7 +407,7 @@ const PricingCard = () => (
  Team collaboration
  </li>
  </ul>
- <Button className="w-full bg-black text-white hover:bg-gray-800">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Get Started
  </Button>
  </div>

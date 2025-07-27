@@ -113,7 +113,7 @@ const NewsletterForm01 = () => (
  placeholder="your@email.com"
  className="flex-1 px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
  />
- <Button className="bg-black text-white hover:bg-gray-800 px-6">
+ <Button className="bg-black text-white hover:bg-gray-800 px-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Subscribe →
  </Button>
  </div>
@@ -249,7 +249,7 @@ const ContactForm01 = () => (
  />
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800 py-3">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Send Message →
  </Button>
  </form>
@@ -296,7 +296,7 @@ const NewsletterForm01 = () => (
  placeholder="your@email.com"
  className="flex-1 px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
  />
- <Button className="bg-black text-white hover:bg-gray-800 px-6">
+ <Button className="bg-black text-white hover:bg-gray-800 px-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Subscribe →
  </Button>
  </div>
@@ -371,7 +371,7 @@ const NewsletterForm02 = () => (
  />
  </div>
 
- <Button className="w-full bg-black text-white hover:bg-gray-800 py-3">
+ <Button className="w-full bg-black text-white hover:bg-gray-800 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
  Subscribe Now
  </Button>
 

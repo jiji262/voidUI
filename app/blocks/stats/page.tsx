@@ -19,7 +19,7 @@ const SimpleStatsCard = () => {
  </div>
 
  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-blue-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <UsersIcon className="h-6 w-6" />
  </div>
@@ -27,7 +27,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Happy<br/>Customers</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-green-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <TrendingUpIcon className="h-6 w-6" />
  </div>
@@ -35,7 +35,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Uptime</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-yellow-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <DollarSignIcon className="h-6 w-6" />
  </div>
@@ -43,7 +43,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Revenue</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-purple-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <BarChart3Icon className="h-6 w-6" />
  </div>
@@ -106,7 +106,7 @@ const RetroStatsDashboard = () => {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Revenue</h3>
  <div className="w-8 h-8 bg-yellow-300 border-2 border-black flex items-center justify-center">
@@ -120,7 +120,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Orders</h3>
  <div className="w-8 h-8 bg-blue-300 border-2 border-black flex items-center justify-center">
@@ -134,7 +134,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Customers</h3>
  <div className="w-8 h-8 bg-green-300 border-2 border-black flex items-center justify-center">
@@ -148,7 +148,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Conversion</h3>
  <div className="w-8 h-8 bg-red-300 border-2 border-black flex items-center justify-center">
@@ -166,7 +166,7 @@ const RetroStatsDashboard = () => {
  {/* Bottom Section */}
  <div className="grid lg:grid-cols-2 gap-6">
  {/* Revenue Breakdown */}
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-center mb-6">
  <h3 className="text-xl font-bold">Revenue Breakdown</h3>
  <div className="bg-black text-white px-3 py-1 text-sm font-medium">
@@ -208,7 +208,7 @@ const RetroStatsDashboard = () => {
  </div>
 
  {/* Top Products */}
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <h3 className="text-xl font-bold mb-6">Top Products</h3>
 
  <div className="space-y-4">
@@ -247,7 +247,7 @@ const SimpleStatsCard = () => {
  </div>
 
  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-blue-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <UsersIcon className="h-6 w-6" />
  </div>
@@ -255,7 +255,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Happy<br/>Customers</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-green-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <TrendingUpIcon className="h-6 w-6" />
  </div>
@@ -263,7 +263,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Uptime</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-yellow-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <DollarSignIcon className="h-6 w-6" />
  </div>
@@ -271,7 +271,7 @@ const SimpleStatsCard = () => {
  <p className="text-gray-600 text-sm">Revenue</p>
  </div>
 
- <div className="text-center p-6 border-2 border-black">
+ <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="w-12 h-12 bg-purple-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
  <BarChart3Icon className="h-6 w-6" />
  </div>
@@ -331,7 +331,7 @@ const RetroStatsDashboard = () => {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Revenue</h3>
  <div className="w-8 h-8 bg-yellow-300 border-2 border-black flex items-center justify-center">
@@ -345,7 +345,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Orders</h3>
  <div className="w-8 h-8 bg-blue-300 border-2 border-black flex items-center justify-center">
@@ -359,7 +359,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Customers</h3>
  <div className="w-8 h-8 bg-green-300 border-2 border-black flex items-center justify-center">
@@ -373,7 +373,7 @@ const RetroStatsDashboard = () => {
  </div>
  </div>
 
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-start mb-4">
  <h3 className="font-bold text-gray-700">Conversion</h3>
  <div className="w-8 h-8 bg-red-300 border-2 border-black flex items-center justify-center">
@@ -391,7 +391,7 @@ const RetroStatsDashboard = () => {
  {/* Bottom Section */}
  <div className="grid lg:grid-cols-2 gap-6">
  {/* Revenue Breakdown */}
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="flex justify-between items-center mb-6">
  <h3 className="text-xl font-bold">Revenue Breakdown</h3>
  <div className="bg-black text-white px-3 py-1 text-sm font-medium">
@@ -433,7 +433,7 @@ const RetroStatsDashboard = () => {
  </div>
 
  {/* Top Products */}
- <div className="bg-white border-2 border-black p-6">
+ <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <h3 className="text-xl font-bold mb-6">Top Products</h3>
 
  <div className="space-y-4">
