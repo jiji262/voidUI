@@ -1,15 +1,37 @@
 {
-  "name": "retro-ui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@retroui/components",
+  "version": "1.0.0",
+  "description": "Retro-styled React components for modern web applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "build:packages": "pnpm -C packages/retroui build",
-    "typecheck:packages": "pnpm -C packages/retroui type-check",
-    "dev:packages": "pnpm -C packages/retroui dev"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "retro",
+    "tailwindcss",
+    "typescript"
+  ],
+  "author": "RetroUI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jiji262/retroui-next"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",
@@ -30,35 +52,16 @@
     "@radix-ui/react-toggle-group": "^1.1.7",
     "@radix-ui/react-tooltip": "^1.2.3",
     "@radix-ui/react-visually-hidden": "^1.1.0",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.445.0",
-    "next": "14.2.7",
-    "react": "^18",
-    "react-dom": "^18",
-    "rehype-pretty-code": "^0.14.1",
-    "shiki": "^3.8.1",
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.5.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.14",
-    "@types/node": "^20",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.7",
-    "postcss": "^8",
-    "prettier": "^3.5.3",
-    "tailwindcss": "^4.0.14",
-    "tailwindcss-animate": "^1.0.7",
     "tsup": "^8.0.1",
-    "typescript": "^5.6.3"
-  },
-  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a",
-  "workspaces": [
-    "packages/*"
-  ]
+    "typescript": "^5.0.0"
+  }
 }

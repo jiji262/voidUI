@@ -39,3 +39,6 @@ next-env.d.ts
 .contentlayer
 
 package-lock.json
+
+# local backups and archives
+0.Backup/
