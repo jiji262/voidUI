@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon, MoonIcon, SunIcon } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
-import { Button, Text } from "@/components/retroui";
+import { Button, Text } from "@/components/voidui";
 import { navConfig } from "@/config/navigation";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
@@ -54,7 +54,7 @@ export default function TopNav() {
                   height={30}
                   width={30}
                 />
-                <div className="text-foreground">RetroUI</div>
+                <div className="text-foreground">VoidUI</div>
               </a>
             </div>
 
@@ -73,7 +73,7 @@ export default function TopNav() {
 
             <div className="flex items-center space-x-4 lg:hidden">
               <Link
-                href="https://github.com/jiji262/retroui-next"
+                href="https://github.com/jiji262/voidui-next"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -84,7 +84,7 @@ export default function TopNav() {
 
             <div className="hidden lg:flex items-center space-x-3">
               <Link
-                href="https://github.com/jiji262/retroui-next"
+                href="https://github.com/jiji262/voidui-next"
                 target="_blank"
                 rel="noopener noreferrer"
               >

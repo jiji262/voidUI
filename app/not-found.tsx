@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Button, Text } from "@/components/retroui";
+import { Button, Text } from "@/components/voidui";
 
 export default function NotFound() {
   return (

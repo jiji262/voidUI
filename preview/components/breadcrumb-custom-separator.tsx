@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@/components/retroui/Breadcrumb";
+import { Breadcrumb } from "@/components/voidui/Breadcrumb";
 import { Slash } from "lucide-react";
 
 export default function BreadcrumbCustomSeparator() {

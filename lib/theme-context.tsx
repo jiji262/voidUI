@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { defaultTheme, purpleTheme, RetroUITheme } from '@/lib/theme-config';
+import { defaultTheme, purpleTheme, VoidUITheme } from '@/lib/theme-config';
 
 // Define theme types
 export type Theme = 'default' | 'purple';
@@ -31,7 +31,7 @@ export type ThemeConfig = {
   dark: ThemeColors;
 };
 
-function convertToThemeConfig(theme: RetroUITheme): ThemeConfig {
+function convertToThemeConfig(theme: VoidUITheme): ThemeConfig {
   const isPurpleTheme = theme.primary === '#9046ff';
   
   return {

@@ -2,13 +2,13 @@
 
 import React from"react";
 import Link from"next/link";
-import { Text, Button, Card, Badge } from"@/components/retroui";
+import { Text, Button, Card, Badge } from"@/components/voidui";
 import { CheckIcon, XIcon, StarIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for pricing components
 const threeColumnPricingCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { CheckIcon } from"lucide-react";
 
 const ThreeColumnPricing = () => {
@@ -121,7 +121,7 @@ const ThreeColumnPricing = () => {
 };`;
 
 const twoColumnPricingCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { CheckIcon } from"lucide-react";
 
 const TwoColumnPricing = () => {

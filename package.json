@@ -1,5 +1,5 @@
 {
-  "name": "retro-ui",
+  "name": "void-ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:packages": "pnpm -C packages/retroui build",
-    "typecheck:packages": "pnpm -C packages/retroui type-check",
-    "dev:packages": "pnpm -C packages/retroui dev"
+    "build:packages": "pnpm -C packages/voidui build",
+    "typecheck:packages": "pnpm -C packages/voidui type-check",
+    "dev:packages": "pnpm -C packages/voidui dev"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",

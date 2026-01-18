@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import { Card, Text, Button } from "@/components/retroui";
+import { Card, Text, Button } from "@/components/voidui";
 
 interface Props {
   children: ReactNode;

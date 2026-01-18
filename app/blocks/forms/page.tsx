@@ -3,14 +3,14 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Input, Checkbox } from"@/components/retroui";
+import { Text, Button, Input, Checkbox } from"@/components/voidui";
 import { ArrowRightIcon } from"lucide-react";
 import { CodeIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for each form component
 const contactForm01Code = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon } from"lucide-react";
 
 const ContactForm01 = () => (
@@ -95,7 +95,7 @@ const ContactForm01 = () => (
 
 const newsletterForm01Code = `import React from"react";
 import Image from"next/image";
-import { Button, Checkbox } from"@/components/retroui";
+import { Button, Checkbox } from"@/components/voidui";
 
 const NewsletterForm01 = () => (
  <div className="bg-white p-8">
@@ -169,7 +169,7 @@ const NewsletterForm01 = () => (
 );`;
 
 const newsletterForm02Code = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 
 const NewsletterForm02 = () => (
  <div className="bg-gray-900 text-white p-8">

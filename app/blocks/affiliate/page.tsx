@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Badge } from "@/components/retroui";
+import { Button, Badge } from "@/components/voidui";
 import { 
   ArrowRightIcon, 
   TrendingUpIcon, 
@@ -18,7 +18,7 @@ import { CodeDisplay } from "@/components/CodeDisplay";
 
 // Code snippets for each component
 const affiliateHeroCode = `import React from "react";
-import { Button } from "@/components/retroui";
+import { Button } from "@/components/voidui";
 import { ArrowRightIcon, DollarSignIcon } from "lucide-react";
 
 const AffiliateHero = () => (
@@ -62,7 +62,7 @@ const AffiliateHero = () => (
 );`;
 
 const commissionTiersCode = `import React from "react";
-import { Button, Badge } from "@/components/retroui";
+import { Button, Badge } from "@/components/voidui";
 import { StarIcon, TrendingUpIcon, GiftIcon, CheckIcon } from "lucide-react";
 
 const CommissionTiers = () => (

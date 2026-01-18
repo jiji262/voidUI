@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design outlines the transformation of the RetroUI project from a documentation-heavy application with Contentlayer dependencies into a streamlined component showcase application. The primary goal is to remove all content management complexity while preserving and enhancing the component demonstration capabilities.
+This design outlines the transformation of the VoidUI project from a documentation-heavy application with Contentlayer dependencies into a streamlined component showcase application. The primary goal is to remove all content management complexity while preserving and enhancing the component demonstration capabilities.
 
 ## Architecture
 
@@ -62,7 +62,7 @@ interface ComponentDemo {
 
 #### Layout Structure
 1. **Header Section**
-   - RetroUI branding
+   - VoidUI branding
    - Brief description
    - GitHub link and theme toggle
 

@@ -136,7 +136,7 @@ importers:
         specifier: ^5.6.3
         version: 5.6.3
 
-  packages/retroui:
+  packages/voidui:
     dependencies:
       '@headlessui/react':
         specifier: ^2.1.9

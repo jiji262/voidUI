@@ -1,4 +1,4 @@
-import { Toggle } from "@/components/retroui";
+import { Toggle } from "@/components/voidui";
 import { Italic } from "lucide-react";
 
 export default function ToggleStyleSolid() {

@@ -2,7 +2,7 @@
 
 import React, { useState } from"react";
 import Link from"next/link";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import { TrendingUpIcon, UsersIcon, DollarSignIcon, BarChart3Icon, StarIcon, ZapIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 

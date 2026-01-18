@@ -1,4 +1,4 @@
-import { Input, Label } from "@/components/retroui";
+import { Input, Label } from "@/components/voidui";
 
 export default function LabelStyleDefault() {
   return (

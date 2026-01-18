@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design outlines the restructuring of three main pages in the RetroUI showcase application to create a better user experience with clear separation of concerns:
+This design outlines the restructuring of three main pages in the VoidUI showcase application to create a better user experience with clear separation of concerns:
 
 1. **Homepage (/)** - Pure introduction and marketing content
 2. **Components Page (/components)** - Complete component library documentation
@@ -52,7 +52,7 @@ Components will be organized into logical categories:
 
 **Key Elements:**
 - Project title and tagline
-- Brief description of RetroUI
+- Brief description of VoidUI
 - Feature highlights (retro-styled, TailwindCSS, React)
 - Call-to-action buttons to Components and Demo pages
 - GitHub link
@@ -62,7 +62,7 @@ Components will be organized into logical categories:
 
 **Purpose:** Complete component library documentation
 **Content Structure:**
-- All components from `components/retroui/` directory
+- All components from `components/voidui/` directory
 - Organized by categories
 - Basic usage examples
 - Component descriptions
@@ -188,7 +188,7 @@ interface PageConfig {
 4. Enhance project description and features
 
 ### Phase 2: Components Page Enhancement
-1. Import all components from `components/retroui/`
+1. Import all components from `components/voidui/`
 2. Implement category-based organization
 3. Create component documentation structure
 4. Add usage examples and descriptions

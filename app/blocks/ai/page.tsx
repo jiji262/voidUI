@@ -2,7 +2,7 @@
 
 import React, { useState } from"react";
 import Link from"next/link";
-import { Text, Button, Card, Input } from"@/components/retroui";
+import { Text, Button, Card, Input } from"@/components/voidui";
 import {
  BotIcon,
  SendIcon,
@@ -19,7 +19,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for AI Chat Interface
 const aiChatCode = `import React, { useState } from"react";
-import { Button, Input } from"@/components/retroui";
+import { Button, Input } from"@/components/voidui";
 import { BotIcon, SendIcon, MicIcon } from"lucide-react";
 
 const AIChatInterface = () => {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AlignJustify, X } from "lucide-react";
-import { Button } from "@/components/retroui";
+import { Button } from "@/components/voidui";
 import { navConfig } from "@/config/navigation";
 import Link from "next/link";
 

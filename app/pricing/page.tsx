@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Button } from "@/components/retroui";
+import { Button } from "@/components/voidui";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 
 export default function PricingPage() {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTheme } from "@/lib/theme-context";
-import { Button } from "@/components/retroui/Button";
+import { Button } from "@/components/voidui/Button";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();

@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import {
  ZapIcon,
  ShieldIcon,
@@ -84,7 +84,7 @@ const IconGridFeatures = () => {
 };`;
 
 const splitLayoutFeaturesCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { CheckIcon, ArrowRightIcon } from"lucide-react";
 
 const SplitLayoutFeatures = () => {

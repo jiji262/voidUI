@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Button } from "@/components/retroui/Button";
-import { Card } from "@/components/retroui/Card";
+import { Button } from "@/components/voidui/Button";
+import { Card } from "@/components/voidui/Card";
 
 export default function CommerceCard() {
   return (

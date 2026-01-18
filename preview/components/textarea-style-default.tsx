@@ -1,4 +1,4 @@
-import { Textarea } from "@/components/retroui/Textarea";
+import { Textarea } from "@/components/voidui/Textarea";
 
 export default function TextareaStyleDefault() {
   return (

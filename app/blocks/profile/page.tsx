@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Badge } from"@/components/retroui";
+import { Text, Button, Card, Badge } from"@/components/voidui";
 import {
  MapPinIcon,
  CalendarIcon,
@@ -22,7 +22,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for Profile Card
 const profileCardCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { MapPinIcon, TwitterIcon, GithubIcon, LinkedinIcon } from"lucide-react";
 
 const ProfileCard = () => {

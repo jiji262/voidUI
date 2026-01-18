@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Badge } from"@/components/retroui";
+import { Text, Button, Card, Badge } from"@/components/voidui";
 import {
  CalendarIcon,
  ClockIcon,
@@ -19,7 +19,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for blog components
 const featuredArticleCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { CalendarIcon, ArrowRightIcon } from"lucide-react";
 
 const FeaturedArticle = () => {
@@ -79,7 +79,7 @@ const FeaturedArticle = () => {
 };`;
 
 const articleGridCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { CalendarIcon, ClockIcon } from"lucide-react";
 
 const ArticleGrid = () => {

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Check, Copy } from "lucide-react";
-import { Button } from "@/components/retroui";
+import { Button } from "@/components/voidui";
 
 interface CodeBlockWithCopyProps {
   code: string;

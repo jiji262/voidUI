@@ -1,4 +1,4 @@
-import { Text } from "@/components/retroui/Text";
+import { Text } from "@/components/voidui/Text";
 
 export default function TextParagraph() {
   return (

@@ -1,13 +1,13 @@
-import { Text } from "@/components/retroui/Text";
-import { Card } from "@/components/retroui/Card";
-import { Avatar } from "@/components/retroui/Avatar";
+import { Text } from "@/components/voidui/Text";
+import { Card } from "@/components/voidui/Card";
+import { Avatar } from "@/components/voidui/Avatar";
 
 export default function TestimonialCard() {
   return (
     <Card className="w-full max-w-[400px] shadow-none hover:shadow-md">
       <Card.Content>
         <Text className="text-lg">
-          &quot; RetroUI is the cooling looking UI library out there! &quot;
+          &quot; VoidUI is the cooling looking UI library out there! &quot;
         </Text>
 
         <div className="flex items-center space-x-2 mt-6">

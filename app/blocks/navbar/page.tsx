@@ -3,7 +3,7 @@
 import React, { useState } from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import {
  MenuIcon,
  XIcon,
@@ -18,7 +18,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for navbar component
 const simpleNavbarCode = `import React, { useState } from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { MenuIcon, XIcon } from"lucide-react";
 
 const SimpleNavbar = () => {

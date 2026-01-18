@@ -1,7 +1,7 @@
 // Component code examples for easy copying
 export const componentExamples = {
   Button: {
-    basic: `import { Button } from '@retroui/components';
+    basic: `import { Button } from '@voidui/components';
 
 <Button>Click Me</Button>`,
     variants: `// Different button variants
@@ -13,7 +13,7 @@ export const componentExamples = {
 <Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>`,
-    withIcon: `import { Button } from '@retroui/components';
+    withIcon: `import { Button } from '@voidui/components';
 import { ArrowRight } from 'lucide-react';
 
 <Button>
@@ -23,10 +23,10 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Input: {
-    basic: `import { Input } from '@retroui/components';
+    basic: `import { Input } from '@voidui/components';
 
 <Input placeholder="Enter text..." />`,
-    withLabel: `import { Input, Label } from '@retroui/components';
+    withLabel: `import { Input, Label } from '@voidui/components';
 
 <div className="space-y-2">
   <Label htmlFor="name">Name</Label>
@@ -40,7 +40,7 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Card: {
-    basic: `import { Card } from '@retroui/components';
+    basic: `import { Card } from '@voidui/components';
 
 <Card>
   <Card.Header>
@@ -61,7 +61,7 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Select: {
-    basic: `import { Select } from '@retroui/components';
+    basic: `import { Select } from '@voidui/components';
 
 <Select>
   <Select.Trigger>
@@ -78,7 +78,7 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Dialog: {
-    basic: `import { Dialog, Button } from '@retroui/components';
+    basic: `import { Dialog, Button } from '@voidui/components';
 
 <Dialog>
   <Dialog.Trigger asChild>
@@ -98,7 +98,7 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Tabs: {
-    basic: `import { Tab, TabsTriggerList, TabsTrigger, TabsPanels, TabsContent } from '@retroui/components';
+    basic: `import { Tab, TabsTriggerList, TabsTrigger, TabsPanels, TabsContent } from '@voidui/components';
 
 <Tab defaultValue="tab1">
   <TabsTriggerList>
@@ -115,10 +115,10 @@ import { ArrowRight } from 'lucide-react';
   },
   
   Alert: {
-    basic: `import { Alert } from '@retroui/components';
+    basic: `import { Alert } from '@voidui/components';
 
 <Alert>This is an alert message</Alert>`,
-    withIcon: `import { Alert } from '@retroui/components';
+    withIcon: `import { Alert } from '@voidui/components';
 import { Info } from 'lucide-react';
 
 <Alert>
@@ -128,7 +128,7 @@ import { Info } from 'lucide-react';
   },
   
   Badge: {
-    basic: `import { Badge } from '@retroui/components';
+    basic: `import { Badge } from '@voidui/components';
 
 <Badge>Default</Badge>`,
     variants: `<div className="flex gap-2">
@@ -139,7 +139,7 @@ import { Info } from 'lucide-react';
   },
   
   Checkbox: {
-    basic: `import { Checkbox } from '@retroui/components';
+    basic: `import { Checkbox } from '@voidui/components';
 
 <Checkbox>Accept terms and conditions</Checkbox>`,
     multiple: `<div className="space-y-2">
@@ -150,7 +150,7 @@ import { Info } from 'lucide-react';
   },
   
   Radio: {
-    basic: `import { Radio } from '@retroui/components';
+    basic: `import { Radio } from '@voidui/components';
 
 <div className="space-y-2">
   <Radio value="1" name="options">Option 1</Radio>
@@ -160,10 +160,10 @@ import { Info } from 'lucide-react';
   },
   
   Switch: {
-    basic: `import { Switch } from '@retroui/components';
+    basic: `import { Switch } from '@voidui/components';
 
 <Switch />`,
-    withLabel: `import { Switch, Label } from '@retroui/components';
+    withLabel: `import { Switch, Label } from '@voidui/components';
 
 <div className="flex items-center space-x-2">
   <Switch id="airplane-mode" />
@@ -172,7 +172,7 @@ import { Info } from 'lucide-react';
   },
   
   Slider: {
-    basic: `import { Slider } from '@retroui/components';
+    basic: `import { Slider } from '@voidui/components';
 
 <Slider 
   defaultValue={[50]} 
@@ -183,7 +183,7 @@ import { Info } from 'lucide-react';
   },
   
   Avatar: {
-    basic: `import { Avatar } from '@retroui/components';
+    basic: `import { Avatar } from '@voidui/components';
 
 <Avatar>
   <Avatar.Image src="/avatar.jpg" alt="User" />
@@ -195,13 +195,13 @@ import { Info } from 'lucide-react';
   },
   
   Progress: {
-    basic: `import { Progress } from '@retroui/components';
+    basic: `import { Progress } from '@voidui/components';
 
 <Progress value={60} className="w-[60%]" />`
   },
   
   Tooltip: {
-    basic: `import { Tooltip } from '@retroui/components';
+    basic: `import { Tooltip } from '@voidui/components';
 
 <Tooltip>
   <Tooltip.Trigger asChild>
@@ -214,7 +214,7 @@ import { Info } from 'lucide-react';
   },
   
   Popover: {
-    basic: `import { Popover, Button } from '@retroui/components';
+    basic: `import { Popover, Button } from '@voidui/components';
 
 <Popover>
   <Popover.Trigger asChild>
@@ -232,7 +232,7 @@ import { Info } from 'lucide-react';
   },
   
   Menu: {
-    basic: `import { Menu, Button } from '@retroui/components';
+    basic: `import { Menu, Button } from '@voidui/components';
 
 <Menu>
   <Menu.Trigger asChild>
@@ -248,7 +248,7 @@ import { Info } from 'lucide-react';
   },
   
   Accordion: {
-    basic: `import { Accordion } from '@retroui/components';
+    basic: `import { Accordion } from '@voidui/components';
 
 <Accordion type="single" collapsible>
   <Accordion.Item value="item-1">
@@ -267,7 +267,7 @@ import { Info } from 'lucide-react';
   },
   
   Table: {
-    basic: `import { Table } from '@retroui/components';
+    basic: `import { Table } from '@voidui/components';
 
 <Table>
   <Table.Header>
@@ -293,7 +293,7 @@ import { Info } from 'lucide-react';
   },
   
   Breadcrumb: {
-    basic: `import { Breadcrumb } from '@retroui/components';
+    basic: `import { Breadcrumb } from '@voidui/components';
 
 <Breadcrumb>
   <Breadcrumb.List>
@@ -313,7 +313,7 @@ import { Info } from 'lucide-react';
   },
   
   Toggle: {
-    basic: `import { Toggle } from '@retroui/components';
+    basic: `import { Toggle } from '@voidui/components';
 
 <Toggle>Toggle me</Toggle>`,
     pressed: `<Toggle defaultPressed>
@@ -322,7 +322,7 @@ import { Info } from 'lucide-react';
   },
   
   ToggleGroup: {
-    basic: `import { ToggleGroup, ToggleGroupItem } from '@retroui/components';
+    basic: `import { ToggleGroup, ToggleGroupItem } from '@voidui/components';
 
 <ToggleGroup type="single">
   <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
@@ -337,19 +337,19 @@ import { Info } from 'lucide-react';
   },
   
   CommandDisplay: {
-    basic: `import { CommandDisplay } from '@retroui/components';
+    basic: `import { CommandDisplay } from '@voidui/components';
 
-<CommandDisplay command="npm install @retroui/components" />`
+<CommandDisplay command="npm install @voidui/components" />`
   },
   
   Textarea: {
-    basic: `import { Textarea } from '@retroui/components';
+    basic: `import { Textarea } from '@voidui/components';
 
 <Textarea 
   placeholder="Enter your message..." 
   rows={4}
 />`,
-    withLabel: `import { Textarea, Label } from '@retroui/components';
+    withLabel: `import { Textarea, Label } from '@voidui/components';
 
 <div className="space-y-2">
   <Label htmlFor="message">Message</Label>
@@ -362,7 +362,7 @@ import { Info } from 'lucide-react';
   },
   
   Label: {
-    basic: `import { Label } from '@retroui/components';
+    basic: `import { Label } from '@voidui/components';
 
 <Label htmlFor="email">Email Address</Label>`,
     required: `<Label htmlFor="email">
@@ -371,7 +371,7 @@ import { Info } from 'lucide-react';
   },
   
   Text: {
-    basic: `import { Text } from '@retroui/components';
+    basic: `import { Text } from '@voidui/components';
 
 <Text as="h1">Heading 1</Text>
 <Text as="h2">Heading 2</Text>
@@ -382,7 +382,7 @@ import { Info } from 'lucide-react';
   },
   
   Sonner: {
-    basic: `import { Sonner } from '@retroui/components';
+    basic: `import { Sonner } from '@voidui/components';
 import { toast } from 'sonner';
 
 // Add Sonner to your app layout

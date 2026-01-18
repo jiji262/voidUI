@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { Breadcrumb } from "@/components/retroui/Breadcrumb";
+import { Breadcrumb } from "@/components/voidui/Breadcrumb";
 
 export default function BreadcrumbCollapsed() {
   return (

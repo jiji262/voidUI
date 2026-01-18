@@ -3,13 +3,13 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon, PlayIcon, StarIcon, CheckIcon, CodeIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for hero sections
 const heroSection01Code = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { PlayIcon } from"lucide-react";
 
 const HeroSection01 = () => (
@@ -65,7 +65,7 @@ const HeroSection01 = () => (
 );`;
 
 const heroSection02Code = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon, PlayIcon } from"lucide-react";
 
 const HeroSection02 = () => (

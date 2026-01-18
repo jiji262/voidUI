@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Copy, Check, Code, Eye } from 'lucide-react';
-import { Button } from '@/components/retroui';
+import { Button } from '@/components/voidui';
 import { EnhancedCodeBlock } from './enhanced-code-block';
 import { useToast } from './toast';
 

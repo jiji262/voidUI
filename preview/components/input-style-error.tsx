@@ -1,5 +1,5 @@
-import { Input } from "@/components/retroui/Input";
-import { Label } from "@/components/retroui/Label";
+import { Input } from "@/components/voidui/Input";
+import { Label } from "@/components/voidui/Label";
 
 export default function InputStyleError() {
   return (

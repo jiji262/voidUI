@@ -1,4 +1,4 @@
-import { Alert } from "@/components/retroui/Alert";
+import { Alert } from "@/components/voidui/Alert";
 import { CheckCircle, InfoIcon, XIcon } from "lucide-react";
 
 export default function AlertAllStatus() {

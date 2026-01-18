@@ -2,7 +2,7 @@ import TopNav from "@/components/TopNav";
 import "./global.css";
 import { Archivo_Black, Space_Grotesk, Space_Mono } from "next/font/google";
 import { Metadata } from "next";
-import { Toaster, TooltipProvider } from "@/components/retroui";
+import { Toaster, TooltipProvider } from "@/components/voidui";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/lib/theme-context";
@@ -30,12 +30,12 @@ const mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Retro Styled React UI Library | Retro UI",
+  title: "Void Styled React UI Library | Void UI",
   description:
-    "RetroUI - Retro styled component library built with React and TailwindCSS for modern web apps.",
+    "VoidUI - Void styled component library built with React and TailwindCSS for modern web apps.",
   openGraph: {
-    images: "https://retroui.dev/banner.png",
-    title: "Retro Styled React UI Library | Retro UI",
+    images: "https://voidui.dev/banner.png",
+    title: "Void Styled React UI Library | Void UI",
   },
 };
 

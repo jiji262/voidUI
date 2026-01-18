@@ -12,9 +12,9 @@
       "Bash(pnpm list:*)",
       "Bash(node:*)",
       "Bash(rm:*)",
-      "WebFetch(domain:pro.retroui.dev)",
-      "Bash(curl -s \"https://pro.retroui.dev/hero-sections\")",
-      "Bash(curl -s \"https://pro.retroui.dev/pricing-tables\")"
+      "WebFetch(domain:pro.voidui.dev)",
+      "Bash(curl -s \"https://pro.voidui.dev/hero-sections\")",
+      "Bash(curl -s \"https://pro.voidui.dev/pricing-tables\")"
     ],
     "deny": []
   }

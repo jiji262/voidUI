@@ -1,7 +1,7 @@
-import { Badge, Checkbox } from "@/components/retroui"
+import { Badge, Checkbox } from "@/components/voidui"
 import {
   Table,
-} from "@/components/retroui/Table"
+} from "@/components/voidui/Table"
 import { useState } from "react"
 
 const employees = [

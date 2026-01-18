@@ -1,8 +1,8 @@
-# RetroUI - Retro Styled React Component Library
+# VoidUI - Void Styled React Component Library
 
-![RetroUI Banner](./public/banner.png)
+![VoidUI Banner](./public/banner.png)
 
-RetroUI is a retro-styled React component library built with TailwindCSS. It provides a collection of reusable UI components with a nostalgic aesthetic, perfect for creating unique, memorable user interfaces. This repository serves as both a component showcase and a library of ready-to-use components.
+VoidUI is a void-styled React component library built with TailwindCSS. It provides a collection of reusable UI components with a unique aesthetic, perfect for creating distinctive, memorable user interfaces. This repository serves as both a component showcase and a library of ready-to-use components.
 
 ## 🚀 Quick Start
 
@@ -24,7 +24,7 @@ Visit `http://localhost:3000` to see the component showcase in action.
 
 ## 🎨 Features
 
-- **Retro Aesthetic**: High-contrast colors, bold borders, and pixel-perfect design
+- **Void Aesthetic**: High-contrast colors, bold borders, and pixel-perfect design
 - **Theming System**: Switch between multiple color themes with ease
 - **Dark Mode Support**: Automatic adaptation to light and dark modes
 - **Component Library**: 30+ ready-to-use components
@@ -75,23 +75,23 @@ Visit `http://localhost:3000` to see the component showcase in action.
 
 ## 🎨 Theme System
 
-RetroUI supports multiple color themes that can be easily switched by users.
+VoidUI supports multiple color themes that can be easily switched by users.
 
 ### Available Themes
 
-1. **Default Theme** - The original RetroUI theme with yellow (`#ffdb33`) as the primary color
+1. **Default Theme** - The original VoidUI theme with yellow (`#ffdb33`) as the primary color
 2. **Purple Theme** - A new theme with purple (`#624aff`) as the primary color
 
 ### Using Predefined Themes
 
-RetroUI comes with two predefined themes that can be switched using the theme switcher in the navigation bar.
+VoidUI comes with two predefined themes that can be switched using the theme switcher in the navigation bar.
 
 ### Creating Custom Themes
 
 You can create completely custom themes using the theme configuration system:
 
 ```tsx
-import { createCustomTheme, applyRetroUITheme } from '@retroui/components/theme-config';
+import { createCustomTheme, applyVoidUITheme } from '@voidui/components/theme-config';
 
 // Create a custom blue theme
 const blueTheme = createCustomTheme(
@@ -101,7 +101,7 @@ const blueTheme = createCustomTheme(
 );
 
 // Apply the theme
-applyRetroUITheme(blueTheme);
+applyVoidUITheme(blueTheme);
 ```
 
 ### Theme Configuration Properties
@@ -146,7 +146,7 @@ app/                 # Next.js app router pages
 └── layout.tsx       # Root layout
 
 components/          # UI components
-├── retroui/         # Main component library
+├── voidui/         # Main component library
 └── preview/         # Component examples
 
 preview/components/  # Individual component demos
@@ -158,7 +158,7 @@ public/              # Static assets
 
 The project follows a component-driven architecture:
 
-1. **Component Library**: Located in `components/retroui/`, contains all reusable UI components built with React and TailwindCSS
+1. **Component Library**: Located in `components/voidui/`, contains all reusable UI components built with React and TailwindCSS
 2. **Component Showcase**: Three main pages demonstrate components:
    - Homepage (`/`) - Landing page with project overview
    - Components (`/components`) - Organized gallery of all components
@@ -173,24 +173,24 @@ Components use:
 
 ### Component Development
 
-All components are in `components/retroui/` and:
+All components are in `components/voidui/` and:
 1. Use cva for variant management
 2. Export both component and interface
-3. Are exported through `components/retroui/index.ts`
+3. Are exported through `components/voidui/index.ts`
 4. Have corresponding preview examples in `preview/components/`
 
 To add a new component:
-1. Create the component in `components/retroui/`
-2. Export it in `components/retroui/index.ts`
+1. Create the component in `components/voidui/`
+2. Export it in `components/voidui/index.ts`
 3. Create preview examples in `preview/components/`
 4. Add it to the categorization in `lib/component-categorization.ts`
 
 ## 📦 Component Usage
 
-All components are available in the `/components/retroui` directory and can be imported directly:
+All components are available in the `/components/voidui` directory and can be imported directly:
 
 ```tsx
-import { Button, Card, Badge } from "@/components/retroui";
+import { Button, Card, Badge } from "@/components/voidui";
 ```
 
 ### Key Dependencies
@@ -205,7 +205,7 @@ import { Button, Card, Badge } from "@/components/retroui";
 
 ## 🌗 Dark Mode Integration
 
-RetroUI automatically adapts to dark mode. The dark mode toggle in the navigation bar switches between light and dark modes, and all themes automatically adjust their colors accordingly.
+VoidUI automatically adapts to dark mode. The dark mode toggle in the navigation bar switches between light and dark modes, and all themes automatically adjust their colors accordingly.
 
 ## 🎯 Best Practices
 
@@ -217,7 +217,7 @@ RetroUI automatically adapts to dark mode. The dark mode toggle in the navigatio
 
 ## 📄 License
 
-MIT License - feel free to use RetroUI in your projects!
+MIT License - feel free to use VoidUI in your projects!
 
 ## 🤝 Contributing
 

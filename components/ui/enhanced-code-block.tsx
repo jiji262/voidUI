@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
-import { Button } from '@/components/retroui';
+import { Button } from '@/components/voidui';
 
 interface EnhancedCodeBlockProps {
   code: string;

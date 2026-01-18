@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/retroui";
+import { Button } from "@/components/voidui";
 import { ArrowUp } from "lucide-react";
 
 export function BackToTop() {

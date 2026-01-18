@@ -1,4 +1,4 @@
-import { Button } from "@/components/retroui/Button";
+import { Button } from "@/components/voidui/Button";
 import { PenIcon } from "lucide-react";
 
 export default function ButtonStyleIcon() {

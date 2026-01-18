@@ -1,7 +1,7 @@
-// Theme configuration system for RetroUI
+// Theme configuration system for VoidUI
 // This file provides a simple way to configure themes in external projects
 
-export type RetroUITheme = {
+export type VoidUITheme = {
   primary: string;
   primaryHover: string;
   primaryForeground: string;
@@ -22,8 +22,8 @@ export type RetroUITheme = {
   backgroundImageDark: string;
 };
 
-// Default RetroUI theme (yellow)
-export const defaultTheme: RetroUITheme = {
+// Default VoidUI theme (yellow)
+export const defaultTheme: VoidUITheme = {
   primary: '#ffdb33',
   primaryHover: '#ffcc00',
   primaryForeground: '#000',
@@ -45,7 +45,7 @@ export const defaultTheme: RetroUITheme = {
 };
 
 // Purple theme - 全新优化的紫色配色方案
-export const purpleTheme: RetroUITheme = {
+export const purpleTheme: VoidUITheme = {
   primary: '#8b5cf6',        // 明亮的紫色，确保良好的可见性
   primaryHover: '#7c3aed',   // 深紫色悬停状态，避免黄色
   primaryForeground: '#ffffff', // 纯白色文字，确保最佳对比度
@@ -67,7 +67,7 @@ export const purpleTheme: RetroUITheme = {
 };
 
 // Function to apply theme to CSS variables
-export function applyRetroUITheme(theme: RetroUITheme, isDarkMode: boolean = false) {
+export function applyVoidUITheme(theme: VoidUITheme, isDarkMode: boolean = false) {
   const root = document.documentElement;
   
   // Apply base colors
@@ -105,7 +105,7 @@ export function createCustomTheme(
   secondaryForeground: string = '#fff',
   accent: string = primaryHover,
   accentForeground: string = primaryForeground
-): RetroUITheme {
+): VoidUITheme {
   return {
     primary,
     primaryHover,

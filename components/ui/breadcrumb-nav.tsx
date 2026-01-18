@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Breadcrumb } from "@/components/retroui";
+import { Breadcrumb } from "@/components/voidui";
 
 interface BreadcrumbItem {
   label: string;

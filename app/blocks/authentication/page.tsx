@@ -3,13 +3,13 @@
 import React, { useState } from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Input, Checkbox } from"@/components/retroui";
+import { Text, Button, Card, Input, Checkbox } from"@/components/voidui";
 import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, UserIcon, GithubIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for authentication components
 const loginFormCode = `import React, { useState } from"react";
-import { Button, Input, Checkbox } from"@/components/retroui";
+import { Button, Input, Checkbox } from"@/components/voidui";
 import { EyeIcon, EyeOffIcon, MailIcon, LockIcon } from"lucide-react";
 
 const LoginForm = () => {
@@ -80,7 +80,7 @@ const LoginForm = () => {
 };`;
 
 const signupFormCode = `import React, { useState } from"react";
-import { Button, Input, Checkbox } from"@/components/retroui";
+import { Button, Input, Checkbox } from"@/components/voidui";
 import { MailIcon, LockIcon, UserIcon, GithubIcon } from"lucide-react";
 
 const SignupForm = () => {

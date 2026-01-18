@@ -3,7 +3,7 @@
 import React, { useState } from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Input, Checkbox } from"@/components/retroui";
+import { Text, Button, Card, Input, Checkbox } from"@/components/voidui";
 import { 
  ArrowRightIcon, 
  CheckIcon,
@@ -19,7 +19,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for welcome screen component
 const welcomeScreenCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { RocketIcon, CheckIcon, ArrowRightIcon, PlayIcon } from"lucide-react";
 
 const WelcomeScreen = () => {

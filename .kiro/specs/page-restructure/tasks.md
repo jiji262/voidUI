@@ -5,18 +5,18 @@
   - Remove component showcase grid section
   - Keep hero section and enhance with better project description
   - Add clear navigation buttons to components and demo pages
-  - Focus on RetroUI introduction, features, and getting started information
+  - Focus on VoidUI introduction, features, and getting started information
   - _Requirements: 1.1, 1.2, 1.3, 1.4_
 
 - [ ] 2. Create component categorization system
-  - Create utility functions to categorize components from components/retroui directory
+  - Create utility functions to categorize components from components/voidui directory
   - Define component categories (Form, Display, Navigation, Interactive, Data)
   - Create TypeScript interfaces for component organization
   - Map each component to its appropriate category
   - _Requirements: 2.2, 2.4_
 
 - [x] 3. Restructure components page for complete library documentation
-  - Import all components from components/retroui directory
+  - Import all components from components/voidui directory
   - Implement category-based organization using the categorization system
   - Create component documentation structure with descriptions
   - Replace current limited component list with comprehensive library showcase

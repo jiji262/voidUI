@@ -2,7 +2,7 @@
 
 import React, { useState } from"react";
 import Link from"next/link";
-import { Text, Button, Card, Accordion } from"@/components/retroui";
+import { Text, Button, Card, Accordion } from"@/components/voidui";
 import { ChevronDownIcon, HelpCircleIcon, MessageCircleIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 

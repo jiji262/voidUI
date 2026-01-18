@@ -1,4 +1,4 @@
-import { Checkbox } from "@/components/retroui/Checkbox";
+import { Checkbox } from "@/components/voidui/Checkbox";
 
 export default function CheckboxStyleSizes() {
   return (

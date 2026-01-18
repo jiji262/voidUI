@@ -1,5 +1,5 @@
-import { Checkbox } from "@/components/retroui/Checkbox";
-import { Text } from "@/components/retroui/Text";
+import { Checkbox } from "@/components/voidui/Checkbox";
+import { Text } from "@/components/voidui/Text";
 
 export default function CheckboxStyleDefault() {
   return (

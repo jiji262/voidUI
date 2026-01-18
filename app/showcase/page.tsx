@@ -15,7 +15,7 @@ import {
   TabsTrigger,
   TabsPanels,
   TabsContent,
-} from "@/components/retroui";
+} from "@/components/voidui";
 import ErrorBoundary from "@/components/ui/error-boundary";
 import { BreadcrumbNav } from "@/components/ui/breadcrumb-nav";
 import { BackToTop } from "@/components/ui/back-to-top";
@@ -59,7 +59,7 @@ const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({ name, category })
           </div>
           <div className="flex gap-2">
             <Link 
-              href={`https://github.com/jiji262/retroui-next/blob/main/components/retroui/${name}.tsx`}
+              href={`https://github.com/jiji262/voidui-next/blob/main/components/voidui/${name}.tsx`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -141,7 +141,7 @@ export default function ShowcasePage() {
         <div className="container max-w-7xl mx-auto px-4 lg:px-0 py-16">
           <div className="text-center mb-8">
             <Text as="h1" className="text-4xl lg:text-5xl mb-4">
-              RetroUI <span className="text-outlined">Component Library</span>
+              VoidUI <span className="text-outlined">Component Library</span>
             </Text>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A comprehensive collection of retro-styled React components. 
@@ -151,7 +151,7 @@ export default function ShowcasePage() {
           
           {/* Quick Actions */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link href="https://www.npmjs.com/package/@retroui/components" target="_blank">
+            <Link href="https://www.npmjs.com/package/@voidui/components" target="_blank">
               <Button size="lg">
                 <Package className="mr-2 h-4 w-4" />
                 Install Package
@@ -163,7 +163,7 @@ export default function ShowcasePage() {
                 Live Playground
               </Button>
             </Link>
-            <Link href="https://github.com/jiji262/retroui-next" target="_blank">
+            <Link href="https://github.com/jiji262/voidui-next" target="_blank">
               <Button variant="outline" size="lg">
                 <BookOpen className="mr-2 h-4 w-4" />
                 Documentation
@@ -174,7 +174,7 @@ export default function ShowcasePage() {
           {/* Installation */}
           <div className="max-w-2xl mx-auto">
             <CodeBlockWithCopy
-              code="npm install @retroui/components"
+              code="npm install @voidui/components"
               title="Installation"
               language="bash"
             />
@@ -249,9 +249,9 @@ export default function ShowcasePage() {
         <div className="container max-w-7xl mx-auto px-4 lg:px-0">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <Text as="h4" className="text-lg mb-4">RetroUI</Text>
+              <Text as="h4" className="text-lg mb-4">VoidUI</Text>
               <p className="text-muted-foreground text-sm">
-                Beautiful retro-styled components for modern React applications.
+                Beautiful void-styled components for modern React applications.
               </p>
             </div>
             
@@ -267,9 +267,9 @@ export default function ShowcasePage() {
             <div>
               <Text as="h4" className="text-lg mb-4">Community</Text>
               <div className="space-y-2 text-sm">
-                <div><Link href="https://github.com/jiji262/retroui-next" target="_blank" className="text-muted-foreground hover:text-foreground">GitHub</Link></div>
-                <div><Link href="https://www.npmjs.com/package/@retroui/components" target="_blank" className="text-muted-foreground hover:text-foreground">NPM Package</Link></div>
-                <div><Link href="https://discord.gg/retroui" target="_blank" className="text-muted-foreground hover:text-foreground">Discord</Link></div>
+                <div><Link href="https://github.com/jiji262/voidui-next" target="_blank" className="text-muted-foreground hover:text-foreground">GitHub</Link></div>
+                <div><Link href="https://www.npmjs.com/package/@voidui/components" target="_blank" className="text-muted-foreground hover:text-foreground">NPM Package</Link></div>
+                <div><Link href="https://discord.gg/voidui" target="_blank" className="text-muted-foreground hover:text-foreground">Discord</Link></div>
               </div>
             </div>
             
@@ -286,7 +286,7 @@ export default function ShowcasePage() {
           </div>
           
           <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2024 RetroUI. Built with React, TypeScript, and TailwindCSS.</p>
+            <p>© 2024 VoidUI. Built with React, TypeScript, and TailwindCSS.</p>
           </div>
         </div>
       </footer>

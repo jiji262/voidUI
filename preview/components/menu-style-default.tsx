@@ -1,5 +1,5 @@
-import { Button } from "@/components/retroui/Button";
-import { Menu } from "@/components/retroui/Menu";
+import { Button } from "@/components/voidui/Button";
+import { Menu } from "@/components/voidui/Menu";
 
 export default function MenuDefault() {
   return (

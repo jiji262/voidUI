@@ -1,4 +1,4 @@
-import { Slider } from "@/components/retroui/Slider";
+import { Slider } from "@/components/voidui/Slider";
 
 export default function SliderDefault() {
   return (

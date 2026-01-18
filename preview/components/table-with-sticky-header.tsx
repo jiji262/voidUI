@@ -1,5 +1,5 @@
-import { Badge } from "@/components/retroui";
-import { Table } from "@/components/retroui/Table";
+import { Badge } from "@/components/voidui";
+import { Table } from "@/components/voidui/Table";
 
 const transactions = [
   {

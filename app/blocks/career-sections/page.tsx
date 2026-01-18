@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Badge } from"@/components/retroui";
+import { Text, Button, Card, Badge } from"@/components/voidui";
 import {
  ArrowRightIcon,
  MapPinIcon,
@@ -19,7 +19,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for job listings component
 const jobListingsCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { MapPinIcon, ClockIcon, DollarSignIcon, ArrowRightIcon } from"lucide-react";
 
 const JobListings = () => {

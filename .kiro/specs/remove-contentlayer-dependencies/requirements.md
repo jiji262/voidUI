@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This feature involves removing all Contentlayer dependencies from the RetroUI project and transforming it into a dedicated component showcase application. The goal is to create a clean, focused project that demonstrates the RetroUI component library without the complexity of content management systems.
+This feature involves removing all Contentlayer dependencies from the VoidUI project and transforming it into a dedicated component showcase application. The goal is to create a clean, focused project that demonstrates the VoidUI component library without the complexity of content management systems.
 
 ## Requirements
 
 ### Requirement 1
 
-**User Story:** As a developer exploring RetroUI, I want to view all available components in a clean showcase without content management dependencies, so that I can quickly evaluate the component library.
+**User Story:** As a developer exploring VoidUI, I want to view all available components in a clean showcase without content management dependencies, so that I can quickly evaluate the component library.
 
 #### Acceptance Criteria
 

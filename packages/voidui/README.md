@@ -1,20 +1,20 @@
-# RetroUI Components
+# VoidUI Components
 
-A collection of retro-styled React components for modern web applications.
+A collection of void-styled React components for modern web applications.
 
 ## Installation
 
 ```bash
-npm install @retroui/components
+npm install @voidui/components
 # or
-yarn add @retroui/components
+yarn add @voidui/components
 # or
-pnpm add @retroui/components
+pnpm add @voidui/components
 ```
 
 ## Prerequisites
 
-RetroUI components are built with TailwindCSS. You need to have TailwindCSS installed and configured in your project.
+VoidUI components are built with TailwindCSS. You need to have TailwindCSS installed and configured in your project.
 
 ### 1. Install TailwindCSS
 
@@ -24,17 +24,17 @@ npm install -D tailwindcss
 
 ### 2. Configure TailwindCSS
 
-Add RetroUI components to your `tailwind.config.js`:
+Add VoidUI components to your `tailwind.config.js`:
 
 ```js
 module.exports = {
   content: [
     // ... your other content paths
-    './node_modules/@retroui/components/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@voidui/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
-      // Add RetroUI theme extensions if needed
+      // Add VoidUI theme extensions if needed
     },
   },
   plugins: [],
@@ -54,13 +54,13 @@ Make sure to import TailwindCSS in your global CSS file:
 ## Usage
 
 ```jsx
-import { Button, Card, Input } from '@retroui/components';
+import { Button, Card, Input } from '@voidui/components';
 
 function App() {
   return (
     <Card>
       <Card.Header>
-        <Card.Title>Welcome to RetroUI</Card.Title>
+        <Card.Title>Welcome to VoidUI</Card.Title>
       </Card.Header>
       <Card.Content>
         <Input placeholder="Enter your name" />
@@ -74,7 +74,7 @@ function App() {
 ## Available Components
 
 ### Core Components
-- **Button** - Various button styles with retro aesthetics
+- **Button** - Various button styles with void aesthetics
 - **IconButton** - Icon-based buttons
 - **Toggle** - Toggle switches
 - **ToggleGroup** - Grouped toggle buttons
@@ -120,8 +120,8 @@ function App() {
 
 ## Documentation
 
-For full documentation and examples, visit [RetroUI Documentation](https://retroui.dev)
+For full documentation and examples, visit [VoidUI Documentation](https://voidui.dev)
 
 ## License
 
-MIT © RetroUI Team
+MIT © VoidUI Team

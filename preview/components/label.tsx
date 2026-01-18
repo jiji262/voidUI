@@ -1,7 +1,7 @@
 "use client";
 
-import { Checkbox } from "@/components/retroui";
-import { Label } from "@/components/retroui";
+import { Checkbox } from "@/components/voidui";
+import { Label } from "@/components/voidui";
 
 export default function LabelDefault() {
   return (

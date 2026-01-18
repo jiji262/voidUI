@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import {
  BarChart3Icon,
  TrendingUpIcon,
@@ -18,7 +18,7 @@ import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippet for bento grid component
 const simpleBentoGridCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { BarChart3Icon, TrendingUpIcon, UsersIcon, ArrowRightIcon } from"lucide-react";
 
 const SimpleBentoGrid = () => {

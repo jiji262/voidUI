@@ -1,7 +1,7 @@
-import { Badge } from "@/components/retroui"
+import { Badge } from "@/components/voidui"
 import {
     Table,
-} from "@/components/retroui/Table"
+} from "@/components/voidui/Table"
 
 const invoices = [
     {

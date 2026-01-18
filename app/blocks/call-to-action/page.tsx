@@ -3,13 +3,13 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import { ArrowRightIcon, CheckIcon, StarIcon, TrendingUpIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for CTA components
 const simpleCTACode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon } from"lucide-react";
 
 const SimpleCTA = () => {
@@ -36,7 +36,7 @@ const SimpleCTA = () => {
 };`;
 
 const featuresCTACode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon, CheckIcon } from"lucide-react";
 
 const FeaturesCTA = () => {
@@ -90,7 +90,7 @@ const FeaturesCTA = () => {
 };`;
 
 const urgencyCTACode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { ArrowRightIcon, TrendingUpIcon } from"lucide-react";
 
 const UrgencyCTA = () => {

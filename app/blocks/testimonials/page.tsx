@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card } from"@/components/retroui";
+import { Text, Button, Card } from"@/components/voidui";
 import { StarIcon, QuoteIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 

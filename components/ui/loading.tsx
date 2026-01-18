@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@/components/retroui";
+import { Text } from "@/components/voidui";
 
 interface LoadingProps {
   message?: string;

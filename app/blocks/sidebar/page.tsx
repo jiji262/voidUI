@@ -3,7 +3,7 @@
 import React, { useState } from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button, Card, Badge } from"@/components/retroui";
+import { Text, Button, Card, Badge } from"@/components/voidui";
 import {
  MenuIcon,
  XIcon,

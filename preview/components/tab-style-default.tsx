@@ -1,4 +1,4 @@
-import { Tabs, TabsPanels, TabsTrigger, TabsContent, TabsTriggerList } from "@/components/retroui/Tab";
+import { Tabs, TabsPanels, TabsTrigger, TabsContent, TabsTriggerList } from "@/components/voidui/Tab";
 
 export default function TabStyleDefault() {
   return (
@@ -10,7 +10,7 @@ export default function TabStyleDefault() {
       </TabsTriggerList>
       <TabsPanels>
         <TabsContent>
-          Welcome to RetroUI, a retro styled UI library built with React,
+          Welcome to VoidUI, a void styled UI library built with React,
           Tailwind CSS & Headless UI.
         </TabsContent>
         <TabsContent>This is the about section!</TabsContent>

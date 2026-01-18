@@ -3,14 +3,14 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Button, Badge } from"@/components/retroui";
+import { Button, Badge } from"@/components/voidui";
 import { ArrowRightIcon, HeartIcon, ShareIcon, CalendarIcon, UserIcon, StarIcon, MinusIcon, PlusIcon, CodeIcon } from"lucide-react";
 import { CodeDisplay } from"@/components/CodeDisplay";
 
 // Code snippets for each component
 const productCard01Code = `import React from"react";
 import Image from"next/image";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { HeartIcon, ShareIcon } from"lucide-react";
 
 const ProductCard01 = () => (
@@ -49,7 +49,7 @@ const ProductCard01 = () => (
 
 const profileCard01Code = `import React from"react";
 import Image from"next/image";
-import { Button, Badge } from"@/components/retroui";
+import { Button, Badge } from"@/components/voidui";
 
 const ProfileCard01 = () => (
  <div className="max-w-sm mx-auto bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -88,7 +88,7 @@ const ProfileCard01 = () => (
 
 const profileCard02Code = `import React from"react";
 import Image from"next/image";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 import { HeartIcon, CalendarIcon } from"lucide-react";
 
 const ProfileCard02 = () => (
@@ -132,7 +132,7 @@ const ProfileCard02 = () => (
 
 const teamCardCode = `import React from"react";
 import Image from"next/image";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 
 const TeamCard = () => (
  <div className="max-w-sm mx-auto bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -179,7 +179,7 @@ const TeamCard = () => (
 );`;
 
 const pricingCardCode = `import React from"react";
-import { Button } from"@/components/retroui";
+import { Button } from"@/components/voidui";
 
 const PricingCard = () => (
  <div className="max-w-sm mx-auto bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">

@@ -3,7 +3,7 @@
 import React from"react";
 import Link from"next/link";
 import Image from"next/image";
-import { Text, Button } from"@/components/retroui";
+import { Text, Button } from"@/components/voidui";
 import { ArrowRightIcon } from"lucide-react";
 
 const blockCategories = {

@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/retroui/Button";
-import { Card } from "@/components/retroui/Card";
-import { Input } from "@/components/retroui/Input";
-import { Badge } from "@/components/retroui/Badge";
-import { Alert } from "@/components/retroui/Alert";
+import { Button } from "@/components/voidui/Button";
+import { Card } from "@/components/voidui/Card";
+import { Input } from "@/components/voidui/Input";
+import { Badge } from "@/components/voidui/Badge";
+import { Alert } from "@/components/voidui/Alert";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { useTheme } from "@/lib/theme-context";
 

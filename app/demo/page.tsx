@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
-import { Text, Card, Button, Tabs, TabsContent, TabsPanels, TabsTrigger, TabsTriggerList } from "@/components/retroui";
+import { Text, Card, Button, Tabs, TabsContent, TabsPanels, TabsTrigger, TabsTriggerList } from "@/components/voidui";
 import {
   groupPreviewsByCategory,
   createPreviewComponentInfo,
