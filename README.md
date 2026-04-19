@@ -1,8 +1,8 @@
-# VoidUI - Void Styled React Component Library
+# voidUI - Void Styled React Component Library
 
-![VoidUI Banner](./public/banner.png)
+![voidUI Banner](./public/banner.png)
 
-VoidUI is a void-styled React component library built with TailwindCSS. It provides a collection of reusable UI components with a unique aesthetic, perfect for creating distinctive, memorable user interfaces. This repository serves as both a component showcase and a library of ready-to-use components.
+voidUI is a void-styled React component library built with TailwindCSS. It provides a collection of reusable UI components with a unique aesthetic, perfect for creating distinctive, memorable user interfaces. This repository serves as both a component showcase and a library of ready-to-use components.
 
 ## 🚀 Quick Start
 
@@ -75,16 +75,16 @@ Visit `http://localhost:3000` to see the component showcase in action.
 
 ## 🎨 Theme System
 
-VoidUI supports multiple color themes that can be easily switched by users.
+voidUI supports multiple color themes that can be easily switched by users.
 
 ### Available Themes
 
-1. **Default Theme** - The original VoidUI theme with yellow (`#ffdb33`) as the primary color
+1. **Default Theme** - The original voidUI theme with yellow (`#ffdb33`) as the primary color
 2. **Purple Theme** - A new theme with purple (`#624aff`) as the primary color
 
 ### Using Predefined Themes
 
-VoidUI comes with two predefined themes that can be switched using the theme switcher in the navigation bar.
+voidUI comes with two predefined themes that can be switched using the theme switcher in the navigation bar.
 
 ### Creating Custom Themes
 
@@ -205,7 +205,7 @@ import { Button, Card, Badge } from "@/components/voidui";
 
 ## 🌗 Dark Mode Integration
 
-VoidUI automatically adapts to dark mode. The dark mode toggle in the navigation bar switches between light and dark modes, and all themes automatically adjust their colors accordingly.
+voidUI automatically adapts to dark mode. The dark mode toggle in the navigation bar switches between light and dark modes, and all themes automatically adjust their colors accordingly.
 
 ## 🎯 Best Practices
 
@@ -217,7 +217,7 @@ VoidUI automatically adapts to dark mode. The dark mode toggle in the navigation
 
 ## 📄 License
 
-MIT License - feel free to use VoidUI in your projects!
+MIT License - feel free to use voidUI in your projects!
 
 ## 🤝 Contributing
 

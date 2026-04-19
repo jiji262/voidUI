@@ -30,12 +30,12 @@ const mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Void Styled React UI Library | Void UI",
+  title: "Void Styled React UI Library | voidUI",
   description:
-    "VoidUI - Void styled component library built with React and TailwindCSS for modern web apps.",
+    "voidUI - Void styled component library built with React and TailwindCSS for modern web apps.",
   openGraph: {
     images: "https://voidui.dev/banner.png",
-    title: "Void Styled React UI Library | Void UI",
+    title: "Void Styled React UI Library | voidUI",
   },
 };
 

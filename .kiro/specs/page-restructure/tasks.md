@@ -5,7 +5,7 @@
   - Remove component showcase grid section
   - Keep hero section and enhance with better project description
   - Add clear navigation buttons to components and demo pages
-  - Focus on VoidUI introduction, features, and getting started information
+  - Focus on voidUI introduction, features, and getting started information
   - _Requirements: 1.1, 1.2, 1.3, 1.4_
 
 - [ ] 2. Create component categorization system

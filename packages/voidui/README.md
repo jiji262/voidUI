@@ -1,4 +1,4 @@
-# VoidUI Components
+# voidUI Components
 
 A collection of void-styled React components for modern web applications.
 
@@ -14,7 +14,7 @@ pnpm add @voidui/components
 
 ## Prerequisites
 
-VoidUI components are built with TailwindCSS. You need to have TailwindCSS installed and configured in your project.
+voidUI components are built with TailwindCSS. You need to have TailwindCSS installed and configured in your project.
 
 ### 1. Install TailwindCSS
 
@@ -24,7 +24,7 @@ npm install -D tailwindcss
 
 ### 2. Configure TailwindCSS
 
-Add VoidUI components to your `tailwind.config.js`:
+Add voidUI components to your `tailwind.config.js`:
 
 ```js
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Add VoidUI theme extensions if needed
+      // Add voidUI theme extensions if needed
     },
   },
   plugins: [],
@@ -60,7 +60,7 @@ function App() {
   return (
     <Card>
       <Card.Header>
-        <Card.Title>Welcome to VoidUI</Card.Title>
+        <Card.Title>Welcome to voidUI</Card.Title>
       </Card.Header>
       <Card.Content>
         <Input placeholder="Enter your name" />
@@ -120,8 +120,8 @@ function App() {
 
 ## Documentation
 
-For full documentation and examples, visit [VoidUI Documentation](https://voidui.dev)
+For full documentation and examples, visit [voidUI Documentation](https://voidui.dev)
 
 ## License
 
-MIT © VoidUI Team
+MIT © voidUI Team

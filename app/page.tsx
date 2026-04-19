@@ -14,7 +14,7 @@ export default function Home() {
       <section className="container max-w-6xl mx-auto px-4 lg:px-0 text-gray-900 flex justify-center items-center lg:gap-28 xl:gap-32 py-28">
         <div className="text-center lg:text-left w-full lg:w-2/3">
           <Text as="h1" className="text-5xl text-foreground lg:text-6xl mb-6">
-            VoidUI
+            voidUI
             <br />
             <span className="text-outlined">Component Showcase</span>
           </Text>
@@ -38,7 +38,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link
-              href="https://github.com/jiji262/voidui-next"
+              href="https://github.com/jiji262/voidUI"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <div className="hidden lg:block lg:w-1/3">
           <Image
-            alt="VoidUI showcase"
+            alt="voidUI showcase"
             src="/images/tv_radio.png"
             width={500}
             height={500}
@@ -63,7 +63,7 @@ export default function Home() {
       {/* Features Section */}
       <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
         <Text as="h2" className="text-3xl text-center mb-16">
-          Why Choose <span className="text-outlined">VoidUI</span>?
+          Why Choose <span className="text-outlined">voidUI</span>?
         </Text>
         
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -103,7 +103,7 @@ export default function Home() {
       <section className="container max-w-6xl mx-auto px-4 lg:px-0 py-16 bg-muted/30">
         <div className="text-center max-w-3xl mx-auto">
           <Text as="h2" className="text-3xl mb-8">
-            Get Started with <span className="text-outlined">VoidUI</span>
+            Get Started with <span className="text-outlined">voidUI</span>
           </Text>
           
           <div className="grid gap-6 md:grid-cols-2 text-left">
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto px-4 lg:px-0">
           <div className="grid gap-8 md:grid-cols-3 text-center md:text-left">
             <div>
-              <Text as="h4" className="text-lg mb-4">VoidUI</Text>
+              <Text as="h4" className="text-lg mb-4">voidUI</Text>
               <p className="text-muted-foreground text-sm">
                 Void-styled React components for modern web applications.
               </p>
@@ -154,7 +154,7 @@ export default function Home() {
               <div className="space-y-2 text-sm">
                 <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
                 <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
-                <div><Link href="https://github.com/jiji262/voidui-next" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
+                <div><Link href="https://github.com/jiji262/voidUI" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
               </div>
             </div>
             
@@ -167,7 +167,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://github.com/jiji262/voidui-next"
+                  href="https://github.com/jiji262/voidUI"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

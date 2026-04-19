@@ -49,12 +49,12 @@ export default function TopNav() {
               >
                 <Image
                   src="/images/logo.png"
-                  alt="retro ui logo"
+                  alt="voidUI logo"
                   className="mr-2"
                   height={30}
                   width={30}
                 />
-                <div className="text-foreground">VoidUI</div>
+                <div className="text-foreground">voidUI</div>
               </a>
             </div>
 
@@ -73,7 +73,7 @@ export default function TopNav() {
 
             <div className="flex items-center space-x-4 lg:hidden">
               <Link
-                href="https://github.com/jiji262/voidui-next"
+                href="https://github.com/jiji262/voidUI"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -84,7 +84,7 @@ export default function TopNav() {
 
             <div className="hidden lg:flex items-center space-x-3">
               <Link
-                href="https://github.com/jiji262/voidui-next"
+                href="https://github.com/jiji262/voidUI"
                 target="_blank"
                 rel="noopener noreferrer"
               >

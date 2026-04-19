@@ -171,7 +171,7 @@ export default function BlocksPage() {
  <section className="container max-w-6xl mx-auto px-6 py-16">
  <div className="text-center max-w-4xl mx-auto">
  <h1 className="text-4xl lg:text-5xl font-bold mb-4">
- RetroUI Blocks
+ voidUI Blocks
  </h1>
  <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
  A collection of building blocks to help you ship faster!
@@ -271,7 +271,7 @@ export default function BlocksPage() {
  <p className="text-lg text-gray-600 mb-8">
  Get access to all blocks and components with a lifetime purchase.
  </p>
- <Link href="https://pro.retroui.dev">
+ <Link href="https://pro.voidui.dev">
  <Button className="text-lg px-8 py-4 bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-1 hover:translate-y-1">
  Get lifetime access
  <ArrowRightIcon className="ml-2 h-4 w-4" />

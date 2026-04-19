@@ -1,4 +1,4 @@
-// Theme configuration system for VoidUI
+// Theme configuration system for voidUI
 // This file provides a simple way to configure themes in external projects
 
 export type VoidUITheme = {
@@ -22,7 +22,7 @@ export type VoidUITheme = {
   backgroundImageDark: string;
 };
 
-// Default VoidUI theme (yellow)
+// Default voidUI theme (yellow)
 export const defaultTheme: VoidUITheme = {
   primary: '#ffdb33',
   primaryHover: '#ffcc00',

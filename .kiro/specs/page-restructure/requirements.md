@@ -2,24 +2,24 @@
 
 ## Introduction
 
-This feature involves restructuring the three main pages of the VoidUI showcase application to better organize content and improve user experience. The goal is to create clear separation between introduction, component documentation, and interactive demonstrations.
+This feature involves restructuring the three main pages of the voidUI showcase application to better organize content and improve user experience. The goal is to create clear separation between introduction, component documentation, and interactive demonstrations.
 
 ## Requirements
 
 ### Requirement 1
 
-**User Story:** As a visitor to the VoidUI website, I want the homepage to focus on introduction and overview, so that I can quickly understand what VoidUI is without being overwhelmed by component examples.
+**User Story:** As a visitor to the voidUI website, I want the homepage to focus on introduction and overview, so that I can quickly understand what voidUI is without being overwhelmed by component examples.
 
 #### Acceptance Criteria
 
-1. WHEN I visit the homepage (/) THEN the system SHALL display only introductory content about VoidUI
+1. WHEN I visit the homepage (/) THEN the system SHALL display only introductory content about voidUI
 2. WHEN I view the homepage THEN the system SHALL NOT display any component examples or demonstrations
 3. WHEN I view the homepage THEN the system SHALL include project description, features, and getting started information
 4. WHEN I view the homepage THEN the system SHALL provide clear navigation to components and demo pages
 
 ### Requirement 2
 
-**User Story:** As a developer evaluating VoidUI, I want a dedicated components page that shows all available components organized by category, so that I can easily browse and understand the complete component library.
+**User Story:** As a developer evaluating voidUI, I want a dedicated components page that shows all available components organized by category, so that I can easily browse and understand the complete component library.
 
 #### Acceptance Criteria
 

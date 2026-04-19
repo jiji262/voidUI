@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design outlines the restructuring of three main pages in the VoidUI showcase application to create a better user experience with clear separation of concerns:
+This design outlines the restructuring of three main pages in the voidUI showcase application to create a better user experience with clear separation of concerns:
 
 1. **Homepage (/)** - Pure introduction and marketing content
 2. **Components Page (/components)** - Complete component library documentation
@@ -52,7 +52,7 @@ Components will be organized into logical categories:
 
 **Key Elements:**
 - Project title and tagline
-- Brief description of VoidUI
+- Brief description of voidUI
 - Feature highlights (retro-styled, TailwindCSS, React)
 - Call-to-action buttons to Components and Demo pages
 - GitHub link

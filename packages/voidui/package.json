@@ -23,11 +23,11 @@
     "tailwindcss",
     "typescript"
   ],
-  "author": "VoidUI Team",
+  "author": "voidUI Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jiji262/voidui-next"
+    "url": "https://github.com/jiji262/voidUI"
   },
   "peerDependencies": {
     "react": "^18.0.0",

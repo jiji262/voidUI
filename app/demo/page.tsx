@@ -464,7 +464,7 @@ export default function DemoPage() {
             Interactive <span className="text-outlined">Demo</span>
           </Text>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore all RetroUI component variations in this interactive playground. 
+            Explore all voidUI component variations in this interactive playground. 
             Test different styles, states, and configurations to see how they behave.
           </p>
         </div>
@@ -506,7 +506,7 @@ export default function DemoPage() {
         <div className="container max-w-6xl mx-auto px-4 lg:px-0">
           <div className="grid gap-8 md:grid-cols-3 text-center md:text-left">
             <div>
-              <Text as="h4" className="text-lg mb-4">RetroUI</Text>
+              <Text as="h4" className="text-lg mb-4">voidUI</Text>
               <p className="text-muted-foreground text-sm">
                 Retro-styled React components for modern web applications.
               </p>
@@ -517,7 +517,7 @@ export default function DemoPage() {
               <div className="space-y-2 text-sm">
                 <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
                 <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
-                <div><Link href="https://github.com/jiji262/retroui-next" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
+                <div><Link href="https://github.com/jiji262/voidUI" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
               </div>
             </div>
             
@@ -530,7 +530,7 @@ export default function DemoPage() {
                   </Button>
                 </Link>
                 <Link
-                  href="https://github.com/jiji262/retroui-next"
+                  href="https://github.com/jiji262/voidUI"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
