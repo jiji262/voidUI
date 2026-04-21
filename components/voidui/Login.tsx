@@ -1,40 +1,30 @@
-import React from "react";
-import { Text } from "./Text";
+import * as React from "react";
+import { Card } from "./Card";
 import { Input } from "./Input";
+import { Label } from "./Label";
 import { Button } from "./Button";
-import Link from "next/link";
+import { Text } from "./Text";
 
-export function Login() {
-  return (
-    <div className="max-w-80 p-4  border-2 border-black shadow-md space-y-3">
-      <div className="text-center">
-        <Text as="h2">Login</Text>
+// v2 — mono labels, tighter vertical rhythm
+export const Login = () => (
+  <Card className="w-[360px]">
+    <Card.Header>
+      <Card.Title>Sign in to voidUI</Card.Title>
+      <Card.Description>Welcome back. Enter your details to continue.</Card.Description>
+    </Card.Header>
+    <Card.Content className="flex flex-col gap-4">
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="you@void.ui" />
       </div>
-      <form className="flex flex-col gap-5 ">
-        <div className="flex flex-col items-center justify-center">
-          <label htmlFor="email" className="w-11/12">
-            Email
-          </label>
-          <Input id="email" type="email" placeholder="email" />
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <label htmlFor="password" className="w-11/12">
-            Password
-          </label>
-          <Input id="password" type="password" placeholder="password" />
-        </div>
-        <div className="flex flex-col items-center justify-center py-4 gap-1">
-          <Button className="rounded-full active:shadow-none active:scale-95">
-            Submit
-          </Button>
-          <div className="px-4 py-2 space-x-1">
-            <span>Don&apos;t have an account?</span>
-            <Link href="/" className="text-primary-700 hover:underline">
-              sign-in
-            </Link>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
-}
+      <div>
+        <Label htmlFor="pw">Password</Label>
+        <Input id="pw" type="password" placeholder="••••••••" />
+      </div>
+      <Button className="w-full justify-center">Sign in</Button>
+      <Text as="small" className="text-center">
+        No account? <a className="underline underline-offset-2 font-medium text-foreground" href="#">Create one</a>
+      </Text>
+    </Card.Content>
+  </Card>
+);

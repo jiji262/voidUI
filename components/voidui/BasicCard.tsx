@@ -1,12 +1,17 @@
-import React from "react";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Card } from "./Card";
+import { Text } from "./Text";
 
-export function BasicCard() {
-  return (
-    <div className="inline-block border-2 p-4 shadow-md cursor-pointer transition-all hover:shadow-xs">
-      <h4 className="font-head text-2xl font-medium mb-1">
-        This is card Title
-      </h4>
-      <p>This is card description.</p>
-    </div>
-  );
-}
+// v2 — mono title, cleaner layout, refined shadow
+export const BasicCard = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <Card className={cn("w-[320px]", className)} {...props}>
+    <Card.Header>
+      <Card.Title>Release 2.0</Card.Title>
+      <Card.Description>Refined neobrutalism. Warmer, tighter, quieter.</Card.Description>
+    </Card.Header>
+    <Card.Content>
+      <Text as="small">Switch between 5 color themes with a single attribute.</Text>
+    </Card.Content>
+  </Card>
+);

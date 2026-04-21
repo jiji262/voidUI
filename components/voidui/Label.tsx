@@ -1,16 +1,20 @@
-import * as React from "react";
-import * as LabelPrimitive from "@radix-ui/react-label";
-import { cva } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
+import React, { LabelHTMLAttributes } from "react";
 
-const labelVariants = cva(
-  "leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-);
+export interface ILabelProps extends LabelHTMLAttributes<HTMLLabelElement> {}
 
-export const Label = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) => (
-  <LabelPrimitive.Root className={cn(labelVariants(), className)} {...props} />
+// v2 — mono uppercase treatment for clearer form hierarchy
+export const Label = React.forwardRef<HTMLLabelElement, ILabelProps>(
+  ({ className, ...props }, ref) => (
+    <label
+      ref={ref}
+      className={cn(
+        "font-mono text-xs font-semibold uppercase tracking-[0.08em] text-foreground",
+        "inline-block mb-1.5",
+        className,
+      )}
+      {...props}
+    />
+  ),
 );
+Label.displayName = "Label";

@@ -1,58 +1,67 @@
-import { HtmlHTMLAttributes } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-
+"use client";
+import { cva, VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Text } from "@/components/voidui/Text";
 
-const alertVariants = cva("relative w-full border-2 p-4", {
-  variants: {
-    variant: {
-      default: "bg-background text-foreground border-border",
-      solid: "bg-secondary text-secondary-foreground border-secondary",
-      destructive: "bg-destructive/10 text-destructive border-destructive",
+// v2 — restrained palette, soft semantic backgrounds, still bordered+shadowed
+const alertVariants = cva(
+  "flex gap-3 p-4 border-[1.5px] border-border rounded-[4px] shadow-sm",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-foreground",
+        info: "bg-[#EEF3FB] text-foreground dark:bg-[#1a2332]",
+        success: "bg-[#EEF5EC] text-foreground dark:bg-[#1a2a1e]",
+        warning: "bg-[#FDF2E0] text-foreground dark:bg-[#2a2015]",
+        destructive: "bg-[#FBE9E6] text-foreground dark:bg-[#2a1815]",
+      },
     },
-    status: {
-      error: "bg-red-300 text-red-800 border-red-800",
-      success: "bg-green-300 text-green-800 border-green-800",
-      warning: "bg-yellow-300 text-yellow-800 border-yellow-800",
-      info: "bg-blue-300 text-blue-800 border-blue-800",
-    },
+    defaultVariants: { variant: "default" },
   },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+);
 
-interface IAlertProps
-  extends HtmlHTMLAttributes<HTMLDivElement>,
+export interface IAlertProps
+  extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof alertVariants> {}
 
-const Alert = ({ className, variant, status, ...props }: IAlertProps) => (
-  <div
-    role="alert"
-    className={cn(alertVariants({ variant, status }), className)}
+const AlertBase = React.forwardRef<HTMLDivElement, IAlertProps>(
+  ({ className, variant, ...props }, ref) => (
+    <div
+      ref={ref}
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  ),
+);
+AlertBase.displayName = "Alert";
+
+export const AlertTitle = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h5
+    ref={ref}
+    className={cn("font-mono text-sm font-semibold mb-0.5 tracking-tight", className)}
     {...props}
   />
-);
-Alert.displayName = "Alert";
-
-interface IAlertTitleProps extends HtmlHTMLAttributes<HTMLHeadingElement> {}
-const AlertTitle = ({ className, ...props }: IAlertTitleProps) => (
-  <Text as="h5" className={cn(className)} {...props} />
-);
+));
 AlertTitle.displayName = "AlertTitle";
 
-interface IAlertDescriptionProps
-  extends HtmlHTMLAttributes<HTMLParagraphElement> {}
-const AlertDescription = ({ className, ...props }: IAlertDescriptionProps) => (
-  <div className={cn("text-muted-foreground", className)} {...props} />
-);
-
+export const AlertDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-muted-foreground leading-relaxed", className)}
+    {...props}
+  />
+));
 AlertDescription.displayName = "AlertDescription";
 
-const AlertComponent = Object.assign(Alert, {
+// v1 dot-API kept alongside named exports: <Alert.Title> / <Alert.Description>.
+export const Alert = Object.assign(AlertBase, {
   Title: AlertTitle,
   Description: AlertDescription,
 });
-
-export { AlertComponent as Alert };

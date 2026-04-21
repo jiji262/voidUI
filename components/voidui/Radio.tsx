@@ -1,82 +1,41 @@
+"use client";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import * as React from "react";
 import { cn } from "@/lib/utils";
-import * as RadioPrimitive from "@radix-ui/react-radio-group";
-import { cva, VariantProps } from "class-variance-authority";
 
-const radioVariants = cva("border-border border-2", {
-  variants: {
-    variant: {
-      default: "",
-      outline: "",
-      solid: "",
-    },
-    size: {
-      sm: "h-4 w-4",
-      md: "h-5 w-5",
-      lg: "h-6 w-6",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "md",
-  },
-});
-
-const radioIndicatorVariants = cva("flex ", {
-  variants: {
-    variant: {
-      default: "bg-primary border-2 border-border",
-      outline: "border-2 border-border",
-      solid: "bg-border",
-    },
-    size: {
-      sm: "h-2 w-2",
-      md: "h-2.5 w-2.5",
-      lg: "h-3.5 w-3.5",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "md",
-  },
-});
-
-interface RadioGroupProps
-  extends React.ComponentProps<typeof RadioPrimitive.Root> {}
-
-export const RadioGroupRoot = ({ className, ...props }: RadioGroupProps) => (
-  <RadioPrimitive.Root className={cn("grid gap-2", className)} {...props} />
-);
-
-interface RadioProps
-  extends React.ComponentProps<typeof RadioPrimitive.Item>,
-    VariantProps<typeof radioVariants> {}
-
-export const RadioItem = ({
-  children,
-  className,
-  size,
-  variant,
-  ...props
-}: RadioProps) => (
-  <RadioPrimitive.Item
+export const RadioGroup = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <RadioGroupPrimitive.Root
+    ref={ref}
+    className={cn("grid gap-2", className)}
     {...props}
+  />
+));
+RadioGroup.displayName = "RadioGroup";
+
+export const RadioGroupItem = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <RadioGroupPrimitive.Item
+    ref={ref}
     className={cn(
-      radioVariants({
-        size,
-        variant,
-      }),
+      "aspect-square h-[18px] w-[18px] inline-flex items-center justify-center",
+      "border-[1.5px] border-border rounded-full bg-card shadow-xs",
+      "focus:outline-none focus:shadow-sm transition-all duration-150",
+      "disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
+    {...props}
   >
-    <RadioPrimitive.Indicator className="flex justify-center items-center">
-      <span className={radioIndicatorVariants({ size, variant })}></span>
-    </RadioPrimitive.Indicator>
-    {children}
-  </RadioPrimitive.Item>
-);
+    <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
+      <div className="h-2 w-2 rounded-full bg-foreground" />
+    </RadioGroupPrimitive.Indicator>
+  </RadioGroupPrimitive.Item>
+));
+RadioGroupItem.displayName = "RadioGroupItem";
 
-const RadioComponent = Object.assign(RadioGroupRoot, {
-  Item: RadioItem,
-});
-
-export { RadioComponent as RadioGroup };
+// v1 dot-API compatibility
+Object.assign(RadioGroup, { Item: RadioGroupItem });

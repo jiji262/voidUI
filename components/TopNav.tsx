@@ -1,106 +1,171 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { GithubIcon, MoonIcon, SunIcon } from "lucide-react";
-import HamburgerMenu from "./HamburgerMenu";
-import { Button, Text } from "@/components/voidui";
-import { navConfig } from "@/config/navigation";
+import { usePathname } from "next/navigation";
+import { useTheme } from "@/lib/theme-context";
+import { Icon } from "@/components/ui/icon";
+import { LogoMark } from "@/components/Logo";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
+/**
+ * TopNav — sticky, backdrop-blurred, 1.5px bottom border.
+ * Left: logo + wordmark + v2.0 badge
+ * Center: page links with primary underline on the active route
+ * Right: ThemeSwitcher popover · moon/sun mode toggle · "Get started" button
+ *
+ * 1:1 port of the Claude Design handoff (project/components/Chrome.jsx).
+ */
 export default function TopNav() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const pathname = usePathname() ?? "/";
+  const { mode, toggleMode } = useTheme();
 
-  // Apply the saved theme preference on page load
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setIsDarkMode(false);
-    }
-  }, []);
+  const links = [
+    { id: "/", label: "Home" },
+    { id: "/themes", label: "Themes · 主题" },
+    { id: "/components", label: "Components" },
+    { id: "/blocks", label: "Blocks" },
+    { id: "/demo", label: "Demo" },
+    { id: "/pricing", label: "Pricing" },
+  ];
 
-  const toggleDarkMode = () => {
-    const htmlElement = document.documentElement;
-    if (htmlElement.classList.contains("dark")) {
-      htmlElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
-      htmlElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
-    }
-  };
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 right-0 w-full border-b-2 bg-background">
-        <div className="container max-w-6xl px-4 lg:px-0 mx-auto">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo Section */}
-            <div className="shrink-0">
-              <a
-                href="/"
-                className="text-black font-head text-2xl flex items-end"
-              >
-                <Image
-                  src="/images/logo.png"
-                  alt="voidUI logo"
-                  className="mr-2"
-                  height={30}
-                  width={30}
-                />
-                <div className="text-foreground">voidUI</div>
-              </a>
-            </div>
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        background: "color-mix(in srgb, var(--bg) 85%, transparent)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: "1.5px solid var(--border)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "14px 24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 24,
+        }}
+      >
+        {/* Logo lockup */}
+        <Link
+          href="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            textDecoration: "none",
+            color: "var(--fg)",
+          }}
+        >
+          <LogoMark size={28} />
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 17,
+              fontWeight: 600,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            voidUI
+          </span>
+          {/* Matches design: <Badge variant="ghost">v2.0</Badge> */}
+          <span className="badge ghost" style={{ marginLeft: 4 }}>v2.0</span>
+        </Link>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex space-x-6">
-              {navConfig.topNavItems.map((item) => (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className="hover:underline decoration-primary underline-offset-2 transition-all"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex items-center space-x-4 lg:hidden">
+        {/* Center nav — hidden on small screens */}
+        <nav
+          style={{
+            display: "flex",
+            gap: 4,
+            alignItems: "center",
+          }}
+          className="vui-topnav-center"
+        >
+          {links.map((l) => {
+            const active = isActive(l.id);
+            return (
               <Link
-                href="https://github.com/jiji262/voidUI"
-                target="_blank"
-                rel="noopener noreferrer"
+                key={l.id}
+                href={l.id}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  padding: "8px 12px",
+                  color: active ? "var(--fg)" : "var(--fg-muted)",
+                  fontWeight: active ? 600 : 400,
+                  textDecoration: "none",
+                  borderRadius: 2,
+                  position: "relative",
+                }}
               >
-                <GithubIcon />
+                {l.label}
+                {active && (
+                  <span
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      bottom: -16,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 20,
+                      height: 2,
+                      background: "var(--primary)",
+                    }}
+                  />
+                )}
               </Link>
-              <HamburgerMenu />
-            </div>
+            );
+          })}
+        </nav>
 
-            <div className="hidden lg:flex items-center space-x-3">
-              <Link
-                href="https://github.com/jiji262/voidUI"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="secondary" size="sm">
-                  <GithubIcon size="14" className="mr-2" />
-                  Star on GitHub
-                </Button>
-              </Link>
-              <ThemeSwitcher />
-              <Button variant="secondary" size="icon" onClick={toggleDarkMode}>
-                {isDarkMode ? <SunIcon size="14" /> : <MoonIcon size="14" />}
-              </Button>
-            </div>
-          </div>
+        {/* Right cluster */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <ThemeSwitcher />
+
+          <button
+            type="button"
+            onClick={toggleMode}
+            title={mode === "dark" ? "Switch to light" : "Switch to dark"}
+            aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            style={{
+              width: 34,
+              height: 34,
+              border: "1.5px solid var(--border)",
+              background: "var(--bg-elev)",
+              color: "var(--fg)",
+              borderRadius: "var(--r)",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "var(--sh-xs)",
+              flexShrink: 0,
+            }}
+          >
+            <Icon name={mode === "dark" ? "sun" : "moon"} size={15} />
+          </button>
+
+          {/* Matches design's <Btn size="sm">: .btn.sm = padding 6px 12px / 12px mono */}
+          <Link href="/themes" style={{ textDecoration: "none" }}>
+            <button type="button" className="btn sm">
+              Get started
+              <Icon name="arrow-right" size={13} />
+            </button>
+          </Link>
         </div>
-      </nav>
-    </>
+      </div>
+
+    </header>
   );
 }

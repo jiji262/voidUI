@@ -1,6 +1,14 @@
 import TopNav from "@/components/TopNav";
+import { Footer } from "@/components/Footer";
 import "./global.css";
-import { Archivo_Black, Space_Grotesk, Space_Mono } from "next/font/google";
+import {
+  Inter,
+  JetBrains_Mono,
+  Fraunces,
+  IBM_Plex_Mono,
+  Noto_Sans_SC,
+  Noto_Serif_SC,
+} from "next/font/google";
 import { Metadata } from "next";
 import { Toaster, TooltipProvider } from "@/components/voidui";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,24 +16,42 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/lib/theme-context";
 import { ToastProvider } from "@/components/ui/toast";
 
-const sans = Space_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const head = Archivo_Black({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-head",
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
-const mono = Space_Mono({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-mono",
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const plex = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex",
+  display: "swap",
+});
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-noto-sans-sc",
+  display: "swap",
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-serif-sc",
   display: "swap",
 });
 
@@ -39,48 +65,37 @@ export const metadata: Metadata = {
   },
 };
 
+// Inline script runs before React hydrates to prevent FOUC on theme + mode.
+// Reads localStorage (voidui-theme / voidui-mode) and mirrors them to
+// data-theme / data-mode on <html>, which is what global.css keys on.
+const themeInitScript = `(function(){try{var t=localStorage.getItem('voidui-theme');var m=localStorage.getItem('voidui-mode');var ts=['neobrutal','swiss','editorial','stripe','hanko','terra','cyber','milktea'];var d=document.documentElement;d.setAttribute('data-theme',ts.indexOf(t)>-1?t:'neobrutal');d.setAttribute('data-mode',m==='dark'?'dark':'light');}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrains.variable} ${fraunces.variable} ${plex.variable} ${notoSansSC.variable} ${notoSerifSC.variable}`}
+    >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme');
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {
-                  console.error('Error applying theme:', e);
-                }
-              })();
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           defer
           src="https://cloud.umami.is/script.js"
           data-website-id="97dd6182-c656-4265-97e0-ee9613b88078"
         />
       </head>
-      <body
-        className={`${head.variable} ${sans.variable} ${mono.variable} bg-background text-foreground`}
-      >
+      <body className="bg-background text-foreground">
         <ThemeProvider>
           <ToastProvider>
             <TooltipProvider>
-              <div className="relative z-40 pb-16">
-                <TopNav />
-              </div>
+              <TopNav />
               {children}
+              <Footer />
               <Toaster />
             </TooltipProvider>
           </ToastProvider>

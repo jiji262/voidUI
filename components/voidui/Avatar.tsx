@@ -1,16 +1,17 @@
-import * as React from "react";
+"use client";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Avatar = React.forwardRef<
+export const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "relative flex h-14 w-14 border-2 rounded-full overflow-hidden",
+      "relative inline-flex h-9 w-9 shrink-0 overflow-hidden rounded-full",
+      "border-[1.5px] border-border bg-primary",
       className,
     )}
     {...props}
@@ -18,36 +19,33 @@ const Avatar = React.forwardRef<
 ));
 Avatar.displayName = "Avatar";
 
-const AvatarImage = React.forwardRef<
+export const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
+    className={cn("aspect-square h-full w-full object-cover", className)}
     {...props}
   />
 ));
-AvatarImage.displayName = "Avatar.Image";
+AvatarImage.displayName = "AvatarImage";
 
-const AvatarFallback = React.forwardRef<
+export const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-muted bg-primary",
+      "flex h-full w-full items-center justify-center",
+      "font-mono text-xs font-semibold text-foreground",
       className,
     )}
     {...props}
   />
 ));
-AvatarFallback.displayName = "Avatar.Fallback";
+AvatarFallback.displayName = "AvatarFallback";
 
-const AvatarComponent = Object.assign(Avatar, {
-  Image: AvatarImage,
-  Fallback: AvatarFallback,
-});
-
-export { AvatarComponent as Avatar };
+// v1 dot-API compatibility
+Object.assign(Avatar, { Image: AvatarImage, Fallback: AvatarFallback });

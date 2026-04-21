@@ -1,285 +1,443 @@
 "use client";
 
-import React from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button } from"@/components/voidui";
-import { ArrowRightIcon } from"lucide-react";
+import React from "react";
+import Link from "next/link";
+import { Icon } from "@/components/ui/icon";
 
-const blockCategories = {
- application: [
- {
- title:"Artificial Intelligence",
- href:"/blocks/ai",
- icon:"🤖",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Stats",
- href:"/blocks/stats",
- icon:"👑",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Profile",
- href:"/blocks/profile",
- icon:"👤",
- variants:"1 variants",
- variantColor:"bg-green-300",
- },
- {
- title:"Forms",
- href:"/blocks/forms",
- icon:"📝",
- variants:"3 variants",
- variantColor:"bg-blue-300",
- customContent: (
- <div className="space-y-2">
- <div className="w-20 h-2 bg-gray-300"></div>
- <div className="w-16 h-2 bg-gray-300"></div>
- <div className="w-12 h-3 bg-yellow-400"></div>
- </div>
- ),
- },
- {
- title:"Cards",
- href:"/blocks/cards",
- icon:"🃏",
- variants:"5 variants",
- variantColor:"bg-yellow-300",
- customContent: (
- <div className="w-16 h-20 bg-white border-2 border-black shadow-sm flex flex-col">
- <div className="flex-1 bg-gray-100 border-b border-black flex items-center justify-center">
- <div className="w-2 h-2 bg-black"></div>
- </div>
- <div className="p-1 space-y-1">
- <div className="w-8 h-1 bg-black"></div>
- <div className="w-6 h-3 bg-yellow-400"></div>
- </div>
- </div>
- ),
- },
- {
- title:"Authentication",
- href:"/blocks/authentication",
- icon:"🔐",
- variants:"2 variants",
- variantColor:"bg-purple-300",
- },
- {
- title:"Sidebar",
- href:"/blocks/sidebar",
- icon:"📋",
- variants:"1 variants",
- variantColor:"bg-blue-300",
- },
- {
- title:"Onboarding",
- href:"/blocks/onboarding",
- icon:"🚀",
- variants:"1 variants",
- variantColor:"bg-green-300",
- },
- ],
- marketing: [
- {
- title:"Call to Action",
- href:"/blocks/call-to-action",
- icon:"📢",
- variants:"3 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Hero Sections",
- href:"/blocks/hero-sections",
- icon:"🚀",
- variants:"2 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Pricing Tables",
- href:"/blocks/pricing-tables",
- icon:"💰",
- variants:"2 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Testimonials",
- href:"/blocks/testimonials",
- icon:"💬",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Blogs",
- href:"/blocks/blogs",
- icon:"📰",
- variants:"2 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Feature Blocks",
- href:"/blocks/feature-blocks",
- icon:"⭐",
- variants:"2 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Navbar",
- href:"/blocks/navbar",
- icon:"🧭",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"FAQ",
- href:"/blocks/faq",
- icon:"❓",
- variants:"2 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Bento Grids",
- href:"/blocks/bento-grids",
- icon:"🍱",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Career Sections",
- href:"/blocks/career-sections",
- icon:"💼",
- variants:"3 variants",
- variantColor:"bg-yellow-300",
- },
- {
- title:"Affiliate",
- href:"/blocks/affiliate",
- icon:"💸",
- variants:"1 variants",
- variantColor:"bg-yellow-300",
- },
- ],
-};
+/**
+ * /blocks — 1:1 port of the Claude Design handoff (project/pages/Blocks.jsx).
+ * Hero + 5 curated BlockFrames (hero / pricing / stats / testimonials / CTA),
+ * each with a chrome strip that shows block name + tag + Copy / Open actions.
+ *
+ * Individual block pages still live at /blocks/<kind>/ for detailed drills;
+ * this landing page is the canonical design-aligned showcase.
+ */
+
+function BlockFrame({
+  name,
+  tag,
+  href,
+  children,
+}: {
+  name: string;
+  tag?: string;
+  href?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="card" style={{ overflow: "hidden", padding: 0 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "12px 16px",
+          borderBottom: "1.5px solid var(--border)",
+          background: "var(--bg)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 13,
+              fontWeight: 600,
+            }}
+          >
+            {name}
+          </span>
+          {tag && <span className="badge ghost">{tag}</span>}
+        </div>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button className="btn ghost sm">
+            <Icon name="copy" size={12} /> Copy code
+          </button>
+          {href ? (
+            <Link href={href} style={{ textDecoration: "none" }}>
+              <button className="btn ghost sm">
+                <Icon name="external" size={12} /> Open
+              </button>
+            </Link>
+          ) : (
+            <button className="btn ghost sm">
+              <Icon name="external" size={12} /> Open
+            </button>
+          )}
+        </div>
+      </div>
+      <div>{children}</div>
+    </div>
+  );
+}
 
 export default function BlocksPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Hero Section */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-4xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-4">
- voidUI Blocks
- </h1>
- <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
- A collection of building blocks to help you ship faster!
- </p>
- </div>
- </section>
+  return (
+    <main>
+      {/* Hero */}
+      <section style={{ padding: "64px 24px 32px", borderBottom: "1.5px solid var(--border)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div className="label" style={{ marginBottom: 12 }}>
+            Blocks · 20+ ready-made
+          </div>
+          <h1
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 52,
+              fontWeight: 500,
+              letterSpacing: "-0.03em",
+              margin: "0 0 12px",
+              lineHeight: 1,
+            }}
+          >
+            Blocks
+          </h1>
+          <p
+            style={{
+              fontSize: 16,
+              color: "var(--fg-muted)",
+              maxWidth: 600,
+              margin: 0,
+              lineHeight: 1.65,
+            }}
+          >
+            Full-width compositions — heroes, pricing tables, stats, CTAs. Copy the full block or remix.
+          </p>
+        </div>
+      </section>
 
- {/* Application Section */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="mb-12">
- <h2 className="text-3xl font-bold mb-8">
- <span className="bg-yellow-300 px-4 py-2 transform -rotate-1 inline-block">
- Application
- </span>
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
- {blockCategories.application.map((category) => (
- <Link key={category.href} href={category.href}>
- <div className="group bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200">
- <div className="relative h-40 border-b-2 border-black bg-gray-50 flex items-center justify-center">
- {/* Decorative stars */}
- <div className="absolute top-4 left-4 text-yellow-400">✦</div>
- <div className="absolute top-6 right-6 text-yellow-400">✦</div>
- <div className="absolute bottom-4 left-6 text-yellow-400">✦</div>
- <div className="absolute bottom-6 right-4 text-yellow-400">✦</div>
+      {/* Blocks */}
+      <section style={{ padding: "48px 24px" }}>
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: 32,
+          }}
+        >
+          {/* Hero block */}
+          <BlockFrame name="hero · split" tag="marketing" href="/blocks/hero-sections">
+            <div
+              className="vui-blocks-hero"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 40,
+                alignItems: "center",
+                padding: 40,
+              }}
+            >
+              <div>
+                <span className="badge primary" style={{ marginBottom: 14 }}>New · Series B</span>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 36,
+                    lineHeight: 1,
+                    letterSpacing: "-0.03em",
+                    fontWeight: 500,
+                    margin: "14px 0 12px",
+                  }}
+                >
+                  Infra that doesn&apos;t<br />
+                  melt on Friday.
+                </h3>
+                <p
+                  style={{
+                    color: "var(--fg-muted)",
+                    fontSize: 15,
+                    marginBottom: 20,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Keep your services running even when everything else goes sideways.
+                </p>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button className="btn">
+                    Start trial <Icon name="arrow-right" size={13} />
+                  </button>
+                  <button className="btn outline">Book a demo</button>
+                </div>
+              </div>
+              <div className="card" style={{ padding: 20, background: "var(--primary)" }}>
+                <div className="label" style={{ marginBottom: 10 }}>
+                  Uptime · 90d
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 40,
+                    fontWeight: 600,
+                  }}
+                >
+                  99.998%
+                </div>
+                <div style={{ display: "flex", gap: 3, marginTop: 16 }}>
+                  {Array.from({ length: 30 }).map((_, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        width: 6,
+                        height: 28,
+                        background: "var(--fg)",
+                        opacity: i === 17 ? 0.3 : 1,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </BlockFrame>
 
- {/* Custom content or icon */}
- {category.customContent ? (
- category.customContent
- ) : (
- <div className="text-6xl">{category.icon}</div>
- )}
- </div>
- <div className="p-4">
- <h3 className="font-bold text-lg mb-2 text-black">
- {category.title}
- </h3>
- <span className={`inline-block px-2 py-1 text-xs font-medium text-black ${category.variantColor}`}>
- {category.variants}
- </span>
- </div>
- </div>
- </Link>
- ))}
- </div>
- </div>
- </section>
+          {/* Pricing block */}
+          <BlockFrame name="pricing · three-up" tag="marketing" href="/pricing">
+            <div style={{ padding: 40 }}>
+              <div style={{ textAlign: "center", marginBottom: 32 }}>
+                <div className="label" style={{ marginBottom: 8 }}>
+                  Pricing
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 32,
+                    fontWeight: 500,
+                    letterSpacing: "-0.02em",
+                    margin: 0,
+                  }}
+                >
+                  Simple, honest plans
+                </h3>
+              </div>
+              <div
+                className="vui-blocks-pricing"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: 16,
+                }}
+              >
+                {[
+                  { n: "Starter", p: "$0", d: "For hobby projects", f: ["Up to 3 projects", "Community support", "Core components"] },
+                  { n: "Pro", p: "$12", d: "For small teams", f: ["Unlimited projects", "Email support", "All components", "Figma kit"], featured: true },
+                  { n: "Team", p: "$49", d: "For scaling orgs", f: ["Everything in Pro", "Priority support", "SSO + SCIM", "Custom themes"] },
+                ].map((p) => (
+                  <div
+                    key={p.n}
+                    className="card"
+                    style={{
+                      padding: 24,
+                      background: p.featured ? "var(--fg)" : "var(--card)",
+                      color: p.featured ? "var(--bg)" : "var(--fg)",
+                    }}
+                  >
+                    {p.featured && (
+                      <span className="badge primary" style={{ marginBottom: 10 }}>
+                        Most popular
+                      </span>
+                    )}
+                    <div
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 14,
+                        fontWeight: 600,
+                        marginBottom: 4,
+                        marginTop: p.featured ? 10 : 0,
+                      }}
+                    >
+                      {p.n}
+                    </div>
+                    <div style={{ fontSize: 13, opacity: 0.6, marginBottom: 14 }}>{p.d}</div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 36,
+                        fontWeight: 600,
+                        marginBottom: 2,
+                      }}
+                    >
+                      {p.p}
+                      <span style={{ fontSize: 14, fontWeight: 400, opacity: 0.6 }}>/mo</span>
+                    </div>
+                    <div
+                      style={{
+                        borderTop: "1.5px solid",
+                        borderColor: p.featured ? "rgba(255,255,255,0.2)" : "var(--border-subtle)",
+                        margin: "16px 0",
+                        paddingTop: 16,
+                      }}
+                    >
+                      {p.f.map((item) => (
+                        <div
+                          key={item}
+                          style={{
+                            fontSize: 13,
+                            marginBottom: 8,
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 8,
+                          }}
+                        >
+                          <Icon
+                            name="check"
+                            size={12}
+                            style={{ color: p.featured ? "var(--primary)" : "var(--success)" }}
+                          />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      className={`btn ${p.featured ? "" : "outline"}`}
+                      style={{ width: "100%", justifyContent: "center" }}
+                    >
+                      Choose {p.n}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </BlockFrame>
 
- {/* Marketing Section */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="mb-12">
- <h2 className="text-3xl font-bold mb-8">
- <span className="bg-yellow-300 px-4 py-2 transform rotate-1 inline-block">
- Marketing
- </span>
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
- {blockCategories.marketing.map((category) => (
- <Link key={category.href} href={category.href}>
- <div className="group bg-white border-2 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200">
- <div className="relative h-40 border-b-2 border-black bg-gray-50 flex items-center justify-center">
- {/* Decorative stars */}
- <div className="absolute top-4 left-4 text-yellow-400">✦</div>
- <div className="absolute top-6 right-6 text-yellow-400">✦</div>
- <div className="absolute bottom-4 left-6 text-yellow-400">✦</div>
- <div className="absolute bottom-6 right-4 text-yellow-400">✦</div>
+          {/* Stats block */}
+          <BlockFrame name="stats · grid" tag="marketing" href="/blocks/stats">
+            <div
+              className="vui-blocks-stats"
+              style={{
+                padding: 40,
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: 0,
+              }}
+            >
+              {[
+                { v: "2.4M", l: "Components rendered" },
+                { v: "142ms", l: "p95 first paint" },
+                { v: "14.2kb", l: "Core bundle (gz)" },
+                { v: "100%", l: "Tree-shakeable" },
+              ].map((s, i) => (
+                <div
+                  key={s.l}
+                  style={{
+                    padding: 16,
+                    borderRight: i < 3 ? "1.5px solid var(--border-subtle)" : "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 40,
+                      fontWeight: 500,
+                      letterSpacing: "-0.03em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {s.v}
+                  </div>
+                  <div className="label" style={{ marginTop: 8 }}>
+                    {s.l}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </BlockFrame>
 
- {/* Custom content or icon */}
- {category.customContent ? (
- category.customContent
- ) : (
- <div className="text-6xl">{category.icon}</div>
- )}
- </div>
- <div className="p-4">
- <h3 className="font-bold text-lg mb-2 text-black">
- {category.title}
- </h3>
- <span className={`inline-block px-2 py-1 text-xs font-medium text-black ${category.variantColor}`}>
- {category.variants}
- </span>
- </div>
- </div>
- </Link>
- ))}
- </div>
- </div>
- </section>
+          {/* Testimonials */}
+          <BlockFrame name="testimonials · cards" tag="marketing" href="/blocks/testimonials">
+            <div
+              className="vui-blocks-testimonials"
+              style={{
+                padding: 40,
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 16,
+              }}
+            >
+              {[
+                { n: "Elena K.", r: "Design lead, Plaxo", q: "Finally a library that has a point of view but doesn't scream it.", c: "var(--accent-2)" },
+                { n: "Marcus B.", r: "Eng manager, Ortho", q: "The shadow system is deliberate. Everything else I tried was copy-paste chaos.", c: "var(--accent-1)" },
+                { n: "Zara B.", r: "Founder, Tallgrass", q: "Shipped our landing in 3 hours using blocks. Our brand feels distinct now.", c: "var(--accent-3)" },
+              ].map((t) => (
+                <div key={t.n} className="card" style={{ padding: 20 }}>
+                  <p style={{ margin: "0 0 16px", fontSize: 15, lineHeight: 1.5 }}>
+                    &ldquo;{t.q}&rdquo;
+                  </p>
+                  <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: 36,
+                        height: 36,
+                        border: "1.5px solid var(--border)",
+                        borderRadius: "50%",
+                        background: t.c,
+                        color: "var(--primary-fg)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontFamily: "var(--font-mono)",
+                        fontWeight: 600,
+                        fontSize: 14,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {t.n[0]}
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: 13,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {t.n}
+                      </div>
+                      <div style={{ fontSize: 12, color: "var(--fg-muted)" }}>{t.r}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </BlockFrame>
 
- {/* CTA Section */}
- <section className="bg-gray-50 py-16">
- <div className="container max-w-6xl mx-auto px-6">
- <div className="text-center max-w-4xl mx-auto">
- <h2 className="text-3xl lg:text-4xl font-bold mb-6">
- READY TO GET STARTED?
- </h2>
- <p className="text-lg text-gray-600 mb-8">
- Get access to all blocks and components with a lifetime purchase.
- </p>
- <Link href="https://pro.voidui.dev">
- <Button className="text-lg px-8 py-4 bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-1 hover:translate-y-1">
- Get lifetime access
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </Link>
- </div>
- </div>
- </section>
- </main>
- );
+          {/* CTA */}
+          <BlockFrame name="cta · banner" tag="marketing" href="/blocks/call-to-action">
+            <div
+              className="vui-blocks-cta"
+              style={{
+                padding: 48,
+                background: "var(--primary)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 32,
+                flexWrap: "wrap",
+              }}
+            >
+              <div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 32,
+                    fontWeight: 500,
+                    letterSpacing: "-0.02em",
+                    margin: "0 0 8px",
+                  }}
+                >
+                  Ready to ship?
+                </h3>
+                <p style={{ margin: 0, fontSize: 15 }}>
+                  Grab the starter template and deploy in minutes.
+                </p>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexShrink: 0, flexWrap: "wrap" }}>
+                <button className="btn secondary">Start free</button>
+                <button className="btn outline">Read docs</button>
+              </div>
+            </div>
+          </BlockFrame>
+        </div>
+      </section>
+    </main>
+  );
 }

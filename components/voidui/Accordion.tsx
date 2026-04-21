@@ -1,29 +1,24 @@
 "use client";
-
-import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
-
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Accordion = AccordionPrimitive.Root;
+export const Accordion = AccordionPrimitive.Root;
 
-const AccordionItem = React.forwardRef<
+export const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn(
-      "border-2 bg-background text-foreground shadow-md hover:shadow-sm data-[state=open]:shadow-sm transition-all overflow-hidden",
-      className,
-    )}
+    className={cn("border-[1.5px] border-border rounded-[4px] bg-card mb-2 shadow-xs", className)}
     {...props}
   />
 ));
-AccordionItem.displayName = AccordionPrimitive.Item.displayName;
+AccordionItem.displayName = "AccordionItem";
 
-const AccordionHeader = React.forwardRef<
+export const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
@@ -31,7 +26,7 @@ const AccordionHeader = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-start justify-between px-4 py-2 font-head cursor-pointer focus:outline-hidden [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-3 px-4 font-mono text-sm font-medium transition-all [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}
@@ -41,27 +36,21 @@ const AccordionHeader = React.forwardRef<
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
-AccordionHeader.displayName = AccordionPrimitive.Header.displayName;
+AccordionTrigger.displayName = "AccordionTrigger";
 
-const AccordionContent = React.forwardRef<
+export const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden px-4 py-2 font-body bg-white text-gray-700 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="overflow-hidden text-sm text-muted-foreground data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down border-t-[1.5px] border-border-subtle"
     {...props}
   >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+    <div className={cn("py-3 px-4", className)}>{children}</div>
   </AccordionPrimitive.Content>
 ));
+AccordionContent.displayName = "AccordionContent";
 
-AccordionContent.displayName = AccordionPrimitive.Content.displayName;
-
-const AccordionComponent = Object.assign(Accordion, {
-  Item: AccordionItem,
-  Header: AccordionHeader,
-  Content: AccordionContent,
-});
-
-export { AccordionComponent as Accordion };
+// v1 dot-API compatibility
+Object.assign(Accordion, { Item: AccordionItem, Header: AccordionTrigger, Trigger: AccordionTrigger, Content: AccordionContent });

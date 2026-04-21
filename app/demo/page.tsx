@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { GithubIcon } from "lucide-react";
-import { Text, Card, Button, Tabs, TabsContent, TabsPanels, TabsTrigger, TabsTriggerList } from "@/components/voidui";
+import React from "react";
+import { Card, Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/voidui";
 import {
   groupPreviewsByCategory,
   createPreviewComponentInfo,
@@ -453,101 +451,92 @@ const PreviewDemo: React.FC<{ preview: PreviewComponentInfo }> = ({ preview }) =
 };
 
 export default function DemoPage() {
-  const [activeTab, setActiveTab] = useState(demoSections[0]?.title || "");
-
   return (
-    <main className="min-h-screen bg-background">
-      <div className="container max-w-6xl mx-auto px-4 lg:px-0 py-16">
-        <BreadcrumbNav />
-        <div className="text-center mb-16">
-          <Text as="h1" className="text-4xl lg:text-5xl mb-4">
-            Interactive <span className="text-outlined">Demo</span>
-          </Text>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore all voidUI component variations in this interactive playground. 
-            Test different styles, states, and configurations to see how they behave.
+    <main>
+      <section style={{ padding: "64px 24px 32px", borderBottom: "1.5px solid var(--border)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <BreadcrumbNav />
+          <div className="label" style={{ marginBottom: 12 }}>
+            Playground · 交互演示
+          </div>
+          <h1
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 52,
+              fontWeight: 500,
+              letterSpacing: "-0.03em",
+              margin: "0 0 12px",
+              lineHeight: 1,
+            }}
+          >
+            Interactive Demo
+          </h1>
+          <p style={{ fontSize: 16, color: "var(--fg-muted)", maxWidth: 600, lineHeight: 1.65, margin: 0 }}>
+            Explore all voidUI component variations in this interactive playground.
+            按类别浏览，每个控件都能与当前主题实时联动。
           </p>
         </div>
+      </section>
 
-        <Tabs>
-          <TabsTriggerList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1">
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
+
+        <Tabs defaultValue={demoSections[0]?.title}>
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1">
             {demoSections.map((section) => (
-              <TabsTrigger key={section.title} className="text-xs sm:text-sm px-2 py-2">
+              <TabsTrigger
+                key={section.title}
+                value={section.title}
+                className="text-xs sm:text-sm px-2 py-2"
+              >
                 {section.title.replace(" Components", "")}
               </TabsTrigger>
             ))}
-          </TabsTriggerList>
+          </TabsList>
 
-          <TabsPanels className="mt-8">
-            {demoSections.map((section, index) => (
-              <TabsContent key={section.title}>
-                <div className="mb-8">
-                  <Text as="h2" className="text-3xl mb-2">
-                    {section.title}
-                  </Text>
-                  <p className="text-muted-foreground text-lg">
-                    {section.description}
-                  </p>
-                </div>
+          {demoSections.map((section) => (
+            <TabsContent key={section.title} value={section.title} className="mt-8">
+              <div style={{ marginBottom: 32 }}>
+                <h2
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: 32,
+                    fontWeight: 600,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.12,
+                    margin: "0 0 8px",
+                  }}
+                >
+                  {section.title}
+                </h2>
+                <p
+                  style={{
+                    color: "var(--fg-muted)",
+                    fontSize: 15,
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}
+                >
+                  {section.description}
+                </p>
+              </div>
 
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-                  {section.demos.map((preview, index) => (
-                    <PreviewDemo key={`${preview.baseComponent}-${preview.name}-${index}`} preview={preview} />
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
-          </TabsPanels>
+              <div
+                className="vui-demo-grid"
+                style={{
+                  display: "grid",
+                  gap: 16,
+                  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                }}
+              >
+                {section.demos.map((preview, index) => (
+                  <PreviewDemo key={`${preview.baseComponent}-${preview.name}-${index}`} preview={preview} />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
         </Tabs>
       </div>
       <BackToTop />
-      {/* Footer */}
-      <footer className="border-t border-border py-16">
-        <div className="container max-w-6xl mx-auto px-4 lg:px-0">
-          <div className="grid gap-8 md:grid-cols-3 text-center md:text-left">
-            <div>
-              <Text as="h4" className="text-lg mb-4">voidUI</Text>
-              <p className="text-muted-foreground text-sm">
-                Retro-styled React components for modern web applications.
-              </p>
-            </div>
-            
-            <div>
-              <Text as="h4" className="text-lg mb-4">Explore</Text>
-              <div className="space-y-2 text-sm">
-                <div><Link href="/components" className="text-muted-foreground hover:text-foreground">Component Library</Link></div>
-                <div><Link href="/demo" className="text-muted-foreground hover:text-foreground">Live Demo</Link></div>
-                <div><Link href="https://github.com/jiji262/voidUI" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub Repository</Link></div>
-              </div>
-            </div>
-            
-            <div>
-              <Text as="h4" className="text-lg mb-4">Get Started</Text>
-              <div className="flex flex-col sm:flex-row md:flex-col gap-2">
-                <Link href="/components">
-                  <Button variant="outline" size="sm" className="w-full">
-                    Browse Components
-                  </Button>
-                </Link>
-                <Link
-                  href="https://github.com/jiji262/voidUI"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="sm" className="w-full">
-                    <GithubIcon size="14" className="mr-2" />
-                    Star on GitHub
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>Built with React and TailwindCSS. Open source and ready to use.</p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -1,224 +1,356 @@
-# voidUI - Void Styled React Component Library
+# voidUI — Void Styled React Component Library
 
 ![voidUI Banner](./public/banner.png)
 
-voidUI is a void-styled React component library built with TailwindCSS. It provides a collection of reusable UI components with a unique aesthetic, perfect for creating distinctive, memorable user interfaces. This repository serves as both a component showcase and a library of ready-to-use components.
+voidUI is a production-grade React component library built on **TailwindCSS v4** and **Radix UI primitives**. It ships **8 hand-tuned themes × light/dark**, first-class **bilingual CJK** support, and a void-flavored neobrutalist DNA that stays sharp at every scale.
+
+Every visual token (color, radius, shadow, font stack) resolves per theme from CSS variables, so switching themes is a single attribute swap with **zero Tailwind rebuild**.
+
+---
 
 ## 🚀 Quick Start
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Run linting
+pnpm dev          # dev server at http://localhost:3000
+pnpm build        # production build
 pnpm lint
 ```
 
-Visit `http://localhost:3000` to see the component showcase in action.
+---
 
 ## 🎨 Features
 
-- **Void Aesthetic**: High-contrast colors, bold borders, and pixel-perfect design
-- **Theming System**: Switch between multiple color themes with ease
-- **Dark Mode Support**: Automatic adaptation to light and dark modes
-- **Component Library**: 30+ ready-to-use components
-- **Fully Responsive**: Works on all device sizes
-- **TypeScript Support**: Full type safety for all components
-- **Accessible**: Built with accessibility in mind using Radix UI primitives
+- **8 themes** — `neobrutal` · `swiss` · `editorial` · `stripe` · `hanko` · `terra` · `cyber` · `milktea`
+- **Light + dark** per theme, switched independently via `data-mode`
+- **40+ CSS-variable tokens** — `--primary`, `--border-subtle`, `--sh-md`, `--r-lg`, `--font-sans-active`, ...
+- **Bilingual CJK** — Latin-to-Simplified-Chinese fallbacks baked into every font stack; `:lang(zh)` gets looser leading + tracking automatically
+- **6 Google fonts self-hosted** via `next/font` — Inter / JetBrains Mono / Fraunces / IBM Plex Mono / Noto Sans SC / Noto Serif SC
+- **30+ components** — form · display · feedback · layout · overlay
+- **Fully typed** — TypeScript everywhere, no `any` leaks
+- **Accessible** — Radix UI under the hood for focus, keyboard, ARIA
+- **Zero FOUC** — inline init script syncs `data-theme` / `data-mode` on `<html>` before React hydrates
+
+---
 
 ## 📱 Pages
 
-- **Home (`/`)** - Main showcase with all components displayed
-- **Components (`/components`)** - Detailed component gallery organized by category
-- **Demo (`/demo`)** - Interactive playground for testing components
+| Route | Purpose |
+|---|---|
+| `/` | Landing page with hero + feature grid + dark CTA |
+| `/components` | Searchable component gallery with Preview / Code / Examples tabs |
+| `/themes` | **All 8 themes rendered side-by-side** with active-theme detail row |
+| `/theme-demo` | Theme sandbox — exercise the active theme across buttons, forms, alerts, color tokens |
+| `/demo` | Interactive playground across all preview variants |
+| `/blocks` | Page-level block templates (hero, pricing, auth, etc.) |
+| `/pricing` | Pricing table example |
+
+---
 
 ## 🧩 Component Library
 
-### Form Components
-- Buttons (default, outline, secondary, with icons)
-- Input fields and textareas
-- Checkboxes with variants
-- Radio buttons
-- Select dropdowns
-- Switches and toggles
-- Sliders
+**Form** — Button · IconButton · Input · Textarea · Label · Checkbox · Radio · Switch · Slider · Select · Toggle · ToggleGroup
+**Display** — Card · BasicCard · ProductCard · Badge · Avatar · Text · Progress · CommandDisplay
+**Feedback** — Alert · Tooltip · Sonner (Toast)
+**Layout** — Accordion · Tab · Table · Breadcrumb
+**Overlay** — Dialog · Popover · Menu
 
-### Display Components
-- Badges and status indicators
-- Avatars with different sizes
-- Cards and testimonials
-- Alerts and notifications
-- Progress bars
-- Tooltips
+Every component is a single file in `components/voidui/` and is re-exported from [`components/voidui/index.ts`](./components/voidui/index.ts).
 
-### Navigation Components
-- Tabs interface
-- Accordion sections
-- Dropdown menus
-- Breadcrumb navigation
-- Toggle groups
-
-### Data Components
-- Tables (default, with checkboxes, sticky headers)
-- Typography and text styles
-
-### Interactive Components
-- Dialogs and modals
-- Popovers
-- All form controls with live interaction
+---
 
 ## 🎨 Theme System
 
-voidUI supports multiple color themes that can be easily switched by users.
-
-### Available Themes
-
-1. **Default Theme** - The original voidUI theme with yellow (`#ffdb33`) as the primary color
-2. **Purple Theme** - A new theme with purple (`#624aff`) as the primary color
-
-### Using Predefined Themes
-
-voidUI comes with two predefined themes that can be switched using the theme switcher in the navigation bar.
-
-### Creating Custom Themes
-
-You can create completely custom themes using the theme configuration system:
+Themes are driven by **two data attributes on `<html>`** — that's the entire API:
 
 ```tsx
-import { createCustomTheme, applyVoidUITheme } from '@voidui/components/theme-config';
-
-// Create a custom blue theme
-const blueTheme = createCustomTheme(
-  '#3b82f6', // primary
-  '#2563eb', // primaryHover
-  '#ffffff'  // primaryForeground
-);
-
-// Apply the theme
-applyVoidUITheme(blueTheme);
+<html data-theme="neobrutal" data-mode="light">
 ```
 
-### Theme Configuration Properties
+### Available themes
 
-| Property | Description | Example |
-|----------|-------------|---------|
-| `primary` | Main brand color | `#ffdb33` |
-| `primaryHover` | Primary color on hover | `#ffcc00` |
-| `primaryForeground` | Text color on primary background | `#000000` |
-| `secondary` | Secondary color | `#000000` |
-| `secondaryForeground` | Text color on secondary background | `#ffffff` |
-| `accent` | Accent color for highlights | `#ffcc00` |
-| `accentForeground` | Text color on accent background | `#000000` |
-| `background` | Page background color | `#ffffff` |
-| `foreground` | Main text color | `#000000` |
-| `card` | Card background color | `#ffffff` |
-| `cardForeground` | Card text color | `#000000` |
-| `muted` | Muted UI elements | `#aeaeae` |
-| `mutedForeground` | Muted text color | `#5a5a5a` |
-| `destructive` | Error/danger color | `#e63946` |
-| `destructiveForeground` | Text on destructive background | `#ffffff` |
-| `border` | Border color | `#000000` |
+| ID | Label | DNA |
+|---|---|---|
+| `neobrutal` | Neobrutal | Hard-edged mustard, chunky borders, offset shadows — default |
+| `swiss` | Swiss | Grid-first, sharp red accents, zero radius, hairline borders |
+| `editorial` | Editorial | Warm cream, serif display (Fraunces), soft shadows |
+| `stripe` | Stripe | Calm navy product UI with layered soft shadows |
+| `hanko` | Hanko | Japanese-inspired muted blue on warm cream |
+| `terra` | Terra | Earthy olive-green with warm clay undertones |
+| `cyber` | Cyber | Monospaced high-contrast terminal palette |
+| `milktea` | Milk Tea | Soft rose-beige with generous radius |
 
-## 🛠 Development
+Full metadata lives in [`lib/theme-config.ts`](./lib/theme-config.ts); raw token values are in [`app/global.css`](./app/global.css).
 
-This project has been optimized for component showcase and development:
+### Switching themes in-app
 
-- ✅ No content management dependencies
-- ✅ Fast development and build times
-- ✅ All components displayed on homepage
-- ✅ Interactive component playground
-- ✅ Organized component gallery
-- ✅ Responsive design
+Use the `useTheme` hook from `@/lib/theme-context`:
 
-### Project Structure
+```tsx
+"use client";
+import { useTheme } from "@/lib/theme-context";
 
-```
-app/                 # Next.js app router pages
-├── page.tsx         # Homepage/landing page
-├── components/      # Component gallery page
-├── demo/            # Interactive playground
-└── layout.tsx       # Root layout
-
-components/          # UI components
-├── voidui/         # Main component library
-└── preview/         # Component examples
-
-preview/components/  # Individual component demos
-lib/                 # Utility functions and helpers
-public/              # Static assets
+export function MyThemePicker() {
+  const { theme, mode, setTheme, toggleMode } = useTheme();
+  return (
+    <>
+      <select value={theme} onChange={(e) => setTheme(e.target.value as any)}>
+        {/* 8 theme IDs */}
+      </select>
+      <button onClick={toggleMode}>{mode === "dark" ? "☀" : "🌙"}</button>
+    </>
+  );
+}
 ```
 
-### Architecture Overview
+The provider persists to `localStorage` (`voidui-theme`, `voidui-mode`) and rehydrates on reload.
 
-The project follows a component-driven architecture:
+### Scoped theming (show two themes at once)
 
-1. **Component Library**: Located in `components/voidui/`, contains all reusable UI components built with React and TailwindCSS
-2. **Component Showcase**: Three main pages demonstrate components:
-   - Homepage (`/`) - Landing page with project overview
-   - Components (`/components`) - Organized gallery of all components
-   - Demo (`/demo`) - Interactive playground for testing components
-3. **Preview Components**: Located in `preview/components/`, these are example implementations showing how to use each component
+Because every theme is `[data-theme="..."]` scoped in CSS, you can nest a different theme inside any subtree — see [`app/themes/page.tsx`](./app/themes/page.tsx) for a live example rendering all 8 side-by-side:
 
-Components use:
-- TailwindCSS for styling with a retro aesthetic
-- Radix UI primitives for accessibility and functionality
-- Class Variance Authority (cva) for variant management
-- TypeScript for type safety
+```tsx
+<div data-theme="cyber" data-mode="dark" className="bg-background text-foreground">
+  {/* anything here renders in cyber/dark, regardless of the page-level theme */}
+</div>
+```
 
-### Component Development
+### Token reference (partial)
 
-All components are in `components/voidui/` and:
-1. Use cva for variant management
-2. Export both component and interface
-3. Are exported through `components/voidui/index.ts`
-4. Have corresponding preview examples in `preview/components/`
+| Token | Purpose |
+|---|---|
+| `--bg`, `--bg-elev` | Page and elevated surfaces |
+| `--fg`, `--fg-muted`, `--fg-subtle` | Text hierarchy |
+| `--card` | Card background |
+| `--primary`, `--primary-hover`, `--primary-fg` | CTA color + on-primary |
+| `--border`, `--border-subtle` | Strong vs. hairline dividers |
+| `--success`, `--danger`, `--warning`, `--info` | Semantic |
+| `--r-sm`, `--r`, `--r-md`, `--r-lg` | Radius scale |
+| `--sh-xs` … `--sh-xl` | Shadow scale (hard-offset on brutalist/cyber, soft-blur elsewhere) |
+| `--font-sans-active`, `--font-mono-active`, `--font-display-active` | Active family stacks with CJK fallbacks |
 
-To add a new component:
-1. Create the component in `components/voidui/`
-2. Export it in `components/voidui/index.ts`
-3. Create preview examples in `preview/components/`
-4. Add it to the categorization in `lib/component-categorization.ts`
+Tailwind aliases (`bg-primary`, `text-foreground-muted`, `border-border-subtle`, `shadow-md`, `rounded-md`) are all wired via `@theme` — just use Tailwind normally.
+
+---
+
+## 🤖 Using voidUI in AI IDEs
+
+voidUI is designed to be AI-friendly: a small, stable API surface, strict token names, and a single entry point (`@/components/voidui`). Drop one of the rule files below into your project root to get AI agents to produce on-brand code from day one.
+
+### The universal rule (reuse for any agent)
+
+Copy this into whichever rule file your IDE reads:
+
+````md
+## voidUI component library
+
+This project uses voidUI (`components/voidui/`, TailwindCSS v4, Radix UI). Follow these rules **always**:
+
+1. **Single import path** — import every component from `@/components/voidui`:
+   ```tsx
+   import { Button, Card, Badge, Alert, AlertTitle } from "@/components/voidui";
+   ```
+   Never reach into `@/components/voidui/Button` unless you need tree-shaking in an isolated preview.
+
+2. **Use tokens, not raw colors** — never hard-code hex, RGB, or Tailwind color classes like `bg-blue-500`. Use:
+   - `bg-primary` / `text-primary-foreground`
+   - `bg-background` / `text-foreground` / `text-muted-foreground`
+   - `border-border` / `border-border-subtle`
+   - `bg-destructive` / `text-destructive-foreground`
+
+3. **Use the shadow + radius scale** — `shadow-xs|sm|md|lg|xl|2xl` and `rounded-sm|md|lg`. Each theme interprets these differently (neobrutal = hard offset, stripe = soft blur). Never hard-code a custom shadow.
+
+4. **Border width** — voidUI v2 uses `1.5px` not `2px`. Prefer the default border from components; if you need a raw `border`, use `border-[1.5px]`.
+
+5. **Typography** — use the `Text` component with `as="h1".."small"` for headings/body. Mono headings (`font-mono`) are the voidUI voice. `font-sans` for body, `font-display` for hero.
+
+6. **CJK text** — wrap Chinese strings with `lang="zh"` or the `.cn` class to pick up looser leading/tracking:
+   ```tsx
+   <p className="cn">交付到生产</p>
+   ```
+
+7. **Theming** — never set colors/shadows per-theme in component code. If a new theme is needed, add it to `app/global.css` and `lib/theme-config.ts`, not inline.
+
+8. **Do not import from `packages/voidui/`** — that path is legacy.
+
+Reference: [`app/themes/page.tsx`](./app/themes/page.tsx) shows all tokens in action across 8 themes. [`components/voidui/Button.tsx`](./components/voidui/Button.tsx) is the canonical example of a variant-driven component.
+````
+
+### Claude Code (`CLAUDE.md`)
+
+Create `CLAUDE.md` at the repo root and paste the universal rule above into it. Claude Code reads this file automatically at session start. You can also add project-specific nudges:
+
+```md
+# Project: voidUI consumer app
+
+<paste universal rule here>
+
+## Workflow
+
+- Before building UI, check `/themes` (`http://localhost:3000/themes`) to pick the right theme direction.
+- Prefer new pages that compose existing voidUI primitives over custom markup.
+- Use `/browse` skill to screenshot a page before claiming UI work is done.
+```
+
+Claude Code also respects subdirectory `CLAUDE.md` files, so you can tighten rules per-feature.
+
+### Cursor (`.cursorrules`)
+
+Cursor reads `.cursorrules` (single file) or `.cursor/rules/*.mdc` (scoped rules). Paste the universal rule into `.cursorrules`. Example with a scoped rule:
+
+```
+.cursor/rules/voidui.mdc
+----
+description: voidUI component and token rules
+globs: ["**/*.tsx", "**/*.ts"]
+alwaysApply: true
+---
+
+<paste universal rule here>
+```
+
+### OpenAI Codex (`AGENTS.md`)
+
+The OpenAI Codex CLI and Codex cloud agent both read `AGENTS.md` from the repo root. Paste the universal rule there. Codex also supports nested `AGENTS.md` files — useful if `app/blocks/` has different rules than `app/themes/`.
+
+```md
+# AGENTS.md
+
+<paste universal rule here>
+
+## When running the app
+
+- `pnpm dev` starts Next.js on :3000
+- `pnpm build` must pass before any PR
+- Do NOT modify `packages/voidui/` — it is a legacy mirror
+```
+
+### GitHub Copilot (`.github/copilot-instructions.md`)
+
+Copilot reads `.github/copilot-instructions.md` at the repo root. Paste the universal rule. Copilot Chat in VS Code and on github.com both pick this up.
+
+### Windsurf / other agents
+
+Most agents fall back to `AGENTS.md`. If yours reads something else, point its rule file to the same content.
+
+### Verifying rules take effect
+
+Ask your agent to build a trivial UI and grep the diff for violations:
+
+```bash
+git diff | grep -E 'bg-(blue|red|gray|slate|zinc)-[0-9]|border-\[2px\]|rounded-\[0px\]'
+```
+
+If that prints anything, the agent isn't following the rules — tighten the prompt or move to a different rule file format.
+
+---
 
 ## 📦 Component Usage
 
-All components are available in the `/components/voidui` directory and can be imported directly:
-
 ```tsx
-import { Button, Card, Badge } from "@/components/voidui";
+import { Button, Card, Badge, Alert, AlertTitle, AlertDescription } from "@/components/voidui";
+
+export function Pitch() {
+  return (
+    <Card className="p-6 max-w-md">
+      <Card.Header>
+        <Card.Title>Ship faster</Card.Title>
+        <Card.Description>8 themes, one API.</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex gap-2">
+        <Button>Get started</Button>
+        <Button variant="outline">Docs</Button>
+      </Card.Content>
+    </Card>
+  );
+}
 ```
 
-### Key Dependencies
+Both the **dot-API** (`Card.Header`) and the **flat named exports** (`CardHeader`) work — pick whichever your codebase prefers.
 
-- Next.js 14 with App Router
-- React 18
-- TailwindCSS v4
-- Radix UI primitives
-- Class Variance Authority
-- TypeScript
-- Lucide React icons
+---
 
-## 🌗 Dark Mode Integration
+## 🛠 Development
 
-voidUI automatically adapts to dark mode. The dark mode toggle in the navigation bar switches between light and dark modes, and all themes automatically adjust their colors accordingly.
+### Project layout
+
+```
+app/
+├── page.tsx           # landing
+├── layout.tsx         # root layout (ThemeProvider, FOUC script, fonts)
+├── global.css         # 8-theme token system
+├── themes/            # all-themes side-by-side preview
+├── theme-demo/        # deep theme showcase
+├── showcase/          # component showcase with Preview/Code/Examples tabs
+├── demo/              # interactive playground
+├── components/        # components reference page
+└── blocks/            # page-level block templates
+
+components/
+├── voidui/            # ← the component library
+├── ui/                # app-only helpers (toast, code-block, theme-switcher)
+├── TopNav.tsx
+└── HamburgerMenu.tsx
+
+lib/
+├── theme-config.ts    # 8 theme IDs + metadata
+├── theme-context.tsx  # ThemeProvider + useTheme hook
+└── utils.ts           # cn() helper (twMerge + clsx)
+
+preview/components/    # one file per component variant, rendered in /demo + /components
+public/                # static assets
+```
+
+### Adding a component
+
+1. Create `components/voidui/YourComponent.tsx` using `cva` for variants.
+2. Re-export from `components/voidui/index.ts`.
+3. Add preview variants in `preview/components/`.
+4. Register it in `lib/component-categorization.ts` and `lib/component-code-examples.ts`.
+
+### Adding a theme
+
+1. Append the full token block to `app/global.css` under a new `[data-theme="yourtheme"]` selector (plus the `[data-mode="dark"]` companion).
+2. Append the ID + metadata to `THEMES` and `THEME_META` in `lib/theme-config.ts`.
+3. Done — `/themes` and the theme switcher pick it up automatically.
+
+---
+
+## 📚 Key Dependencies
+
+- **Next.js 14** (App Router)
+- **React 18**
+- **TailwindCSS v4** (`@tailwindcss/postcss`, `@theme` directive)
+- **Radix UI** primitives for accessible behavior
+- **Class Variance Authority** (`cva`) for variant management
+- **Lucide React** icons
+- **Sonner** for toasts
+- **Google Fonts** via `next/font` (self-hosted)
+
+---
+
+## 🌗 Dark Mode
+
+Dark mode is an **orthogonal axis** to theme — every theme ships tuned darks. Toggle via `data-mode="dark"` on `<html>`; in-app use the `toggleMode()` from `useTheme()`.
+
+Tailwind `dark:` variants still work — they're rewired by the `@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *))` line at the top of `app/global.css`.
+
+---
 
 ## 🎯 Best Practices
 
-1. **Consistency**: Maintain consistent color relationships when creating custom themes
-2. **Accessibility**: Ensure sufficient contrast between text and background colors
-3. **Testing**: Test your themes in both light and dark modes
-4. **Performance**: The build process is optimized for fast loading times
-5. **Responsive Design**: All components are designed to work on all screen sizes
+1. **Compose, don't fork** — most UI needs are a composition of existing components.
+2. **Tokens > hex** — never hard-code colors; stick to CSS variables / Tailwind aliases.
+3. **Test both modes** — `/themes` makes this a one-click check for all 8 × 2.
+4. **Respect `prefers-reduced-motion`** — `app/global.css` already disables transitions for users who ask.
+5. **Use `lang="zh"` or `.cn`** for any Chinese string longer than a single word.
+
+---
 
 ## 📄 License
 
-MIT License - feel free to use voidUI in your projects!
+MIT — use it, fork it, ship it.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+PRs welcome. Run `pnpm build && pnpm lint` before opening one.

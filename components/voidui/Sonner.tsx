@@ -1,31 +1,28 @@
 "use client";
-
 import { Toaster as Sonner } from "sonner";
+import * as React from "react";
 
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+// v2 — mono face, hard border + shadow to match library voice
+type SonnerProps = React.ComponentProps<typeof Sonner>;
 
-const Toaster = ({ ...props }: ToasterProps) => {
+export const Toaster = (props: SonnerProps) => {
   return (
     <Sonner
       toastOptions={{
         classNames: {
           toast:
-            "h-auto w-full p-4 bg-background border group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border flex items-center relative",
-          description:
-            "group-[.toast]:text-muted-foreground ml-2 text-sm font-sans",
-          actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground py-1 px-2 bg-background border-border shadow border-2 ml-auto h-fit min-w-fit",
-          cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-foreground py-1 px-2 text-sm bg-background border-border shadow border-2 ml-auto h-fit min-w-fit",
-          title: "ml-2 font-sans",
-          closeButton:
-            "absolute bg-background -top-1 -left-1 rounded-full p-0.5",
+            "font-sans bg-card text-foreground border-[1.5px] border-border rounded-[4px] shadow",
+          title: "font-mono font-semibold text-sm",
+          description: "text-muted-foreground text-sm",
+          actionButton: "bg-primary text-primary-foreground font-mono text-xs px-2 py-1 rounded-[2px] border-[1.5px] border-border",
+          cancelButton: "bg-card font-mono text-xs px-2 py-1 rounded-[2px] border-[1.5px] border-border",
+          success: "!border-[#5C8A55]",
+          error: "!border-destructive",
+          warning: "!border-[#D97706]",
+          info: "!border-[#4B6FB5]",
         },
-        unstyled: true,
       }}
       {...props}
     />
   );
 };
-
-export { Toaster };

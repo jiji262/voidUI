@@ -1,21 +1,19 @@
-import { Tabs, TabsPanels, TabsTrigger, TabsContent, TabsTriggerList } from "@/components/voidui/Tab";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/voidui/Tab";
 
 export default function TabStyleDefault() {
   return (
-    <Tabs>
-      <TabsTriggerList>
-        <TabsTrigger>Home</TabsTrigger>
-        <TabsTrigger>About</TabsTrigger>
-        <TabsTrigger>Contact</TabsTrigger>
-      </TabsTriggerList>
-      <TabsPanels>
-        <TabsContent>
-          Welcome to voidUI, a void styled UI library built with React,
-          Tailwind CSS & Headless UI.
-        </TabsContent>
-        <TabsContent>This is the about section!</TabsContent>
-        <TabsContent>And, this is the contact section!</TabsContent>
-      </TabsPanels>
+    <Tabs defaultValue="home">
+      <TabsList>
+        <TabsTrigger value="home">Home</TabsTrigger>
+        <TabsTrigger value="about">About</TabsTrigger>
+        <TabsTrigger value="contact">Contact</TabsTrigger>
+      </TabsList>
+      <TabsContent value="home">
+        Welcome to voidUI, a void styled UI library built with React,
+        Tailwind CSS & Radix UI.
+      </TabsContent>
+      <TabsContent value="about">This is the about section!</TabsContent>
+      <TabsContent value="contact">And, this is the contact section!</TabsContent>
     </Tabs>
   );
 }
