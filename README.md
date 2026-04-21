@@ -45,6 +45,25 @@ pnpm lint
 | `/blocks` | Page-level block templates (hero, pricing, auth, etc.) |
 | `/pricing` | Pricing table example |
 
+### Preview — `/themes`
+
+All 8 themes on one page, each rendered in a scoped `data-theme` tile. Click any card to activate that theme site-wide.
+
+![voidUI /themes page showing all 8 themes side-by-side](./public/screenshots/themes.png)
+
+<details>
+<summary>More screenshots</summary>
+
+**Home — `/`**
+
+![voidUI home page](./public/screenshots/home.png)
+
+**Components — `/components`**
+
+![voidUI components gallery](./public/screenshots/components.png)
+
+</details>
+
 ---
 
 ## 🧩 Component Library
