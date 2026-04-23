@@ -3,7 +3,7 @@ import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export const Menu = DropdownMenuPrimitive.Root;
+const MenuRoot = DropdownMenuPrimitive.Root;
 export const MenuTrigger = DropdownMenuPrimitive.Trigger;
 export const MenuGroup = DropdownMenuPrimitive.Group;
 export const MenuPortal = DropdownMenuPrimitive.Portal;
@@ -68,8 +68,8 @@ export const MenuLabel = React.forwardRef<
 ));
 MenuLabel.displayName = "MenuLabel";
 
-// v1 dot-API compatibility
-Object.assign(Menu, {
+// v1 dot-API compatibility — typed via Object.assign return
+export const Menu = Object.assign(MenuRoot, {
   Trigger: MenuTrigger,
   Content: MenuContent,
   Item: MenuItem,

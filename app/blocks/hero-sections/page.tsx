@@ -131,7 +131,7 @@ const HeroSection02 = () => (
  <div className="space-y-4">
  <div className="bg-gray-900 p-4 text-green-400 font-mono text-sm">
  <div className="flex items-center gap-2 mb-2">
- <span className="text-gray-500">></span>
+ <span className="text-gray-500">&gt;</span>
  <span className="text-blue-400">nova</span>
  <span className="text-white">init my-project</span>
  </div>
@@ -141,7 +141,7 @@ const HeroSection02 = () => (
  </div>
  <div className="bg-gray-900 p-4 text-green-400 font-mono text-sm">
  <div className="flex items-center gap-2 mb-2">
- <span className="text-gray-500">></span>
+ <span className="text-gray-500">&gt;</span>
  <span className="text-blue-400">nova</span>
  <span className="text-white">deploy --prod</span>
  </div>
@@ -303,7 +303,7 @@ const HeroSection02 = () => (
  <div className="space-y-4">
  <div className="bg-black border-2 border-[#00FF00] p-4 text-[#00FF00] font-mono text-sm shadow-[0_0_20px_rgba(0,255,0,0.3)]">
  <div className="flex items-center gap-2 mb-2">
- <span className="text-gray-500">></span>
+ <span className="text-gray-500">&gt;</span>
  <span className="text-[#00FF00]">nova</span>
  <span className="text-white">init my-project</span>
  </div>
@@ -314,7 +314,7 @@ const HeroSection02 = () => (
 
  <div className="bg-black border-2 border-[#00FF00] p-4 text-[#00FF00] font-mono text-sm shadow-[0_0_20px_rgba(0,255,0,0.3)]">
  <div className="flex items-center gap-2 mb-2">
- <span className="text-gray-500">></span>
+ <span className="text-gray-500">&gt;</span>
  <span className="text-[#00FF00]">nova</span>
  <span className="text-white">deploy --prod</span>
  </div>

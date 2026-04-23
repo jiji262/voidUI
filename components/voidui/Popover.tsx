@@ -3,7 +3,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export const Popover = PopoverPrimitive.Root;
+const PopoverRoot = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
 export const PopoverContent = React.forwardRef<
@@ -26,5 +26,8 @@ export const PopoverContent = React.forwardRef<
 ));
 PopoverContent.displayName = "PopoverContent";
 
-// v1 dot-API compatibility
-Object.assign(Popover, { Trigger: PopoverTrigger, Content: PopoverContent });
+// v1 dot-API compatibility — typed via Object.assign return
+export const Popover = Object.assign(PopoverRoot, {
+  Trigger: PopoverTrigger,
+  Content: PopoverContent,
+});

@@ -3,7 +3,7 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export const RadioGroup = React.forwardRef<
+const RadioGroupRoot = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
 >(({ className, ...props }, ref) => (
@@ -13,12 +13,17 @@ export const RadioGroup = React.forwardRef<
     {...props}
   />
 ));
-RadioGroup.displayName = "RadioGroup";
+RadioGroupRoot.displayName = "RadioGroup";
 
+// v1 legacy props (size / variant) accepted and ignored so old previews type-check.
+type RadioGroupItemProps = React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {
+  size?: "sm" | "md" | "lg";
+  variant?: string;
+};
 export const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, ...props }, ref) => (
+  RadioGroupItemProps
+>(({ className, size: _size, variant: _variant, ...props }, ref) => (
   <RadioGroupPrimitive.Item
     ref={ref}
     className={cn(
@@ -37,5 +42,5 @@ export const RadioGroupItem = React.forwardRef<
 ));
 RadioGroupItem.displayName = "RadioGroupItem";
 
-// v1 dot-API compatibility
-Object.assign(RadioGroup, { Item: RadioGroupItem });
+// v1 dot-API compatibility — typed via Object.assign return
+export const RadioGroup = Object.assign(RadioGroupRoot, { Item: RadioGroupItem });

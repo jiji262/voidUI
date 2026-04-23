@@ -4,7 +4,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export const Select = SelectPrimitive.Root;
+const SelectRoot = SelectPrimitive.Root;
 export const SelectGroup = SelectPrimitive.Group;
 export const SelectValue = SelectPrimitive.Value;
 
@@ -105,8 +105,8 @@ export const SelectSeparator = React.forwardRef<
 ));
 SelectSeparator.displayName = "SelectSeparator";
 
-// v1 dot-API compatibility
-Object.assign(Select, {
+// v1 dot-API compatibility — typed via Object.assign return
+export const Select = Object.assign(SelectRoot, {
   Trigger: SelectTrigger,
   Content: SelectContent,
   Item: SelectItem,

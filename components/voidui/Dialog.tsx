@@ -26,16 +26,24 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = "DialogOverlay";
 
+type DialogContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+  // v1 legacy: size constrained max-width (sm/md/lg/xl)
+  size?: "sm" | "md" | "lg" | "xl" | string;
+};
+const SIZE_MAX_WIDTH: Record<string, string> = {
+  sm: "max-w-sm", md: "max-w-md", lg: "max-w-lg", xl: "max-w-xl",
+};
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  DialogContentProps
+>(({ className, children, size, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4",
+        "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4",
+        size ? SIZE_MAX_WIDTH[size] ?? "max-w-lg" : "max-w-lg",
         "bg-card border-[1.5px] border-border rounded-[4px] shadow-lg p-6",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         className,
@@ -89,13 +97,8 @@ const DialogDescription = React.forwardRef<
 ));
 DialogDescription.displayName = "DialogDescription";
 
-export {
-  Dialog, DialogTrigger, DialogClose, DialogPortal, DialogOverlay,
-  DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription,
-};
-
-// v1 dot-API compatibility
-Object.assign(Dialog, {
+// v1 dot-API compatibility — typed via Object.assign return
+const DialogWithDot = Object.assign(Dialog, {
   Trigger: DialogTrigger,
   Content: DialogContent,
   Header: DialogHeader,
@@ -106,3 +109,9 @@ Object.assign(Dialog, {
   Portal: DialogPortal,
   Overlay: DialogOverlay,
 });
+
+export {
+  DialogWithDot as Dialog,
+  DialogTrigger, DialogClose, DialogPortal, DialogOverlay,
+  DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription,
+};

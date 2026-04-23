@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export const Accordion = AccordionPrimitive.Root;
+const AccordionRoot = AccordionPrimitive.Root;
 
 export const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -52,5 +52,10 @@ export const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = "AccordionContent";
 
-// v1 dot-API compatibility
-Object.assign(Accordion, { Item: AccordionItem, Header: AccordionTrigger, Trigger: AccordionTrigger, Content: AccordionContent });
+// v1 dot-API compatibility — typed via Object.assign return for TS
+export const Accordion = Object.assign(AccordionRoot, {
+  Item: AccordionItem,
+  Header: AccordionTrigger,
+  Trigger: AccordionTrigger,
+  Content: AccordionContent,
+});

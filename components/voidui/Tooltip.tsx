@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export const TooltipProvider = TooltipPrimitive.Provider;
-export const Tooltip = TooltipPrimitive.Root;
+const TooltipRoot = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 
 export const TooltipContent = React.forwardRef<
@@ -25,5 +25,9 @@ export const TooltipContent = React.forwardRef<
 ));
 TooltipContent.displayName = "TooltipContent";
 
-// v1 dot-API compatibility
-Object.assign(Tooltip, { Trigger: TooltipTrigger, Content: TooltipContent, Provider: TooltipProvider });
+// v1 dot-API compatibility — typed via Object.assign return
+export const Tooltip = Object.assign(TooltipRoot, {
+  Trigger: TooltipTrigger,
+  Content: TooltipContent,
+  Provider: TooltipProvider,
+});

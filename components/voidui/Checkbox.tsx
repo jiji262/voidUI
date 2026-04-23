@@ -4,11 +4,16 @@ import { Check } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// v2 — smaller (18px), 2px radius, 1.5px border, subtle shadow for depth
+// v2 — smaller (18px), 2px radius, 1.5px border, subtle shadow for depth.
+// v1 legacy props (size / variant) accepted and ignored so old previews still type-check.
+type CheckboxProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
+  size?: "sm" | "md" | "lg";
+  variant?: string;
+};
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
+  CheckboxProps
+>(({ className, size: _size, variant: _variant, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(

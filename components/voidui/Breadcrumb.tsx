@@ -87,18 +87,8 @@ const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<"span"
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
-export {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
-};
-
-// v1 dot-API compatibility
-Object.assign(Breadcrumb, {
+// v1 dot-API compatibility — typed via Object.assign return
+const BreadcrumbWithDot = Object.assign(Breadcrumb, {
   List: BreadcrumbList,
   Item: BreadcrumbItem,
   Link: BreadcrumbLink,
@@ -106,3 +96,13 @@ Object.assign(Breadcrumb, {
   Separator: BreadcrumbSeparator,
   Ellipsis: BreadcrumbEllipsis,
 });
+
+export {
+  BreadcrumbWithDot as Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+};

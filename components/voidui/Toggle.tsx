@@ -12,6 +12,9 @@ const toggleVariants = cva(
         default: "bg-transparent hover:bg-muted data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
         outline: "border-[1.5px] border-border bg-transparent shadow-xs hover:bg-muted data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
         solid: "border-[1.5px] border-border bg-card shadow-xs data-[state=on]:bg-primary data-[state=on]:text-primary-foreground data-[state=on]:shadow-sm",
+        // v1 legacy aliases
+        outlined: "border-[1.5px] border-border bg-transparent shadow-xs hover:bg-muted data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
+        "outline-muted": "border-[1.5px] border-border-subtle bg-transparent hover:bg-muted data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
       },
       size: {
         sm: "h-8 px-2.5",
