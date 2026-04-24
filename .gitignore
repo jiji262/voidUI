@@ -43,3 +43,7 @@ package-lock.json
 # local backups and archives
 0.Backup/
 .gstack/
+
+# tsup library build output
+dist/
+coverage/
