@@ -4,15 +4,68 @@ voidUI is a production-grade React component library built on **TailwindCSS v4**
 
 Every visual token (color, radius, shadow, font stack) resolves per theme from CSS variables, so switching themes is a single attribute swap with **zero Tailwind rebuild**.
 
+Live preview: https://jiji262.github.io/voidUI/ · npm: [`@voidui/components`](https://www.npmjs.com/package/@voidui/components)
+
 ---
 
-## 🚀 Quick Start
+## 📦 Install
+
+```bash
+pnpm add @voidui/components
+# or
+npm install @voidui/components
+# or
+yarn add @voidui/components
+```
+
+Peers: `react ^18 || ^19`, `react-dom ^18 || ^19`. TailwindCSS v4 on the consumer side (you drive the theme tokens via CSS vars — copy `app/global.css` or import your own token sheet).
+
+### Use
+
+```tsx
+import { Button, Card, Alert, AlertTitle } from "@voidui/components";
+
+export default function Page() {
+  return (
+    <Card className="p-6">
+      <Alert variant="info">
+        <AlertTitle>Ready to ship</AlertTitle>
+      </Alert>
+      <Button className="mt-4">Get started</Button>
+    </Card>
+  );
+}
+```
+
+Every component is a client component; they ship with `"use client"` preserved so you can import them from Next.js server components directly.
+
+### Theming
+
+Drop the token sheet in your global styles and set `data-theme` + `data-mode` on `<html>`:
+
+```html
+<html data-theme="neobrutal" data-mode="light">
+```
+
+8 theme ids: `neobrutal` · `swiss` · `editorial` · `stripe` · `hanko` · `terra` · `cyber` · `milktea`.
+Modes: `light` · `dark`.
+
+Copy `app/global.css` from the repo for a working baseline with every token already wired.
+
+---
+
+## 🧑‍💻 Local development
+
+This repo is a monorepo-of-two: the publishable library in `components/voidui/` and a Next.js demo / documentation site in `app/`.
 
 ```bash
 pnpm install
-pnpm dev          # dev server at http://localhost:3000
-pnpm build        # production build
-pnpm lint
+pnpm dev           # Next.js demo at http://localhost:3000
+pnpm typecheck     # tsc --noEmit
+pnpm test          # vitest run
+pnpm build:lib     # tsup → dist/ (publishable artifacts)
+pnpm publint       # lint package.json for npm correctness
+pnpm build         # next build (static export if GITHUB_PAGES=true)
 ```
 
 ---
