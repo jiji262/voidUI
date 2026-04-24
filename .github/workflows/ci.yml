@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   quality:
-    name: lint · typecheck · test · build
+    name: lint · typecheck · test · build · size
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +30,8 @@ jobs:
       - name: Typecheck
         run: pnpm run typecheck
 
-      - name: Lint (non-blocking)
-        run: pnpm run lint || true
+      - name: Lint
+        run: pnpm run lint
 
       - name: Tests
         run: pnpm run test
@@ -41,6 +41,9 @@ jobs:
 
       - name: Lint package.json (publint)
         run: pnpm run publint
+
+      - name: Bundle size budget (size-limit)
+        run: pnpm run size
 
       - name: Build Next.js app (static export dry-run)
         env:

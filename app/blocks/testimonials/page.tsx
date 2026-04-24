@@ -40,7 +40,7 @@ const TestimonialsGrid = () => {
  <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="text-center mb-12">
  <h3 className="text-3xl font-bold mb-4">What Our Customers Say</h3>
- <p className="text-gray-600">Don't just take our word for it</p>
+ <p className="text-gray-600">Don&apos;t just take our word for it</p>
  </div>
 
  <div className="grid md:grid-cols-3 gap-8">
@@ -52,7 +52,7 @@ const TestimonialsGrid = () => {
  ))}
  </div>
  <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-"{testimonial.content}"
+&quot;{testimonial.content}&quot;
  </p>
  <div className="flex items-center gap-3">
  <img
@@ -102,7 +102,7 @@ const TestimonialsGrid = () => {
  <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
  <div className="text-center mb-12">
  <h3 className="text-3xl font-bold mb-4">What Our Customers Say</h3>
- <p className="text-gray-600">Don't just take our word for it</p>
+ <p className="text-gray-600">Don&apos;t just take our word for it</p>
  </div>
 
  <div className="grid md:grid-cols-3 gap-8">
@@ -114,7 +114,7 @@ const TestimonialsGrid = () => {
  ))}
  </div>
  <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-"{testimonial.content}"
+&quot;{testimonial.content}&quot;
  </p>
  <div className="flex items-center gap-3">
  <img

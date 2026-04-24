@@ -1,10 +1,33 @@
 # voidUI — Void Styled React Component Library
 
+[![npm](https://img.shields.io/npm/v/@voidui/components?label=%40voidui%2Fcomponents&color=E8B923)](https://www.npmjs.com/package/@voidui/components)
+[![npm downloads](https://img.shields.io/npm/dm/@voidui/components?color=E8B923)](https://www.npmjs.com/package/@voidui/components)
+[![CI](https://github.com/jiji262/voidUI/actions/workflows/ci.yml/badge.svg)](https://github.com/jiji262/voidUI/actions/workflows/ci.yml)
+[![Pages](https://github.com/jiji262/voidUI/actions/workflows/pages.yml/badge.svg)](https://jiji262.github.io/voidUI/)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@voidui/components?label=gzip&color=E8B923)](https://bundlephobia.com/package/@voidui/components)
+[![license](https://img.shields.io/github/license/jiji262/voidUI?color=E8B923)](./LICENSE)
+
 voidUI is a production-grade React component library built on **TailwindCSS v4** and **Radix UI primitives**. It ships **8 hand-tuned themes × light/dark**, first-class **bilingual CJK** support, and a void-flavored neobrutalist DNA that stays sharp at every scale.
 
 Every visual token (color, radius, shadow, font stack) resolves per theme from CSS variables, so switching themes is a single attribute swap with **zero Tailwind rebuild**.
 
-Live preview: https://jiji262.github.io/voidUI/ · npm: [`@voidui/components`](https://www.npmjs.com/package/@voidui/components)
+🔗 **Live demo:** https://jiji262.github.io/voidUI/
+📦 **npm:** [`@voidui/components`](https://www.npmjs.com/package/@voidui/components)
+📸 **Preview:**
+
+<p align="center">
+  <a href="https://jiji262.github.io/voidUI/themes">
+    <img src="https://raw.githubusercontent.com/jiji262/voidUI/main/public/screenshots/themes.png" alt="voidUI themes preview" width="820" />
+  </a>
+</p>
+
+## Contents
+
+- [Install](#-install) · [Use](#use) · [Theming](#theming)
+- [Features](#-features) · [Pages](#-pages) · [Components](#-component-library)
+- [Theme system](#-theme-system) · [AI-IDE integration](#-using-voidui-in-ai-ides)
+- [Local development](#-local-development) · [Project layout](#project-layout)
+- [Contributing](./CONTRIBUTING.md) · [Changelog](./CHANGELOG.md) · [License](./LICENSE)
 
 ---
 

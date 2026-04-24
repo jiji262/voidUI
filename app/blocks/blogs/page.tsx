@@ -53,7 +53,7 @@ const FeaturedArticle = () => {
  </h2>
  <p className="text-gray-600 mb-8 leading-relaxed">
  Explore the latest trends and technologies that are shaping the future of web development.
- From AI integration to new frameworks, discover what's coming next in the world of web development.
+ From AI integration to new frameworks, discover what&apos;s coming next in the world of web development.
  </p>
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-3">
@@ -202,7 +202,7 @@ const FeaturedArticle = () => {
  </h2>
  <p className="text-gray-600 mb-8 leading-relaxed">
  Explore the latest trends and technologies that are shaping the future of web development.
- From AI integration to new frameworks, discover what's coming next in the world of web development.
+ From AI integration to new frameworks, discover what&apos;s coming next in the world of web development.
  </p>
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-3">

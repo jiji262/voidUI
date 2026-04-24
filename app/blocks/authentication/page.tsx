@@ -69,7 +69,7 @@ const LoginForm = () => {
  </Button>
 
  <p className="text-center text-sm text-gray-600">
- Don't have an account?{""}
+ Don&apos;t have an account?{""}
  <a href="#" className="text-blue-600 hover:underline">
  Sign up
  </a>
@@ -217,7 +217,7 @@ const LoginForm = () => {
  </Button>
 
  <p className="text-center text-sm text-gray-600">
- Don't have an account?{""}
+ Don&apos;t have an account?{""}
  <a href="#" className="text-blue-600 hover:underline">
  Sign up
  </a>

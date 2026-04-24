@@ -223,7 +223,7 @@ const HeroSection02 = () => (
  <nav className="flex items-center justify-between p-6 border-b border-[#00FF00]">
  <div className="flex items-center gap-2">
  <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold">
- "NO"
+ &quot;NO&quot;
  </div>
  <span className="font-bold text-xl text-[#00FF00]">VA</span>
  </div>

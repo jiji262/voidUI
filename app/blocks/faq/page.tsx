@@ -281,7 +281,7 @@ const GridFAQ = () => {
  </h1>
  <p className="text-lg text-gray-600 mb-8">
  Find answers to common questions about our platform, features,
- and services. Can't find what you're looking for? Contact our support team.
+ and services. Can&apos;t find what you&apos;re looking for? Contact our support team.
  </p>
  </div>
  </section>

@@ -21,7 +21,7 @@ const ContactForm01 = () => (
  <div className="mb-8">
  <div className="text-sm text-gray-600 mb-2">Get in Touch</div>
  <h1 className="text-4xl font-bold mb-4">
- Let's{""}
+ Let&apos;s{""}
  <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
  Connect
  </span>
@@ -205,7 +205,7 @@ const ContactForm01 = () => (
  <div className="mb-8">
  <div className="text-sm text-gray-600 mb-2">Get in Touch</div>
  <h1 className="text-4xl font-bold mb-4">
- Let's{""}
+ Let&apos;s{""}
  <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">
  Connect
  </span>

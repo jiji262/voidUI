@@ -32,7 +32,7 @@ const WelcomeScreen = () => {
  <h2 className="text-3xl font-bold mb-4">Welcome to Our Platform!</h2>
 
  <p className="text-lg text-gray-600 mb-8">
- We're excited to have you on board. Let's get you set up and ready to explore
+ We&apos;re excited to have you on board. Let&apos;s get you set up and ready to explore
  all the amazing features we have to offer.
  </p>
 
@@ -76,7 +76,7 @@ const WelcomeScreen = () => {
  <h2 className="text-3xl font-bold mb-4">Welcome to Our Platform!</h2>
 
  <p className="text-lg text-gray-600 mb-8">
- We're excited to have you on board. Let's get you set up and ready to explore
+ We&apos;re excited to have you on board. Let&apos;s get you set up and ready to explore
  all the amazing features we have to offer.
  </p>
 
@@ -122,7 +122,7 @@ export default function OnboardingPage() {
  </h1>
  <p className="text-lg text-gray-600 mb-8">
  User onboarding and welcome flows to help new users get started
- quickly and understand your product's value.
+ quickly and understand your product&apos;s value.
  </p>
  </div>
  </section>
