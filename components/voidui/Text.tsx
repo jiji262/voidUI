@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 import React, { HTMLAttributes } from "react";
 
 // v2 — refined type scale rebuilt in JetBrains Mono for headings,

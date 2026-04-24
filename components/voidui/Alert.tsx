@@ -1,7 +1,7 @@
 "use client";
 import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 // v2 — restrained palette, soft semantic backgrounds, still bordered+shadowed
 const alertVariants = cva(

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 import { HTMLAttributes } from "react";
 import { Text } from "./Text";
 

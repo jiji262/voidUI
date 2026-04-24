@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 // v2 — clean mono command chip: $ prompt + typed command + optional cursor
 export interface ICommandDisplayProps extends React.HTMLAttributes<HTMLDivElement> {

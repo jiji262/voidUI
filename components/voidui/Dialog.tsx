@@ -2,7 +2,7 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
@@ -60,12 +60,19 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = "DialogContent";
 
-const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+// v1 legacy props (`position`, `asChild`) are accepted and ignored so old
+// dialog-* previews type-check without warnings.
+type DialogSectionProps = React.HTMLAttributes<HTMLDivElement> & {
+  position?: string;
+  asChild?: boolean;
+};
+
+const DialogHeader = ({ className, position: _p, asChild: _a, ...props }: DialogSectionProps) => (
   <div className={cn("flex flex-col gap-1", className)} {...props} />
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({ className, position: _p, asChild: _a, ...props }: DialogSectionProps) => (
   <div
     className={cn("flex flex-col-reverse sm:flex-row sm:justify-end gap-2", className)}
     {...props}

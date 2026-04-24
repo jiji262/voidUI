@@ -1,7 +1,7 @@
 "use client";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 // v2 — square block thumb for neobrutalist DNA, 2px track
 export const Slider = React.forwardRef<

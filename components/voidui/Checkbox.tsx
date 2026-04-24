@@ -2,7 +2,7 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 // v2 — smaller (18px), 2px radius, 1.5px border, subtle shadow for depth.
 // v1 legacy props (size / variant) accepted and ignored so old previews still type-check.

@@ -1,7 +1,7 @@
 "use client";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 
 // v2 — trimmer 40x22 shell, square ink thumb, tight 12px radius
 export const Switch = React.forwardRef<

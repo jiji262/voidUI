@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "./_utils";
 import React, { TextareaHTMLAttributes } from "react";
 
 export interface ITextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
