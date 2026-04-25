@@ -24,9 +24,9 @@ Every visual token (color, radius, shadow, font stack) resolves per theme from C
 ## Contents
 
 - [Install](#-install) · [Use](#use) · [Theming](#theming)
-- [Features](#-features) · [Pages](#-pages) · [Components](#-component-library)
-- [Theme system](#-theme-system) · [AI-IDE integration](#-using-voidui-in-ai-ides)
-- [Local development](#-local-development) · [Project layout](#project-layout)
+- [Local development](#-local-development) · [Quality gates](#quality-gates) · [Release flow](#release-flow)
+- [Features](#-features) · [Pages](#-pages) · [Components](#-component-library) · [Theme system](#-theme-system)
+- [AI-IDE integration](#-using-voidui-in-ai-ides) · [Project layout](#project-layout) · [Key dependencies](#-key-dependencies)
 - [Contributing](./CONTRIBUTING.md) · [Changelog](./CHANGELOG.md) · [License](./LICENSE)
 
 ---
@@ -97,10 +97,13 @@ pnpm build         # next build (static export if GITHUB_PAGES=true)
 
 - **8 themes** — `neobrutal` · `swiss` · `editorial` · `stripe` · `hanko` · `terra` · `cyber` · `milktea`
 - **Light + dark** per theme, switched independently via `data-mode`
-- **40+ CSS-variable tokens** — `--primary`, `--border-subtle`, `--sh-md`, `--r-lg`, `--font-sans-active`, ...
+- **40+ CSS-variable tokens** — `--primary`, `--border-subtle`, `--sh-md`, `--r-lg`, `--font-sans`, ...
 - **Bilingual CJK** — Latin-to-Simplified-Chinese fallbacks baked into every font stack; `:lang(zh)` gets looser leading + tracking automatically
 - **6 Google fonts self-hosted** via `next/font` — Inter / JetBrains Mono / Fraunces / IBM Plex Mono / Noto Sans SC / Noto Serif SC
-- **30+ components** — form · display · feedback · layout · overlay
+- **29 components** — form · display · feedback · layout · overlay
+- **Dual ESM + CJS** with `.d.ts` / `.d.cts` and `"use client"` preserved — drop straight into Next.js App Router server components
+- **Tree-shakeable** — `sideEffects: false`, ~7 KB brotli for the full ESM bundle
+- **A11y-checked** — vitest + axe-core run on every PR, WCAG-AA covered for canonical usage
 - **Fully typed** — TypeScript everywhere, no `any` leaks
 - **Accessible** — Radix UI under the hood for focus, keyboard, ARIA
 - **Zero FOUC** — inline init script syncs `data-theme` / `data-mode` on `<html>` before React hydrates
@@ -220,7 +223,7 @@ Because every theme is `[data-theme="..."]` scoped in CSS, you can nest a differ
 | `--success`, `--danger`, `--warning`, `--info` | Semantic |
 | `--r-sm`, `--r`, `--r-md`, `--r-lg` | Radius scale |
 | `--sh-xs` … `--sh-xl` | Shadow scale (hard-offset on brutalist/cyber, soft-blur elsewhere) |
-| `--font-sans-active`, `--font-mono-active`, `--font-display-active` | Active family stacks with CJK fallbacks |
+| `--font-sans`, `--font-mono`, `--font-display` | Active family stacks with CJK fallbacks (per-theme `--font-*-active` is the underlying source) |
 
 Tailwind aliases (`bg-primary`, `text-foreground-muted`, `border-border-subtle`, `shadow-md`, `rounded-md`) are all wired via `@theme` — just use Tailwind normally.
 
@@ -263,8 +266,6 @@ This project uses voidUI (`components/voidui/`, TailwindCSS v4, Radix UI). Follo
    ```
 
 7. **Theming** — never set colors/shadows per-theme in component code. If a new theme is needed, add it to `app/global.css` and `lib/theme-config.ts`, not inline.
-
-8. **Do not import from `packages/voidui/`** — that path is legacy.
 
 Reference: [`app/themes/page.tsx`](./app/themes/page.tsx) shows all tokens in action across 8 themes. [`components/voidui/Button.tsx`](./components/voidui/Button.tsx) is the canonical example of a variant-driven component.
 ````
@@ -314,8 +315,8 @@ The OpenAI Codex CLI and Codex cloud agent both read `AGENTS.md` from the repo r
 ## When running the app
 
 - `pnpm dev` starts Next.js on :3000
-- `pnpm build` must pass before any PR
-- Do NOT modify `packages/voidui/` — it is a legacy mirror
+- Before opening a PR, all gates must pass:
+  `pnpm typecheck && pnpm test && pnpm lint && pnpm build:lib && pnpm publint && pnpm size && pnpm build`
 ```
 
 ### GitHub Copilot (`.github/copilot-instructions.md`)
@@ -365,6 +366,33 @@ Both the **dot-API** (`Card.Header`) and the **flat named exports** (`CardHeader
 
 ## 🛠 Development
 
+### Quality gates
+
+Every gate runs in CI on every PR via [`.github/workflows/ci.yml`](./.github/workflows/ci.yml):
+
+| Script | What it does |
+|---|---|
+| `pnpm typecheck` | `tsc --noEmit` over the whole repo |
+| `pnpm lint` | Next.js ESLint config, 0 errors required |
+| `pnpm test` | Vitest — smoke (renders, dot-API, props) + axe-core a11y |
+| `pnpm build:lib` | tsup → `dist/index.{js,cjs}` + `dist/index.d.{ts,cts}` |
+| `pnpm publint` | `package.json` correctness for npm |
+| `pnpm size` | `size-limit` budget (ESM ≤ 16 KB gzip, CJS ≤ 18 KB) |
+| `pnpm build` | Next.js build (static export when `GITHUB_PAGES=true`) |
+
+### Release flow
+
+Versioning uses [Changesets](https://github.com/changesets/changesets):
+
+```bash
+pnpm changeset                 # describe your change → writes .changeset/<name>.md
+git commit -am "feat: …" && git push
+# After merge to main, the release workflow opens a "Version Packages" PR.
+# Merging that PR triggers `pnpm release` which builds + publishes to npm.
+```
+
+See [`.changeset/README.md`](./.changeset/README.md) for the full ceremony.
+
 ### Project layout
 
 ```
@@ -374,32 +402,38 @@ app/
 ├── global.css         # 8-theme token system
 ├── themes/            # all-themes side-by-side preview
 ├── theme-demo/        # deep theme showcase
-├── showcase/          # component showcase with Preview/Code/Examples tabs
-├── demo/              # interactive playground
-├── components/        # components reference page
-└── blocks/            # page-level block templates
+├── components/        # components reference (Preview / Code / Examples)
+├── demo/              # interactive playground for every preview variant
+├── blocks/            # page-level block templates
+└── pricing/           # pricing table example
 
 components/
-├── voidui/            # ← the component library
-├── ui/                # app-only helpers (toast, code-block, theme-switcher)
-├── TopNav.tsx
-└── HamburgerMenu.tsx
+├── voidui/            # ← the component library (this is what ships on npm)
+│   ├── _utils.ts      # internal cn() helper (twMerge + clsx)
+│   └── index.ts       # barrel export with v1 dot-API back-compat aliases
+├── ui/                # demo-app helpers (icon, code-block, toast, theme-switcher)
+├── TopNav.tsx         # demo chrome
+├── Footer.tsx
+└── Logo.tsx
 
 lib/
 ├── theme-config.ts    # 8 theme IDs + metadata
-├── theme-context.tsx  # ThemeProvider + useTheme hook
-└── utils.ts           # cn() helper (twMerge + clsx)
+└── theme-context.tsx  # ThemeProvider + useTheme hook
 
-preview/components/    # one file per component variant, rendered in /demo + /components
+preview/components/    # one file per component variant, rendered in /components + /demo
+tests/                 # vitest setup, smoke tests, a11y tests
+.changeset/            # release intents
 public/                # static assets
 ```
 
 ### Adding a component
 
-1. Create `components/voidui/YourComponent.tsx` using `cva` for variants.
+1. Create `components/voidui/YourComponent.tsx` using `cva` for variants. Import `cn` from `./_utils` (not `@/lib/utils` — the package is self-contained).
 2. Re-export from `components/voidui/index.ts`.
 3. Add preview variants in `preview/components/`.
 4. Register it in `lib/component-categorization.ts` and `lib/component-code-examples.ts`.
+5. Add a smoke test in `tests/smoke.test.tsx` and an a11y assertion in `tests/a11y.test.tsx`.
+6. Run `pnpm changeset` and pick `minor`.
 
 ### Adding a theme
 
@@ -411,14 +445,26 @@ public/                # static assets
 
 ## 📚 Key Dependencies
 
-- **Next.js 14** (App Router)
-- **React 18**
-- **TailwindCSS v4** (`@tailwindcss/postcss`, `@theme` directive)
-- **Radix UI** primitives for accessible behavior
+**Library runtime** (what ships in `dependencies`):
+
+- **Radix UI** primitives for accessible behavior across 18 components
 - **Class Variance Authority** (`cva`) for variant management
 - **Lucide React** icons
 - **Sonner** for toasts
-- **Google Fonts** via `next/font` (self-hosted)
+- **clsx** + **tailwind-merge** for `cn()`
+
+**Peers** (consumer brings these):
+
+- **React** `^18 || ^19`
+- **react-dom** `^18 || ^19`
+- **TailwindCSS v4** on the consumer side (you copy `app/global.css` or wire your own token sheet)
+
+**Demo / docs site** (devDependencies, not shipped):
+
+- **Next.js 14** (App Router)
+- **Google Fonts** via `next/font` (self-hosted: Inter / JetBrains Mono / Fraunces / IBM Plex Mono / Noto Sans SC / Noto Serif SC)
+- **Vitest** + **@testing-library/react** + **axe-core** for tests
+- **tsup** for the library build, **publint** + **size-limit** as gates, **Changesets** for versioning
 
 ---
 
@@ -446,4 +492,11 @@ MIT — use it, fork it, ship it.
 
 ## 🤝 Contributing
 
-PRs welcome. Run `pnpm build && pnpm lint` before opening one.
+PRs welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for repo layout, local setup, conventions, and the release flow.
+
+Before opening a PR, run all 7 gates locally:
+
+```bash
+pnpm typecheck && pnpm lint && pnpm test && \
+pnpm build:lib && pnpm publint && pnpm size && pnpm build
+```
