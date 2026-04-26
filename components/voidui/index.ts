@@ -1,6 +1,6 @@
-// voidUI v2 — Refined neobrutalism + 8-theme token system
-// Barrel export. Includes v1 back-compat aliases (Tab/Sonner/Radio/...) so
-// callers migrating from v1 don't have to touch import statements.
+// voidUI v3 — Refined neobrutalism + 10-theme token system
+// Barrel export. Includes v1/v2 back-compat aliases (Tab/Sonner/Radio/...)
+// so callers migrating across versions don't have to touch import statements.
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./Accordion";
 export { Alert, AlertTitle, AlertDescription } from "./Alert";
@@ -23,22 +23,23 @@ export { IconButton } from "./IconButton";
 export { Input } from "./Input";
 export { Label } from "./Label";
 export { Login } from "./Login";
-export { Menu, MenuTrigger, MenuContent, MenuItem, MenuSeparator, MenuLabel, MenuGroup, MenuPortal } from "./Menu";
+export {
+  Menu, MenuTrigger, MenuContent, MenuItem, MenuCheckboxItem, MenuRadioItem,
+  MenuRadioGroup, MenuSub, MenuSubTrigger, MenuSubContent,
+  MenuSeparator, MenuLabel, MenuGroup, MenuPortal, MenuShortcut,
+} from "./Menu";
 export { Popover, PopoverTrigger, PopoverContent } from "./Popover";
 export { ProductCard } from "./ProductCard";
 export { Progress } from "./Progress";
 export { RadioGroup, RadioGroupItem } from "./Radio";
-// v1 alias: `Radio` → `RadioGroup`
 export { RadioGroup as Radio } from "./Radio";
 export {
   Select, SelectGroup, SelectValue, SelectTrigger, SelectContent,
   SelectLabel, SelectItem, SelectSeparator,
 } from "./Select";
 export { Slider } from "./Slider";
-// v1 alias: `Sonner` → `Toaster`
 export { Toaster, Toaster as Sonner } from "./Sonner";
 export { Switch } from "./Switch";
-// v1 aliases: `Tab` / `TabsTriggerList` / `TabsPanels` kept for migration
 export {
   Tabs, Tabs as Tab, TabsList, TabsList as TabsTriggerList,
   TabsTrigger, TabsContent, TabsPanels,

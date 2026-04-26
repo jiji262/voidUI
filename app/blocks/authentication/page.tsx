@@ -1,356 +1,93 @@
 "use client";
 
-import React, { useState } from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button, Card, Input, Checkbox } from"@/components/voidui";
-import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, UserIcon, GithubIcon } from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase, InitialAvatar } from "@/components/blocks/_kit";
+import { Button, Card, Input, Label, Checkbox } from "@/components/voidui";
+import { ArrowRightIcon, GithubIcon, MailIcon, KeyIcon, LockIcon, FingerprintIcon } from "lucide-react";
 
-// Code snippets for authentication components
-const loginFormCode = `import React, { useState } from"react";
-import { Button, Input, Checkbox } from"@/components/voidui";
-import { EyeIcon, EyeOffIcon, MailIcon, LockIcon } from"lucide-react";
+export default function AuthPage() {
+  return (
+    <BlockPage eyebrow="Application — Auth" title="Authentication" subtitle="Four variants — sign-in, sign-up with side panel, magic link, and a 2FA confirmation step.">
+      <BlockShowcase name="01 — Sign in" bg="elev">
+        <div style={{ padding: "64px 24px", display: "flex", justifyContent: "center" }}>
+          <Card style={{ padding: 32, width: "100%", maxWidth: 380 }}>
+            <div style={{ marginBottom: 20 }}>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 6px" }}>Welcome back</h2>
+              <p style={{ margin: 0, fontSize: 13, color: "var(--fg-muted)" }}>Sign in to continue to voidUI</p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <Button variant="outline" fullWidth><GithubIcon size={14} /> Continue with GitHub</Button>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg-muted)", margin: "8px 0" }}><span style={{ flex: 1, height: 1, background: "var(--border-subtle)" }} />OR<span style={{ flex: 1, height: 1, background: "var(--border-subtle)" }} /></div>
+              <div><Label htmlFor="si-email">Email</Label><Input id="si-email" type="email" placeholder="you@voidui.dev" /></div>
+              <div><Label htmlFor="si-pw">Password</Label><Input id="si-pw" type="password" placeholder="••••••••" /></div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", gap: 6, alignItems: "center" }}><Checkbox id="rem" /><Label htmlFor="rem">Remember me</Label></div>
+                <a href="#" style={{ fontSize: 12, color: "var(--fg-muted)", textDecoration: "underline" }}>Forgot?</a>
+              </div>
+              <Button fullWidth>Sign in <ArrowRightIcon size={13} /></Button>
+              <p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)", textAlign: "center" }}>No account? <a href="#" style={{ color: "var(--fg)" }}>Sign up</a></p>
+            </div>
+          </Card>
+        </div>
+      </BlockShowcase>
 
-const LoginForm = () => {
- const [showPassword, setShowPassword] = useState(false);
+      <BlockShowcase name="02 — Sign up split">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
+          <div style={{ padding: 48, background: "var(--fg)", color: "var(--bg)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, opacity: 0.6, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Join 12,000+ teams</div>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1.0, margin: "0 0 16px" }}>Start shipping in <em style={{ fontStyle: "italic", color: "var(--primary)" }}>minutes</em></h2>
+              <p style={{ opacity: 0.7, fontSize: 14, lineHeight: 1.55, margin: 0 }}>Free forever. No credit card. Cancel any time, since there&apos;s nothing to cancel.</p>
+            </div>
+            <blockquote style={{ margin: 0, paddingTop: 24, borderTop: "1.5px solid rgba(255,255,255,0.15)", fontFamily: "var(--font-display)", fontSize: 18, lineHeight: 1.5 }}>
+              &ldquo;voidUI shipped our new dashboard in a weekend.&rdquo;
+              <footer style={{ marginTop: 10, fontSize: 12, fontFamily: "var(--font-mono)", opacity: 0.7, fontStyle: "normal" }}>— Maya O., founding designer at Lattice</footer>
+            </blockquote>
+          </div>
+          <div style={{ padding: 48, background: "var(--bg)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 500, margin: "0 0 20px", letterSpacing: "-0.02em" }}>Create your account</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                <div><Label htmlFor="su-fn">First</Label><Input id="su-fn" placeholder="Ada" /></div>
+                <div><Label htmlFor="su-ln">Last</Label><Input id="su-ln" placeholder="Lovelace" /></div>
+              </div>
+              <div><Label htmlFor="su-email">Work email</Label><Input id="su-email" type="email" /></div>
+              <div><Label htmlFor="su-pw">Password</Label><Input id="su-pw" type="password" /></div>
+              <Button fullWidth>Create account <ArrowRightIcon size={13} /></Button>
+              <p style={{ margin: 0, fontSize: 11, color: "var(--fg-muted)", lineHeight: 1.4 }}>By signing up, you agree to the Terms and Privacy Policy.</p>
+            </div>
+          </div>
+        </div>
+      </BlockShowcase>
 
- return (
- <div className="max-w-md mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
- <p className="text-gray-600">Sign in to your account</p>
- </div>
+      <BlockShowcase name="03 — Magic link" bg="elev">
+        <div style={{ padding: "80px 24px", display: "flex", justifyContent: "center" }}>
+          <Card style={{ padding: 40, width: "100%", maxWidth: 420, textAlign: "center" }}>
+            <div style={{ width: 56, height: 56, border: "1.5px solid var(--border)", background: "var(--primary)", color: "var(--primary-fg)", borderRadius: "var(--r)", margin: "0 auto 20px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "var(--sh-xs)" }}><MailIcon size={24} /></div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 8px" }}>Check your inbox</h2>
+            <p style={{ margin: "0 0 20px", fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.6 }}>We sent a magic link to <strong style={{ color: "var(--fg)" }}>ada@voidui.dev</strong>. It expires in 15 minutes.</p>
+            <Button variant="outline" fullWidth>Resend link</Button>
+            <p style={{ margin: "16px 0 0", fontSize: 12, color: "var(--fg-muted)" }}>Wrong address? <a href="#" style={{ color: "var(--fg)", textDecoration: "underline" }}>Use a different email</a></p>
+          </Card>
+        </div>
+      </BlockShowcase>
 
- <form className="space-y-6">
- <div>
- <label className="block text-sm font-medium mb-2">Email</label>
- <div className="relative">
- <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="email"
- placeholder="Enter your email"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Password</label>
- <div className="relative">
- <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type={showPassword ?"text" :"password"}
- placeholder="Enter your password"
- className="w-full pl-10 pr-12 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- <button
- type="button"
- onClick={() => setShowPassword(!showPassword)}
- className="absolute right-3 top-1/2 transform -translate-y-1/2"
- >
- {showPassword ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
- </button>
- </div>
- </div>
-
- <div className="flex items-center justify-between">
- <div className="flex items-center">
- <Checkbox id="remember" />
- <label htmlFor="remember" className="ml-2 text-sm">Remember me</label>
- </div>
- <a href="#" className="text-sm text-blue-600 hover:underline">
- Forgot password?
- </a>
- </div>
-
- <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
- Sign In
- </Button>
-
- <p className="text-center text-sm text-gray-600">
- Don&apos;t have an account?{""}
- <a href="#" className="text-blue-600 hover:underline">
- Sign up
- </a>
- </p>
- </form>
- </div>
- );
-};`;
-
-const signupFormCode = `import React, { useState } from"react";
-import { Button, Input, Checkbox } from"@/components/voidui";
-import { MailIcon, LockIcon, UserIcon, GithubIcon } from"lucide-react";
-
-const SignupForm = () => {
- return (
- <div className="max-w-md mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h2 className="text-2xl font-bold mb-2">Create Account</h2>
- <p className="text-gray-600">Join thousands of users today</p>
- </div>
-
- <form className="space-y-6">
- <div>
- <label className="block text-sm font-medium mb-2">Full Name</label>
- <div className="relative">
- <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="text"
- placeholder="John Doe"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Email</label>
- <div className="relative">
- <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="email"
- placeholder="john@example.com"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Password</label>
- <div className="relative">
- <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="password"
- placeholder="Create a password"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div className="flex items-start">
- <Checkbox id="terms" className="mt-1" />
- <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
- I agree to the Terms and Privacy Policy
- </label>
- </div>
-
- <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
- Create Account
- </Button>
-
- <div className="text-center">
- <div className="relative">
- <div className="absolute inset-0 flex items-center">
- <div className="w-full border-t border-gray-300" />
- </div>
- <div className="relative flex justify-center text-sm">
- <span className="px-2 bg-white text-gray-500">Or continue with</span>
- </div>
- </div>
- </div>
-
- <Button variant="outline" className="w-full border-black">
- <GithubIcon className="h-4 w-4 mr-2" />
- Continue with GitHub
- </Button>
- </form>
- </div>
- );
-};`;
-
-// Login Form Component
-const LoginForm = () => {
- const [showPassword, setShowPassword] = useState(false);
-
- return (
- <div className="max-w-md mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
- <p className="text-gray-600">Sign in to your account</p>
- </div>
-
- <form className="space-y-6">
- <div>
- <label className="block text-sm font-medium mb-2">Email</label>
- <div className="relative">
- <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="email"
- placeholder="Enter your email"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Password</label>
- <div className="relative">
- <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type={showPassword ?"text" :"password"}
- placeholder="Enter your password"
- className="w-full pl-10 pr-12 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- <button
- type="button"
- onClick={() => setShowPassword(!showPassword)}
- className="absolute right-3 top-1/2 transform -translate-y-1/2"
- >
- {showPassword ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
- </button>
- </div>
- </div>
-
- <div className="flex items-center justify-between">
- <div className="flex items-center">
- <Checkbox id="remember" />
- <label htmlFor="remember" className="ml-2 text-sm">Remember me</label>
- </div>
- <a href="#" className="text-sm text-blue-600 hover:underline">
- Forgot password?
- </a>
- </div>
-
- <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
- Sign In
- </Button>
-
- <p className="text-center text-sm text-gray-600">
- Don&apos;t have an account?{""}
- <a href="#" className="text-blue-600 hover:underline">
- Sign up
- </a>
- </p>
- </form>
- </div>
- );
-};
-
-// Signup Form Component
-const SignupForm = () => {
- return (
- <div className="max-w-md mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h2 className="text-2xl font-bold mb-2">Create Account</h2>
- <p className="text-gray-600">Join thousands of users today</p>
- </div>
-
- <form className="space-y-6">
- <div>
- <label className="block text-sm font-medium mb-2">Full Name</label>
- <div className="relative">
- <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="text"
- placeholder="John Doe"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Email</label>
- <div className="relative">
- <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="email"
- placeholder="john@example.com"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div>
- <label className="block text-sm font-medium mb-2">Password</label>
- <div className="relative">
- <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
- <input
- type="password"
- placeholder="Create a password"
- className="w-full pl-10 pr-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-blue-500"
- />
- </div>
- </div>
-
- <div className="flex items-start">
- <Checkbox id="terms" className="mt-1" />
- <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
- I agree to the Terms and Privacy Policy
- </label>
- </div>
-
- <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
- Create Account
- </Button>
-
- <div className="text-center">
- <div className="relative">
- <div className="absolute inset-0 flex items-center">
- <div className="w-full border-t border-gray-300" />
- </div>
- <div className="relative flex justify-center text-sm">
- <span className="px-2 bg-white text-gray-500">Or continue with</span>
- </div>
- </div>
- </div>
-
- <Button variant="outline" className="w-full border-black">
- <GithubIcon className="h-4 w-4 mr-2" />
- Continue with GitHub
- </Button>
- </form>
- </div>
- );
-};
-
-export default function AuthenticationPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Authentication <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Forms</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Login and signup form layouts with various styles and authentication methods.
- Perfect for user registration and sign-in flows.
- </p>
- </div>
- </section>
-
- {/* Authentication Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
-
- {/* Login Form */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <LoginForm />
- </div>
- <CodeDisplay title="Login Form" code={loginFormCode} />
- </div>
-
- {/* Signup Form */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <SignupForm />
- </div>
- <CodeDisplay title="Signup Form" code={signupFormCode} />
- </div>
-
- </section>
-
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="04 — 2FA verification">
+        <div style={{ padding: "64px 24px", display: "flex", justifyContent: "center" }}>
+          <Card style={{ padding: 32, width: "100%", maxWidth: 420 }}>
+            <FingerprintIcon size={28} style={{ marginBottom: 12, color: "var(--primary)" }} />
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 6px" }}>Two-factor verification</h2>
+            <p style={{ margin: "0 0 20px", fontSize: 13, color: "var(--fg-muted)" }}>Enter the 6-digit code from your authenticator app.</p>
+            <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <Input key={i} maxLength={1} style={{ textAlign: "center", fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 600, padding: 0, height: 48 }} />
+              ))}
+            </div>
+            <Button fullWidth>Verify</Button>
+            <p style={{ margin: "12px 0 0", fontSize: 12, color: "var(--fg-muted)", textAlign: "center" }}>Lost device? <a href="#" style={{ color: "var(--fg)", textDecoration: "underline" }}>Use a recovery code</a></p>
+          </Card>
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

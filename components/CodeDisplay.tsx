@@ -1,83 +1,95 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@/components/voidui";
-import { CodeIcon, CopyIcon, CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import React from "react";
+import { CheckIcon, CopyIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
-interface CodeDisplayProps {
-  title: string;
-  code: string;
-  language?: string;
-}
+export function CodeDisplay({ title, code }: { title: string; code: string }) {
+  const [copied, setCopied] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-export const CodeDisplay: React.FC<CodeDisplayProps> = ({ 
-  title, 
-  code, 
-  language = "tsx" 
-}) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleCopy = async () => {
+  const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy code:", err);
-    }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {}
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">{title}</h2>
-        <Button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="bg-black text-white hover:bg-gray-800"
-        >
-          <CodeIcon className="h-4 w-4 mr-2" />
-          {isExpanded ? "Hide Code" : "Get Code"}
-          {isExpanded ? (
-            <ChevronUpIcon className="h-4 w-4 ml-2" />
-          ) : (
-            <ChevronDownIcon className="h-4 w-4 ml-2" />
-          )}
-        </Button>
-      </div>
-
-      {isExpanded && (
-        <div className="border-2 border-black rounded-lg overflow-hidden">
-          <div className="bg-gray-100 px-4 py-2 border-b-2 border-black flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-700">
-              {language.toUpperCase()} Code
-            </span>
-            <Button
-              onClick={handleCopy}
-              size="sm"
-              variant="outline"
-              className="border-black"
-            >
-              {isCopied ? (
-                <>
-                  <CheckIcon className="h-4 w-4 mr-1" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <CopyIcon className="h-4 w-4 mr-1" />
-                  Copy
-                </>
-              )}
-            </Button>
-          </div>
-          <div className="bg-gray-900 text-gray-100 p-4 overflow-x-auto">
-            <pre className="text-sm">
-              <code>{code}</code>
-            </pre>
-          </div>
+    <div
+      className="card"
+      style={{
+        overflow: "hidden",
+        padding: 0,
+        background: "var(--bg-elev)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "10px 14px",
+          borderBottom: open ? "1.5px solid var(--border-subtle)" : "none",
+          background: "var(--bg)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: "-0.005em",
+            }}
+          >
+            {title}
+          </span>
+          <span className="badge ghost" style={{ fontSize: 10 }}>
+            tsx
+          </span>
         </div>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            type="button"
+            onClick={onCopy}
+            className="btn ghost sm"
+            style={{ fontSize: 11 }}
+          >
+            {copied ? <CheckIcon size={11} /> : <CopyIcon size={11} />}
+            {copied ? "Copied" : "Copy"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="btn ghost sm"
+            style={{ fontSize: 11 }}
+          >
+            {open ? <ChevronUpIcon size={11} /> : <ChevronDownIcon size={11} />}
+            {open ? "Hide" : "Code"}
+          </button>
+        </div>
+      </div>
+      {open && (
+        <pre
+          style={{
+            margin: 0,
+            padding: "16px 18px",
+            fontFamily: "var(--font-mono)",
+            fontSize: 12.5,
+            lineHeight: 1.6,
+            color: "var(--fg)",
+            background: "var(--bg-elev)",
+            overflow: "auto",
+            maxHeight: 480,
+            whiteSpace: "pre",
+          }}
+        >
+          <code>{code}</code>
+        </pre>
       )}
     </div>
   );
-};
+}
+
+export default CodeDisplay;

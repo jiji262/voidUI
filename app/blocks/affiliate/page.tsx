@@ -1,480 +1,82 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Button, Badge } from "@/components/voidui";
-import { 
-  ArrowRightIcon, 
-  TrendingUpIcon, 
-  DollarSignIcon,
-  UsersIcon,
-  StarIcon,
-  CheckIcon,
-  GiftIcon,
-  PercentIcon
-} from "lucide-react";
-import { CodeDisplay } from "@/components/CodeDisplay";
-
-// Code snippets for each component
-const affiliateHeroCode = `import React from "react";
-import { Button } from "@/components/voidui";
-import { ArrowRightIcon, DollarSignIcon } from "lucide-react";
-
-const AffiliateHero = () => (
-  <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <div className="text-center">
-      <div className="w-20 h-20 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-6">
-        <DollarSignIcon className="h-10 w-10" />
-      </div>
-      <h2 className="text-4xl font-bold mb-4">
-        Earn Up to 30% Commission
-      </h2>
-      <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-        Join our affiliate program and start earning money by promoting our products. 
-        Get paid for every successful referral with industry-leading commission rates.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <Button className="bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-          Join Affiliate Program
-          <ArrowRightIcon className="ml-2 h-4 w-4" />
-        </Button>
-        <Button variant="outline" className="border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-          Learn More
-        </Button>
-      </div>
-      <div className="grid md:grid-cols-3 gap-6 text-center">
-        <div className="p-4 bg-yellow-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">30%</div>
-          <p className="text-sm">Commission Rate</p>
-        </div>
-        <div className="p-4 bg-green-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">$500+</div>
-          <p className="text-sm">Avg Monthly Earnings</p>
-        </div>
-        <div className="p-4 bg-blue-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">24/7</div>
-          <p className="text-sm">Support</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);`;
-
-const commissionTiersCode = `import React from "react";
-import { Button, Badge } from "@/components/voidui";
-import { StarIcon, TrendingUpIcon, GiftIcon, CheckIcon } from "lucide-react";
-
-const CommissionTiers = () => (
-  <div className="max-w-6xl mx-auto">
-    <div className="grid md:grid-cols-3 gap-6">
-      {/* Bronze Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-blue-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <StarIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Bronze</h3>
-          <div className="text-3xl font-bold mb-4 text-blue-600">15%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            Perfect for getting started with affiliate marketing
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Monthly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Basic marketing materials
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Email support
-            </li>
-          </ul>
-          <Button variant="outline" className="w-full border-2 border-black">
-            Get Started
-          </Button>
-        </div>
-      </div>
-
-      {/* Silver Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-300 px-4 py-1 text-sm font-medium border-2 border-black">
-          Most Popular
-        </div>
-        <div className="text-center">
-          <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <TrendingUpIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Silver</h3>
-          <div className="text-3xl font-bold mb-4 text-yellow-600">25%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            For established affiliates with consistent performance
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Bi-weekly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Advanced marketing kit
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Priority support
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Performance bonuses
-            </li>
-          </ul>
-          <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-            Upgrade to Silver
-          </Button>
-        </div>
-      </div>
-
-      {/* Gold Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-green-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <GiftIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Gold</h3>
-          <div className="text-3xl font-bold mb-4 text-green-600">30%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            Elite tier for top-performing affiliate partners
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Weekly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Custom marketing materials
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Dedicated account manager
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Exclusive promotions
-            </li>
-          </ul>
-          <Button variant="outline" className="w-full border-2 border-black">
-            Contact Sales
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
-);`;
-
-const howItWorksCode = `import React from "react";
-
-const HowItWorks = () => (
-  <div className="max-w-4xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <div className="grid md:grid-cols-4 gap-8">
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">1</span>
-        </div>
-        <h3 className="font-bold mb-2">Sign Up</h3>
-        <p className="text-sm text-gray-600">
-          Join our affiliate program with a simple registration process
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">2</span>
-        </div>
-        <h3 className="font-bold mb-2">Get Your Link</h3>
-        <p className="text-sm text-gray-600">
-          Receive your unique affiliate tracking link and marketing materials
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">3</span>
-        </div>
-        <h3 className="font-bold mb-2">Promote</h3>
-        <p className="text-sm text-gray-600">
-          Share your link through your channels and start referring customers
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">4</span>
-        </div>
-        <h3 className="font-bold mb-2">Earn</h3>
-        <p className="text-sm text-gray-600">
-          Get paid commission for every successful referral you generate
-        </p>
-      </div>
-    </div>
-  </div>
-);`;
-
-// Component implementations
-const AffiliateHero = () => (
-  <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <div className="text-center">
-      <div className="w-20 h-20 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-6">
-        <DollarSignIcon className="h-10 w-10" />
-      </div>
-      <h2 className="text-4xl font-bold mb-4">
-        Earn Up to 30% Commission
-      </h2>
-      <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-        Join our affiliate program and start earning money by promoting our products. 
-        Get paid for every successful referral with industry-leading commission rates.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <Button className="bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-          Join Affiliate Program
-          <ArrowRightIcon className="ml-2 h-4 w-4" />
-        </Button>
-        <Button variant="outline" className="border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-          Learn More
-        </Button>
-      </div>
-      <div className="grid md:grid-cols-3 gap-6 text-center">
-        <div className="p-4 bg-yellow-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">30%</div>
-          <p className="text-sm">Commission Rate</p>
-        </div>
-        <div className="p-4 bg-green-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">$500+</div>
-          <p className="text-sm">Avg Monthly Earnings</p>
-        </div>
-        <div className="p-4 bg-blue-300 border-2 border-black">
-          <div className="text-2xl font-bold mb-1">24/7</div>
-          <p className="text-sm">Support</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const CommissionTiers = () => (
-  <div className="max-w-6xl mx-auto">
-    <div className="grid md:grid-cols-3 gap-6">
-      {/* Bronze Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-blue-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <StarIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Bronze</h3>
-          <div className="text-3xl font-bold mb-4 text-blue-600">15%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            Perfect for getting started with affiliate marketing
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Monthly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Basic marketing materials
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Email support
-            </li>
-          </ul>
-          <Button variant="outline" className="w-full border-2 border-black">
-            Get Started
-          </Button>
-        </div>
-      </div>
-
-      {/* Silver Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-300 px-4 py-1 text-sm font-medium border-2 border-black">
-          Most Popular
-        </div>
-        <div className="text-center">
-          <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <TrendingUpIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Silver</h3>
-          <div className="text-3xl font-bold mb-4 text-yellow-600">25%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            For established affiliates with consistent performance
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Bi-weekly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Advanced marketing kit
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Priority support
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Performance bonuses
-            </li>
-          </ul>
-          <Button className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-0.5 hover:translate-y-0.5">
-            Upgrade to Silver
-          </Button>
-        </div>
-      </div>
-
-      {/* Gold Tier */}
-      <div className="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-green-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-            <GiftIcon className="h-8 w-8" />
-          </div>
-          <h3 className="text-xl font-bold mb-2">Gold</h3>
-          <div className="text-3xl font-bold mb-4 text-green-600">30%</div>
-          <p className="text-gray-600 text-sm mb-6">
-            Elite tier for top-performing affiliate partners
-          </p>
-          <ul className="space-y-2 text-sm mb-6 text-left">
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Weekly payouts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Custom marketing materials
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Dedicated account manager
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckIcon className="h-4 w-4 text-green-500" />
-              Exclusive promotions
-            </li>
-          </ul>
-          <Button variant="outline" className="w-full border-2 border-black">
-            Contact Sales
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const HowItWorks = () => (
-  <div className="max-w-4xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <div className="grid md:grid-cols-4 gap-8">
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">1</span>
-        </div>
-        <h3 className="font-bold mb-2">Sign Up</h3>
-        <p className="text-sm text-gray-600">
-          Join our affiliate program with a simple registration process
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">2</span>
-        </div>
-        <h3 className="font-bold mb-2">Get Your Link</h3>
-        <p className="text-sm text-gray-600">
-          Receive your unique affiliate tracking link and marketing materials
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">3</span>
-        </div>
-        <h3 className="font-bold mb-2">Promote</h3>
-        <p className="text-sm text-gray-600">
-          Share your link through your channels and start referring customers
-        </p>
-      </div>
-      
-      <div className="text-center">
-        <div className="w-16 h-16 bg-yellow-300 border-2 border-black flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold">4</span>
-        </div>
-        <h3 className="font-bold mb-2">Earn</h3>
-        <p className="text-sm text-gray-600">
-          Get paid commission for every successful referral you generate
-        </p>
-      </div>
-    </div>
-  </div>
-);
+import { BlockPage, BlockShowcase, Placeholder } from "@/components/blocks/_kit";
+import { Card, Badge, Button, Input, Label } from "@/components/voidui";
+import { DollarSignIcon, TrendingUpIcon, UsersIcon, ArrowRightIcon } from "lucide-react";
 
 export default function AffiliatePage() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* Page Header */}
-      <section className="container max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Affiliate <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Program</span>
-          </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Partnership and affiliate program sections to promote collaboration 
-            and revenue sharing opportunities.
-          </p>
-        </div>
-      </section>
-
-      {/* Affiliate Blocks */}
-      <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
-        
-        {/* Affiliate Hero */}
-        <div className="space-y-6">
-          <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
-            <AffiliateHero />
+    <BlockPage eyebrow="Marketing — Affiliate" title="Affiliate program sections" subtitle="Three variants — program overview, calculator + signup, and partner showcase.">
+      <BlockShowcase name="01 — Program overview" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 1100, marginInline: "auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <Badge variant="outline" style={{ marginBottom: 16 }}>Affiliate · 30% commission</Badge>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 0.95, margin: "0 0 16px", maxWidth: 720, marginInline: "auto" }}>Earn for every team you bring.</h2>
+            <p style={{ color: "var(--fg-muted)", maxWidth: 540, margin: "0 auto 24px" }}>30% recurring on every Pro and Team subscription, paid monthly. No minimums.</p>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center" }}><Button>Become an affiliate</Button><Button variant="outline">Read terms</Button></div>
           </div>
-          <CodeDisplay title="Affiliate Hero" code={affiliateHeroCode} />
-        </div>
-
-        {/* Commission Tiers */}
-        <div className="space-y-6">
-          <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
-            <CommissionTiers />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+            {[
+              { icon: DollarSignIcon, k: "30%", v: "Recurring commission for life" },
+              { icon: TrendingUpIcon, k: "$2,400", v: "Avg. affiliate annual earnings" },
+              { icon: UsersIcon, k: "60 days", v: "Cookie attribution window" },
+            ].map(({ icon: Icon, k, v }, i) => (
+              <Card key={i} style={{ padding: 28, textAlign: "center" }}>
+                <Icon size={22} style={{ color: "var(--primary)", margin: "0 auto 12px" }} />
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1, marginBottom: 6 }}>{k}</div>
+                <div style={{ fontSize: 13, color: "var(--fg-muted)" }}>{v}</div>
+              </Card>
+            ))}
           </div>
-          <CodeDisplay title="Commission Tiers" code={commissionTiersCode} />
         </div>
+      </BlockShowcase>
 
-        {/* How It Works */}
-        <div className="space-y-6">
-          <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
-            <HowItWorks />
+      <BlockShowcase name="02 — Calculator + signup">
+        <div style={{ padding: "64px 32px", maxWidth: 1000, marginInline: "auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
+          <div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 500, letterSpacing: "-0.025em", margin: "0 0 12px", lineHeight: 1.05 }}>Estimate your earnings</h2>
+            <p style={{ color: "var(--fg-muted)", margin: "0 0 24px" }}>Based on Pro plan ($24/mo) at 30% commission.</p>
+            <Card style={{ padding: 24, background: "var(--bg-elev)" }}>
+              <div style={{ display: "grid", gap: 12 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1.5px solid var(--border-subtle)" }}><span style={{ fontSize: 13, color: "var(--fg-muted)" }}>10 referrals</span><span style={{ fontFamily: "var(--font-mono)", fontWeight: 600 }}>$72/mo</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1.5px solid var(--border-subtle)" }}><span style={{ fontSize: 13, color: "var(--fg-muted)" }}>50 referrals</span><span style={{ fontFamily: "var(--font-mono)", fontWeight: 600 }}>$360/mo</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0" }}><span style={{ fontSize: 13, color: "var(--fg-muted)" }}>200 referrals</span><span style={{ fontFamily: "var(--font-mono)", fontWeight: 700, color: "var(--primary)" }}>$1,440/mo</span></div>
+              </div>
+            </Card>
           </div>
-          <CodeDisplay title="How It Works" code={howItWorksCode} />
+          <Card style={{ padding: 28 }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 500, margin: "0 0 16px", letterSpacing: "-0.02em" }}>Apply now</h3>
+            <div style={{ display: "grid", gap: 12 }}>
+              <div><Label>Full name</Label><Input placeholder="Ada Lovelace" /></div>
+              <div><Label>Email</Label><Input type="email" placeholder="ada@studio.co" /></div>
+              <div><Label>Audience size</Label><Input placeholder="e.g. 12,000 newsletter subs" /></div>
+              <Button style={{ marginTop: 6 }}>Submit application</Button>
+            </div>
+          </Card>
         </div>
+      </BlockShowcase>
 
-      </section>
-
-      {/* Back to Blocks */}
-      <section className="container max-w-6xl mx-auto px-6 pb-16">
-        <div className="text-center">
-          <Link href="/blocks">
-            <Button variant="outline" className="font-head">
-              ← Back to All Blocks
-            </Button>
-          </Link>
+      <BlockShowcase name="03 — Top partners" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 1100, marginInline: "auto" }}>
+          <div style={{ marginBottom: 24 }}>
+            <div className="label" style={{ marginBottom: 8 }}>Featured partners</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, letterSpacing: "-0.025em", margin: 0 }}>Studios building with voidUI</h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14 }}>
+            {["Field Studio", "Chroma Labs", "Northing & Co.", "Halftone"].map((s, i) => (
+              <Card key={i} style={{ padding: 20 }}>
+                <Placeholder height={140} label={`${s} work`} />
+                <div style={{ marginTop: 14 }}>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--fg-muted)", marginBottom: 4 }}>P/{String(i + 1).padStart(2, "0")}</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 500, letterSpacing: "-0.015em", marginBottom: 4 }}>{s}</div>
+                  <div style={{ fontSize: 12, color: "var(--fg-muted)" }}>120+ teams referred</div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
-      </section>
-    </main>
+      </BlockShowcase>
+    </BlockPage>
   );
 }

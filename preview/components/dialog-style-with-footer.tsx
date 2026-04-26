@@ -9,7 +9,7 @@ export default function DialogStyleWithFooter() {
         <Button>Open Dialog</Button>
       </Dialog.Trigger>
       <Dialog.Content>
-        <Dialog.Header position={"fixed"} asChild>
+        <Dialog.Header>
           <Text as="h5">Confirm your action?</Text>
         </Dialog.Header>
         <section className="flex flex-col gap-4 p-4">

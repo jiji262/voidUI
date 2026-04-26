@@ -1,309 +1,82 @@
 "use client";
 
-import React from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button, Card } from"@/components/voidui";
-import { ArrowRightIcon, CheckIcon, StarIcon, TrendingUpIcon } from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase } from "@/components/blocks/_kit";
+import { Button, Card, Input } from "@/components/voidui";
+import { ArrowRightIcon, ZapIcon, SparklesIcon, MailIcon } from "lucide-react";
 
-// Code snippets for CTA components
-const simpleCTACode = `import React from"react";
-import { Button } from"@/components/voidui";
-import { ArrowRightIcon } from"lucide-react";
+export default function CTAPage() {
+  return (
+    <BlockPage eyebrow="Marketing — Call to Action" title="Call-to-action sections" subtitle="Five variants — full-width inverted, split, newsletter capture, banner strip, and a stat-anchored CTA.">
+      <BlockShowcase name="01 — Inverted full-width" bg="fg">
+        <div style={{ padding: "96px 48px", textAlign: "center", color: "var(--bg)" }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, opacity: 0.6, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>Limited spots</div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 6vw, 80px)", fontWeight: 500, lineHeight: 1.0, letterSpacing: "-0.035em", margin: "0 0 20px", maxWidth: 760, marginInline: "auto" }}>
+            Ready to <em style={{ fontStyle: "italic", color: "var(--primary)" }}>ship something good?</em>
+          </h2>
+          <p style={{ fontSize: 17, opacity: 0.75, lineHeight: 1.55, margin: "0 0 32px", maxWidth: 540, marginInline: "auto" }}>The system is open source. The community is welcoming. The output is yours.</p>
+          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+            <Button style={{ background: "var(--primary)", color: "var(--primary-fg)", borderColor: "var(--bg)" }}>Start building <ArrowRightIcon size={14} /></Button>
+            <Button variant="outline" style={{ background: "transparent", color: "var(--bg)", borderColor: "var(--bg)" }}>Read the docs</Button>
+          </div>
+        </div>
+      </BlockShowcase>
 
-const SimpleCTA = () => {
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <h4 className="text-3xl font-bold mb-4">
- Ready to Get Started?
- </h4>
- <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
- Join thousands of satisfied customers who have transformed their business
- with our platform. Start your free trial today.
- </p>
- <div className="flex flex-col sm:flex-row gap-4 justify-center">
- <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">
- Start Free Trial
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- <Button variant="outline" className="border-black px-8 py-3">
- Schedule Demo
- </Button>
- </div>
- </div>
- );
-};`;
+      <BlockShowcase name="02 — Split with form" bg="elev">
+        <div style={{ padding: "64px 48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div>
+            <div className="label" style={{ marginBottom: 12 }}>Newsletter</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.05, margin: "0 0 16px" }}>
+              Two emails a month, <em style={{ fontStyle: "italic", color: "var(--primary)" }}>worth reading</em>
+            </h2>
+            <p style={{ fontSize: 15, color: "var(--fg-muted)", lineHeight: 1.6, margin: 0, maxWidth: 420 }}>Component releases, design notes, and one curated link from elsewhere on the web.</p>
+          </div>
+          <Card style={{ padding: 28 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <Input placeholder="you@voidui.dev" type="email" />
+              <Button fullWidth><MailIcon size={14} /> Subscribe</Button>
+              <p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)", textAlign: "center" }}>No spam. Unsubscribe anytime.</p>
+            </div>
+          </Card>
+        </div>
+      </BlockShowcase>
 
-const featuresCTACode = `import React from"react";
-import { Button } from"@/components/voidui";
-import { ArrowRightIcon, CheckIcon } from"lucide-react";
+      <BlockShowcase name="03 — Banner strip" bg="primary">
+        <div style={{ padding: "20px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, color: "var(--primary-fg)", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <SparklesIcon size={16} />
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 600 }}>v3.0 just landed — 10 themes, refined tokens, new motion system.</span>
+          </div>
+          <Button size="sm" style={{ background: "var(--bg)", color: "var(--fg)", borderColor: "var(--fg)" }}>What&apos;s new <ArrowRightIcon size={12} /></Button>
+        </div>
+      </BlockShowcase>
 
-const FeaturesCTA = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div>
- <h4 className="text-3xl font-bold mb-6">
- Everything You Need to Succeed
- </h4>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Advanced analytics and reporting</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>24/7 customer support</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Seamless integrations</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Enterprise-grade security</span>
- </div>
- </div>
- <div className="flex flex-col sm:flex-row gap-4">
- <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">
- Get Started Now
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- <Button variant="outline" className="border-black px-8 py-3">
- Learn More
- </Button>
- </div>
- </div>
- <div className="relative">
- <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center border-2 border-black">
- <img
- src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=400&fit=crop"
- alt="Dashboard preview"
- className="object-cover w-full h-full"
- />
- </div>
- </div>
- </div>
- </div>
- );
-};`;
+      <BlockShowcase name="04 — Card-anchored">
+        <div style={{ padding: "80px 48px" }}>
+          <Card style={{ padding: "56px 48px", maxWidth: 880, marginInline: "auto", textAlign: "center", background: "var(--bg-elev)" }}>
+            <ZapIcon size={28} style={{ marginBottom: 16 }} />
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1.05, margin: "0 0 12px" }}>Set up in <em style={{ fontStyle: "italic", color: "var(--primary)" }}>under 60 seconds</em></h2>
+            <p style={{ fontSize: 15, color: "var(--fg-muted)", margin: "0 0 24px", maxWidth: 520, marginInline: "auto" }}>Single npm install. No webpack config. No CSS overrides.</p>
+            <pre style={{ display: "inline-block", margin: "0 0 24px", padding: "10px 16px", border: "1.5px solid var(--border)", borderRadius: "var(--r-sm)", background: "var(--bg)", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500 }}>$ pnpm add @voidui/react</pre>
+            <div><Button>Get started <ArrowRightIcon size={13} /></Button></div>
+          </Card>
+        </div>
+      </BlockShowcase>
 
-const urgencyCTACode = `import React from"react";
-import { Button } from"@/components/voidui";
-import { ArrowRightIcon, TrendingUpIcon } from"lucide-react";
-
-const UrgencyCTA = () => {
- return (
- <div className="max-w-4xl mx-auto bg-gradient-to-r from-yellow-100 to-orange-100 border-2 border-black p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="inline-flex items-center gap-2 bg-yellow-300 px-4 py-2 text-sm font-medium mb-6 border-2 border-black">
- <TrendingUpIcon className="h-4 w-4" />
- Limited Time Offer
- </div>
- <h4 className="text-4xl font-bold mb-4">
- 50% Off for Early Adopters
- </h4>
- <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
- Be among the first 100 customers and save 50% on your first year.
- This exclusive offer expires in 7 days.
- </p>
- <div className="flex items-center justify-center gap-8 mb-8">
- <div className="text-center">
- <div className="text-2xl font-bold">06</div>
- <p className="text-sm text-gray-600">Days</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">14</div>
- <p className="text-sm text-gray-600">Hours</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">32</div>
- <p className="text-sm text-gray-600">Minutes</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">18</div>
- <p className="text-sm text-gray-600">Seconds</p>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800 px-12 py-3">
- Claim Your Discount
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- );
-};`;
-
-// Simple CTA Component
-const SimpleCTA = () => {
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <h4 className="text-3xl font-bold mb-4">
- Ready to Get Started?
- </h4>
- <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
- Join thousands of satisfied customers who have transformed their business
- with our platform. Start your free trial today.
- </p>
- <div className="flex flex-col sm:flex-row gap-4 justify-center">
- <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">
- Start Free Trial
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- <Button variant="outline" className="border-black px-8 py-3">
- Schedule Demo
- </Button>
- </div>
- </div>
- );
-};
-
-// Features CTA Component
-const FeaturesCTA = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div>
- <h4 className="text-3xl font-bold mb-6">
- Everything You Need to Succeed
- </h4>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Advanced analytics and reporting</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>24/7 customer support</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Seamless integrations</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Enterprise-grade security</span>
- </div>
- </div>
- <div className="flex flex-col sm:flex-row gap-4">
- <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">
- Get Started Now
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- <Button variant="outline" className="border-black px-8 py-3">
- Learn More
- </Button>
- </div>
- </div>
- <div className="relative">
- <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center border-2 border-black">
- <img
- src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=400&fit=crop"
- alt="Dashboard preview"
- className="object-cover w-full h-full"
- />
- </div>
- </div>
- </div>
- </div>
- );
-};
-
-// Urgency CTA Component
-const UrgencyCTA = () => {
- return (
- <div className="max-w-4xl mx-auto bg-gradient-to-r from-yellow-100 to-orange-100 border-2 border-black p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="inline-flex items-center gap-2 bg-yellow-300 px-4 py-2 text-sm font-medium mb-6 border-2 border-black">
- <TrendingUpIcon className="h-4 w-4" />
- Limited Time Offer
- </div>
- <h4 className="text-4xl font-bold mb-4">
- 50% Off for Early Adopters
- </h4>
- <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
- Be among the first 100 customers and save 50% on your first year.
- This exclusive offer expires in 7 days.
- </p>
- <div className="flex items-center justify-center gap-8 mb-8">
- <div className="text-center">
- <div className="text-2xl font-bold">06</div>
- <p className="text-sm text-gray-600">Days</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">14</div>
- <p className="text-sm text-gray-600">Hours</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">32</div>
- <p className="text-sm text-gray-600">Minutes</p>
- </div>
- <div className="text-center">
- <div className="text-2xl font-bold">18</div>
- <p className="text-sm text-gray-600">Seconds</p>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800 px-12 py-3">
- Claim Your Discount
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- );
-};
-
-export default function CallToActionPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Call to Action <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Sections</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Convert visitors with compelling call-to-action sections. Drive engagement
- and encourage users to take the next step.
- </p>
- </div>
- </section>
-
- {/* CTA Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
-
- {/* Simple CTA */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <SimpleCTA />
- </div>
- <CodeDisplay title="Simple CTA" code={simpleCTACode} />
- </div>
-
- {/* Features CTA */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <FeaturesCTA />
- </div>
- <CodeDisplay title="Features CTA" code={featuresCTACode} />
- </div>
-
- {/* Urgency CTA */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <UrgencyCTA />
- </div>
- <CodeDisplay title="Urgency CTA" code={urgencyCTACode} />
- </div>
-
- </section>
-
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="05 — Stat-anchored CTA" bg="elev">
+        <div style={{ padding: "80px 48px", display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "center" }}>
+          <div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 48, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.0, margin: "0 0 12px" }}>
+              <em style={{ fontStyle: "italic", color: "var(--primary)" }}>12,000+</em> teams already shipping
+            </h2>
+            <p style={{ fontSize: 16, color: "var(--fg-muted)", margin: 0, maxWidth: 480, lineHeight: 1.55 }}>Join indie hackers, design studios, and Fortune 100s — all building on voidUI&apos;s token system.</p>
+          </div>
+          <div style={{ display: "flex", gap: 10, flexDirection: "column" }}>
+            <Button size="lg">Join them <ArrowRightIcon size={14} /></Button>
+            <Button variant="ghost" size="sm">View case studies</Button>
+          </div>
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

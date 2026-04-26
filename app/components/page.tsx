@@ -1,340 +1,222 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { GithubIcon, Search, BookOpen, Code2, Package } from "lucide-react";
-import { CodeBlockWithCopy } from "@/components/ui/code-block-with-copy";
-import ErrorBoundary from "@/components/ui/error-boundary";
-import { BackToTop } from "@/components/ui/back-to-top";
-import { getAllComponentExamples, getComponentExample } from "@/lib/component-code-examples";
+import { ArrowRightIcon } from "lucide-react";
+import {
+  Button, Badge, Card, Input, Textarea, Label, Checkbox, Switch, Slider,
+  RadioGroup, RadioGroupItem, Select, SelectTrigger, SelectValue, SelectContent, SelectItem,
+  Avatar, AvatarFallback, Alert, AlertTitle, AlertDescription, Progress,
+  Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
+  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+  Tabs, TabsList, TabsTrigger, TabsContent,
+  Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage,
+  Tooltip, TooltipProvider, TooltipTrigger, TooltipContent,
+  Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription,
+  Popover, PopoverTrigger, PopoverContent,
+  ToggleGroup, ToggleGroupItem,
+} from "@/components/voidui";
+import { BoldIcon, ItalicIcon, UnderlineIcon, MailIcon, AlertCircleIcon } from "lucide-react";
 
-// Component categories
-const componentCategories = {
-  "Core": ["Button", "IconButton", "Toggle", "ToggleGroup"],
-  "Forms": ["Input", "Textarea", "Checkbox", "Radio", "Select", "Switch", "Slider", "Label"],
-  "Layout": ["Card", "Accordion", "Tab", "Table", "Breadcrumb"],
-  "Feedback": ["Alert", "Badge", "Progress", "Sonner", "Tooltip"],
-  "Overlay": ["Dialog", "Menu", "Popover"],
-  "Display": ["Avatar", "Text", "CommandDisplay"],
-};
+type Cat = { title: string; items: { name: string; demo: React.ReactNode }[] };
 
-interface ComponentShowcaseProps {
-  name: string;
-  category: string;
-}
-
-const ComponentShowcase: React.FC<ComponentShowcaseProps> = ({ name, category }) => {
-  const [tab, setTab] = useState<"preview" | "code" | "examples">("preview");
-  const examples = getAllComponentExamples(name);
-  const basicExample = getComponentExample(name, "basic");
-
-  // Dynamic import of preview component
-  const PreviewComponent = React.lazy(
-    () =>
-      import(`@/preview/components/${name.toLowerCase()}-style-default`).catch(() => ({
-        default: () => (
-          <div style={{ color: "var(--fg-subtle)", fontSize: 13 }}>Preview not available</div>
-        ),
-      })),
-  );
-
-  return (
-    <div className="card" style={{ overflow: "hidden", padding: 0 }} id={name.toLowerCase()}>
-      {/* Chrome strip — matches design's ComponentBlock */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          borderBottom: "1.5px solid var(--border)",
-          background: "var(--bg)",
-          gap: 12,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              fontWeight: 600,
-            }}
-          >
-            {name}
-          </span>
-          <span className="badge ghost">{category.toLowerCase()}</span>
+const CATS: Cat[] = [
+  {
+    title: "Buttons & Triggers",
+    items: [
+      { name: "Button", demo: (
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <Button>Default</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button size="sm">Small</Button>
         </div>
-        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-          {(["preview", "code", "examples"] as const).map((t) => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => setTab(t)}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                padding: "4px 10px",
-                border: "1.5px solid",
-                borderColor: tab === t ? "var(--border)" : "transparent",
-                background: tab === t ? "var(--primary)" : "transparent",
-                color: tab === t ? "var(--primary-fg)" : "var(--fg-muted)",
-                borderRadius: 2,
-                cursor: "pointer",
-                fontWeight: tab === t ? 600 : 500,
-              }}
-            >
-              {t}
-            </button>
-          ))}
-          <Link
-            href={`https://github.com/jiji262/voidUI/blob/main/components/voidui/${name}.tsx`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", marginLeft: 4 }}
-          >
-            <button className="btn ghost sm" aria-label={`${name} source on GitHub`}>
-              <GithubIcon style={{ width: 13, height: 13 }} />
-            </button>
-          </Link>
+      )},
+      { name: "Badge", demo: (
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="outline">Outline</Badge>
+          <Badge variant="destructive">Destructive</Badge>
         </div>
-      </div>
+      )},
+      { name: "Toggle Group", demo: (
+        <ToggleGroup type="multiple" defaultValue={["bold"]}>
+          <ToggleGroupItem value="bold"><BoldIcon size={14} /></ToggleGroupItem>
+          <ToggleGroupItem value="italic"><ItalicIcon size={14} /></ToggleGroupItem>
+          <ToggleGroupItem value="underline"><UnderlineIcon size={14} /></ToggleGroupItem>
+        </ToggleGroup>
+      )},
+    ],
+  },
+  {
+    title: "Inputs",
+    items: [
+      { name: "Input", demo: (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 320 }}>
+          <Label htmlFor="d-email">Email</Label>
+          <Input id="d-email" type="email" placeholder="you@voidui.dev" />
+        </div>
+      )},
+      { name: "Textarea", demo: <Textarea placeholder="Write something..." style={{ maxWidth: 320 }} /> },
+      { name: "Select", demo: (
+        <Select>
+          <SelectTrigger style={{ maxWidth: 240 }}><SelectValue placeholder="Pick a theme" /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="neobrutal">Neobrutal</SelectItem>
+            <SelectItem value="swiss">Swiss</SelectItem>
+            <SelectItem value="aurora">Aurora</SelectItem>
+          </SelectContent>
+        </Select>
+      )},
+      { name: "Checkbox", demo: (
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <Checkbox id="d-cb" defaultChecked /><Label htmlFor="d-cb">Subscribe to updates</Label>
+        </div>
+      )},
+      { name: "Radio", demo: (
+        <RadioGroup defaultValue="b" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ display: "flex", gap: 8 }}><RadioGroupItem value="a" id="d-ra" /><Label htmlFor="d-ra">Option A</Label></div>
+          <div style={{ display: "flex", gap: 8 }}><RadioGroupItem value="b" id="d-rb" /><Label htmlFor="d-rb">Option B</Label></div>
+        </RadioGroup>
+      )},
+      { name: "Switch", demo: (
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}><Switch id="d-sw" defaultChecked /><Label htmlFor="d-sw">Notifications</Label></div>
+      )},
+      { name: "Slider", demo: <Slider defaultValue={[50]} max={100} step={1} style={{ maxWidth: 280 }} /> },
+    ],
+  },
+  {
+    title: "Display",
+    items: [
+      { name: "Avatar", demo: (
+        <div style={{ display: "flex", gap: 8 }}>
+          <Avatar><AvatarFallback>JD</AvatarFallback></Avatar>
+          <Avatar><AvatarFallback>VU</AvatarFallback></Avatar>
+          <Avatar><AvatarFallback>+5</AvatarFallback></Avatar>
+        </div>
+      )},
+      { name: "Card", demo: (
+        <Card style={{ padding: 16, maxWidth: 320 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Card title</div>
+          <p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>Card body — works as a container.</p>
+        </Card>
+      )},
+      { name: "Alert", demo: (
+        <Alert style={{ maxWidth: 420 }}>
+          <AlertCircleIcon size={14} />
+          <AlertTitle>Heads up</AlertTitle>
+          <AlertDescription>Token-driven, dismissible by default in v3.</AlertDescription>
+        </Alert>
+      )},
+      { name: "Progress", demo: <Progress value={62} style={{ maxWidth: 320 }} /> },
+      { name: "Table", demo: (
+        <Table style={{ maxWidth: 480 }}>
+          <TableHeader><TableRow><TableHead>Name</TableHead><TableHead>Plan</TableHead><TableHead>MRR</TableHead></TableRow></TableHeader>
+          <TableBody>
+            <TableRow><TableCell>Ada</TableCell><TableCell>Pro</TableCell><TableCell>$49</TableCell></TableRow>
+            <TableRow><TableCell>Hopper</TableCell><TableCell>Team</TableCell><TableCell>$149</TableCell></TableRow>
+          </TableBody>
+        </Table>
+      )},
+      { name: "Tooltip", demo: (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild><Button variant="outline" size="sm">Hover me</Button></TooltipTrigger>
+            <TooltipContent>Token-driven tooltip</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      )},
+    ],
+  },
+  {
+    title: "Navigation & Disclosure",
+    items: [
+      { name: "Tabs", demo: (
+        <Tabs defaultValue="acct" style={{ maxWidth: 420 }}>
+          <TabsList><TabsTrigger value="acct">Account</TabsTrigger><TabsTrigger value="bil">Billing</TabsTrigger><TabsTrigger value="api">API</TabsTrigger></TabsList>
+          <TabsContent value="acct" style={{ padding: 12, fontSize: 13, color: "var(--fg-muted)" }}>Account settings.</TabsContent>
+          <TabsContent value="bil" style={{ padding: 12, fontSize: 13, color: "var(--fg-muted)" }}>Billing settings.</TabsContent>
+          <TabsContent value="api" style={{ padding: 12, fontSize: 13, color: "var(--fg-muted)" }}>API settings.</TabsContent>
+        </Tabs>
+      )},
+      { name: "Accordion", demo: (
+        <Accordion type="single" collapsible style={{ maxWidth: 480 }}>
+          <AccordionItem value="a"><AccordionTrigger>What is voidUI?</AccordionTrigger><AccordionContent>A refined neobrutalist component library.</AccordionContent></AccordionItem>
+          <AccordionItem value="b"><AccordionTrigger>Is it free?</AccordionTrigger><AccordionContent>Yes — MIT licensed.</AccordionContent></AccordionItem>
+        </Accordion>
+      )},
+      { name: "Breadcrumb", demo: (
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem><BreadcrumbLink href="/components">Components</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      )},
+      { name: "Dialog", demo: (
+        <Dialog>
+          <DialogTrigger asChild><Button variant="outline" size="sm">Open dialog</Button></DialogTrigger>
+          <DialogContent>
+            <DialogHeader><DialogTitle>Confirm action</DialogTitle><DialogDescription>This token-driven dialog adapts to every theme.</DialogDescription></DialogHeader>
+            <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 12 }}><Button variant="outline" size="sm">Cancel</Button><Button size="sm">Confirm</Button></div>
+          </DialogContent>
+        </Dialog>
+      )},
+      { name: "Popover", demo: (
+        <Popover>
+          <PopoverTrigger asChild><Button variant="outline" size="sm">Open popover</Button></PopoverTrigger>
+          <PopoverContent style={{ width: 240 }}>
+            <p style={{ margin: 0, fontSize: 13 }}>A small token-driven surface for context.</p>
+          </PopoverContent>
+        </Popover>
+      )},
+    ],
+  },
+];
 
-      <div
-        style={{
-          padding: 24,
-          background: "var(--bg-elev)",
-          minHeight: 160,
-          display: "flex",
-          alignItems: tab === "preview" ? "center" : "flex-start",
-          justifyContent: tab === "preview" ? "center" : "flex-start",
-        }}
-      >
-        {tab === "preview" ? (
-          <ErrorBoundary>
-            <React.Suspense
-              fallback={
-                <div style={{ color: "var(--fg-muted)", fontSize: 13 }}>Loading preview…</div>
-              }
-            >
-              <PreviewComponent />
-            </React.Suspense>
-          </ErrorBoundary>
-        ) : tab === "code" ? (
-          basicExample ? (
-            <div style={{ width: "100%" }}>
-              <CodeBlockWithCopy code={basicExample} title="Basic usage" language="tsx" />
-            </div>
-          ) : (
-            <div style={{ color: "var(--fg-subtle)", fontSize: 13 }}>No example available.</div>
-          )
-        ) : examples && Object.keys(examples).length > 0 ? (
-          <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 12 }}>
-            {Object.entries(examples).map(([variant, code]) => (
-              <CodeBlockWithCopy
-                key={variant}
-                code={code}
-                title={variant.charAt(0).toUpperCase() + variant.slice(1)}
-                language="tsx"
-              />
-            ))}
-          </div>
-        ) : (
-          <div style={{ color: "var(--fg-subtle)", fontSize: 13 }}>No extra examples.</div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default function ShowcasePage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  // Filter components based on search and category
-  const filteredComponents = Object.entries(componentCategories).reduce((acc, [category, components]) => {
-    if (selectedCategory !== "All" && selectedCategory !== category) return acc;
-    
-    const filtered = components.filter(component =>
-      component.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    
-    if (filtered.length > 0) {
-      acc[category] = filtered;
-    }
-    
-    return acc;
-  }, {} as Record<string, string[]>);
-
+export default function ComponentsPage() {
   return (
-    <main>
-      {/* Hero Section — design rhythm: label · 52px mono display · 16px desc */}
-      <section
-        style={{
-          padding: "64px 24px 32px",
-          borderBottom: "1.5px solid var(--border)",
-        }}
-      >
+    <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
+      <section style={{ padding: "64px 24px 32px", borderBottom: "1.5px solid var(--border)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="label" style={{ marginBottom: 12 }}>
-            Library · 42 components
-          </div>
-          <h1
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 52,
-              fontWeight: 500,
-              letterSpacing: "-0.03em",
-              margin: "0 0 12px",
-              lineHeight: 1,
-            }}
-          >
-            Components
+          <div className="label" style={{ marginBottom: 12 }}>Components</div>
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 500, letterSpacing: "-0.03em", margin: "0 0 12px", lineHeight: 1.0 }}>
+            Thirty pieces, <em style={{ fontStyle: "italic", color: "var(--primary)" }}>fully composed</em>
           </h1>
-          <p
-            style={{
-              fontSize: 16,
-              color: "var(--fg-muted)",
-              maxWidth: 600,
-              lineHeight: 1.65,
-              margin: "0 0 24px",
-            }}
-          >
-            Every primitive in the voidUI library. Copy the code and customize to fit your needs.
-            中英文混排、八套主题、无忘录构建。
+          <p style={{ fontSize: 16, color: "var(--fg-muted)", maxWidth: 640, margin: 0, lineHeight: 1.65 }}>
+            Built with React + Radix where it counts. Every variant is token-driven. Try the theme switch in the header — every example follows.
           </p>
-
-          {/* Quick actions — design btn shadow/border rhythm */}
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
-            <Link
-              href="https://www.npmjs.com/package/@voidui/components"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <button className="btn">
-                <Package className="h-4 w-4" />
-                Install Package
-              </button>
-            </Link>
-            <Link href="/demo" style={{ textDecoration: "none" }}>
-              <button className="btn outline">
-                <Code2 className="h-4 w-4" />
-                Live Playground
-              </button>
-            </Link>
-            <Link
-              href="https://github.com/jiji262/voidUI"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <button className="btn outline">
-                <BookOpen className="h-4 w-4" />
-                Documentation
-              </button>
-            </Link>
-          </div>
-
-          {/* Installation */}
-          <div style={{ maxWidth: 640 }}>
-            <CodeBlockWithCopy
-              code="pnpm add @voidui/components"
-              title="Installation"
-              language="bash"
-            />
-          </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
-        {/* Search and Filter Bar */}
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            marginBottom: 32,
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ position: "relative", flex: 1, minWidth: 240 }}>
-            <Search
-              style={{
-                position: "absolute",
-                left: 12,
-                top: "50%",
-                transform: "translateY(-50%)",
-                color: "var(--fg-muted)",
-                width: 16,
-                height: 16,
-                pointerEvents: "none",
-              }}
-            />
-            <input
-              className="input"
-              style={{ paddingLeft: 38 }}
-              placeholder="Search components..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {["All", ...Object.keys(componentCategories)].map((cat) => {
-              const active = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={active ? "btn sm" : "btn sm outline"}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Component Grid */}
-        <div
-          className="vui-components-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-            gap: 16,
-          }}
-        >
-          {Object.entries(filteredComponents).map(([category, components]) =>
-            components.map((component) => (
-              <ComponentShowcase key={component} name={component} category={category} />
-            )),
-          )}
-        </div>
-
-        {/* No Results */}
-        {Object.keys(filteredComponents).length === 0 && (
-          <div style={{ textAlign: "center", padding: "64px 0" }}>
-            <div
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 20,
-                fontWeight: 500,
-                marginBottom: 8,
-              }}
-            >
-              No components found
+      <section style={{ padding: "48px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexDirection: "column", gap: 64 }}>
+          {CATS.map((cat) => (
+            <div key={cat.title}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 24, paddingBottom: 12, borderBottom: "1.5px solid var(--border)" }}>
+                <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 500, margin: 0, letterSpacing: "-0.02em" }}>{cat.title}</h2>
+                <span className="badge ghost">{cat.items.length}</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
+                {cat.items.map((it) => (
+                  <Card key={it.name} style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                    <div style={{ padding: "10px 14px", borderBottom: "1.5px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>{it.name}</span>
+                      <span className="badge ghost">demo</span>
+                    </div>
+                    <div style={{ padding: 24, flex: 1, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 140, background: "var(--bg-elev)" }}>{it.demo}</div>
+                  </Card>
+                ))}
+              </div>
             </div>
-            <p style={{ color: "var(--fg-muted)", fontSize: 14, margin: 0 }}>
-              Try adjusting your search or filter criteria
-            </p>
-          </div>
-        )}
-      </div>
-
-      <BackToTop />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

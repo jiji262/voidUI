@@ -5,7 +5,7 @@ const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-auto border-[1.5px] border-border rounded-[4px] shadow-xs bg-card">
+  <div className="relative w-full overflow-auto border-[length:var(--bw,1.5px)] border-border rounded-[var(--r,4px)] shadow-xs bg-card">
     <table
       ref={ref}
       className={cn("w-full caption-bottom text-sm border-collapse", className)}
@@ -21,7 +21,7 @@ const TableHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <thead
     ref={ref}
-    className={cn("bg-background border-b-[1.5px] border-border", className)}
+    className={cn("bg-background border-b-[length:var(--bw,1.5px)] border-border", className)}
     {...props}
   />
 ));
@@ -31,7 +31,11 @@ const TableBody = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <tbody ref={ref} className={cn("", className)} {...props} />
+  <tbody
+    ref={ref}
+    className={cn("[&_tr:last-child]:border-0", className)}
+    {...props}
+  />
 ));
 TableBody.displayName = "TableBody";
 
@@ -42,7 +46,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b-[1.5px] border-border-subtle transition-colors hover:bg-muted/40",
+      "border-b-[length:var(--bw,1.5px)] border-border-subtle transition-colors duration-[120ms] hover:bg-muted/40",
       "data-[state=selected]:bg-muted",
       className,
     )}
@@ -59,6 +63,7 @@ const TableHead = React.forwardRef<
     ref={ref}
     className={cn(
       "h-11 px-4 text-left align-middle font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground",
+      "[&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
@@ -72,7 +77,7 @@ const TableCell = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn("px-4 py-3 align-middle text-sm", className)}
+    className={cn("px-4 py-3 align-middle text-sm [&:has([role=checkbox])]:pr-0", className)}
     {...props}
   />
 ));
@@ -82,11 +87,7 @@ const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
   React.HTMLAttributes<HTMLTableCaptionElement>
 >(({ className, ...props }, ref) => (
-  <caption
-    ref={ref}
-    className={cn("mt-4 text-sm text-muted-foreground", className)}
-    {...props}
-  />
+  <caption ref={ref} className={cn("mt-4 text-sm text-muted-foreground", className)} {...props} />
 ));
 TableCaption.displayName = "TableCaption";
 
@@ -96,13 +97,15 @@ const TableFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
-    className={cn("bg-background border-t-[1.5px] border-border font-medium", className)}
+    className={cn(
+      "bg-background border-t-[length:var(--bw,1.5px)] border-border font-medium [&>tr]:last:border-b-0",
+      className,
+    )}
     {...props}
   />
 ));
 TableFooter.displayName = "TableFooter";
 
-// v1 dot-API shim so <Table.Header>, <Table.Row>, <Table.Cell>, ... keep working.
 const TableWithDotApi = Object.assign(Table, {
   Header: TableHeader,
   Body: TableBody,

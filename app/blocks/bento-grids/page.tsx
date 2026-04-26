@@ -1,198 +1,81 @@
 "use client";
 
-import React from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button, Card } from"@/components/voidui";
-import {
- BarChart3Icon,
- TrendingUpIcon,
- UsersIcon,
- ZapIcon,
- ShieldIcon,
- StarIcon,
- ArrowRightIcon,
- PlayIcon
-} from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase, Placeholder } from "@/components/blocks/_kit";
+import { Card } from "@/components/voidui";
+import { ZapIcon, PaletteIcon, LayersIcon, ShieldIcon } from "lucide-react";
 
-// Code snippet for bento grid component
-const simpleBentoGridCode = `import React from"react";
-import { Button } from"@/components/voidui";
-import { BarChart3Icon, TrendingUpIcon, UsersIcon, ArrowRightIcon } from"lucide-react";
+export default function BentoPage() {
+  return (
+    <BlockPage eyebrow="Marketing — Bento" title="Bento grids" subtitle="Four variants — classic 4-up, hero-led mosaic, dense feature bento, and an editorial bento.">
+      <BlockShowcase name="01 — Classic 4-up bento" bg="elev">
+        <div style={{ padding: "48px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gridTemplateRows: "200px 200px", gap: 14, maxWidth: 1000, marginInline: "auto" }}>
+            <Card style={{ gridRow: "span 2", padding: 28, background: "var(--primary)", color: "var(--primary-fg)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <PaletteIcon size={28} />
+              <div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.05, margin: "0 0 8px" }}>Ten themes, one contract</h3>
+                <p style={{ margin: 0, fontSize: 14, opacity: 0.85, lineHeight: 1.5 }}>Light + dark variants of every theme, swapped in one attribute.</p>
+              </div>
+            </Card>
+            <Card style={{ padding: 20 }}><LayersIcon size={20} style={{ marginBottom: 10 }} /><div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>Token-driven</div></Card>
+            <Card style={{ padding: 20 }}><ZapIcon size={20} style={{ marginBottom: 10 }} /><div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>Motion tokens</div></Card>
+            <Card style={{ gridColumn: "span 2", padding: 20, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+              <div><ShieldIcon size={20} style={{ marginBottom: 8 }} /><div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>WCAG-AA accessible</div><p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>Contrast tested in every theme</p></div>
+              <Placeholder height={120} label="" />
+            </Card>
+          </div>
+        </div>
+      </BlockShowcase>
 
-const SimpleBentoGrid = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 h-96">
- {/* Main Feature Card */}
- <div className="md:col-span-2 bg-blue-100 border-2 border-black p-6">
- <div className="h-full flex flex-col justify-between">
- <div>
- <h4 className="text-xl font-bold mb-2">Welcome to Our Platform</h4>
- <p className="text-gray-600">
- Discover powerful features that help you build amazing products.
- </p>
- </div>
- <Button className="w-fit bg-black text-white hover:bg-gray-800">
- Get Started
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- </div>
+      <BlockShowcase name="02 — Hero-led mosaic">
+        <div style={{ padding: "48px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "180px 180px 180px", gap: 12, maxWidth: 1100, marginInline: "auto" }}>
+            <Card style={{ gridColumn: "span 2", gridRow: "span 2", padding: 28, background: "var(--fg)", color: "var(--bg)", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1.0, margin: 0 }}>Made for <em style={{ fontStyle: "italic", color: "var(--primary)" }}>real teams</em></h3>
+            </Card>
+            <Card style={{ padding: 18, gridColumn: "span 2" }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600, marginBottom: 4 }}>Composability</div><p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>Every component composes via slots and tokens.</p></Card>
+            <Card style={{ padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600, marginBottom: 4 }}>Forms</div><p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>Wired aria-invalid + asterisks.</p></Card>
+            <Card style={{ padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600, marginBottom: 4 }}>Motion</div><p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>Tuned eases, not random ones.</p></Card>
+            <Card style={{ gridColumn: "span 4", padding: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>RSC ready · MIT licensed · 30 components</div></Card>
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Analytics Card */}
- <div className="bg-green-100 border-2 border-black p-4 flex flex-col items-center justify-center text-center">
- <BarChart3Icon className="h-8 w-8 text-green-600 mb-2" />
- <h5 className="font-bold mb-1">Analytics</h5>
- <p className="text-sm text-gray-600">Real-time insights</p>
- </div>
+      <BlockShowcase name="03 — Dense feature bento" bg="elev">
+        <div style={{ padding: "48px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gridAutoRows: "120px", gap: 10, maxWidth: 1100, marginInline: "auto" }}>
+            <Card style={{ gridColumn: "span 3", gridRow: "span 2", padding: 20 }}><Placeholder height="100%" label="primary visual" /></Card>
+            <Card style={{ gridColumn: "span 3", padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600 }}>30 components</div></Card>
+            <Card style={{ gridColumn: "span 2", padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600 }}>10 themes</div></Card>
+            <Card style={{ gridColumn: "span 1", padding: 18, background: "var(--primary)", color: "var(--primary-fg)" }}><div style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, lineHeight: 1 }}>v3</div></Card>
+            <Card style={{ gridColumn: "span 2", padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600 }}>MIT</div></Card>
+            <Card style={{ gridColumn: "span 4", padding: 18 }}><div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600 }}>Trusted by 12k+ teams</div></Card>
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Team Card */}
- <div className="bg-purple-100 border-2 border-black p-4">
- <div className="flex items-center gap-2 mb-2">
- <UsersIcon className="h-5 w-5 text-purple-600" />
- <h5 className="font-bold">Team Collaboration</h5>
- </div>
- <p className="text-sm text-gray-600 mb-3">Work together seamlessly with your team members.</p>
- <div className="flex -space-x-2">
- <div className="w-6 h-6 bg-gray-300 border-2 border-white"></div>
- <div className="w-6 h-6 bg-gray-400 border-2 border-white"></div>
- <div className="w-6 h-6 bg-gray-500 border-2 border-white"></div>
- </div>
- <p className="text-xs text-gray-500 mt-2">+12 team members</p>
- </div>
-
- {/* Performance Card */}
- <div className="md:col-span-2 bg-yellow-100 border-2 border-black p-4">
- <div className="flex items-center justify-between h-full">
- <div>
- <h5 className="font-bold mb-2">Performance Metrics</h5>
- <div className="grid grid-cols-2 gap-4">
- <div>
- <div className="text-2xl font-bold">99.9%</div>
- <p className="text-sm text-gray-600">Uptime</p>
- </div>
- <div>
- <div className="text-2xl font-bold">&lt;50ms</div>
- <p className="text-sm text-gray-600">Response</p>
- </div>
- </div>
- </div>
- <TrendingUpIcon className="h-12 w-12 text-yellow-600" />
- </div>
- </div>
- </div>
- </div>
- );
-};`;
-
-// Simple Bento Grid Component
-const SimpleBentoGrid = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 h-96">
- {/* Main Feature Card */}
- <div className="md:col-span-2 bg-blue-100 border-2 border-black p-6">
- <div className="h-full flex flex-col justify-between">
- <div>
- <h4 className="text-xl font-bold mb-2">Welcome to Our Platform</h4>
- <p className="text-gray-600">
- Discover powerful features that help you build amazing products.
- </p>
- </div>
- <Button className="w-fit bg-black text-white hover:bg-gray-800">
- Get Started
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- </div>
-
- {/* Analytics Card */}
- <div className="bg-green-100 border-2 border-black p-4 flex flex-col items-center justify-center text-center">
- <BarChart3Icon className="h-8 w-8 text-green-600 mb-2" />
- <h5 className="font-bold mb-1">Analytics</h5>
- <p className="text-sm text-gray-600">Real-time insights</p>
- </div>
-
- {/* Team Card */}
- <div className="bg-purple-100 border-2 border-black p-4">
- <div className="flex items-center gap-2 mb-2">
- <UsersIcon className="h-5 w-5 text-purple-600" />
- <h5 className="font-bold">Team Collaboration</h5>
- </div>
- <p className="text-sm text-gray-600 mb-3">Work together seamlessly with your team members.</p>
- <div className="flex -space-x-2">
- <div className="w-6 h-6 bg-gray-300 border-2 border-white"></div>
- <div className="w-6 h-6 bg-gray-400 border-2 border-white"></div>
- <div className="w-6 h-6 bg-gray-500 border-2 border-white"></div>
- </div>
- <p className="text-xs text-gray-500 mt-2">+12 team members</p>
- </div>
-
- {/* Performance Card */}
- <div className="md:col-span-2 bg-yellow-100 border-2 border-black p-4">
- <div className="flex items-center justify-between h-full">
- <div>
- <h5 className="font-bold mb-2">Performance Metrics</h5>
- <div className="grid grid-cols-2 gap-4">
- <div>
- <div className="text-2xl font-bold">99.9%</div>
- <p className="text-sm text-gray-600">Uptime</p>
- </div>
- <div>
- <div className="text-2xl font-bold">&lt;50ms</div>
- <p className="text-sm text-gray-600">Response</p>
- </div>
- </div>
- </div>
- <TrendingUpIcon className="h-12 w-12 text-yellow-600" />
- </div>
- </div>
- </div>
- </div>
- );
-};
-
-export default function BentoGridsPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Bento <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Grids</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Modern grid layouts inspired by Japanese bento boxes. Perfect for
- organizing content in visually appealing and functional layouts.
- </p>
- </div>
- </section>
-
- {/* Bento Grid Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
-
- {/* Simple Bento Grid */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <SimpleBentoGrid />
- </div>
- <CodeDisplay title="Simple Bento Grid" code={simpleBentoGridCode} />
- </div>
-
- </section>
-
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="04 — Editorial bento">
+        <div style={{ padding: "48px 32px", maxWidth: 1000, marginInline: "auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <Card style={{ padding: 36, minHeight: 320 }}>
+              <div className="label" style={{ marginBottom: 16 }}>Issue 03 — Lead</div>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1.05, margin: 0 }}>Composing in token space</h3>
+              <p style={{ margin: "16px 0 0", fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.6 }}>Why component teams should think in CSS variables, not class names.</p>
+            </Card>
+            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 12 }}>
+              <Card style={{ padding: 24 }}>
+                <div className="label" style={{ marginBottom: 10 }}>02</div>
+                <h4 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 500, margin: 0, letterSpacing: "-0.015em" }}>Notes on motion: don&apos;t lerp blindly</h4>
+              </Card>
+              <Card style={{ padding: 24, background: "var(--fg)", color: "var(--bg)" }}>
+                <div className="label" style={{ marginBottom: 10, opacity: 0.6 }}>03</div>
+                <h4 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 500, margin: 0, letterSpacing: "-0.015em" }}>The case against utility-first design</h4>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

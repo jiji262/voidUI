@@ -1,322 +1,76 @@
 "use client";
 
-import React, { useState } from"react";
-import Link from"next/link";
-import { Text, Button, Card, Accordion } from"@/components/voidui";
-import { ChevronDownIcon, HelpCircleIcon, MessageCircleIcon } from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase } from "@/components/blocks/_kit";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent, Card, Button } from "@/components/voidui";
+import { ArrowRightIcon } from "lucide-react";
 
-// Code snippets for FAQ components
-const accordionFAQCode = `import React, { useState } from"react";
-import { ChevronDownIcon } from"lucide-react";
-
-const AccordionFAQ = () => {
- const [openItems, setOpenItems] = useState<string[]>([]);
-
- const toggleItem = (value: string) => {
- setOpenItems(prev =>
- prev.includes(value)
- ? prev.filter(item => item !== value)
- : [...prev, value]
- );
- };
-
- const faqs = [
- {
- id:"faq-1",
- question:"What is included in the free trial?",
- answer:"Our 14-day free trial includes full access to all features, unlimited projects, and priority support. No credit card required to start."
- },
- {
- id:"faq-2",
- question:"Can I cancel my subscription anytime?",
- answer:"Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access will continue until the end of your current billing period."
- },
- {
- id:"faq-3",
- question:"Do you offer refunds?",
- answer:"We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with our service, contact our support team for a full refund."
- },
- {
- id:"faq-4",
- question:"How secure is my data?",
- answer:"We take security seriously. All data is encrypted in transit and at rest using industry-standard encryption. We're SOC 2 Type II certified and GDPR compliant."
- }
- ];
-
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Frequently Asked Questions</h3>
- <p className="text-gray-600">Find answers to common questions about our platform</p>
- </div>
-
- <div className="space-y-4">
- {faqs.map((faq) => (
- <div key={faq.id} className="border-2 border-black overflow-hidden">
- <button
- onClick={() => toggleItem(faq.id)}
- className="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex items-center justify-between"
- >
- <h4 className="font-semibold text-lg">{faq.question}</h4>
- <ChevronDownIcon
- className={\`h-5 w-5 transition-transform \${openItems.includes(faq.id) ? 'rotate-180' : ''}\`}
- />
- </button>
- {openItems.includes(faq.id) && (
- <div className="px-6 py-4 bg-white border-t-2 border-black">
- <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
- </div>
- )}
- </div>
- ))}
- </div>
- </div>
- );
-};`;
-
-const gridFAQCode = `import React from"react";
-
-const GridFAQ = () => {
- const faqs = [
- {
- question:"What integrations do you support?",
- answer:"We support over 100+ integrations including Slack, Google Workspace, Microsoft 365, Salesforce, and many more. Check our integrations page for the full list."
- },
- {
- question:"Is there an API available?",
- answer:"Yes, we provide a comprehensive REST API with detailed documentation. Enterprise plans also include GraphQL API access and webhooks."
- },
- {
- question:"What are the system requirements?",
- answer:"Our platform is web-based and works on any modern browser. For mobile apps, we support iOS 12+ and Android 8+. No special hardware requirements."
- },
- {
- question:"Do you provide data export?",
- answer:"Yes, you can export your data at any time in multiple formats including CSV, JSON, and PDF. Enterprise customers get additional export options."
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Technical Questions</h3>
- <p className="text-gray-600">Get answers to technical questions and implementation details</p>
- </div>
-
- <div className="grid md:grid-cols-2 gap-8">
- {faqs.map((faq, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6">
- <h4 className="font-bold text-lg mb-4">{faq.question}</h4>
- <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
- </div>
- ))}
- </div>
- </div>
- );
-};`;
+const QA = [
+  ["Is voidUI free?", "Yes — MIT licensed. Use commercially without attribution required."],
+  ["Does it support dark mode?", "Every theme has light + dark variants. Switch with a single attribute on <html>."],
+  ["Can I customize the themes?", "Yes. Edit the CSS variables in app/global.css. The components follow tokens, not class names."],
+  ["Does it work with Next.js App Router?", "Yes. Components mark client boundaries explicitly so server trees stay server trees."],
+  ["What about accessibility?", "WCAG-AA contrast in every theme, focus rings, aria-invalid wired through inputs."],
+  ["Where do I file issues?", "GitHub: jiji262/voidUI. PRs welcome — see CONTRIBUTING.md."],
+];
 
 export default function FAQPage() {
- const [openItems, setOpenItems] = useState<string[]>([]);
+  return (
+    <BlockPage eyebrow="Marketing — FAQ" title="FAQ sections" subtitle="Four variants — single column accordion, two-column with sidebar, grid of cards, and a tabbed-by-topic FAQ.">
+      <BlockShowcase name="01 — Single column accordion" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 720, marginInline: "auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 500, letterSpacing: "-0.025em", margin: "0 0 8px" }}>Frequently asked</h2>
+            <p style={{ color: "var(--fg-muted)", margin: 0 }}>Can&apos;t find an answer? <a href="#" style={{ color: "var(--fg)", textDecoration: "underline" }}>Email us.</a></p>
+          </div>
+          <Accordion type="single" collapsible style={{ background: "var(--bg)", border: "1.5px solid var(--border)", borderRadius: "var(--r)", overflow: "hidden" }}>
+            {QA.map(([q, a], i) => (<AccordionItem key={i} value={`q${i}`}><AccordionTrigger>{q}</AccordionTrigger><AccordionContent>{a}</AccordionContent></AccordionItem>))}
+          </Accordion>
+        </div>
+      </BlockShowcase>
 
- const toggleItem = (value: string) => {
- setOpenItems(prev =>
- prev.includes(value)
- ? prev.filter(item => item !== value)
- : [...prev, value]
- );
- };
+      <BlockShowcase name="02 — Two-column with sidebar">
+        <div style={{ padding: "64px 32px", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 48, maxWidth: 1100, marginInline: "auto" }}>
+          <div>
+            <div className="label" style={{ marginBottom: 12 }}>Help</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, letterSpacing: "-0.025em", lineHeight: 1.05, margin: "0 0 16px" }}>Got questions? <em style={{ fontStyle: "italic", color: "var(--primary)" }}>We have answers.</em></h2>
+            <p style={{ color: "var(--fg-muted)", fontSize: 14, lineHeight: 1.6, margin: "0 0 16px" }}>Common questions we hear from designers and engineers evaluating voidUI.</p>
+            <Button variant="outline" size="sm">Contact support <ArrowRightIcon size={12} /></Button>
+          </div>
+          <Accordion type="single" collapsible>
+            {QA.map(([q, a], i) => (<AccordionItem key={i} value={`q${i}`}><AccordionTrigger>{q}</AccordionTrigger><AccordionContent>{a}</AccordionContent></AccordionItem>))}
+          </Accordion>
+        </div>
+      </BlockShowcase>
 
- const generalFAQs = [
- {
- question:"What is included in the free trial?",
- answer:"Our 14-day free trial includes full access to all features, unlimited projects, and priority support. No credit card required to start."
- },
- {
- question:"Can I cancel my subscription anytime?",
- answer:"Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access will continue until the end of your current billing period."
- },
- {
- question:"Do you offer refunds?",
- answer:"We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with our service, contact our support team for a full refund."
- },
- {
- question:"How secure is my data?",
- answer:"We take security seriously. All data is encrypted in transit and at rest using industry-standard encryption. We're SOC 2 Type II certified and GDPR compliant."
- }
- ];
+      <BlockShowcase name="03 — Card grid" bg="elev">
+        <div style={{ padding: "64px 32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14, maxWidth: 1100, marginInline: "auto" }}>
+          {QA.map(([q, a], i) => (
+            <Card key={i} style={{ padding: 22 }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg-muted)", marginBottom: 8 }}>Q{String(i + 1).padStart(2, "0")}</div>
+              <h3 style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 600, margin: "0 0 8px" }}>{q}</h3>
+              <p style={{ margin: 0, fontSize: 13, color: "var(--fg-muted)", lineHeight: 1.55 }}>{a}</p>
+            </Card>
+          ))}
+        </div>
+      </BlockShowcase>
 
- const technicalFAQs = [
- {
- question:"What integrations do you support?",
- answer:"We support over 100+ integrations including Slack, Google Workspace, Microsoft 365, Salesforce, and many more. Check our integrations page for the full list."
- },
- {
- question:"Is there an API available?",
- answer:"Yes, we provide a comprehensive REST API with detailed documentation. Enterprise plans also include GraphQL API access and webhooks."
- },
- {
- question:"What are the system requirements?",
- answer:"Our platform is web-based and works on any modern browser. For mobile apps, we support iOS 12+ and Android 8+. No special hardware requirements."
- },
- {
- question:"Do you provide data export?",
- answer:"Yes, you can export your data at any time in multiple formats including CSV, JSON, and PDF. Enterprise customers get additional export options."
- }
- ];
-
-// Accordion FAQ Component
-const AccordionFAQ = () => {
- const [openItems, setOpenItems] = useState<string[]>([]);
-
- const toggleItem = (value: string) => {
- setOpenItems(prev =>
- prev.includes(value)
- ? prev.filter(item => item !== value)
- : [...prev, value]
- );
- };
-
- const faqs = [
- {
- id:"faq-1",
- question:"What is included in the free trial?",
- answer:"Our 14-day free trial includes full access to all features, unlimited projects, and priority support. No credit card required to start."
- },
- {
- id:"faq-2",
- question:"Can I cancel my subscription anytime?",
- answer:"Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access will continue until the end of your current billing period."
- },
- {
- id:"faq-3",
- question:"Do you offer refunds?",
- answer:"We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with our service, contact our support team for a full refund."
- },
- {
- id:"faq-4",
- question:"How secure is my data?",
- answer:"We take security seriously. All data is encrypted in transit and at rest using industry-standard encryption. We're SOC 2 Type II certified and GDPR compliant."
- }
- ];
-
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Frequently Asked Questions</h3>
- <p className="text-gray-600">Find answers to common questions about our platform</p>
- </div>
-
- <div className="space-y-4">
- {faqs.map((faq) => (
- <div key={faq.id} className="border-2 border-black overflow-hidden">
- <button
- onClick={() => toggleItem(faq.id)}
- className="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex items-center justify-between"
- >
- <h4 className="font-semibold text-lg">{faq.question}</h4>
- <ChevronDownIcon
- className={`h-5 w-5 transition-transform ${openItems.includes(faq.id) ? 'rotate-180' : ''}`}
- />
- </button>
- {openItems.includes(faq.id) && (
- <div className="px-6 py-4 bg-white border-t-2 border-black">
- <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
- </div>
- )}
- </div>
- ))}
- </div>
- </div>
- );
-};
-
-// Grid FAQ Component
-const GridFAQ = () => {
- const faqs = [
- {
- question:"What integrations do you support?",
- answer:"We support over 100+ integrations including Slack, Google Workspace, Microsoft 365, Salesforce, and many more. Check our integrations page for the full list."
- },
- {
- question:"Is there an API available?",
- answer:"Yes, we provide a comprehensive REST API with detailed documentation. Enterprise plans also include GraphQL API access and webhooks."
- },
- {
- question:"What are the system requirements?",
- answer:"Our platform is web-based and works on any modern browser. For mobile apps, we support iOS 12+ and Android 8+. No special hardware requirements."
- },
- {
- question:"Do you provide data export?",
- answer:"Yes, you can export your data at any time in multiple formats including CSV, JSON, and PDF. Enterprise customers get additional export options."
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Technical Questions</h3>
- <p className="text-gray-600">Get answers to technical questions and implementation details</p>
- </div>
-
- <div className="grid md:grid-cols-2 gap-8">
- {faqs.map((faq, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6">
- <h4 className="font-bold text-lg mb-4">{faq.question}</h4>
- <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
- </div>
- ))}
- </div>
- </div>
- );
-};
-
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Frequently Asked <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Questions</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Find answers to common questions about our platform, features,
- and services. Can&apos;t find what you&apos;re looking for? Contact our support team.
- </p>
- </div>
- </section>
-
- {/* FAQ Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
-
- {/* Accordion FAQ */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <AccordionFAQ />
- </div>
- <CodeDisplay title="Accordion FAQ" code={accordionFAQCode} />
- </div>
-
- {/* Grid FAQ */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <GridFAQ />
- </div>
- <CodeDisplay title="Grid FAQ" code={gridFAQCode} />
- </div>
-
- </section>
-
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="04 — Editorial Q&A">
+        <div style={{ padding: "64px 32px", maxWidth: 720, marginInline: "auto" }}>
+          {QA.slice(0, 4).map(([q, a], i, arr) => (
+            <div key={i} style={{ paddingBlock: 24, borderBottom: i < arr.length - 1 ? "1.5px solid var(--border-subtle)" : "none" }}>
+              <div style={{ display: "flex", gap: 16, alignItems: "baseline" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--primary)", lineHeight: 1, flexShrink: 0 }}>Q.</div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 500, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.15 }}>{q}</h3>
+              </div>
+              <div style={{ display: "flex", gap: 16, alignItems: "baseline", marginTop: 8 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--fg-muted)", lineHeight: 1, flexShrink: 0 }}>A.</div>
+                <p style={{ margin: 0, fontSize: 15, color: "var(--fg-muted)", lineHeight: 1.6 }}>{a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

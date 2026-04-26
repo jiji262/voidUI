@@ -1,18 +1,21 @@
 import { cn } from "./_utils";
 import React, { HTMLAttributes } from "react";
 
-// v2 — refined type scale rebuilt in JetBrains Mono for headings,
-// tighter tracking (-0.02em on h1/h2), modest size drop
+// v3 — refined modular type scale, tighter on display, comfortable on body
 const variants = {
-  h1: "font-mono text-[52px] leading-[1] tracking-[-0.03em] font-medium",
-  h2: "font-mono text-[40px] leading-[1.1] tracking-[-0.02em] font-medium",
-  h3: "font-mono text-[24px] leading-[1.2] tracking-[-0.01em] font-medium",
-  h4: "font-mono text-[18px] leading-[1.3] font-semibold",
+  h1: "font-display text-[var(--fs-5xl,52px)] leading-[1.02] tracking-[-0.03em] font-medium",
+  h2: "font-display text-[var(--fs-4xl,40px)] leading-[1.08] tracking-[-0.02em] font-medium",
+  h3: "font-display text-[var(--fs-3xl,28px)] leading-[1.18] tracking-[-0.01em] font-medium",
+  h4: "font-display text-[var(--fs-xl,20px)] leading-[1.3] font-semibold",
   h5: "font-mono text-base font-semibold",
   h6: "font-mono text-sm font-semibold uppercase tracking-[0.08em]",
-  p: "font-sans text-base leading-[1.55]",
+  p: "font-sans text-base leading-[1.6]",
+  lead: "font-sans text-lg leading-[1.55] text-foreground-muted",
   small: "font-sans text-sm text-muted-foreground",
-  label: "font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-muted-foreground",
+  muted: "font-sans text-sm text-muted-foreground",
+  code: "font-mono text-[0.92em] bg-muted px-1.5 py-0.5 rounded-[var(--r-sm,2px)]",
+  label:
+    "font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-muted-foreground",
 } as const;
 
 interface ITextProps extends HTMLAttributes<HTMLElement> {
@@ -21,7 +24,12 @@ interface ITextProps extends HTMLAttributes<HTMLElement> {
 }
 
 export const Text = ({ as = "p", className, ...props }: ITextProps) => {
-  const Tag = (as.startsWith("h") ? as : "p") as keyof JSX.IntrinsicElements;
+  const tag = (as.startsWith("h")
+    ? as
+    : as === "code"
+      ? "code"
+      : "p") as keyof JSX.IntrinsicElements;
+  const Tag = tag;
   return <Tag className={cn(variants[as], className)} {...(props as any)} />;
 };
 Text.displayName = "Text";

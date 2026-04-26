@@ -7,21 +7,18 @@ export const TooltipProvider = TooltipPrimitive.Provider;
 const TooltipRoot = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 
-// v1 legacy `variant` prop accepted and ignored so old previews type-check.
-type TooltipContentProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> & {
-  variant?: string;
-};
 export const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
-  TooltipContentProps
->(({ className, sideOffset = 6, variant: _variant, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 6, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded-[2px] border-[1.5px] border-border bg-foreground text-background px-2.5 py-1",
-      "font-mono text-xs shadow-sm",
-      "data-[state=open]:animate-in data-[state=closed]:animate-out",
+      "z-50 overflow-hidden rounded-[var(--r-sm,2px)] border-[length:var(--bw,1.5px)] border-border",
+      "bg-foreground text-background px-2.5 py-1 font-mono text-xs shadow-sm",
+      "data-[state=delayed-open]:animate-[vui-fade-in_120ms_ease-out]",
+      "data-[state=closed]:opacity-0",
       className,
     )}
     {...props}
@@ -29,7 +26,6 @@ export const TooltipContent = React.forwardRef<
 ));
 TooltipContent.displayName = "TooltipContent";
 
-// v1 dot-API compatibility — typed via Object.assign return
 export const Tooltip = Object.assign(TooltipRoot, {
   Trigger: TooltipTrigger,
   Content: TooltipContent,

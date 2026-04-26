@@ -17,8 +17,8 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-50 bg-foreground/40 backdrop-blur-[2px]",
-      "data-[state=open]:animate-in data-[state=closed]:animate-out",
-      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "data-[state=open]:animate-[vui-fade-in_180ms_ease-out]",
+      "data-[state=closed]:opacity-0",
       className,
     )}
     {...props}
@@ -27,16 +27,20 @@ const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = "DialogOverlay";
 
 type DialogContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
-  // v1 legacy: size constrained max-width (sm/md/lg/xl)
-  size?: "sm" | "md" | "lg" | "xl" | string;
+  size?: "sm" | "md" | "lg" | "xl" | "full" | string;
+  hideClose?: boolean;
 };
 const SIZE_MAX_WIDTH: Record<string, string> = {
-  sm: "max-w-sm", md: "max-w-md", lg: "max-w-lg", xl: "max-w-xl",
+  sm: "max-w-sm",
+  md: "max-w-md",
+  lg: "max-w-lg",
+  xl: "max-w-2xl",
+  full: "max-w-[calc(100vw-2rem)]",
 };
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   DialogContentProps
->(({ className, children, size, ...props }, ref) => (
+>(({ className, children, size, hideClose, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -44,37 +48,36 @@ const DialogContent = React.forwardRef<
       className={cn(
         "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4",
         size ? SIZE_MAX_WIDTH[size] ?? "max-w-lg" : "max-w-lg",
-        "bg-card border-[1.5px] border-border rounded-[4px] shadow-lg p-6",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "bg-card border-[length:var(--bw,1.5px)] border-border rounded-[var(--r,4px)] shadow-lg p-6",
+        "data-[state=open]:animate-[vui-slide-up_240ms_cubic-bezier(0.22,0.61,0.36,1)]",
+        "data-[state=closed]:opacity-0",
         className,
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
+      {!hideClose && (
+        <DialogPrimitive.Close
+          className="absolute right-4 top-4 inline-flex h-7 w-7 items-center justify-center rounded-[var(--r-sm,2px)] text-muted-foreground opacity-70 transition-opacity hover:opacity-100 hover:bg-muted focus:outline-none focus-visible:[box-shadow:var(--focus-ring)] disabled:pointer-events-none"
+          aria-label="Close"
+        >
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      )}
     </DialogPrimitive.Content>
   </DialogPortal>
 ));
 DialogContent.displayName = "DialogContent";
 
-// v1 legacy props (`position`, `asChild`) are accepted and ignored so old
-// dialog-* previews type-check without warnings.
-type DialogSectionProps = React.HTMLAttributes<HTMLDivElement> & {
-  position?: string;
-  asChild?: boolean;
-};
-
-const DialogHeader = ({ className, position: _p, asChild: _a, ...props }: DialogSectionProps) => (
-  <div className={cn("flex flex-col gap-1", className)} {...props} />
+const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col gap-1.5", className)} {...props} />
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogFooter = ({ className, position: _p, asChild: _a, ...props }: DialogSectionProps) => (
+const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end gap-2", className)}
+    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2", className)}
     {...props}
   />
 );
@@ -98,13 +101,12 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-muted-foreground leading-relaxed", className)}
     {...props}
   />
 ));
 DialogDescription.displayName = "DialogDescription";
 
-// v1 dot-API compatibility — typed via Object.assign return
 const DialogWithDot = Object.assign(Dialog, {
   Trigger: DialogTrigger,
   Content: DialogContent,

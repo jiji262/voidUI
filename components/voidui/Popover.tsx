@@ -16,8 +16,9 @@ export const PopoverContent = React.forwardRef<
       align={align}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 w-64 rounded-[4px] border-[1.5px] border-border bg-card p-4 shadow-md",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "z-50 w-64 rounded-[var(--r,4px)] border-[length:var(--bw,1.5px)] border-border bg-card p-4 shadow-md text-foreground",
+        "animate-[vui-slide-up_180ms_ease-out]",
+        "data-[state=closed]:opacity-0",
         className,
       )}
       {...props}
@@ -26,7 +27,6 @@ export const PopoverContent = React.forwardRef<
 ));
 PopoverContent.displayName = "PopoverContent";
 
-// v1 dot-API compatibility — typed via Object.assign return
 export const Popover = Object.assign(PopoverRoot, {
   Trigger: PopoverTrigger,
   Content: PopoverContent,

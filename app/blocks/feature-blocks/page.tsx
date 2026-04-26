@@ -1,362 +1,118 @@
 "use client";
 
-import React from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button, Card } from"@/components/voidui";
-import {
- ZapIcon,
- ShieldIcon,
- SmartphoneIcon,
- CloudIcon,
- BarChart3Icon,
- UsersIcon,
- LockIcon,
- RocketIcon,
- CheckIcon,
- ArrowRightIcon
-} from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase, Placeholder } from "@/components/blocks/_kit";
+import { Card, Button, Badge } from "@/components/voidui";
+import { ZapIcon, ShieldIcon, PaletteIcon, LayersIcon, BoxIcon, GitBranchIcon, CodeIcon, AccessibilityIcon, ArrowRightIcon } from "lucide-react";
 
-// Code snippets for feature components
-const iconGridFeaturesCode = `import React from"react";
-import { ZapIcon, ShieldIcon, SmartphoneIcon, CloudIcon, BarChart3Icon, UsersIcon } from"lucide-react";
-
-const IconGridFeatures = () => {
- const features = [
- {
- icon: ZapIcon,
- title:"Lightning Fast",
- description:"Optimized for performance with sub-second response times and global CDN distribution."
- },
- {
- icon: ShieldIcon,
- title:"Enterprise Security",
- description:"Bank-grade security with end-to-end encryption and SOC 2 Type II compliance."
- },
- {
- icon: SmartphoneIcon,
- title:"Mobile First",
- description:"Responsive design that works perfectly on all devices and screen sizes."
- },
- {
- icon: CloudIcon,
- title:"Cloud Native",
- description:"Built for the cloud with automatic scaling and 99.9% uptime guarantee."
- },
- {
- icon: BarChart3Icon,
- title:"Advanced Analytics",
- description:"Real-time insights and detailed analytics to track your success metrics."
- },
- {
- icon: UsersIcon,
- title:"Team Collaboration",
- description:"Built-in collaboration tools to keep your team aligned and productive."
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Everything You Need to Succeed</h3>
- <p className="text-gray-600 max-w-2xl mx-auto">
- Our comprehensive platform provides all the tools and features you need to build, deploy, and scale your applications.
- </p>
- </div>
-
- <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
- {features.map((feature, index) => {
- const IconComponent = feature.icon;
- return (
- <div key={index} className="text-center">
- <div className="w-16 h-16 bg-blue-100 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <IconComponent className="h-8 w-8 text-blue-600" />
- </div>
- <h4 className="text-lg font-bold mb-3">{feature.title}</h4>
- <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
- </div>
- );
- })}
- </div>
- </div>
- );
-};`;
-
-const splitLayoutFeaturesCode = `import React from"react";
-import { Button } from"@/components/voidui";
-import { CheckIcon, ArrowRightIcon } from"lucide-react";
-
-const SplitLayoutFeatures = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="space-y-16">
- {/* Feature 1 */}
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div>
- <h3 className="text-3xl font-bold mb-4">Powerful Analytics Dashboard</h3>
- <p className="text-gray-600 mb-8 leading-relaxed">
- Get deep insights into your business with our comprehensive analytics dashboard.
- Track key metrics, identify trends, and make data-driven decisions.
- </p>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Real-time data visualization</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Custom report generation</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Advanced filtering and segmentation</span>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800">
- Learn More
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- <div className="relative">
- <img
- src="https://picsum.photos/500/400?random=60"
- alt="Analytics dashboard"
- className="border-2 border-black w-full h-80 object-cover"
- />
- </div>
- </div>
-
- {/* Feature 2 */}
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div className="order-2 lg:order-1">
- <img
- src="https://picsum.photos/500/400?random=61"
- alt="Security features"
- className="border-2 border-black w-full h-80 object-cover"
- />
- </div>
- <div className="order-1 lg:order-2">
- <h3 className="text-3xl font-bold mb-4">Enterprise-Grade Security</h3>
- <p className="text-gray-600 mb-8 leading-relaxed">
- Your data security is our top priority. We implement multiple layers of protection
- to ensure your information stays safe and secure.
- </p>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>End-to-end encryption</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Two-factor authentication</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Regular security audits</span>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800">
- Security Details
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- </div>
- </div>
- </div>
- );
-};`;
-
-// Icon Grid Features Component
-const IconGridFeatures = () => {
- const features = [
- {
- icon: ZapIcon,
- title:"Lightning Fast",
- description:"Optimized for performance with sub-second response times and global CDN distribution."
- },
- {
- icon: ShieldIcon,
- title:"Enterprise Security",
- description:"Bank-grade security with end-to-end encryption and SOC 2 Type II compliance."
- },
- {
- icon: SmartphoneIcon,
- title:"Mobile First",
- description:"Responsive design that works perfectly on all devices and screen sizes."
- },
- {
- icon: CloudIcon,
- title:"Cloud Native",
- description:"Built for the cloud with automatic scaling and 99.9% uptime guarantee."
- },
- {
- icon: BarChart3Icon,
- title:"Advanced Analytics",
- description:"Real-time insights and detailed analytics to track your success metrics."
- },
- {
- icon: UsersIcon,
- title:"Team Collaboration",
- description:"Built-in collaboration tools to keep your team aligned and productive."
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">Everything You Need to Succeed</h3>
- <p className="text-gray-600 max-w-2xl mx-auto">
- Our comprehensive platform provides all the tools and features you need to build, deploy, and scale your applications.
- </p>
- </div>
-
- <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
- {features.map((feature, index) => {
- const IconComponent = feature.icon;
- return (
- <div key={index} className="text-center">
- <div className="w-16 h-16 bg-blue-100 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <IconComponent className="h-8 w-8 text-blue-600" />
- </div>
- <h4 className="text-lg font-bold mb-3">{feature.title}</h4>
- <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
- </div>
- );
- })}
- </div>
- </div>
- );
-};
-
-// Split Layout Features Component
-const SplitLayoutFeatures = () => {
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="space-y-16">
- {/* Feature 1 */}
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div>
- <h3 className="text-3xl font-bold mb-4">Powerful Analytics Dashboard</h3>
- <p className="text-gray-600 mb-8 leading-relaxed">
- Get deep insights into your business with our comprehensive analytics dashboard.
- Track key metrics, identify trends, and make data-driven decisions.
- </p>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Real-time data visualization</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Custom report generation</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Advanced filtering and segmentation</span>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800">
- Learn More
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- <div className="relative">
- <img
- src="https://picsum.photos/500/400?random=62"
- alt="Analytics dashboard"
- className="border-2 border-black w-full h-80 object-cover"
- />
- </div>
- </div>
-
- {/* Feature 2 */}
- <div className="grid lg:grid-cols-2 gap-12 items-center">
- <div className="order-2 lg:order-1">
- <img
- src="https://picsum.photos/500/400?random=63"
- alt="Security features"
- className="border-2 border-black w-full h-80 object-cover"
- />
- </div>
- <div className="order-1 lg:order-2">
- <h3 className="text-3xl font-bold mb-4">Enterprise-Grade Security</h3>
- <p className="text-gray-600 mb-8 leading-relaxed">
- Your data security is our top priority. We implement multiple layers of protection
- to ensure your information stays safe and secure.
- </p>
- <div className="space-y-4 mb-8">
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>End-to-end encryption</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Two-factor authentication</span>
- </div>
- <div className="flex items-center gap-3">
- <CheckIcon className="h-5 w-5 text-green-500" />
- <span>Regular security audits</span>
- </div>
- </div>
- <Button className="bg-black text-white hover:bg-gray-800">
- Security Details
- <ArrowRightIcon className="ml-2 h-4 w-4" />
- </Button>
- </div>
- </div>
- </div>
- </div>
- );
-};
+const F = [
+  { icon: PaletteIcon, title: "10 themes", body: "From earthy Terra to electric Cyber. Each is a complete contract." },
+  { icon: LayersIcon, title: "Token-driven", body: "Change the variable, every component follows." },
+  { icon: BoxIcon, title: "30 components", body: "Inputs, displays, overlays. Built on Radix where it counts." },
+  { icon: ZapIcon, title: "Motion tokens", body: "Tuned timing, not random eases." },
+  { icon: ShieldIcon, title: "A11y first", body: "WCAG-AA contrast, focus rings, aria-invalid." },
+  { icon: CodeIcon, title: "RSC ready", body: "Server tree stays a server tree." },
+];
 
 export default function FeatureBlocksPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Feature <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Blocks</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Showcase your product features effectively with these versatile
- feature section layouts. Perfect for highlighting key benefits and capabilities.
- </p>
- </div>
- </section>
+  return (
+    <BlockPage eyebrow="Marketing — Features" title="Feature blocks" subtitle="Six variants — grid, alternating split, icon list, bento, sticky scroll, and a numbered editorial layout.">
+      <BlockShowcase name="01 — Six-up grid" bg="elev">
+        <div style={{ padding: "64px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 0, border: "1.5px solid var(--border)", background: "var(--bg)", borderRadius: "var(--r)", overflow: "hidden", maxWidth: 1100, marginInline: "auto" }}>
+            {F.map((f, i) => (
+              <div key={f.title} style={{ padding: 28, borderRight: i % 3 !== 2 ? "1.5px solid var(--border-subtle)" : "none", borderBottom: i < 3 ? "1.5px solid var(--border-subtle)" : "none" }}>
+                <div style={{ width: 36, height: 36, border: "1.5px solid var(--border)", background: "var(--primary)", color: "var(--primary-fg)", borderRadius: "var(--r-sm)", display: "inline-flex", alignItems: "center", justifyContent: "center", marginBottom: 16, boxShadow: "var(--sh-xs)" }}><f.icon size={16} /></div>
+                <h3 style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 600, margin: "0 0 8px" }}>{f.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.6 }}>{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Feature Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
+      <BlockShowcase name="02 — Alternating split">
+        <div style={{ padding: "64px 32px", display: "flex", flexDirection: "column", gap: 64, maxWidth: 1100, marginInline: "auto" }}>
+          {[0, 1].map((i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", direction: i % 2 ? "rtl" : "ltr" }}>
+              <Placeholder height={300} label={`feature ${i + 1}`} />
+              <div style={{ direction: "ltr" }}>
+                <div className="label" style={{ marginBottom: 12 }}>Feature {String(i + 1).padStart(2, "0")}</div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, letterSpacing: "-0.025em", margin: "0 0 12px", lineHeight: 1.05 }}>{i === 0 ? "Token contracts that scale" : "Motion that feels intentional"}</h3>
+                <p style={{ margin: "0 0 16px", color: "var(--fg-muted)", lineHeight: 1.6 }}>{i === 0 ? "Designers and engineers reference the same names. Spec drift becomes nearly impossible." : "Every press, hover, and reveal uses tuned tokens — not random easings."}</p>
+                <Button variant="outline" size="sm">Learn more <ArrowRightIcon size={12} /></Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </BlockShowcase>
 
- {/* Icon Grid Features */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <IconGridFeatures />
- </div>
- <CodeDisplay title="Icon Grid Features" code={iconGridFeaturesCode} />
- </div>
+      <BlockShowcase name="03 — Icon list" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 1100, marginInline: "auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 48 }}>
+          <div>
+            <div className="label" style={{ marginBottom: 12 }}>Why teams choose voidUI</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.05, margin: 0 }}>Built for the way you actually <em style={{ fontStyle: "italic", color: "var(--primary)" }}>ship</em></h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            {F.slice(0, 4).map((f) => (
+              <div key={f.title} style={{ display: "flex", gap: 14 }}>
+                <div style={{ width: 32, height: 32, border: "1.5px solid var(--border)", borderRadius: "var(--r-sm)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "var(--bg)" }}><f.icon size={14} /></div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 600, marginBottom: 4 }}>{f.title}</div>
+                  <p style={{ margin: 0, fontSize: 13, color: "var(--fg-muted)", lineHeight: 1.55 }}>{f.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Split Layout Features */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <SplitLayoutFeatures />
- </div>
- <CodeDisplay title="Split Layout Features" code={splitLayoutFeaturesCode} />
- </div>
+      <BlockShowcase name="04 — Bento layout">
+        <div style={{ padding: "64px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "200px 200px", gap: 14, maxWidth: 1100, marginInline: "auto" }}>
+            <Card style={{ padding: 24, gridColumn: "span 2", gridRow: "span 2", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "var(--primary)", color: "var(--primary-fg)" }}>
+              <PaletteIcon size={28} />
+              <div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 6px", lineHeight: 1.05 }}>10 themes, light + dark</h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: 14, lineHeight: 1.55 }}>One token contract. Twenty visual identities ready out of the box.</p>
+              </div>
+            </Card>
+            {F.slice(2, 6).map((f, i) => (
+              <Card key={f.title} style={{ padding: 20, gridColumn: i === 1 ? "span 2" : "span 1" }}>
+                <f.icon size={20} style={{ marginBottom: 10 }} />
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>{f.title}</div>
+                <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--fg-muted)", lineHeight: 1.5 }}>{f.body}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- </section>
+      <BlockShowcase name="05 — Stacked steps" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 720, marginInline: "auto" }}>
+          {F.slice(0, 3).map((f, i) => (
+            <div key={f.title} style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 24, paddingBottom: i < 2 ? 32 : 0, marginBottom: i < 2 ? 32 : 0, borderBottom: i < 2 ? "1.5px solid var(--border-subtle)" : "none" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 64, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 0.9, color: "var(--primary)" }}>{String(i + 1).padStart(2, "0")}</div>
+              <div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 8px", lineHeight: 1.1 }}>{f.title}</h3>
+                <p style={{ margin: 0, fontSize: 15, color: "var(--fg-muted)", lineHeight: 1.6 }}>{f.body} Detailed enough to act on, terse enough to read.</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </BlockShowcase>
 
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="06 — Compact card row">
+        <div style={{ padding: "64px 32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, maxWidth: 1100, marginInline: "auto" }}>
+          {F.map((f) => (
+            <Card key={f.title} style={{ padding: 20 }}>
+              <f.icon size={18} style={{ marginBottom: 10, color: "var(--primary)" }} />
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{f.title}</div>
+              <p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)", lineHeight: 1.55 }}>{f.body}</p>
+            </Card>
+          ))}
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

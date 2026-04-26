@@ -1,514 +1,87 @@
 "use client";
 
-import React, { useState } from"react";
-import Link from"next/link";
-import { Text, Button, Card } from"@/components/voidui";
-import { TrendingUpIcon, UsersIcon, DollarSignIcon, BarChart3Icon, StarIcon, ZapIcon } from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
-
-// Code snippet for Simple Stats Card
-const simpleStatsCode = `import React from"react";
-import { UsersIcon, TrendingUpIcon, DollarSignIcon, BarChart3Icon, StarIcon } from"lucide-react";
-
-const SimpleStatsCard = () => {
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h3 className="text-2xl font-bold mb-2">Company Statistics</h3>
- <p className="text-gray-600">Real-time metrics and achievements</p>
- </div>
-
- <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-blue-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <UsersIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">10,000+</div>
- <p className="text-gray-600 text-sm">Happy<br/>Customers</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-green-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <TrendingUpIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">99.9%</div>
- <p className="text-gray-600 text-sm">Uptime</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-yellow-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <DollarSignIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">$2.5M</div>
- <p className="text-gray-600 text-sm">Revenue</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-purple-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <BarChart3Icon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">150+</div>
- <p className="text-gray-600 text-sm">Countries</p>
- </div>
- </div>
-
- <div className="border-t-2 border-black pt-6">
- <div className="grid grid-cols-3 gap-8 text-center">
- <div>
- <div className="text-2xl font-bold text-green-600 mb-1">↗ 23%</div>
- <p className="text-sm text-gray-600">Growth this month</p>
- </div>
- <div>
- <div className="text-2xl font-bold text-blue-600 mb-1">4.9★</div>
- <p className="text-sm text-gray-600">Customer rating</p>
- </div>
- <div>
- <div className="text-2xl font-bold text-purple-600 mb-1">24/7</div>
- <p className="text-sm text-gray-600">Support available</p>
- </div>
- </div>
- </div>
- </div>
- );
-};`;
-
-// Code snippet for Retro Stats Dashboard
-const retroStatsDashboardCode = `import React, { useState } from"react";
-import { DollarSignIcon, ShoppingCartIcon, UsersIcon, TrendingUpIcon, TrendingDownIcon } from"lucide-react";
-
-const RetroStatsDashboard = () => {
- const [selectedPeriod, setSelectedPeriod] = useState('Week');
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- {/* Header */}
- <div className="flex justify-between items-start mb-8">
- <div>
- <h2 className="text-3xl font-bold mb-2">Retro Stats</h2>
- <p className="text-gray-600">Key metrics for your online store</p>
- </div>
- <div className="flex gap-2">
- {['Day', 'Week', 'Month', 'Year'].map((period) => (
- <button
- key={period}
- onClick={() => setSelectedPeriod(period)}
- className={\`px-4 py-2 border-2 border-black font-medium \${
- selectedPeriod === period
- ? 'bg-yellow-300'
- : 'bg-white hover:bg-gray-50'
- }\`}
- >
- {period}
- </button>
- ))}
- </div>
- </div>
-
- {/* Stats Cards */}
- <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Revenue</h3>
- <div className="w-8 h-8 bg-yellow-300 border-2 border-black flex items-center justify-center">
- <DollarSignIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">$8,492</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">18.7% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Orders</h3>
- <div className="w-8 h-8 bg-blue-300 border-2 border-black flex items-center justify-center">
- <ShoppingCartIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">187</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">12.4% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Customers</h3>
- <div className="w-8 h-8 bg-green-300 border-2 border-black flex items-center justify-center">
- <UsersIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">143</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">5.8% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Conversion</h3>
- <div className="w-8 h-8 bg-red-300 border-2 border-black flex items-center justify-center">
- <TrendingDownIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">3.8%</div>
- <div className="flex items-center text-sm">
- <TrendingDownIcon className="h-4 w-4 text-red-600 mr-1" />
- <span className="text-red-600">2.1% vs last period</span>
- </div>
- </div>
- </div>
-
- {/* Bottom Section */}
- <div className="grid lg:grid-cols-2 gap-6">
- {/* Revenue Breakdown */}
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-center mb-6">
- <h3 className="text-xl font-bold">Revenue Breakdown</h3>
- <div className="bg-black text-white px-3 py-1 text-sm font-medium">
- 📅 This Week
- </div>
- </div>
-
- <div className="space-y-4">
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Product Sales</span>
- <span className="bg-yellow-300 px-2 py-1 text-sm font-bold">$6,794</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-yellow-300 h-full w-4/5 border-r border-black"></div>
- </div>
- </div>
-
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Subscriptions</span>
- <span className="bg-blue-300 px-2 py-1 text-sm font-bold">$1,443</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-blue-300 h-full w-1/5 border-r border-black"></div>
- </div>
- </div>
-
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Digital Downloads</span>
- <span className="bg-green-300 px-2 py-1 text-sm font-bold">$255</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-green-300 h-full w-1/12 border-r border-black"></div>
- </div>
- </div>
- </div>
- </div>
-
- {/* Top Products */}
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <h3 className="text-xl font-bold mb-6">Top Products</h3>
-
- <div className="space-y-4">
- {[
- { rank: 1, name: 'Fancy Pants Lg', sold: 42 },
- { rank: 2, name: 'Fancy t-shirt Md', sold: 35 },
- { rank: 3, name: 'Fancy t-shirt Sm', sold: 28 },
- { rank: 4, name: 'Fancy t-shirt Xs', sold: 22 }
- ].map((product) => (
- <div key={product.rank} className="flex items-center justify-between">
- <div className="flex items-center gap-3">
- <div className="w-6 h-6 bg-black text-white flex items-center justify-center text-sm font-bold">
- {product.rank}
- </div>
- <span className="font-medium">{product.name}</span>
- </div>
- <div className="bg-black text-white px-2 py-1 text-sm font-bold">
- {product.sold} sold
- </div>
- </div>
- ))}
- </div>
- </div>
- </div>
- </div>
- );
-};`;
-
-// Simple Stats Card Component
-const SimpleStatsCard = () => {
- return (
- <div className="max-w-4xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-8">
- <h3 className="text-2xl font-bold mb-2">Company Statistics</h3>
- <p className="text-gray-600">Real-time metrics and achievements</p>
- </div>
-
- <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-blue-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <UsersIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">10,000+</div>
- <p className="text-gray-600 text-sm">Happy<br/>Customers</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-green-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <TrendingUpIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">99.9%</div>
- <p className="text-gray-600 text-sm">Uptime</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-yellow-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <DollarSignIcon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">$2.5M</div>
- <p className="text-gray-600 text-sm">Revenue</p>
- </div>
-
- <div className="text-center p-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="w-12 h-12 bg-purple-300 flex items-center justify-center mx-auto mb-4 border-2 border-black">
- <BarChart3Icon className="h-6 w-6" />
- </div>
- <div className="text-3xl font-bold mb-2">150+</div>
- <p className="text-gray-600 text-sm">Countries</p>
- </div>
- </div>
-
- <div className="border-t-2 border-black pt-6">
- <div className="grid grid-cols-3 gap-8 text-center">
- <div>
- <div className="text-2xl font-bold text-green-600 mb-1">↗ 23%</div>
- <p className="text-sm text-gray-600">Growth this month</p>
- </div>
- <div>
- <div className="text-2xl font-bold text-blue-600 mb-1">4.9★</div>
- <p className="text-sm text-gray-600">Customer rating</p>
- </div>
- <div>
- <div className="text-2xl font-bold text-purple-600 mb-1">24/7</div>
- <p className="text-sm text-gray-600">Support available</p>
- </div>
- </div>
- </div>
- </div>
- );
-};
-
-// Retro Stats Dashboard Component
-const RetroStatsDashboard = () => {
- const [selectedPeriod, setSelectedPeriod] = useState('Week');
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- {/* Header */}
- <div className="flex justify-between items-start mb-8">
- <div>
- <h2 className="text-3xl font-bold mb-2">Retro Stats</h2>
- <p className="text-gray-600">Key metrics for your online store</p>
- </div>
- <div className="flex gap-2">
- {['Day', 'Week', 'Month', 'Year'].map((period) => (
- <button
- key={period}
- onClick={() => setSelectedPeriod(period)}
- className={`px-4 py-2 border-2 border-black font-medium ${
- selectedPeriod === period
- ? 'bg-yellow-300'
- : 'bg-white hover:bg-gray-50'
- }`}
- >
- {period}
- </button>
- ))}
- </div>
- </div>
-
- {/* Stats Cards */}
- <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Revenue</h3>
- <div className="w-8 h-8 bg-yellow-300 border-2 border-black flex items-center justify-center">
- <DollarSignIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">$8,492</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">18.7% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Orders</h3>
- <div className="w-8 h-8 bg-blue-300 border-2 border-black flex items-center justify-center">
- <BarChart3Icon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">187</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">12.4% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Customers</h3>
- <div className="w-8 h-8 bg-green-300 border-2 border-black flex items-center justify-center">
- <UsersIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">143</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
- <span className="text-green-600">5.8% vs last period</span>
- </div>
- </div>
-
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-start mb-4">
- <h3 className="font-bold text-gray-700">Conversion</h3>
- <div className="w-8 h-8 bg-red-300 border-2 border-black flex items-center justify-center">
- <TrendingUpIcon className="h-4 w-4" />
- </div>
- </div>
- <div className="text-3xl font-bold mb-2">3.8%</div>
- <div className="flex items-center text-sm">
- <TrendingUpIcon className="h-4 w-4 text-red-600 mr-1" />
- <span className="text-red-600">2.1% vs last period</span>
- </div>
- </div>
- </div>
-
- {/* Bottom Section */}
- <div className="grid lg:grid-cols-2 gap-6">
- {/* Revenue Breakdown */}
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex justify-between items-center mb-6">
- <h3 className="text-xl font-bold">Revenue Breakdown</h3>
- <div className="bg-black text-white px-3 py-1 text-sm font-medium">
- 📅 This Week
- </div>
- </div>
-
- <div className="space-y-4">
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Product Sales</span>
- <span className="bg-yellow-300 px-2 py-1 text-sm font-bold">$6,794</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-yellow-300 h-full w-4/5 border-r border-black"></div>
- </div>
- </div>
-
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Subscriptions</span>
- <span className="bg-blue-300 px-2 py-1 text-sm font-bold">$1,443</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-blue-300 h-full w-1/5 border-r border-black"></div>
- </div>
- </div>
-
- <div>
- <div className="flex justify-between items-center mb-2">
- <span className="font-medium">Digital Downloads</span>
- <span className="bg-green-300 px-2 py-1 text-sm font-bold">$255</span>
- </div>
- <div className="w-full bg-gray-200 h-3 border border-black">
- <div className="bg-green-300 h-full w-1/12 border-r border-black"></div>
- </div>
- </div>
- </div>
- </div>
-
- {/* Top Products */}
- <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <h3 className="text-xl font-bold mb-6">Top Products</h3>
-
- <div className="space-y-4">
- {[
- { rank: 1, name: 'Fancy Pants Lg', sold: 42 },
- { rank: 2, name: 'Fancy t-shirt Md', sold: 35 },
- { rank: 3, name: 'Fancy t-shirt Sm', sold: 28 },
- { rank: 4, name: 'Fancy t-shirt Xs', sold: 22 }
- ].map((product) => (
- <div key={product.rank} className="flex items-center justify-between">
- <div className="flex items-center gap-3">
- <div className="w-6 h-6 bg-black text-white flex items-center justify-center text-sm font-bold">
- {product.rank}
- </div>
- <span className="font-medium">{product.name}</span>
- </div>
- <div className="bg-black text-white px-2 py-1 text-sm font-bold">
- {product.sold} sold
- </div>
- </div>
- ))}
- </div>
- </div>
- </div>
- </div>
- );
-};
+import React from "react";
+import { BlockPage, BlockShowcase } from "@/components/blocks/_kit";
+import { Card } from "@/components/voidui";
+import { TrendingUpIcon, UsersIcon, GlobeIcon, ZapIcon, ArrowUpRightIcon } from "lucide-react";
 
 export default function StatsPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Statistics <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Blocks</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Display impressive numbers and metrics with these statistics sections.
- Perfect for showcasing achievements, user counts, and business metrics.
- </p>
- </div>
- </section>
+  return (
+    <BlockPage eyebrow="Marketing — Stats" title="Stat sections" subtitle="Five variants — divided row, card grid, icon grid, contrast hero, and a numbered editorial list.">
+      <BlockShowcase name="01 — Divided row" bg="elev">
+        <div style={{ padding: "64px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 0, border: "1.5px solid var(--border)", background: "var(--bg)", borderRadius: "var(--r)", overflow: "hidden", maxWidth: 1100, marginInline: "auto" }}>
+            {[["12k+", "active teams"], ["48M", "components rendered"], ["99.97%", "uptime"], ["2.1k", "GitHub stars"]].map(([n, l], i) => (
+              <div key={l} style={{ padding: 32, borderRight: i < 3 ? "1.5px solid var(--border-subtle)" : "none", textAlign: "center" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 500, lineHeight: 1, letterSpacing: "-0.03em" }}>{n}</div>
+                <div style={{ fontSize: 12, color: "var(--fg-muted)", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 10 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Stats Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
+      <BlockShowcase name="02 — Card grid with icons">
+        <div style={{ padding: "48px 32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, maxWidth: 1100, marginInline: "auto" }}>
+          {[[TrendingUpIcon, "+248%", "MRR growth", "+12% this quarter"], [UsersIcon, "12,492", "Active users", "+8.2% this month"], [GlobeIcon, "84", "Countries", "5 new in March"], [ZapIcon, "132ms", "Avg response", "p95 latency"]].map(([Ic, v, l, d], i) => (
+            <Card key={l as string} style={{ padding: 22 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+                <Ic size={18} style={{ color: "var(--primary)" }} />
+                <ArrowUpRightIcon size={14} style={{ color: "var(--fg-muted)" }} />
+              </div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 500, lineHeight: 1, letterSpacing: "-0.025em" }}>{v as string}</div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600, marginTop: 8 }}>{l as string}</div>
+              <div style={{ fontSize: 11, color: "var(--fg-muted)", marginTop: 2 }}>{d as string}</div>
+            </Card>
+          ))}
+        </div>
+      </BlockShowcase>
 
- {/* Simple Stats Card */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <SimpleStatsCard />
- </div>
- <CodeDisplay title="Simple Stats Card" code={simpleStatsCode} />
- </div>
+      <BlockShowcase name="03 — Contrast hero" bg="fg">
+        <div style={{ padding: "80px 32px", color: "var(--bg)" }}>
+          <div style={{ maxWidth: 720, marginBottom: 48 }}>
+            <div className="label" style={{ marginBottom: 16, color: "var(--bg)", opacity: 0.6 }}>By the numbers</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 48, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.0, margin: 0 }}>Trusted at <em style={{ fontStyle: "italic", color: "var(--primary)" }}>scale</em></h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 32 }}>
+            {[["12k+", "teams"], ["48M+", "renders / mo"], ["99.97%", "uptime"], ["AAA", "contrast"]].map(([n, l]) => (
+              <div key={l}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 64, fontWeight: 500, lineHeight: 0.95, letterSpacing: "-0.035em" }}>{n}</div>
+                <div style={{ fontSize: 12, fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 12, opacity: 0.7 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Retro Stats Dashboard */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <RetroStatsDashboard />
- </div>
- <CodeDisplay title="Retro Stats Dashboard" code={retroStatsDashboardCode} />
- </div>
+      <BlockShowcase name="04 — Editorial numbered" bg="elev">
+        <div style={{ padding: "64px 32px", maxWidth: 720, marginInline: "auto" }}>
+          {[["Teams shipping daily", "12,492", "across 84 countries"], ["Total components rendered", "48M+", "every month, growing"], ["Active GitHub contributors", "127", "and counting"]].map(([l, v, d], i, arr) => (
+            <div key={l} style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 32, paddingBlock: 24, borderBottom: i < arr.length - 1 ? "1.5px solid var(--border-subtle)" : "none" }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600, color: "var(--fg-muted)", letterSpacing: "0.08em", paddingTop: 12 }}>{String(i + 1).padStart(2, "0")}</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12 }}>
+                <div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>{l}</div>
+                  <div style={{ fontSize: 12, color: "var(--fg-muted)", marginTop: 2 }}>{d}</div>
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1 }}>{v}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </BlockShowcase>
 
- </section>
-
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="05 — Logo cloud + headline">
+        <div style={{ padding: "64px 32px", textAlign: "center" }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 500, letterSpacing: "-0.025em", margin: "0 0 8px" }}>Trusted by teams at</h2>
+          <p style={{ color: "var(--fg-muted)", fontSize: 14, margin: "0 0 32px" }}>From two-person studios to public companies</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 20, maxWidth: 1000, marginInline: "auto" }}>
+            {["Lattice", "Linear", "Vercel", "Stripe", "Notion", "Figma"].map((co) => (
+              <div key={co} style={{ padding: "18px 12px", border: "1.5px solid var(--border-subtle)", borderRadius: "var(--r-sm)", fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 500, letterSpacing: "-0.02em", color: "var(--fg-muted)" }}>{co}</div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

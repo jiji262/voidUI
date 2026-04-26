@@ -1,52 +1,59 @@
-import React from "react";
 import Link from "next/link";
+import { Button } from "@/components/voidui";
 
 export default function NotFound() {
   return (
-    <main style={{ minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "96px 24px", textAlign: "center" }}>
+    <main
+      style={{
+        minHeight: "70vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "64px 24px",
+        background: "var(--bg)",
+      }}
+    >
+      <div style={{ maxWidth: 480, textAlign: "center" }}>
         <div
           style={{
-            fontFamily: "var(--font-display)",
-            fontSize: 96,
-            fontWeight: 500,
-            letterSpacing: "-0.04em",
-            lineHeight: 0.95,
-            marginBottom: 16,
+            fontFamily: "var(--font-mono)",
+            fontSize: 11,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "var(--fg-muted)",
+            marginBottom: 12,
           }}
         >
-          404
+          Error 404
         </div>
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: 36,
+            fontSize: "clamp(48px, 7vw, 88px)",
             fontWeight: 500,
-            letterSpacing: "-0.02em",
+            lineHeight: 0.96,
+            letterSpacing: "-0.035em",
             margin: "0 0 16px",
           }}
         >
-          Page not found
+          Page <em style={{ fontStyle: "italic", color: "var(--primary)" }}>not found</em>
         </h1>
         <p
-          className="cn"
           style={{
             fontSize: 16,
+            lineHeight: 1.55,
             color: "var(--fg-muted)",
-            marginBottom: 32,
-            lineHeight: 1.65,
+            margin: "0 0 28px",
           }}
         >
-          Sorry, the page you are looking for does not exist or has been moved.
-          <br />
-          找不到这个页面 — 也许它已经被删除或移走了。
+          That route doesn&apos;t exist on this site. Try the homepage or jump straight to a section.
         </p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/" style={{ textDecoration: "none" }}>
-            <button className="btn lg">Return home</button>
+            <Button>Back to home</Button>
           </Link>
           <Link href="/components" style={{ textDecoration: "none" }}>
-            <button className="btn lg outline">Browse components</button>
+            <Button variant="outline">Browse components</Button>
           </Link>
         </div>
       </div>

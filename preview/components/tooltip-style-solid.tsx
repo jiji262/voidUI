@@ -9,7 +9,7 @@ export default function TooltipStyleSolid() {
         <Tooltip.Trigger asChild>
           <Button variant="outline">Hover</Button>
         </Tooltip.Trigger>
-        <Tooltip.Content variant="solid">Add to Library</Tooltip.Content>
+        <Tooltip.Content>Add to Library</Tooltip.Content>
       </Tooltip>
     </Tooltip.Provider>
   );

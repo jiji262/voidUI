@@ -1,178 +1,100 @@
 "use client";
 
-import React from"react";
-import Link from"next/link";
-import Image from"next/image";
-import { Text, Button, Card } from"@/components/voidui";
-import { StarIcon, QuoteIcon } from"lucide-react";
-import { CodeDisplay } from"@/components/CodeDisplay";
+import React from "react";
+import { BlockPage, BlockShowcase, InitialAvatar } from "@/components/blocks/_kit";
+import { Card } from "@/components/voidui";
+import { StarIcon } from "lucide-react";
 
-// Code snippet for testimonials component
-const testimonialsCode = `import React from"react";
-import { StarIcon } from"lucide-react";
-
-const TestimonialsGrid = () => {
- const testimonials = [
- {
- name:"John Smith",
- role:"CEO, TechCorp",
- image:"https://picsum.photos/100/100?random=40",
- content:"This product has completely transformed how we work. The interface is intuitive and the features are exactly what we needed.",
- rating: 5
- },
- {
- name:"Sarah Johnson",
- role:"Product Manager, StartupXYZ",
- image:"https://picsum.photos/100/100?random=41",
- content:"Outstanding customer support and a product that delivers on its promises. Highly recommend to any growing business.",
- rating: 5
- },
- {
- name:"Mike Chen",
- role:"CTO, InnovateLab",
- image:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
- content:"The best investment we've made this year. ROI was visible within the first month of implementation.",
- rating: 5
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">What Our Customers Say</h3>
- <p className="text-gray-600">Don&apos;t just take our word for it</p>
- </div>
-
- <div className="grid md:grid-cols-3 gap-8">
- {testimonials.map((testimonial, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex items-center gap-1 mb-4">
- {[...Array(testimonial.rating)].map((_, i) => (
- <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
- ))}
- </div>
- <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-&quot;{testimonial.content}&quot;
- </p>
- <div className="flex items-center gap-3">
- <img
- src={testimonial.image}
- alt={testimonial.name}
- className="w-10 h-10 object-cover border-2 border-black"
- />
- <div>
- <p className="font-semibold text-sm">{testimonial.name}</p>
- <p className="text-xs text-gray-600">{testimonial.role}</p>
- </div>
- </div>
- </div>
- ))}
- </div>
- </div>
- );
-};`;
-
-// Testimonials Grid Component
-const TestimonialsGrid = () => {
- const testimonials = [
- {
- name:"John Smith",
- role:"CEO, TechCorp",
- image:"https://picsum.photos/100/100?random=42",
- content:"This product has completely transformed how we work. The interface is intuitive and the features are exactly what we needed.",
- rating: 5
- },
- {
- name:"Sarah Johnson",
- role:"Product Manager, StartupXYZ",
- image:"https://picsum.photos/100/100?random=43",
- content:"Outstanding customer support and a product that delivers on its promises. Highly recommend to any growing business.",
- rating: 5
- },
- {
- name:"Mike Chen",
- role:"CTO, InnovateLab",
- image:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
- content:"The best investment we've made this year. ROI was visible within the first month of implementation.",
- rating: 5
- }
- ];
-
- return (
- <div className="max-w-6xl mx-auto bg-white border-2 border-black p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="text-center mb-12">
- <h3 className="text-3xl font-bold mb-4">What Our Customers Say</h3>
- <p className="text-gray-600">Don&apos;t just take our word for it</p>
- </div>
-
- <div className="grid md:grid-cols-3 gap-8">
- {testimonials.map((testimonial, index) => (
- <div key={index} className="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
- <div className="flex items-center gap-1 mb-4">
- {[...Array(testimonial.rating)].map((_, i) => (
- <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
- ))}
- </div>
- <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-&quot;{testimonial.content}&quot;
- </p>
- <div className="flex items-center gap-3">
- <img
- src={testimonial.image}
- alt={testimonial.name}
- className="w-10 h-10 object-cover border-2 border-black"
- />
- <div>
- <p className="font-semibold text-sm">{testimonial.name}</p>
- <p className="text-xs text-gray-600">{testimonial.role}</p>
- </div>
- </div>
- </div>
- ))}
- </div>
- </div>
- );
-};
+const Q = [
+  { quote: "voidUI shipped our new dashboard in a weekend. The token system makes brand updates trivial.", name: "Maya O.", role: "Founding Designer, Lattice" },
+  { quote: "Finally a library that doesn't fight my design system. I just override tokens and everything follows.", name: "Tom J.", role: "Engineering Lead, Linear" },
+  { quote: "We replaced three internal libraries with voidUI. Our team velocity 3x&apos;d.", name: "Rin S.", role: "PM, Notion" },
+  { quote: "The dark-mode contrast work alone is worth the install. Real WCAG-AA out of the box.", name: "Ada L.", role: "Accessibility Engineer" },
+  { quote: "It's the first 'neobrutalist' library that doesn't feel like a meme. Restrained, considered.", name: "Jules R.", role: "Creative Director, Studio Atlas" },
+];
 
 export default function TestimonialsPage() {
- return (
- <main className="min-h-screen bg-background">
- {/* Page Header */}
- <section className="container max-w-6xl mx-auto px-6 py-16">
- <div className="text-center max-w-3xl mx-auto">
- <h1 className="text-4xl lg:text-5xl font-bold mb-6">
- Testimonial <span className="bg-yellow-300 px-2 py-1 transform -rotate-1 inline-block">Sections</span>
- </h1>
- <p className="text-lg text-gray-600 mb-8">
- Social proof sections to build trust and credibility. Showcase customer
- feedback and success stories effectively.
- </p>
- </div>
- </section>
+  return (
+    <BlockPage eyebrow="Marketing — Testimonials" title="Testimonials" subtitle="Five variants — three-up grid, single editorial pull, masonry wall, video tile, and a logo + quote ribbon.">
+      <BlockShowcase name="01 — Three-up cards" bg="elev">
+        <div style={{ padding: "64px 32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14, maxWidth: 1100, marginInline: "auto" }}>
+          {Q.slice(0, 3).map((q, i) => (
+            <Card key={i} style={{ padding: 24 }}>
+              <div style={{ display: "flex", gap: 2, marginBottom: 14 }}>{[0, 0, 0, 0, 0].map((_, j) => <StarIcon key={j} size={12} style={{ color: "var(--primary)" }} fill="var(--primary)" />)}</div>
+              <p style={{ margin: "0 0 18px", fontSize: 15, lineHeight: 1.55 }}>&ldquo;{q.quote}&rdquo;</p>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, paddingTop: 14, borderTop: "1.5px solid var(--border-subtle)" }}>
+                <InitialAvatar name={q.name} />
+                <div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>{q.name}</div>
+                  <div style={{ fontSize: 11, color: "var(--fg-muted)" }}>{q.role}</div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </BlockShowcase>
 
- {/* Testimonial Blocks */}
- <section className="container max-w-6xl mx-auto px-6 py-16 space-y-16">
+      <BlockShowcase name="02 — Editorial pull-quote">
+        <div style={{ padding: "80px 32px", maxWidth: 800, marginInline: "auto", textAlign: "center" }}>
+          <div className="label" style={{ marginBottom: 16 }}>What teams are saying</div>
+          <blockquote style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+            &ldquo;voidUI shipped our new dashboard in a weekend. The token system makes brand updates <em style={{ fontStyle: "italic", color: "var(--primary)" }}>trivial.</em>&rdquo;
+          </blockquote>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginTop: 32 }}>
+            <InitialAvatar name="Maya O." size={44} />
+            <div style={{ textAlign: "left" }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 600 }}>Maya O.</div>
+              <div style={{ fontSize: 12, color: "var(--fg-muted)" }}>Founding Designer, Lattice</div>
+            </div>
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Testimonials Grid */}
- <div className="space-y-6">
- <div className="border-2 border-dashed border-gray-300 p-8 bg-gray-50">
- <TestimonialsGrid />
- </div>
- <CodeDisplay title="Testimonials Grid" code={testimonialsCode} />
- </div>
+      <BlockShowcase name="03 — Masonry wall" bg="elev">
+        <div style={{ padding: "48px 32px" }}>
+          <div style={{ columnCount: 3, columnGap: 14, maxWidth: 1100, marginInline: "auto" }} className="vui-masonry">
+            {Q.map((q, i) => (
+              <Card key={i} style={{ padding: 18, marginBottom: 14, breakInside: "avoid", display: "inline-block", width: "100%" }}>
+                <p style={{ margin: "0 0 12px", fontSize: 13, lineHeight: 1.55 }}>&ldquo;{q.quote}&rdquo;</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <InitialAvatar name={q.name} size={28} />
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 11 }}><strong>{q.name}</strong> · <span style={{ color: "var(--fg-muted)" }}>{q.role}</span></div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- </section>
+      <BlockShowcase name="04 — Logo + quote ribbon">
+        <div style={{ padding: "48px 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 0, border: "1.5px solid var(--border)", borderRadius: "var(--r)", overflow: "hidden", maxWidth: 1100, marginInline: "auto" }}>
+            {Q.slice(0, 3).map((q, i) => (
+              <div key={i} style={{ padding: 28, borderRight: i < 2 ? "1.5px solid var(--border-subtle)" : "none" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 500, color: "var(--fg-muted)", marginBottom: 16 }}>{["Lattice", "Linear", "Notion"][i]}</div>
+                <p style={{ margin: "0 0 14px", fontSize: 14, lineHeight: 1.55 }}>&ldquo;{q.quote}&rdquo;</p>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg-muted)" }}><strong style={{ color: "var(--fg)" }}>{q.name}</strong> — {q.role.split(",")[0]}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlockShowcase>
 
- {/* Back to Blocks */}
- <section className="container max-w-6xl mx-auto px-6 pb-16">
- <div className="text-center">
- <Link href="/blocks">
- <Button variant="outline" className="font-head">
- ← Back to All Blocks
- </Button>
- </Link>
- </div>
- </section>
- </main>
- );
+      <BlockShowcase name="05 — Single quote with metric" bg="fg">
+        <div style={{ padding: "80px 32px", color: "var(--bg)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", maxWidth: 1100, marginInline: "auto" }}>
+          <div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: 96, fontWeight: 500, lineHeight: 0.9, letterSpacing: "-0.04em", color: "var(--primary)" }}>3×</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, opacity: 0.7, textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 12 }}>Faster delivery</div>
+          </div>
+          <div>
+            <p style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 1.45, margin: "0 0 24px" }}>&ldquo;We replaced three internal libraries with voidUI. Our team velocity 3x&apos;d.&rdquo;</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <InitialAvatar name="Rin S." />
+              <div><div style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 600 }}>Rin S.</div><div style={{ fontSize: 11, opacity: 0.65 }}>PM, Notion</div></div>
+            </div>
+          </div>
+        </div>
+      </BlockShowcase>
+    </BlockPage>
+  );
 }

@@ -10,7 +10,7 @@ export default function DialogStyleWithForm() {
         <Button>Open Form</Button>
       </Dialog.Trigger>
       <Dialog.Content size={"md"}>
-        <Dialog.Header position={"fixed"}>
+        <Dialog.Header>
           <Text as="h5">Contact Us</Text>
         </Dialog.Header>
         <form className="flex flex-col gap-4">

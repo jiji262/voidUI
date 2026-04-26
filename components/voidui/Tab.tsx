@@ -11,7 +11,10 @@ export const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn("inline-flex items-center border-b-[1.5px] border-border w-full", className)}
+    className={cn(
+      "inline-flex items-center border-b-[length:var(--bw,1.5px)] border-border w-full gap-1",
+      className,
+    )}
     {...props}
   />
 ));
@@ -26,8 +29,10 @@ export const TabsTrigger = React.forwardRef<
     className={cn(
       "inline-flex items-center justify-center px-4 py-2.5 font-mono text-xs uppercase tracking-[0.06em]",
       "text-muted-foreground border-b-2 border-transparent -mb-[1.5px]",
+      "transition-colors duration-[150ms]",
+      "hover:text-foreground",
       "data-[state=active]:text-foreground data-[state=active]:border-primary data-[state=active]:font-semibold",
-      "transition-colors",
+      "focus-visible:outline-none focus-visible:[box-shadow:var(--focus-ring)] rounded-[var(--r-sm,2px)]",
       className,
     )}
     {...props}
@@ -41,16 +46,15 @@ export const TabsContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
-    className={cn("mt-4 focus-visible:outline-none", className)}
+    className={cn(
+      "mt-4 focus-visible:outline-none animate-[vui-fade-in_180ms_ease-out]",
+      className,
+    )}
     {...props}
   />
 ));
 TabsContent.displayName = "TabsContent";
 
-// v1 → v2 back-compat shims. v1 (Headless UI) had <TabsTriggerList> and
-// <TabsPanels> wrappers; Radix drops TabsPanels entirely and renames
-// List → TabsList. Under the new Radix API callers must pass `value` to
-// TabsTrigger / TabsContent — these aliases only keep imports compiling.
 export const TabsTriggerList = TabsList;
 export const TabsPanels = ({
   children,

@@ -1,6 +1,6 @@
 "use client";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import * as React from "react";
 import { cn } from "./_utils";
 
@@ -15,9 +15,12 @@ export const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between font-sans text-sm px-3.5 py-2",
-      "border-[1.5px] border-border rounded-[4px] bg-card",
-      "placeholder:text-muted-foreground focus:outline-none focus:shadow-xs",
+      "flex h-10 w-full items-center justify-between gap-2 font-sans text-sm px-3.5 py-2",
+      "border-[length:var(--bw,1.5px)] border-border rounded-[var(--r,4px)] bg-card",
+      "data-[placeholder]:text-muted-foreground",
+      "hover:border-foreground-muted",
+      "focus:outline-none focus-visible:[box-shadow:var(--focus-ring)] focus-visible:border-primary",
+      "transition-[border-color,box-shadow] duration-[120ms]",
       "disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
@@ -40,7 +43,8 @@ export const SelectContent = React.forwardRef<
       ref={ref}
       className={cn(
         "relative z-50 max-h-96 min-w-[8rem] overflow-hidden",
-        "rounded-[4px] border-[1.5px] border-border bg-card text-foreground shadow-md",
+        "rounded-[var(--r,4px)] border-[length:var(--bw,1.5px)] border-border bg-card text-foreground shadow-md",
+        "animate-[vui-slide-up_180ms_ease-out]",
         position === "popper" && "data-[side=bottom]:translate-y-1.5",
         className,
       )}
@@ -48,7 +52,11 @@ export const SelectContent = React.forwardRef<
       {...props}
     >
       <SelectPrimitive.Viewport
-        className={cn("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]")}
+        className={cn(
+          "p-1",
+          position === "popper" &&
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
+        )}
       >
         {children}
       </SelectPrimitive.Viewport>
@@ -63,7 +71,10 @@ export const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("font-mono text-[11px] uppercase tracking-[0.12em] px-2 py-1.5 text-muted-foreground", className)}
+    className={cn(
+      "font-mono text-[11px] uppercase tracking-[0.12em] px-2 py-1.5 text-muted-foreground",
+      className,
+    )}
     {...props}
   />
 ));
@@ -76,9 +87,10 @@ export const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-[2px] py-1.5 pl-8 pr-2 text-sm",
-      "focus:bg-muted focus:outline-none",
+      "relative flex w-full cursor-pointer select-none items-center rounded-[var(--r-sm,2px)] py-1.5 pl-8 pr-2 text-sm",
+      "focus:bg-muted focus:outline-none transition-colors duration-[80ms]",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "data-[state=checked]:font-semibold",
       className,
     )}
     {...props}
@@ -105,7 +117,6 @@ export const SelectSeparator = React.forwardRef<
 ));
 SelectSeparator.displayName = "SelectSeparator";
 
-// v1 dot-API compatibility — typed via Object.assign return
 export const Select = Object.assign(SelectRoot, {
   Trigger: SelectTrigger,
   Content: SelectContent,

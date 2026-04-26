@@ -2,440 +2,70 @@
 
 import React from "react";
 import Link from "next/link";
-import { Icon } from "@/components/ui/icon";
+import { Card } from "@/components/voidui";
+import { ArrowRightIcon } from "lucide-react";
 
-/**
- * /blocks — 1:1 port of the Claude Design handoff (project/pages/Blocks.jsx).
- * Hero + 5 curated BlockFrames (hero / pricing / stats / testimonials / CTA),
- * each with a chrome strip that shows block name + tag + Copy / Open actions.
- *
- * Individual block pages still live at /blocks/<kind>/ for detailed drills;
- * this landing page is the canonical design-aligned showcase.
- */
+const BLOCKS: { slug: string; name: string; group: string; count: number }[] = [
+  { slug: "hero-sections", name: "Hero Sections", group: "Marketing", count: 6 },
+  { slug: "feature-blocks", name: "Feature Blocks", group: "Marketing", count: 6 },
+  { slug: "call-to-action", name: "Call to Action", group: "Marketing", count: 5 },
+  { slug: "pricing-tables", name: "Pricing Tables", group: "Marketing", count: 4 },
+  { slug: "testimonials", name: "Testimonials", group: "Marketing", count: 5 },
+  { slug: "stats", name: "Stats", group: "Marketing", count: 5 },
+  { slug: "faq", name: "FAQ", group: "Marketing", count: 4 },
+  { slug: "bento-grids", name: "Bento Grids", group: "Marketing", count: 4 },
+  { slug: "cards", name: "Cards", group: "Application", count: 6 },
+  { slug: "forms", name: "Forms", group: "Application", count: 5 },
+  { slug: "navbar", name: "Navbars", group: "Application", count: 4 },
+  { slug: "sidebar", name: "Sidebars", group: "Application", count: 3 },
+  { slug: "authentication", name: "Authentication", group: "Application", count: 4 },
+  { slug: "onboarding", name: "Onboarding", group: "Application", count: 3 },
+  { slug: "profile", name: "Profile", group: "Application", count: 3 },
+  { slug: "blogs", name: "Blogs", group: "Content", count: 4 },
+  { slug: "career-sections", name: "Career Sections", group: "Content", count: 3 },
+  { slug: "affiliate", name: "Affiliate", group: "Content", count: 3 },
+  { slug: "ai", name: "AI", group: "Content", count: 4 },
+];
 
-function BlockFrame({
-  name,
-  tag,
-  href,
-  children,
-}: {
-  name: string;
-  tag?: string;
-  href?: string;
-  children: React.ReactNode;
-}) {
+const GROUPS = ["Marketing", "Application", "Content"];
+
+export default function BlocksIndex() {
   return (
-    <div className="card" style={{ overflow: "hidden", padding: 0 }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          borderBottom: "1.5px solid var(--border)",
-          background: "var(--bg)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 13,
-              fontWeight: 600,
-            }}
-          >
-            {name}
-          </span>
-          {tag && <span className="badge ghost">{tag}</span>}
-        </div>
-        <div style={{ display: "flex", gap: 6 }}>
-          <button className="btn ghost sm">
-            <Icon name="copy" size={12} /> Copy code
-          </button>
-          {href ? (
-            <Link href={href} style={{ textDecoration: "none" }}>
-              <button className="btn ghost sm">
-                <Icon name="external" size={12} /> Open
-              </button>
-            </Link>
-          ) : (
-            <button className="btn ghost sm">
-              <Icon name="external" size={12} /> Open
-            </button>
-          )}
-        </div>
-      </div>
-      <div>{children}</div>
-    </div>
-  );
-}
-
-export default function BlocksPage() {
-  return (
-    <main>
-      {/* Hero */}
+    <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <section style={{ padding: "64px 24px 32px", borderBottom: "1.5px solid var(--border)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="label" style={{ marginBottom: 12 }}>
-            Blocks · 20+ ready-made
-          </div>
-          <h1
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 52,
-              fontWeight: 500,
-              letterSpacing: "-0.03em",
-              margin: "0 0 12px",
-              lineHeight: 1,
-            }}
-          >
-            Blocks
+          <div className="label" style={{ marginBottom: 12 }}>Blocks</div>
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 500, letterSpacing: "-0.03em", margin: "0 0 12px", lineHeight: 1.0 }}>
+            Production-ready <em style={{ fontStyle: "italic", color: "var(--primary)" }}>page sections</em>
           </h1>
-          <p
-            style={{
-              fontSize: 16,
-              color: "var(--fg-muted)",
-              maxWidth: 600,
-              margin: 0,
-              lineHeight: 1.65,
-            }}
-          >
-            Full-width compositions — heroes, pricing tables, stats, CTAs. Copy the full block or remix.
+          <p style={{ fontSize: 16, color: "var(--fg-muted)", maxWidth: 640, margin: 0, lineHeight: 1.65 }}>
+            19 categories. 80+ variants. Drop-in sections built from the same token system, ready for any of the 10 themes.
           </p>
         </div>
       </section>
-
-      {/* Blocks */}
       <section style={{ padding: "48px 24px" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: 32,
-          }}
-        >
-          {/* Hero block */}
-          <BlockFrame name="hero · split" tag="marketing" href="/blocks/hero-sections">
-            <div
-              className="vui-blocks-hero"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 40,
-                alignItems: "center",
-                padding: 40,
-              }}
-            >
-              <div>
-                <span className="badge primary" style={{ marginBottom: 14 }}>New · Series B</span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 36,
-                    lineHeight: 1,
-                    letterSpacing: "-0.03em",
-                    fontWeight: 500,
-                    margin: "14px 0 12px",
-                  }}
-                >
-                  Infra that doesn&apos;t<br />
-                  melt on Friday.
-                </h3>
-                <p
-                  style={{
-                    color: "var(--fg-muted)",
-                    fontSize: 15,
-                    marginBottom: 20,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Keep your services running even when everything else goes sideways.
-                </p>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button className="btn">
-                    Start trial <Icon name="arrow-right" size={13} />
-                  </button>
-                  <button className="btn outline">Book a demo</button>
-                </div>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
+          {GROUPS.map((g) => (
+            <div key={g}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 20, paddingBottom: 12, borderBottom: "1.5px solid var(--border)" }}>
+                <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 500, margin: 0, letterSpacing: "-0.02em" }}>{g}</h2>
+                <span className="badge ghost">{BLOCKS.filter((b) => b.group === g).length}</span>
               </div>
-              <div className="card" style={{ padding: 20, background: "var(--primary)" }}>
-                <div className="label" style={{ marginBottom: 10 }}>
-                  Uptime · 90d
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 40,
-                    fontWeight: 600,
-                  }}
-                >
-                  99.998%
-                </div>
-                <div style={{ display: "flex", gap: 3, marginTop: 16 }}>
-                  {Array.from({ length: 30 }).map((_, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        width: 6,
-                        height: 28,
-                        background: "var(--fg)",
-                        opacity: i === 17 ? 0.3 : 1,
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </BlockFrame>
-
-          {/* Pricing block */}
-          <BlockFrame name="pricing · three-up" tag="marketing" href="/pricing">
-            <div style={{ padding: 40 }}>
-              <div style={{ textAlign: "center", marginBottom: 32 }}>
-                <div className="label" style={{ marginBottom: 8 }}>
-                  Pricing
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 32,
-                    fontWeight: 500,
-                    letterSpacing: "-0.02em",
-                    margin: 0,
-                  }}
-                >
-                  Simple, honest plans
-                </h3>
-              </div>
-              <div
-                className="vui-blocks-pricing"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: 16,
-                }}
-              >
-                {[
-                  { n: "Starter", p: "$0", d: "For hobby projects", f: ["Up to 3 projects", "Community support", "Core components"] },
-                  { n: "Pro", p: "$12", d: "For small teams", f: ["Unlimited projects", "Email support", "All components", "Figma kit"], featured: true },
-                  { n: "Team", p: "$49", d: "For scaling orgs", f: ["Everything in Pro", "Priority support", "SSO + SCIM", "Custom themes"] },
-                ].map((p) => (
-                  <div
-                    key={p.n}
-                    className="card"
-                    style={{
-                      padding: 24,
-                      background: p.featured ? "var(--fg)" : "var(--card)",
-                      color: p.featured ? "var(--bg)" : "var(--fg)",
-                    }}
-                  >
-                    {p.featured && (
-                      <span className="badge primary" style={{ marginBottom: 10 }}>
-                        Most popular
-                      </span>
-                    )}
-                    <div
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 14,
-                        fontWeight: 600,
-                        marginBottom: 4,
-                        marginTop: p.featured ? 10 : 0,
-                      }}
-                    >
-                      {p.n}
-                    </div>
-                    <div style={{ fontSize: 13, opacity: 0.6, marginBottom: 14 }}>{p.d}</div>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 36,
-                        fontWeight: 600,
-                        marginBottom: 2,
-                      }}
-                    >
-                      {p.p}
-                      <span style={{ fontSize: 14, fontWeight: 400, opacity: 0.6 }}>/mo</span>
-                    </div>
-                    <div
-                      style={{
-                        borderTop: "1.5px solid",
-                        borderColor: p.featured ? "rgba(255,255,255,0.2)" : "var(--border-subtle)",
-                        margin: "16px 0",
-                        paddingTop: 16,
-                      }}
-                    >
-                      {p.f.map((item) => (
-                        <div
-                          key={item}
-                          style={{
-                            fontSize: 13,
-                            marginBottom: 8,
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 8,
-                          }}
-                        >
-                          <Icon
-                            name="check"
-                            size={12}
-                            style={{ color: p.featured ? "var(--primary)" : "var(--success)" }}
-                          />
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                    <button
-                      className={`btn ${p.featured ? "" : "outline"}`}
-                      style={{ width: "100%", justifyContent: "center" }}
-                    >
-                      Choose {p.n}
-                    </button>
-                  </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14 }}>
+                {BLOCKS.filter((b) => b.group === g).map((b) => (
+                  <Link key={b.slug} href={`/blocks/${b.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+                    <Card interactive style={{ padding: 20, height: "100%", display: "flex", flexDirection: "column", gap: 8 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+                        <h3 style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 600, margin: 0 }}>{b.name}</h3>
+                        <ArrowRightIcon size={14} style={{ color: "var(--fg-muted)" }} />
+                      </div>
+                      <p style={{ margin: 0, fontSize: 12, color: "var(--fg-muted)" }}>{b.count} variants</p>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </div>
-          </BlockFrame>
-
-          {/* Stats block */}
-          <BlockFrame name="stats · grid" tag="marketing" href="/blocks/stats">
-            <div
-              className="vui-blocks-stats"
-              style={{
-                padding: 40,
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: 0,
-              }}
-            >
-              {[
-                { v: "2.4M", l: "Components rendered" },
-                { v: "142ms", l: "p95 first paint" },
-                { v: "14.2kb", l: "Core bundle (gz)" },
-                { v: "100%", l: "Tree-shakeable" },
-              ].map((s, i) => (
-                <div
-                  key={s.l}
-                  style={{
-                    padding: 16,
-                    borderRight: i < 3 ? "1.5px solid var(--border-subtle)" : "none",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 40,
-                      fontWeight: 500,
-                      letterSpacing: "-0.03em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {s.v}
-                  </div>
-                  <div className="label" style={{ marginTop: 8 }}>
-                    {s.l}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </BlockFrame>
-
-          {/* Testimonials */}
-          <BlockFrame name="testimonials · cards" tag="marketing" href="/blocks/testimonials">
-            <div
-              className="vui-blocks-testimonials"
-              style={{
-                padding: 40,
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 16,
-              }}
-            >
-              {[
-                { n: "Elena K.", r: "Design lead, Plaxo", q: "Finally a library that has a point of view but doesn't scream it.", c: "var(--accent-2)" },
-                { n: "Marcus B.", r: "Eng manager, Ortho", q: "The shadow system is deliberate. Everything else I tried was copy-paste chaos.", c: "var(--accent-1)" },
-                { n: "Zara B.", r: "Founder, Tallgrass", q: "Shipped our landing in 3 hours using blocks. Our brand feels distinct now.", c: "var(--accent-3)" },
-              ].map((t) => (
-                <div key={t.n} className="card" style={{ padding: 20 }}>
-                  <p style={{ margin: "0 0 16px", fontSize: 15, lineHeight: 1.5 }}>
-                    &ldquo;{t.q}&rdquo;
-                  </p>
-                  <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                    <div
-                      style={{
-                        width: 36,
-                        height: 36,
-                        border: "1.5px solid var(--border)",
-                        borderRadius: "50%",
-                        background: t.c,
-                        color: "var(--primary-fg)",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontFamily: "var(--font-mono)",
-                        fontWeight: 600,
-                        fontSize: 14,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {t.n[0]}
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: 13,
-                          fontWeight: 600,
-                        }}
-                      >
-                        {t.n}
-                      </div>
-                      <div style={{ fontSize: 12, color: "var(--fg-muted)" }}>{t.r}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </BlockFrame>
-
-          {/* CTA */}
-          <BlockFrame name="cta · banner" tag="marketing" href="/blocks/call-to-action">
-            <div
-              className="vui-blocks-cta"
-              style={{
-                padding: 48,
-                background: "var(--primary)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 32,
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 32,
-                    fontWeight: 500,
-                    letterSpacing: "-0.02em",
-                    margin: "0 0 8px",
-                  }}
-                >
-                  Ready to ship?
-                </h3>
-                <p style={{ margin: 0, fontSize: 15 }}>
-                  Grab the starter template and deploy in minutes.
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: 10, flexShrink: 0, flexWrap: "wrap" }}>
-                <button className="btn secondary">Start free</button>
-                <button className="btn outline">Read docs</button>
-              </div>
-            </div>
-          </BlockFrame>
+          ))}
         </div>
       </section>
     </main>

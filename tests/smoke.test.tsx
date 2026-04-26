@@ -84,7 +84,7 @@ describe("smoke: primitives render without crashing", () => {
     );
     expect(screen.getByText("card body")).toBeInTheDocument();
     // BasicCard renders fixed canonical content
-    expect(screen.getByText("Release 2.0")).toBeInTheDocument();
+    expect(screen.getByText("Release 3.0")).toBeInTheDocument();
     // CommandDisplay renders the command text
     expect(screen.getByText("pnpm install")).toBeInTheDocument();
   });

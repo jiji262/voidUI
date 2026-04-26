@@ -4,17 +4,21 @@ import { Text } from "./Text";
 
 interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
+  interactive?: boolean;
 }
 
-// v2 — thinner border (1.5px), 4px radius, refined hover lift (translate -2px w/ sh-lg)
-const Card = ({ className, ...props }: ICardProps) => {
+// v3 — refined hover lift with theme-aware translate, optional interactive mode
+const Card = ({ className, interactive, ...props }: ICardProps) => {
   return (
     <div
       className={cn(
-        "inline-block border-[1.5px] border-border rounded-[4px] shadow bg-card text-card-foreground",
-        "transition-all duration-150",
+        "inline-block border-[length:var(--bw,1.5px)] border-border rounded-[var(--r,4px)] shadow bg-card text-card-foreground",
+        "transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)]",
+        interactive &&
+          "cursor-pointer hover:-translate-y-0.5 hover:shadow-lg focus-visible:[box-shadow:var(--focus-ring)]",
         className,
       )}
+      tabIndex={interactive ? 0 : undefined}
       {...props}
     />
   );
@@ -22,17 +26,24 @@ const Card = ({ className, ...props }: ICardProps) => {
 
 const CardHeader = ({ className, ...props }: ICardProps) => (
   <div
-    className={cn("flex flex-col gap-1 p-5 border-b-[1.5px] border-border-subtle", className)}
+    className={cn(
+      "flex flex-col gap-1 p-5 border-b-[length:var(--bw,1.5px)] border-border-subtle",
+      className,
+    )}
     {...props}
   />
 );
 
 const CardTitle = ({ className, ...props }: ICardProps) => (
-  <Text as="h3" className={cn("font-mono text-base font-semibold tracking-tight", className)} {...props} />
+  <Text
+    as="h3"
+    className={cn("font-mono text-base font-semibold tracking-tight", className)}
+    {...props}
+  />
 );
 
 const CardDescription = ({ className, ...props }: ICardProps) => (
-  <p className={cn("text-sm text-muted-foreground", className)} {...props} />
+  <p className={cn("text-sm text-muted-foreground leading-relaxed", className)} {...props} />
 );
 
 const CardContent = ({ className, ...props }: ICardProps) => (

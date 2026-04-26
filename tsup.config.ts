@@ -2,9 +2,9 @@ import { defineConfig } from "tsup";
 
 /**
  * Builds @voidui/components from components/voidui/ into dist/.
- * Emits ESM + CJS + .d.ts, preserves "use client" directives for
- * Next.js App Router compatibility, and externalises every peer so
- * the published tarball stays lean.
+ * Emits ESM + CJS + .d.ts, copies styles.css verbatim, preserves
+ * "use client" directives for Next.js App Router compatibility, and
+ * externalises every peer so the published tarball stays lean.
  */
 export default defineConfig({
   entry: {
@@ -19,8 +19,11 @@ export default defineConfig({
   minify: false,
   target: "es2020",
   treeshake: true,
-  // "use client" is re-prepended by tsup's onSuccess hook because esbuild
-  // strips module-level directives when bundling multiple source files.
+  // - "use client" is re-prepended because esbuild strips module-level
+  //   directives when bundling.
+  // - styles.css is copied verbatim so consumers can
+  //   `import "@voidui/components/styles.css"` to load all 10 theme
+  //   token sets and the keyframes used by component animations.
   onSuccess: async () => {
     const fs = await import("node:fs/promises");
     const path = await import("node:path");
@@ -32,9 +35,13 @@ export default defineConfig({
           await fs.writeFile(p, `"use client";\n${body}`);
         }
       } catch {
-        // dist file missing — tsup error will surface elsewhere
+        /* dist file missing — tsup error will surface elsewhere */
       }
     }
+    await fs.copyFile(
+      path.resolve("components/voidui/styles.css"),
+      path.resolve("dist/styles.css"),
+    );
   },
   external: [
     "react",

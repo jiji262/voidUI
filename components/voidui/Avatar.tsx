@@ -3,15 +3,28 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import * as React from "react";
 import { cn } from "./_utils";
 
+const sizeMap = {
+  xs: "h-6 w-6 text-[10px]",
+  sm: "h-7 w-7 text-[11px]",
+  md: "h-9 w-9 text-xs",
+  lg: "h-11 w-11 text-sm",
+  xl: "h-14 w-14 text-base",
+} as const;
+
+type AvatarRootProps = React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & {
+  size?: keyof typeof sizeMap;
+};
+
 const AvatarRoot = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
+  AvatarRootProps
+>(({ className, size = "md", ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "relative inline-flex h-9 w-9 shrink-0 overflow-hidden rounded-full",
-      "border-[1.5px] border-border bg-primary",
+      "relative inline-flex shrink-0 overflow-hidden rounded-full",
+      "border-[length:var(--bw,1.5px)] border-border bg-primary",
+      sizeMap[size],
       className,
     )}
     {...props}
@@ -38,8 +51,8 @@ export const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center",
-      "font-mono text-xs font-semibold text-foreground",
+      "flex h-full w-full items-center justify-center bg-primary text-primary-foreground",
+      "font-mono font-semibold uppercase",
       className,
     )}
     {...props}
@@ -47,7 +60,6 @@ export const AvatarFallback = React.forwardRef<
 ));
 AvatarFallback.displayName = "AvatarFallback";
 
-// v1 dot-API compatibility — typed via Object.assign return for TS
 export const Avatar = Object.assign(AvatarRoot, {
   Image: AvatarImage,
   Fallback: AvatarFallback,

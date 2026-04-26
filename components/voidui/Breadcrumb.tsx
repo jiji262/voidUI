@@ -45,7 +45,11 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn("transition-colors hover:text-foreground", className)}
+      className={cn(
+        "transition-colors duration-[120ms] hover:text-foreground",
+        "rounded-[var(--r-sm,2px)] focus-visible:outline-none focus-visible:[box-shadow:var(--focus-ring)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -87,7 +91,6 @@ const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<"span"
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
-// v1 dot-API compatibility — typed via Object.assign return
 const BreadcrumbWithDot = Object.assign(Breadcrumb, {
   List: BreadcrumbList,
   Item: BreadcrumbItem,

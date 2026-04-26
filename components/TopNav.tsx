@@ -3,34 +3,64 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/lib/theme-context";
-import { Icon } from "@/components/ui/icon";
-import { LogoMark } from "@/components/Logo";
-import { ThemeSwitcher } from "@/components/ui/theme-switcher";
+import { ChevronDownIcon, MoonIcon, SunIcon, ArrowRightIcon } from "lucide-react";
+import { Logo } from "@/components/Logo";
+import { THEMES, THEME_META, type Theme, type Mode } from "@/lib/theme-config";
 
-/**
- * TopNav — sticky, backdrop-blurred, 1.5px bottom border.
- * Left: logo + wordmark + v2.0 badge
- * Center: page links with primary underline on the active route
- * Right: ThemeSwitcher popover · moon/sun mode toggle · "Get started" button
- *
- * 1:1 port of the Claude Design handoff (project/components/Chrome.jsx).
- */
+const NAV = [
+  { label: "Home", href: "/" },
+  { label: "Themes", href: "/themes" },
+  { label: "Components", href: "/components" },
+  { label: "Blocks", href: "/blocks" },
+  { label: "Demo", href: "/demo" },
+  { label: "Pricing", href: "/pricing" },
+];
+
+const SWATCH: Record<Theme, string> = {
+  neobrutal: "#E8B923",
+  swiss: "#E63946",
+  editorial: "#9C3D1A",
+  stripe: "#2B4EA8",
+  hanko: "#3D5A7C",
+  terra: "#6B7A4A",
+  cyber: "#00875A",
+  milktea: "#B88B6E",
+  aurora: "#4F4ED4",
+  mono: "#0A0A0A",
+};
+
+function readDoc<T>(attr: string, fallback: T): T {
+  if (typeof document === "undefined") return fallback;
+  return (document.documentElement.getAttribute(attr) as T) || fallback;
+}
+
 export default function TopNav() {
-  const pathname = usePathname() ?? "/";
-  const { mode, toggleMode } = useTheme();
+  const pathname = usePathname() || "/";
+  const [theme, setTheme] = React.useState<Theme>("neobrutal");
+  const [mode, setMode] = React.useState<Mode>("light");
+  const [open, setOpen] = React.useState(false);
 
-  const links = [
-    { id: "/", label: "Home" },
-    { id: "/themes", label: "Themes · 主题" },
-    { id: "/components", label: "Components" },
-    { id: "/blocks", label: "Blocks" },
-    { id: "/demo", label: "Demo" },
-    { id: "/pricing", label: "Pricing" },
-  ];
+  React.useEffect(() => {
+    setTheme(readDoc<Theme>("data-theme", "neobrutal"));
+    setMode(readDoc<Mode>("data-mode", "light"));
+  }, []);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+  const applyTheme = (t: Theme) => {
+    setTheme(t);
+    setOpen(false);
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", t);
+      try { localStorage.setItem("voidui-theme", t); } catch {}
+    }
+  };
+  const toggleMode = () => {
+    const m: Mode = mode === "dark" ? "light" : "dark";
+    setMode(m);
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-mode", m);
+      try { localStorage.setItem("voidui-mode", m); } catch {}
+    }
+  };
 
   return (
     <header
@@ -55,47 +85,18 @@ export default function TopNav() {
           gap: 24,
         }}
       >
-        {/* Logo lockup */}
-        <Link
-          href="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            textDecoration: "none",
-            color: "var(--fg)",
-          }}
-        >
-          <LogoMark size={28} />
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 17,
-              fontWeight: 600,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            voidUI
-          </span>
-          {/* Matches design: <Badge variant="ghost">v2.0</Badge> */}
-          <span className="badge ghost" style={{ marginLeft: 4 }}>v2.0</span>
+        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--fg)" }}>
+          <Logo />
+          <span className="badge ghost" style={{ marginLeft: 4 }}>v3.0</span>
         </Link>
 
-        {/* Center nav — hidden on small screens */}
-        <nav
-          style={{
-            display: "flex",
-            gap: 4,
-            alignItems: "center",
-          }}
-          className="vui-topnav-center"
-        >
-          {links.map((l) => {
-            const active = isActive(l.id);
+        <nav className="vui-topnav-center" style={{ display: "flex", gap: 4, alignItems: "center" }}>
+          {NAV.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
-                key={l.id}
-                href={l.id}
+                key={item.href}
+                href={item.href}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -105,14 +106,14 @@ export default function TopNav() {
                   color: active ? "var(--fg)" : "var(--fg-muted)",
                   fontWeight: active ? 600 : 400,
                   textDecoration: "none",
-                  borderRadius: 2,
+                  borderRadius: "var(--r-sm)",
                   position: "relative",
                 }}
               >
-                {l.label}
+                {item.label}
                 {active && (
                   <span
-                    aria-hidden
+                    aria-hidden="true"
                     style={{
                       position: "absolute",
                       bottom: -16,
@@ -129,15 +130,83 @@ export default function TopNav() {
           })}
         </nav>
 
-        {/* Right cluster */}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <ThemeSwitcher />
-
+          <div style={{ position: "relative" }}>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              title={`Current: ${THEME_META[theme].label} · ${THEME_META[theme].zh}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "7px 11px 7px 9px",
+                border: "1.5px solid var(--border)",
+                background: "var(--bg-elev)",
+                borderRadius: "var(--r)",
+                cursor: "pointer",
+                boxShadow: "var(--sh-xs)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "var(--fg)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span aria-hidden="true" style={{ width: 12, height: 12, background: SWATCH[theme], border: "1.5px solid var(--border)", borderRadius: "var(--r-sm)" }} />
+              {THEME_META[theme].label}
+              <ChevronDownIcon size={12} />
+            </button>
+            {open && (
+              <div
+                role="menu"
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 6px)",
+                  right: 0,
+                  background: "var(--bg-elev)",
+                  border: "1.5px solid var(--border)",
+                  borderRadius: "var(--r)",
+                  boxShadow: "var(--sh-md)",
+                  padding: 6,
+                  minWidth: 220,
+                  display: "grid",
+                  gap: 2,
+                }}
+              >
+                {THEMES.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => applyTheme(t)}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "8px 10px",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      background: t === theme ? "var(--border-subtle)" : "transparent",
+                      color: "var(--fg)",
+                      border: "none",
+                      cursor: "pointer",
+                      textAlign: "left",
+                      borderRadius: "var(--r-sm)",
+                    }}
+                  >
+                    <span aria-hidden="true" style={{ width: 10, height: 10, background: SWATCH[t], border: "1.5px solid var(--border)", borderRadius: "var(--r-sm)" }} />
+                    <span style={{ fontWeight: 600 }}>{THEME_META[t].label}</span>
+                    <span style={{ color: "var(--fg-muted)", marginLeft: "auto" }}>{THEME_META[t].zh}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           <button
             type="button"
             onClick={toggleMode}
-            title={mode === "dark" ? "Switch to light" : "Switch to dark"}
-            aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={`Switch to ${mode === "dark" ? "light" : "dark"}`}
+            aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
             style={{
               width: 34,
               height: 34,
@@ -153,19 +222,16 @@ export default function TopNav() {
               flexShrink: 0,
             }}
           >
-            <Icon name={mode === "dark" ? "sun" : "moon"} size={15} />
+            {mode === "dark" ? <SunIcon size={15} /> : <MoonIcon size={15} />}
           </button>
-
-          {/* Matches design's <Btn size="sm">: .btn.sm = padding 6px 12px / 12px mono */}
           <Link href="/themes" style={{ textDecoration: "none" }}>
             <button type="button" className="btn sm">
               Get started
-              <Icon name="arrow-right" size={13} />
+              <ArrowRightIcon size={13} />
             </button>
           </Link>
         </div>
       </div>
-
     </header>
   );
 }
