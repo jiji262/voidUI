@@ -1,6 +1,6 @@
 {
   "name": "@voidui/components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Refined neobrutalist React component library — 30 components, 10 themes × light/dark, bilingual CJK. Built on TailwindCSS v4 + Radix UI.",
   "keywords": [
     "react",

@@ -1,5 +1,11 @@
 # @voidui/components changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- f30fc79: Initial public release. 29 components across form / display / feedback / layout / overlay categories, 8 themes × light/dark (neobrutal · swiss · editorial · stripe · hanko · terra · cyber · milktea), bilingual CJK font stacks, dual ESM + CJS build with "use client" preserved for Next.js App Router.
+
 All notable changes to the published library ship here. The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) starting at 0.1.0.
 
 ## Unreleased
