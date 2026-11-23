@@ -1,0 +1,67 @@
+"use client";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
+import * as React from "react";
+import { cn } from "./_utils";
+
+const AccordionRoot = AccordionPrimitive.Root;
+
+export const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item
+    ref={ref}
+    className={cn(
+      "border-[length:var(--bw,1.5px)] border-border rounded-[var(--r,4px)] bg-card mb-2 shadow-xs",
+      "transition-shadow duration-[180ms] data-[state=open]:shadow-sm",
+      className,
+    )}
+    {...props}
+  />
+));
+AccordionItem.displayName = "AccordionItem";
+
+export const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "group flex flex-1 items-center justify-between py-3 px-4 font-mono text-sm font-medium",
+        "transition-colors hover:text-primary",
+        "[&[data-state=open]>svg]:rotate-180",
+        "focus-visible:outline-none focus-visible:[box-shadow:var(--focus-ring)] rounded-[var(--r-sm,2px)]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-[200ms] ease-[cubic-bezier(0.22,0.61,0.36,1)]" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+));
+AccordionTrigger.displayName = "AccordionTrigger";
+
+export const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm text-muted-foreground data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down border-t-[length:var(--bw,1.5px)] border-border-subtle"
+    {...props}
+  >
+    <div className={cn("py-3 px-4 leading-relaxed", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+));
+AccordionContent.displayName = "AccordionContent";
+
+export const Accordion = Object.assign(AccordionRoot, {
+  Item: AccordionItem,
+  Header: AccordionTrigger,
+  Trigger: AccordionTrigger,
+  Content: AccordionContent,
+});

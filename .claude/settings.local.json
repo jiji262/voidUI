@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(pnpm build:*)",
+      "Bash(sed:*)",
+      "Bash(pgrep:*)",
+      "Bash(pnpm list:*)",
+      "Bash(node:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:pro.voidui.dev)",
+      "Bash(curl -s \"https://pro.voidui.dev/hero-sections\")",
+      "Bash(curl -s \"https://pro.voidui.dev/pricing-tables\")"
+    ],
+    "deny": []
+  }
+}

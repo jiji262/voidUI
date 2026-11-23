@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "../components/voidui/styles.css";
+
+/* ============================================================
+   voidUI marketing site — site-only styles
+   The token contracts (10 themes, motion, focus-ring, keyframes)
+   are imported from the library file above. Everything below is
+   for the marketing site itself: body resets, scrollbar, legacy
+   utility classes used by TopNav/Footer/etc., and page-level
+   responsive helpers.
+   ============================================================ */
+
+/* ========== Body & global ========== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans-active);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01", "ss03";
+  transition: background var(--motion) ease, color var(--motion) ease;
+}
+
+:lang(zh), .cn {
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.display, h1, h2 { letter-spacing: -0.02em; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+::selection { background: var(--primary); color: var(--primary-fg); }
+
+:focus { outline: none; }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+a { color: var(--fg); text-decoration-color: var(--border-subtle); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--primary); }
+
+.mono, .font-mono { font-family: var(--font-mono-active); letter-spacing: -0.005em; }
+.display, .font-display, .font-head { font-family: var(--font-display-active); }
+.label, .label-caps {
+  font-family: var(--font-mono-active);
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fg-muted); font-weight: 500;
+}
+.text-outlined { color: var(--fg); text-shadow: 2px 2px 0 var(--primary); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--fg-subtle); border-radius: var(--r-sm); }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+@media print {
+  body { background: white; color: black; }
+  .no-print { display: none; }
+}
+
+/* ========== Site-only utility classes ========== */
+.btn {
+  font-family: var(--font-mono-active);
+  font-weight: 500; font-size: 14px; letter-spacing: -0.005em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px;
+  border: var(--bw,1.5px) solid var(--border);
+  border-radius: var(--r);
+  background: var(--primary); color: var(--primary-fg);
+  box-shadow: var(--sh);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out), background var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
+  text-decoration: none; white-space: nowrap; user-select: none;
+}
+.btn:hover { background: var(--primary-hover); transform: translate(var(--btn-hov-x), var(--btn-hov-y)); }
+.btn:active { transform: translate(var(--btn-act-x), var(--btn-act-y)); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+.btn.secondary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.secondary:hover { opacity: 0.92; background: var(--fg); }
+.btn.outline { background: transparent; color: var(--fg); border-color: var(--border); }
+.btn.outline:hover { background: var(--bg-elev); }
+.btn.ghost { background: transparent; border-color: transparent; box-shadow: none; color: var(--fg); }
+.btn.ghost:hover { background: var(--border-subtle); transform: none; box-shadow: none; }
+.btn.sm { padding: 6px 12px; font-size: 12px; box-shadow: var(--sh-xs); }
+.btn.lg { padding: 14px 24px; font-size: 16px; box-shadow: var(--sh-md); }
+[data-theme="swiss"] .btn, [data-theme="mono"] .btn { box-shadow: none; }
+[data-theme="swiss"] .btn.sm, [data-theme="swiss"] .btn.lg,
+[data-theme="mono"] .btn.sm, [data-theme="mono"] .btn.lg { box-shadow: none; }
+
+.card {
+  background: var(--card);
+  border: var(--bw,1.5px) solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  transition: transform var(--motion) var(--ease-out), box-shadow var(--motion) var(--ease-out);
+}
+[data-theme="swiss"] .card, [data-theme="stripe"] .card,
+[data-theme="hanko"] .card, [data-theme="milktea"] .card,
+[data-theme="aurora"] .card, [data-theme="mono"] .card { border-color: var(--border-subtle); }
+.card.lift:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+[data-theme="neobrutal"] .card.lift:hover,
+[data-theme="cyber"] .card.lift:hover { transform: translate(-2px,-2px); box-shadow: var(--sh-lg); }
+
+.input {
+  width: 100%; font-family: var(--font-sans-active);
+  font-size: 14px; padding: 10px 14px;
+  border: var(--bw,1.5px) solid var(--border); border-radius: var(--r);
+  background: var(--bg-elev); color: var(--fg); outline: none;
+  transition: box-shadow var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
+}
+[data-theme="swiss"] .input, [data-theme="stripe"] .input,
+[data-theme="hanko"] .input, [data-theme="editorial"] .input,
+[data-theme="terra"] .input, [data-theme="milktea"] .input,
+[data-theme="aurora"] .input, [data-theme="mono"] .input { border-color: var(--border-subtle); }
+.input::placeholder { color: var(--fg-subtle); }
+.input:hover { border-color: var(--fg-muted); }
+.input:focus-visible { border-color: var(--primary); box-shadow: var(--focus-ring); }
+
+.badge {
+  font-family: var(--font-mono-active);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 8px;
+  border: var(--bw,1.5px) solid var(--border); border-radius: var(--r-sm);
+  background: var(--bg-elev); color: var(--fg);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 500; white-space: nowrap;
+}
+[data-theme="swiss"] .badge, [data-theme="stripe"] .badge,
+[data-theme="hanko"] .badge, [data-theme="editorial"] .badge,
+[data-theme="terra"] .badge, [data-theme="milktea"] .badge,
+[data-theme="aurora"] .badge, [data-theme="mono"] .badge { border-color: var(--border-subtle); }
+.badge.primary { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+.badge.ink { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.badge.ghost { border-color: var(--border-subtle); color: var(--fg-muted); background: transparent; }
+
+/* ========== Page-level responsive ========== */
+@media (max-width: 960px) {
+  .vui-topnav-center { display: none !important; }
+  .vui-home-hero { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .vui-home-hero-stack { display: none !important; }
+  .vui-home-features { grid-template-columns: 1fr 1fr !important; }
+  .vui-home-preview { grid-template-columns: 1fr !important; }
+  .vui-home-preview > div { grid-column: span 1 !important; }
+  .vui-themes-detail { grid-template-columns: 1fr !important; }
+  .vui-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  .vui-themes-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  .vui-components-grid { grid-template-columns: 1fr !important; }
+  .vui-pricing-grid { grid-template-columns: 1fr !important; }
+  .vui-theme-demo-swatches { grid-template-columns: repeat(2,1fr) !important; }
+  .vui-blocks-hero { grid-template-columns: 1fr !important; }
+  .vui-blocks-pricing { grid-template-columns: 1fr !important; }
+  .vui-blocks-stats { grid-template-columns: repeat(2,1fr) !important; }
+  .vui-blocks-stats > div { border-right: none !important; border-bottom: 1.5px solid var(--border-subtle); }
+  .vui-blocks-testimonials { grid-template-columns: 1fr !important; }
+  .vui-demo-grid { grid-template-columns: 1fr !important; }
+  .vui-demo-grid > div { grid-column: span 1 !important; }
+}
+@media (max-width: 640px) {
+  .vui-themes-grid { grid-template-columns: 1fr !important; }
+  .vui-home-features { grid-template-columns: 1fr !important; }
+  .vui-footer-grid { grid-template-columns: 1fr !important; }
+}

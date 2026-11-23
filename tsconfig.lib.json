@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "composite": false,
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "plugins": [],
+    "paths": {}
+  },
+  "include": ["components/voidui"],
+  "exclude": ["node_modules", "dist", "out", ".next"]
+}
